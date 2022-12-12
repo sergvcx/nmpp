@@ -27,17 +27,14 @@ private:
 #define		SIZE 		256
 
 
-#ifdef __GNUC__
-/**************************NMC-GCC************************/
-__attribute__((section(".mem_bank1")))  nm32fcr src[256];
-__attribute__((section(".mem_bank5")))  nm32fcr dst[256];
-#else
-/**************************NMCC************************/
-#pragma data_section ".mem_bank1"
-	nm32fcr src[256];
-#pragma data_section ".mem_bank5"
-	nm32fcr dst[256];
+#ifndef __GNUC__ 
+#define __attribute__(a) 
 #endif
+
+
+nm32fcr src[SIZE] __attribute__ ((section (".data_imu1")));
+nm32fcr dst[SIZE] __attribute__ ((section (".data_imu5")));
+
 
 int main()
 {
@@ -83,5 +80,10 @@ int main()
 	// for(i = 0; i < SIZE; i++){
 	// 	printf("%.5f %.5f\n", dst[i].re, dst[i].im);
 	// }
-	return t2 - t1;
+	if (norm<0.02)
+		return 777;
+	return *(int*)&norm ;
+	
+	
+	//return t2 - t1;
 }

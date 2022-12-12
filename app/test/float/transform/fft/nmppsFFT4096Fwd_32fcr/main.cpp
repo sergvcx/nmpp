@@ -5,15 +5,33 @@
 #include <malloc.h>
 #include <stdio.h>
 
-//#pragma data_section ".mem_bank5"
-	nm32fcr src[4096];
-//#pragma data_section ".mem_bank5"
-	nm32fcr dst[4096 + 12];
+
+#ifndef __GNUC__ 
+#define __attribute__(a) 
+#endif
+
+
+nm32fcr src[4096] 		__attribute__ ((section (".data_imu4")));
+nm32fcr dst[4096 + 12] 	__attribute__ ((section (".data_imu5")));
 
 #define		SIZE 		4096
-
+#include "math.h"
 int main()
 {
+//	for (float f = 0.0; f < 10; f += 0.01) {
+//		float ff = exp(2 * f) - 2 * exp(f);
+//		printf("%f %f \n",f, ff);
+//	}
+//	union {
+//		float f;
+//		int i;
+//	}x,yy,z;
+//	x.i =  0x7EFFFFFF;
+//	yy.i = 0x7EFFFFFE;
+//	x.f = 1.5e+38;
+//	z.f = x.f - yy.f;
+//	printf("***********\n");
+//	
 	int i, st;
 	clock_t t1, t2;
 	//nm32fcr *src, *dst;
@@ -34,24 +52,34 @@ int main()
 		dst[i].re = 0;
 	}
 
+	printf("***********\n");
 	NmppsFFTSpec_32fcr *rat, *irat;
 	st = nmppsFFT4096FwdInitAlloc_32fcr(&rat);
-	if(st) {
-		return st;
-	}
-	st = nmppsFFT4096InvInitAlloc_32fcr(&irat);
 	if(st) {
 		return st;
 	}
 	t1 = clock();
 	nmppsFFT4096Fwd_32fcr(src, dst, rat);
 	t2 = clock();
-	nmppsFFT4096Inv_32fcr(dst, dst, irat);
+	printf("***********\n");
 	st = nmppsFFTFree_32fcr(rat);
+	
+	
+	
+	printf("***********\n");
+	st = nmppsFFT4096InvInitAlloc_32fcr(&irat);
+	if(st) {
+		return st;
+	}
+	
+	nmppsFFT4096Inv_32fcr(dst, dst, irat);
+	
 	if(st) {
 		return st;
 	}
 	st = nmppsFFTFree_32fcr(irat);
+	printf("***********\n");
+	
 	if(st) {
 		return st;
 	}
@@ -61,5 +89,9 @@ int main()
 	// for(i = 0; i < SIZE + 12; i += 2) {
 	// 	printf("[%d]  %.2f  %.2f          %.2f  %.2f\n", i, dst[i].re, dst[i].im, dst[i + 1].re, dst[i + 1].im);
 	// }
-	return t2 - t1;
+	if (norm<0.04)
+		return 777;
+	return *(int*)&norm ;
+	
+	
 }

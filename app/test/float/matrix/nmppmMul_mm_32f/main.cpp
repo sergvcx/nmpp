@@ -21,6 +21,8 @@ int main()
 	nmppsRandUniform_32f_integer( src1, maxW1* maxW0,    9, 0);
 	nmppsRandUniform_32f_integer( dst,  maxW1*(maxH0+1), 9, 0);
 	
+	printf("start test\n");
+	//return 5;
 	int w1=0;
 	for(int h0=1; h0<=maxH0; h0+=1){
 		for(int w0=2; w0<=maxW0; w0+=2){

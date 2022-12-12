@@ -8,18 +8,19 @@
       kind "ConsoleApp"
       language "C++"
       files { "../*.cpp" }
-	  links { "nmpp-x64"} 
-	  libdirs { "$(NMPP)/lib","$(HAL)/lib"}
-	  includedirs { "$(NMPP)/include","$(HAL)/include"}
+	  libdirs { "$(NMPP)/lib"}
+	  includedirs { "$(NMPP)/include"}
 	  systemversion 'latest'
       configuration "Debug"
          defines { "DEBUG" }
          symbols  "On" 
+	  links { "nmpp-x64d"} 
 		 
 		 
 
       configuration "Release"
          defines { "NDEBUG" }
          symbols  "Off" 
+	  links { "nmpp-x64"} 
 		 
 

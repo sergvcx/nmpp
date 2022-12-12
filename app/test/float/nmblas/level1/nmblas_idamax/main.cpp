@@ -13,13 +13,17 @@ double buffer_a[SIZE];
 #endif 
 
 int main(){
-
+	//asm("pswr clear 0x40;");
 	int i=0;
 	int r;
 	unsigned int result =0;
 	unsigned int crc=0;
 	float *pointer;
-	nmppsRandUniform_64f(buffer_a,SIZE,-30,30);
+	//nmppsRandUniform_64f(buffer_a,SIZE,-30,30);
+	//nmppsSet_64f(buffer_a,SIZE,0);
+	for(int i=0; i<SIZE; i++)
+		buffer_a[i]=0;
+	
 	buffer_a[947] =  -1000000;
 	buffer_a[600]  = -845;
 	buffer_a[10]  =  -45;

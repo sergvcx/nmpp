@@ -1,6 +1,7 @@
 #include "nmpp.h"
 #include "minrep.h"
 #include "minrep.h"
+#include "stdio.h"
 //#include "vSupport.h"
 //
 
@@ -21,7 +22,7 @@ int main()
 	
 	L0=nmppsMalloc_64s (SizeL0);
 	G0=nmppsMalloc_64s (SizeG0);
-	if (L0==0 || G0==0 ) return -1;
+	if (L0==0 || G0==0 ) return -2;
 	
 	unsigned int crc = 0;
 
@@ -29,7 +30,11 @@ int main()
 	MaxcharSize=MIN(MaxcharSize,SizeL0*8);
 	MaxcharSize=MIN(MaxcharSize,SizeG0*8);
 
+	//printf("1");
+	int g=1;
 	nmppsRandUniform_32u((nm32u*)L0,SizeL0*2);
+	int g2=2;
+	//printf("2");
 	nmppsSet_32s((int)0xCCCCCCCC,(nm32s*)G0,SizeG0*2);
 
 	for(int charSize=0;charSize<=MaxcharSize;charSize+=8*NMPP_MIN_REP)

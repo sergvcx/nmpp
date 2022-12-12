@@ -80,13 +80,15 @@ int main()
 	unsigned crc = 0;
 
 	nmppsConvert_32f32f_ceiling(src_32f, dst_32f, 0, 100);
+	nmppsConvert_32f32s_ceiling(dst_32f, (nm32s*)dst_32f, 0, 100);
 	nmppsCrcAcc_32s((nm32s*)dst_32f,100, &crc);
+	//crc = nmppsCrcAcc_32f(dst_32f,8,SIZE,&crc);
 
-
+	//return crc>>2;
 	
-//	for (int i = 0; i < 100; i++) {
-//		printf("%d nm_ceil(%.8e)=%f \t c_ceil=%f\n", i, src_32f[i], dst_32f[i], ceil(src_32f[i]));
-//	}
+	//for (int i = 0; i < 100; i++) {
+	//	printf("%d nm_ceil(%.8e)=%f \t c_ceil=%f\n", i, src_32f[i], dst_32f[i], ceil(src_32f[i]));
+	//}
 
 	crc = 0;
 
@@ -115,7 +117,10 @@ int main()
 			//int scale = 0;
 			//printf("..");
 			nmppsConvert_32f32f_ceiling(src_32f, dst_32f, scale, iSize);
-			nmppsCrcAcc_32s((nm32s*)dst_32f, SIZE + 11, &crc);
+			nmppsConvert_32f32s_ceiling(dst_32f, (nm32s*)dst_32f, 0, iSize);
+			nmppsCrcAcc_32s((nm32s*)dst_32f,106, &crc);
+	
+			//nmppsCrcAcc_32s((nm32s*)dst_32f, SIZE + 11, &crc);
 		}
 	}
 

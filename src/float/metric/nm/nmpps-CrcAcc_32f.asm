@@ -51,27 +51,24 @@ global _nmppsCrcAcc_32f :label;
 	ar6 = [--ar5];//	unsigned int&	Crc32	// Init/Output crc	
 	
 	
-	gr1 = ar1;
-	gr2 = -1;
-	LSHIFT32 ( gr7, gr2, gr1); // mask
-	ar2 = gr7;
+	gr1 = ar1 with gr2 = false; 
+	gr2 ++;
+	//gr2 = -1;
+	LSHIFT32 ( gr7, gr2, gr1); // mask  gr7= gr2<<gr1 (numBitsToClear)
+	ar2 = gr7;	// rounder  ar2  bits to clear
 	
-	gr2 = 1;	//1
-	ar1=0 with gr1--;
-	if < goto skipRounder;
-	LSHIFT32 ( gr7, gr2, gr1);	//rounder
-	ar1 = gr7;
 	
-	<skipRounder>
 	
 	gr7 = [ar6]	with gr5;
 	if =0 delayed goto End_CRC32;
 		gr2 = 000000FFh;
 	ar5 = _CRC32_Table;
+	
 	gr0=[ar0++];									//		a=pSrcVec[i++];
-	gr1 = ar1;
-	gr1 = ar2 with gr0+= gr1;
-	gr0 = gr0 and gr1;
+	gr6 = ar2;
+	gr0+= gr6; 
+	gr6--;
+	gr0 = gr0 and not gr6;
 	
 	ar4 = ar5;
 	<Next_CRC32>	
@@ -105,13 +102,13 @@ global _nmppsCrcAcc_32f :label;
 		gr1 = gr1 and gr2;							//		b = b & 0x000000FF;		
 		gr3 = gr7 and gr2;							//		c = CRC32 & 0x000000FF ;		
 		gr4	= gr1 xor gr3;							//		addr=b^c;		
-		gr6	= [ar4+=gr4]	;				//		t=pTable[addr];		
-		ar4 = ar5;			
-		gr0	=[ar0++] 		with gr7>>= 8;		
-		gr1 = ar1			with gr5--;			
-if <>0 delayed goto Next_CRC32 with gr7 = gr7 xor gr6;	//		i++			//		CRC32 >>= 8 			
-		gr1 = ar2 with gr0 = gr0 + gr1	;				
-		gr0 = gr0 and gr1	;						//		a=pSrcVec[i++];CRC32 = CRC32 ^ t;
+		gr6	= [ar4+=gr4]	with gr7>>= 8;			//		t=pTable[addr];		
+		ar4 = ar5			with gr7 = gr7 xor gr6;	//		i++			//		CRC32 >>= 8 			
+		gr6 = ar2;			
+		gr0	=[ar0++] 		with gr5--;			
+		if <>0 delayed goto Next_CRC32 	with gr0 = gr0 + gr6	; // + rounder
+			gr6 --;	// mask 
+			gr0 = gr0 and not gr6	;						//		a=pSrcVec[i++];CRC32 = CRC32 ^ t;
 	
 	
 	<End_CRC32>	

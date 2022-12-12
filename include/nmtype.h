@@ -40,9 +40,11 @@
 
 #ifdef __NM__
 #define sizeof32(t) sizeof(t)
+#define sizeof64(t) (sizeof(t)/2)
 //#define malloc32(size_int32) malloc(size_int32)
 #else
 #define sizeof32(t) (sizeof(t)/4)
+#define sizeof64(t) (sizeof(t)/4/2)
 //#define malloc32(size_int32) malloc(size_int32*4)
 #endif
 

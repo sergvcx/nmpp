@@ -33,7 +33,10 @@ int main()
 			nmppsCrcAcc_32s(dst_32s, SIZE + 11, &crc);
 		}
 	}
-
+	//for(int i = 0; i < SIZE + 11; i++) {
+	// 	printf("[%d] = %f %d\n", i, src_32f[i]*1024, dst_32s[i]);
+	// }
+	// printf("
 	// for(int i = 0; i < SIZE + 11; i++) {
 	// 	printf("[%d] = %d\n", i, dst_32s[i]);
 	// }

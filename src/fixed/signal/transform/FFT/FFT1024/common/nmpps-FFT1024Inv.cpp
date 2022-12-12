@@ -54,6 +54,7 @@ void  FFT_Inv1024(
 		ret = nmppsFFT1024InvInitAllocCustom(spec, nmppsMalloc32, nmppsFree, settings);
 		return ret;
 	}
+	/*
 	int nmppsFFT1024InvOptimize(const void* src, const void* dst, fseq64* allocOrder) 
 	{
 		unsigned heapIndx0;
@@ -87,7 +88,7 @@ void  FFT_Inv1024(
 		}
 		if (bestTime<0x1000000)	return NMPP_OK;
 		else					return NMPP_ERROR;
-	}
+	}*/
 
 
 

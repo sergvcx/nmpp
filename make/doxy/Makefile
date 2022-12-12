@@ -12,7 +12,7 @@ doxy:
 chm:
 	doxygen
 	copy html\*.chm .
-	
+
 #	utf2win.bat
 #	taskkill /FI "windowtitle eq nmpp"
 #	-cd html && hhc index.hhp

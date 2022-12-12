@@ -1,7 +1,7 @@
  global _fpu_dgemv_trans:label;
 
   //gr3 = [--ar5];//enum to chose transponated or not the matrix A
-  //gr5 = [--ar5];//On entry, M specifies  the number of collums of  the matrix  A//int
+  //gr5 = [--ar5];//On entry, M specifies  the number of columns of  the matrix  A//int
   //gr6 = [--ar5];//On entry, N specifies  the number of rows of the matrix A//int
   //fpu 2 rep 1 vreg7 = [--ar5];//alpha//double
   //ar0 = [--ar5];//the pointer onto the matrix//*double
@@ -25,9 +25,9 @@ push ar4,gr4;
   ar6 = gr6;
   ar3 = ar1;//save address of x array
 
-  gr7 = gr5<<27;//REMAINDER of collums
+  gr7 = gr5<<27;//REMAINDER of columns
   gr7 = gr7>>27;
-  gr5 = gr5>>5;//QUOTIEN of collums
+  gr5 = gr5>>5;//QUOTIEN of columns
 
   if =0 delayed goto REMAINDER_MAIN;
 <MAIN_LOOP>

@@ -91,5 +91,9 @@
 #define char2short(size)	((size)>>1)
 #define char2char(size)		((size))
 
+#define capacity_64s 1
+#define capacity_32s 2
+#define capacity_16s 4
+#define capacity_8s 8
 
 #endif

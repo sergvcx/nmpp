@@ -7,10 +7,14 @@
 
 #define		SIZE 		512
 
-//#pragma data_section ".mem_bank2"
-	nm32fcr src[512];
-//#pragma data_section ".mem_bank5"
-	nm32fcr dst[512];
+#ifndef __GNUC__ 
+#define __attribute__(a) 
+#endif
+
+
+nm32fcr src[SIZE] __attribute__ ((section (".data_imu2")));
+nm32fcr dst[SIZE] __attribute__ ((section (".data_imu5")));
+
 
 int main()
 {
@@ -53,5 +57,10 @@ int main()
 	// for(i = 0; i < SIZE; i++){
 	// 	printf("%.2f %.2f\n", dst[i].re, dst[i].im);
 	// }
-	return t2 - t1;
+	if (norm<0.02)
+		return 777;
+	return *(int*)&norm ;
+	
+	
+	//return t2 - t1;
 }

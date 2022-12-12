@@ -44,9 +44,9 @@ begin "text"
 	fpu 0 rep 1 vreg0 = [--ar5];//load ALPHA
 	
 	gr7 = gr0 << 26;
-	gr7 = gr7 >> 27;//reminder of collums
+	gr7 = gr7 >> 27;//reminder of columns
 	vlen = gr7;
-	gr0 = gr0 >> 6;//qoutient of collums
+	gr0 = gr0 >> 6;//qoutient of columns
 	
 	gr1 = ar6;//init result address keaper
 	if =0 delayed goto REMAINDER;
@@ -75,7 +75,7 @@ begin "text"
 	ar3 = ar3 + gr3;//next row to download information
 	gr1 = gr1 + gr3;//next row to upload the result
 	
-	///////next set of collums
+	///////next set of columns
 	ar3 = ar0 with gr3 = -gr3 noflags;
 	gr0--;
 	if <>0 delayed goto LOOP_COLUME2COLUME with gr2 = -gr2 noflags;

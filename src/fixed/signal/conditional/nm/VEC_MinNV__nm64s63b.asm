@@ -34,47 +34,28 @@ global _nmppsMinNV_64s :label;
 	push ar0,gr0	with gr0=false;
 	nb1 = gr0;
 	f1crl=gr0;
-	wtw;
-
-	push ar1,gr1	with gr0++;
-	push ar3,gr3;
-	push ar4,gr4;
-	push ar5,gr5	with gr0++;
-	push ar6,gr6	with gr1=gr0;
-
-	ar6 = [--ar5] with gr6=gr0;		    // pSrcVec1
-	gr4 = [--ar5];						// numVecs
 	
-								
-	ar0=ar7 with gr7=gr4>>1;			// копируем массив pSrcVec1 в стек, потому что мы его затрем
+	push ar1,gr1	with gr1=false;
+	push ar5,gr5	with gr1++;
+	push ar6,gr6	with gr1++;			// gr1=2
 
-	<CopyPtr>
-	if > delayed goto CopyPtr with gr7--;
-		ar2,gr2=[ar6++];
-		push ar2,gr2;
-	
-	
+	ar0 = [--ar5]   with gr6=gr1;		// pTable
+	gr0 = [--ar5];						// numVecs
 	ar6 = [--ar5];						// pDstMin
 	gr5 = [--ar5];						// nSize
-	ar5 = ar7;							// fast 64-bit buffer 
-	ar7 +=2;
+	
 	f1crh=80000000h;
 	delayed call vec_CompareMinNV;
-		push ar0,gr0;						// save sp=ar0
-		ar3 = ar1 with gr3 = gr1;
-		
-		
-	//ar7-=2;
-	pop ar0,gr0;
-	ar7=ar0;
+		wtw;
+		nul;
 	
 	pop ar6,gr6;
 	pop ar5,gr5;
-	pop ar4,gr4;
-	pop ar3,gr3;
 	pop ar1,gr1;
 	pop ar0,gr0;
 return;
 .wait;
+
+
 
 end ".text_nmplv";

@@ -10,7 +10,7 @@ begin "text"
   gr5 = gr6;
   gr6 = ar5;
   //gr3 - enum to chose transponated or not the matrix a 
-  //gr5 - On entry, M specifies  the number of collums//int
+  //gr5 - On entry, M specifies  the number of columns//int
   //gr6 - On entry, N specifies  the number of rows//int
   //gr4 - load alpha
   //ar0 - the pointer onto the matrix//*double
@@ -31,20 +31,20 @@ begin "text"
   fpu 1 rep 1 vreg7 = [--ar5];//load alpha
 
 //description of perpose of registers
-// ar0 pointer of even collums (matrix located in a mamorry as collume maj)
+// ar0 pointer of even columns (matrix located in a mamorry as collume maj)
 // gr0 saves gr3
 // ar1 x 
 // gr1 eqls 2 to offset x  
 // ar2 y
 // gr2 saves ar2 to upload y 
-// ar3 pointer of odd collums
+// ar3 pointer of odd columns
 // gr3 rows devided by 2
 // ar4 saves ar0
 // gr4 offset to provide reading of even collumes
-// gr5 is quotient of collums
+// gr5 is quotient of columns
 // ar6 saves ar3
-// gr6 works as gr4 but for odd collums
-// gr7 is a reminder of collums
+// gr6 works as gr4 but for odd columns
+// gr7 is a reminder of columns
   
   gr3 = gr6>>1;//ammount of rows divided by 2 
   gr0 = ar3;

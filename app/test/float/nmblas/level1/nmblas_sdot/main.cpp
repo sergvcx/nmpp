@@ -24,40 +24,12 @@ int main(){
 	nmppsRand_32f(buffer_a,SIZE,-10,10);
 	nmppsRand_32f(buffer_b,SIZE,-10,10);
 	
-	/*printf("TEST HAS BEEN STARTED\n");
-	result = nmblas_sdot(448,buffer_a,1,buffer_b,1);
-	printf("the result is %f\n",result);
-	return(100);*/
-//////////////////////////////////////////////////////////////case 1
-	for(i=0;i<SIZE;i++){
+	for(i=0;i<SIZE;i+=2){
 		result = nmblas_sdot(i,buffer_a,1,buffer_b,1);
-//		printf("the result is %f\n",result);
-		crc = nmppsCrcAcc_32f(&result,14,1,&crc);
+		printf("the result is %f %x\n",result, *(int*)&result );
+		crc = nmppsCrcAcc_32f(&result,18,1,&crc);
 	}
-	printf("THE PATTERN NUMBER 1 HAS FINISHED\n");
-	printf("current crc is %d\n",crc);
-//////////////////////////////////////////////////////////////case 2	
-	for(i=SIZE;i>=0;i--){
-		result = nmblas_sdot(i,buffer_a,1,buffer_b,1);
-		crc = nmppsCrcAcc_32f(&result,14,1,&crc);
-	}
-	printf("THE PATTERN NUMBER 2 HAS FINISHED\n");
-	printf("current crc is %d\n",crc);
-//////////////////////////////////////////////////////////////case 3	
-	for(i=0;i<6;i++){
-		result = nmblas_sdot(20,buffer_a,1,buffer_b,1);
-		crc = nmppsCrcAcc_32f(&result,14,1,&crc);
-	}
-	printf("THE PATTERN NUMBER 3 HAS FINISHED\n");
-	printf("current crc is %d\n",crc);
-/////////////////////////////////////////////////////////////case 4	
-	for(i=0;i<6;i++){
-		result = nmblas_sdot(20,buffer_b,1,buffer_a,1);
-		crc = nmppsCrcAcc_32f(&result,14,1,&crc);
-	}
-	printf("THE PATTERN NUMBER 3 HAS FINISHED\n");
-	printf("THE FINAL CRC %d\n",crc);
-	printf("TEST HAS BEEN FINISHED\n");
+
 	return crc>>2;
 }
 

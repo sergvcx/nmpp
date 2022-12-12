@@ -1,7 +1,7 @@
 #include <nmtype.h>
 #include <malloc32.h>
 #include <nmpp.h>
-//#include <nmpps/nmpps.h>
+#include <stdio.h>
 
 
 #define PI 3.1415
@@ -16,9 +16,10 @@ int main()
 	}
 	float norm;
 	for(int size=0; size<64; size+=2){
-		#ifdef NEURO 
+		//#ifdef NEURO 
 		nmppsNormDiff_Inf_32f(src0,src1,size,&norm);
-		#endif
+		//#endif
+		printf ("%f\n",norm);
 		nmppsCrcAcc_32f(&norm,0,1,&crc);
 	}
 	free(src0);

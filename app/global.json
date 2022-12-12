@@ -1,6 +1,6 @@
 {   
     "template_dir": "templates/sometest",
-    "target_index": "make_",
+    "target_prefix": "",
     "exclude_dirs": ["d"],
     "include_dirs": ["examples","test","examples-float"],
     "targets"  : ["x86","emu6405","mc12101_nmpu0-gcc-ld" ],

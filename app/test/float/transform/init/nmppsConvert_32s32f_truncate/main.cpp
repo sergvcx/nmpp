@@ -5,13 +5,24 @@
 
 #define 				SIZE			1024
 
-#pragma data_section ".data_imu5"
+//#pragma data_section ".data_imu5"
 	nm32f src_32f[SIZE];
-#pragma data_section ".data_imu5"
+//#pragma data_section ".data_imu5"
 	nm32s dst_32s[SIZE + 11];
 
 int main()
 {
+	//union{
+	//	float f;
+	//int i;
+	//} a;
+	//a.f=0.4999999;
+	//printf ("-------%x\n",a.i);
+	//return a.i;
+	
+	//int d=-5.5;
+	//printf ("%d");
+	//return d;
 	// nm32f* src_32f = (nm32f*) nmppsMalloc_32f(SIZE);
 	// //nm32s* dst_32s = (nm32s*) nmppsMalloc_32s(SIZE + 11);
 	// nm32f* dst_32s = (nm32f*) nmppsMalloc_32f(SIZE + 11);
@@ -28,15 +39,20 @@ int main()
 	unsigned crc = 0;
 //	int gr7 = 7;
 	for(int iSize = 2; iSize < SIZE; iSize += 2) {
+	//int iSize = 80;
+	
 		for(int scale = -10; scale < 11; scale++) {
 			nmppsConvert_32f32s_truncate(src_32f, dst_32s, scale, iSize);
-			nmppsCrcAcc_32s(dst_32s, SIZE + 11, &crc);
+			nmppsCrcAcc_32s(dst_32s, iSize, &crc);
 		}
 	}
-
-	// for(int i = 0; i < SIZE + 11; i++) {
-	// 	printf("[%d] = %d\n", i, dst_32s[i]);
-	// }
+	
+		//printf("%x\n",crc);
+			// for(int i = 0; i < iSize ; i++) {
+			//	printf("[%d]  = %f %d\n", i,  src_32f[i]*(1<<scale), dst_32s[i]);
+			// }
+		
+	
 	// printf("\n");
 
 	// nmppsFree(src_32f);

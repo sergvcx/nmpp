@@ -4,7 +4,8 @@
     "_exclude_dirs": ["d"],
     "include_dirs_": ["arithmetic_","conditional_","matrix"],
     "target_index": "make_",
-    "targets"  : ["x64","mc12101_nmpu0","mc11101"],
-    "test": ["x64","mc12101_nmpu0"],
+    "_targets"  : ["x64","mc12101_nmpu0","mc11101"],
+    "targets"  : ["x64","mc12101_nmpu0","mc11101_nmpu0"],
+    "test": ["x64","mc11101_nmpu0","nm_card"],
     "_log": "nmcmake.log"
 }

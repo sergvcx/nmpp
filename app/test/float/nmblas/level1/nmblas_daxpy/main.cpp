@@ -6,22 +6,16 @@
 #define SIZE 1024
 #define EXT 30
 
-#ifdef __GNUC__ //  NMC-GCC C++ compilier 
+#ifndef __GNUC__ 
+#define __attribute__(a) 
+#endif
+
 double buffer_a[SIZE+EXT] __attribute__ ((section (".data_imu1")));
 double buffer_b[SIZE+EXT] __attribute__ ((section (".data_imu2")));
 double buffer_c[SIZE+EXT] __attribute__ ((section (".data_imu3")));
 double buffer_d[SIZE+EXT] __attribute__ ((section (".data_imu4")));
-#else 		// NMSDK C++ compiler
-#pragma data_section ".data_imu1"
-double buffer_a[SIZE+EXT];
-#pragma data_section ".data_imu2"
-double buffer_b[SIZE+EXT];
-#pragma data_section ".data_imu3"
-double buffer_c[SIZE+EXT];
-#pragma data_section ".data_imu4"
-double buffer_d[SIZE+EXT];
 
-#endif 
+
 
 int main(){
 	int i;

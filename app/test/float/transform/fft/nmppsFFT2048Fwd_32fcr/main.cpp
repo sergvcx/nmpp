@@ -5,13 +5,17 @@
 #include <malloc.h>
 #include <stdio.h>
 
-//#pragma data_section ".mem_bank5"
-	nm32fcr src[2048];
-//#pragma data_section ".mem_bank5"
-	nm32fcr dst[2048];
-
 
 #define		SIZE 		2048
+
+#ifndef __GNUC__ 
+#define __attribute__(a) 
+#endif
+
+
+nm32fcr src[SIZE] __attribute__ ((section (".data_imu5")));
+nm32fcr dst[SIZE] __attribute__ ((section (".data_imu5")));
+
 
 int main()
 {
@@ -49,11 +53,19 @@ int main()
 	if(st) {
 		return st;
 	}
+	
+	// for(i = 0; i < SIZE; i++){
+	// 	printf("%.2f %.2f\n", dst[i].re, dst[i].im);
+	// }
+	
+	
 	float norm;
 	nmppsNormDiff_L2_32fcr(src, dst, SIZE, &norm);
 	printf("%.7f\n", norm);
-	// for(i = 0; i < SIZE; i++){
-	//  	printf("[%d]  %.2f  %.2f\n", i, dst[i].re, dst[i].im);
-	// }
+	if (norm<0.05)
+		return 777;
+	return *(int*)&norm ;
+	
+	
 	return t2 - t1;
 }

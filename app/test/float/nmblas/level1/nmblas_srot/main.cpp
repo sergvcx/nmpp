@@ -28,24 +28,25 @@ int main(){
 ////////////////////////////////////////////////////////////////////////////case 1 60 degree	
 	//60
 	printf("CASE 1 rotation 60 degree\n");
-	for(i=0;i<SIZE;i++){
+	for(i=0;i<SIZE;i+=2){
 		nmblas_srot(i,buffer_a,1,buffer_b,1,0.5,0.866);
 	}
 	crc = nmppsCrcAcc_32f(buffer_a,16,SIZE+EXT,&crc);
-	crc = nmppsCrcAcc_32f(buffer_b,16,SIZE+EXT,&crc);
+	//crc = nmppsCrcAcc_32f(buffer_b,16,SIZE+EXT,&crc);
 	printf("RETURN CRC FROM CASE 1 IS  %d\n",crc);
 	
-	/*for(i=0;i<SIZE+EXT;i++){
+	for(i=0;i<SIZE+EXT;i++){
 		pointer = (int*)&buffer_a[i];
 		printf("arr_a[%d] %0x\n",i,*pointer);
-		pointer = (int*)&buffer_b[i];
-		printf("arr_a[%d] %0x\n",i,*pointer);
-	}*/
+		//pointer = (int*)&buffer_b[i];
+		//printf("arr_a[%d] %0x\n",i,*pointer);
+	}
+		return crc>>2;
 ///////////////////////////////////////////////////////////////////////////////case 2 45 
 	nmppsRand_32f(buffer_a,SIZE+EXT,-10,10);
 	nmppsRand_32f(buffer_b,SIZE+EXT,-10,10);
 	printf("CASE 1 rotation 45 degree\n");
-	for(i=SIZE;i!=0;i--){
+	for(i=SIZE;i!=0;i-=2){
 		nmblas_srot(i,buffer_a,1,buffer_b,1,0.707,0.707);
 	}
 
@@ -53,9 +54,10 @@ int main(){
 	crc = nmppsCrcAcc_32f(buffer_b,18,SIZE+EXT,&crc);
 	printf("RETURN CRC FROM CASE 2 IS  %d\n",crc);
 	
+	return crc>>2;
 	//nmblas_srot(SIZE,buffer_a,1,buffer_b,1,0.707,0.707);
 
-	return crc;
+
 //////////////////////////////////////////////////////////////////////////////case 2 45 degree
 	/*printf("CASE 2 rotation 45 degree\n");
 	for(i=0;i<SIZE;i++){

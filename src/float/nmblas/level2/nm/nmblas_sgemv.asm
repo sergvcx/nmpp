@@ -120,10 +120,10 @@ begin "text"
   push ar6,gr6;
 
   gr3 = [--ar5];//enum to chose transponated or not the matrix a//TRANS
-  gr5 = [--ar5];//On entry, M specifies  the number of rows of  the matrix in case notrans oterwise number of collums A//int//N
+  gr5 = [--ar5];//On entry, M specifies  the number of rows of  the matrix in case notrans oterwise number of columns A//int//N
   gr5;
   if <= delayed goto END;
-  gr6 = [--ar5];//On entry, N specifies  the number of collums of the matrix A//int//M
+  gr6 = [--ar5];//On entry, N specifies  the number of columns of the matrix A//int//M
   gr6;
   if <= delayed goto END;
   gr4 = [--ar5];//load alpha//ALPHA

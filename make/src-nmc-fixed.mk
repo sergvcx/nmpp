@@ -33,6 +33,7 @@ DIRS+=$(ROOT)/src/fixed/signal/transform/fft/FFT0064
 DIRS+=$(ROOT)/src/fixed/signal/transform/fft/FFT0128 
 DIRS+=$(ROOT)/src/fixed/signal/transform/fft/FFT0256 
 DIRS+=$(ROOT)/src/fixed/signal/transform/fft/FFT0512 
+DIRS+=$(ROOT)/src/fixed/signal/transform/fft/FFT1024
 DIRS+=$(ROOT)/src/fixed/signal/transform/fft/FFT2048 
 DIRS+=$(ROOT)/src/fixed/signal/transform/fft/FFT4096 
 DIRS+=$(ROOT)/src/fixed/signal/transform/fft/FFT8192 

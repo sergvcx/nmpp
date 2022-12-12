@@ -1,6 +1,7 @@
 //#include "fft.h"
 #include "stdio.h"
 #include "fft.h"
+extern "C"{
 void FFT_Fwd1024Set7bit();// Sets 7-bit accuracy of sin-cosine coefficients
 void  FFT_Fwd1024(
 	const 	nm32sc*	GSrcBuffer,	// Source buffer :long[1024]
@@ -10,13 +11,14 @@ void  FFT_Fwd1024(
 			int			ShiftR	// Right shift normalization
 			);
 			
-
-
+}
+extern "C"{
 	void nmppsFFT1024Fwd(const nm32sc* src, nm32sc* dst,const  NmppsFFTSpec* spec)
 	{
 		FFT_Fwd1024(src,dst,spec->buffer[0],spec->buffer[1],spec->shift[0]);
 	}
 
+};
 	int nmppsFFT1024FwdInitAllocCustom(  NmppsFFTSpec** specFFT, Malloc32Func* allocate, Free32Func* free, int settings)
 	{
 		NmppsFFTSpec* spec=(NmppsFFTSpec*)allocate(sizeof32(NmppsFFTSpec));
@@ -42,16 +44,16 @@ void  FFT_Fwd1024(
 	int nmppsFFT1024FwdInitAlloc( NmppsFFTSpec** spec, const void* src, const void* dst,  int settings)
 	{
 		int ret;
-		if (settings&NMPP_OPTIMIZE_DISABLE){}
-		else {
+		//if (settings&NMPP_OPTIMIZE_DISABLE){}
+		//else {
 			//!fseq64 allocRoute;
 			//!ret=nmppsFFT1024FwdOptimize(src, dst, &allocRoute);
 			//!!!nmppsMallocSetRouteMode(allocRoute); 
-		}
-		ret = nmppsFFT1024FwdInitAllocCustom(spec, nmppsMalloc32, nmppsFree, settings);
+		//}
+		ret = nmppsFFT1024FwdInitAllocCustom(spec, malloc32, nmppsFree, settings);
 		return ret;
 	}
-
+/*
 	int nmppsFFT1024FwdOptimize(const void* src, const void* dst, fseq64* allocOrder) 
 	{
 		unsigned heapIndx0;
@@ -69,7 +71,7 @@ void  FFT_Fwd1024(
 				route =0xF00|(heapIndx1<<4)|(heapIndx0); 
 				//!!!nmppsMallocSetRouteMode(route);
 		
-				if (nmppsFFT1024FwdInitAllocCustom(&spec, nmppsMalloc32, nmppsFree, NMPP_OPTIMIZE_DISABLE )==NMPP_OK){
+				if (nmppsFFT1024FwdInitAllocCustom(&spec, malloc32, nmppsFree, NMPP_OPTIMIZE_DISABLE )==NMPP_OK){
 					t0=clock();
 					nmppsFFT1024Fwd((nm32sc*)src, (nm32sc*)dst, spec);
 					t1=clock();
@@ -85,7 +87,7 @@ void  FFT_Fwd1024(
 		}
 		if (bestTime<0x1000000)	return NMPP_OK;
 		else					return NMPP_ERROR;
-	}
+	}*/
 
 
 

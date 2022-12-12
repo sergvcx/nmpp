@@ -45,7 +45,7 @@ push ar4,gr4;
   fpu 3 .double vreg0 = vreg0*.retrive(vreg7);//getting betta*y
   fpu 0 vreg2 = fpu 3 vreg0;//coppy betta*y
 
-<MAIN_LOOP_32_COLLUMSS>
+<MAIN_LOOP_32_COLUMNSS>
   fpu 2 rep 32 vreg0 = [ar1++gr1];//load x 
   gr3 = true;
   fpu 2 .double vreg0 = vreg0*.retrive(vreg7);//getting alpha*x
@@ -59,7 +59,7 @@ push ar4,gr4;
     fpu 0 .double vreg2 = vreg3*.retrive(vreg1) + vreg2;//getting alpha*A*x+betta*y
     ar4 = ar4+gr4;
   gr6--;
-  if <>0 goto MAIN_LOOP_32_COLLUMSS;
+  if <>0 goto MAIN_LOOP_32_COLUMNSS;
 
 <CASE_AMMOUNT_OF_COLLUMES_LT_32>
   gr6 = ar6;
@@ -107,7 +107,7 @@ push ar4,gr4;
   fpu 3 .double vreg0 = vreg0*.retrive(vreg7);//getting betta*y
   fpu 0 vreg2 = fpu 3 vreg0;//coppy betta*y
 
-<REM_LOOP_32_COLLUMSS>
+<REM_LOOP_32_COLUMNSS>
   fpu 2 rep 32 vreg0 = [ar1++gr1];//load x 
   gr3 = true;
   fpu 2 .double vreg0 = vreg0*.retrive(vreg7);//getting alpha*x
@@ -121,7 +121,7 @@ push ar4,gr4;
     fpu 0 .double vreg2 = vreg3*.retrive(vreg1) + vreg2;//getting alpha*A*x+betta*y
     ar4 = ar4+gr4;
   gr6--;
-  if <>0 goto REM_LOOP_32_COLLUMSS;
+  if <>0 goto REM_LOOP_32_COLUMNSS;
 
 <CASE_AMMOUNT_OF_COLLUMES_LT_32_REM>
   gr6 = ar6;

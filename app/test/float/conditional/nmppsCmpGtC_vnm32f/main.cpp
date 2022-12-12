@@ -7,13 +7,15 @@
 #define     N            1024
 #define		COUNT        MAX_STEP * N
 
-//#pragma data_section ".data_imu1"
-	v2nm32f in[COUNT];
-//#pragma data_section ".data_imu2"
-	nm32s maskX[(N >> 5) + 5];
-	nm32s maskY[(N >> 5) + 5];
-//#pragma data_section ".data_imu3"
-	v2nm32f threshold;
+#ifndef __GNUC__ 
+#define __attribute__(a) 
+#endif
+
+
+v2nm32f in[COUNT] 			__attribute__ ((section (".data_imu1")));
+nm32s maskX[(N >> 5) + 5] 	__attribute__ ((section (".data_imu2")));
+nm32s maskY[(N >> 5) + 5] 	__attribute__ ((section (".data_imu2")));
+v2nm32f threshold;
 
 int main()
 {

@@ -6,6 +6,49 @@
 //#define void* malloc32 (unsigned size_int32 );
 //#define malloc32 nmppsMalloc_32s
 typedef void (*t_free_func)(void*);
+typedef void* (*t_malloc_func)(unsigned);
+
+/*
+template<int QUEUE_HEAP_SIZE> class QueueHeap {
+	unsigned index[QUEUE_HEAP_SIZE / 8];
+	int head;
+	int tail;
+	QueueHeap() {
+		head = 0;
+		tail = 0;
+	}
+	int put(int heap) {
+		if (head - tail >= QUEUE_HEAP_SIZE)
+			return -1;
+		int pos = head & (QUEUE_HEAP_SIZE - 1);
+		index[pos] = heap;
+		head++;
+		return head - tail;
+	};
+	int get(int& heap) {
+		if (head == tail)
+			return -1;
+		int pos = tail & (QUEUE_HEAP_SIZE - 1);
+		heap = index[pos];
+		tail++;
+		return head - tail;
+	};
+	int putn(int count, ...)
+	{
+		int res;
+		va_list ap;
+		va_start(ap, count); //Requires the last fixed parameter (to get the address)
+		if (count > head - tail)
+			return -1;
+		for (int j = 0; j < count; j++) {
+			int heapIndex = va_arg(ap, int); //Requires the type to cast to. Increments ap to the next argument.
+			put(heapIndex);
+		}
+		va_end(ap);
+		return head - tail;
+	}
+};
+*/
 #ifdef __cplusplus
 		extern "C" {
 #endif
@@ -16,6 +59,22 @@ typedef void (*t_free_func)(void*);
 #define HEAP_2 4
 #define HEAP_3 8
 
+#ifdef __NM__
+	//t_malloc_func malloc32=malloc;
+			inline void * malloc32(unsigned size) { return malloc(size); }
+
+#else 
+	//t_malloc_func malloc32=malloc;
+			inline void * malloc32(unsigned size) { return malloc(size << 2); }
+	//#define malloc32(size) malloc((size)<<2)
+#endif 
+
+//#define QUEUE_HEAP_SIZE 256
+
+#include <stdarg.h>
+
+
+//void * extern t_malloc_func malloc32;
 
 void* malloc0(unsigned int size);
 void* malloc1(unsigned int size);
@@ -26,14 +85,15 @@ void* malloc3(unsigned int size);
 //#define  malloc32 (unsigned size_int32) 
 void  free32(void* p);
 
-
+/*
+t_malloc_func malloc32=ma(unsigned)=malloc
 #ifdef __NM__
 	#define malloc32(size) malloc(size)
 
 #else 
 	#define malloc32(size) malloc((size)<<2)
 #endif 
-
+*/
 // universal malloc for nmc-gcc and nmcc (универсальный маллок для nmc-gcc и nmcc)
 // size - размер выделяемой памяти в 32-битных словах
 // heap_num - номер кучи, в которой будет выделена память (для nmcc от 0 до 3, для nmc-gcc от 0 до 15)

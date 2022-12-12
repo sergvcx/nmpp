@@ -4,6 +4,8 @@ ROOT = "../.."
 -- A solution contains projects, and defines the available configurations
 solution "nmpp"
 	
+	filter {"system:windows", "action:vs*"}
+  
     configurations { "Release", "Debug" }
 	
 	filter {"system:linux", "action:gmake*"}
@@ -14,7 +16,7 @@ solution "nmpp"
 
 	filter {"system:windows", "action:vs*"}
 		platforms { "x86","x64"}
-		systemversion ="latest"
+		systemversion ("latest")
 		
       	
 	project "nmpp"
@@ -96,6 +98,7 @@ solution "nmpp"
 		table.insert(DIRS,"/src/fixed/signal/transform/fft/FFT0128")
 		table.insert(DIRS,"/src/fixed/signal/transform/fft/FFT0256")
 		table.insert(DIRS,"/src/fixed/signal/transform/fft/FFT0512")
+		table.insert(DIRS,"/src/fixed/signal/transform/fft/FFT1024")
 		table.insert(DIRS,"/src/fixed/signal/transform/fft/FFT2048")
 		table.insert(DIRS,"/src/fixed/signal/transform/fft/FFT4096")
 		table.insert(DIRS,"/src/fixed/signal/transform/fft/FFT8192")
@@ -404,6 +407,10 @@ ROOT.."/src/fixed/signal/transform/fft/FFT0512/pc/*.cpp",
 ROOT.."/src/fixed/signal/transform/fft/FFT0512/pc/*.c",
 ROOT.."/src/fixed/signal/transform/fft/FFT0512/common/*.cpp",
 ROOT.."/src/fixed/signal/transform/fft/FFT0512/common/*.c",
+ROOT.."/src/fixed/signal/transform/fft/FFT1024/pc/*.cpp",
+ROOT.."/src/fixed/signal/transform/fft/FFT1024/pc/*.c",
+ROOT.."/src/fixed/signal/transform/fft/FFT1024/common/*.cpp",
+ROOT.."/src/fixed/signal/transform/fft/FFT1024/common/*.c",
 ROOT.."/src/fixed/signal/transform/fft/FFT2048/pc/*.cpp",
 ROOT.."/src/fixed/signal/transform/fft/FFT2048/pc/*.c",
 ROOT.."/src/fixed/signal/transform/fft/FFT2048/common/*.cpp",

@@ -35,17 +35,15 @@ unsigned nmppsCrcAcc_32f(
 	int i;
 
     
-	unsigned mask=-1<<numBitsToClear;
-	unsigned rounder=0;
+	unsigned rounder=1<<numBitsToClear;
+	unsigned mask=~(rounder-1);
 	unsigned *p=(unsigned*)pSrcVec;
-	if (numBitsToClear)
-		rounder=1<<(numBitsToClear-1);
-    for( i = 0; i < nSize; i++ )
+	for( i = 0; i < nSize; i++ )
     {
 		unsigned v=p[i];
-		unsigned mantissa=v&0x7FFFFF;
-		unsigned nearzero=(mantissa-rounder)&0x80000000;
-		mask=mask&(~nearzero);
+		//unsigned mantissa=v&0x7FFFFF;
+		//unsigned nearzero=(mantissa+rounder)&0x80000000;
+		//mask=mask&(~nearzero);
 		a = (v+rounder)&mask;
 		
         b = a & 0x000000FF;

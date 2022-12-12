@@ -19,7 +19,7 @@ kill:
 	autotest kill
 
 run :
-	autotest make run
+	autotest make run 
 
 match:
 	autotest match .exitcode

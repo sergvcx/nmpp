@@ -1,7 +1,7 @@
 void matrix_mull(
 	const int N,//rows of the first matrix
-	const int K,//collums of the first matrix
-	const int M,//collums of the second matrix
+	const int K,//columns of the first matrix
+	const int M,//columns of the second matrix
 	float *matrix_1,//address of the first matrix
 	const int STRIDE_1, 
 	float *matrix_2,

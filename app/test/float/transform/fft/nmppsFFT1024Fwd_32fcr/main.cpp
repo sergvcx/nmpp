@@ -7,10 +7,14 @@
 
 #define		SIZE 		1024
 
-//#pragma data_section ".mem_bank6"
-	nm32fcr src[SIZE];
-//#pragma data_section ".mem_bank5"
-	nm32fcr dst[SIZE];
+
+#ifndef __GNUC__ 
+#define __attribute__(a) 
+#endif
+
+
+nm32fcr src[SIZE] __attribute__ ((section (".data_imu6")));
+nm32fcr dst[SIZE] __attribute__ ((section (".data_imu5")));
 
 int main()
 {
@@ -52,11 +56,17 @@ int main()
 	if(st) {
 		return st;
 	}
-	float norm;
-	nmppsNormDiff_L2_32fcr(src, dst, SIZE, &norm);
-	printf("%.7f\n", norm);
+	union {
+		float f;
+		int   h;
+	} norm;
+
+	nmppsNormDiff_L2_32fcr(src, dst, SIZE, &norm.f);
+	printf("%.7f\n", norm.f);
 	// for(i = 0; i < SIZE; i++){
 	// 	printf("%.2f %.2f\n", dst[i].re, dst[i].im);
 	// }
-	return t2 - t1;
+	if (norm.f<0.02)
+		return 777;
+	return norm.h ;
 }

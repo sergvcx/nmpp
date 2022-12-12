@@ -8,7 +8,7 @@ begin "text"
 <_fpu_sgemv>
   //gr3 - enum to chose transponated or not the matrix a 
   //gr5 - On entry, M specifies  the number of rows of  the matrix  A//int
-  //gr6 - On entry, N specifies  the number of collums of the matrix A//int
+  //gr6 - On entry, N specifies  the number of columns of the matrix A//int
   //gr4 - load alpha
   //ar0 - the pointer onto the matrix//*double
   //ar3 - LDA lidding demention of the matrix//int

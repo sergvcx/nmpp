@@ -1,5 +1,5 @@
 enum nm_trans{nm_n=0,nm_t=1};  
-
+/*
 void nmblas_sgemv(
    const enum nm_trans           TRANS,
    const int                  M,//rows in case notrans
@@ -44,3 +44,33 @@ void nmblas_sgemv(
   }
   return;
 };
+*/
+#include "gsl/gsl_cblas.h""
+void
+cblas_sgemv (const enum CBLAS_ORDER order, const enum CBLAS_TRANSPOSE TransA,
+             const int M, const int N, const float alpha, const float *A,
+             const int lda, const float *X, const int incX, const float beta,
+             float *Y, const int incY);
+			 
+	
+void nmblas_sgemv(
+   const enum nm_trans           TRANS,
+   const int                  M,//rows in case notrans
+   const int                  N,
+   const float               ALPHA,
+   const float               * A,
+   const int                  LDA,
+   const float               * X,
+   const int                  INCX,
+   const float               BETA,
+   float                     * Y,
+   const int                  INCY
+   ){
+	   	// enum CBLAS_TRANSPOSE { CblasNoTrans = 111, CblasTrans = 112, CblasConjTrans = 113 };
+	if (TRANS==nm_n)
+		cblas_sgemv(CblasRowMajor, CblasNoTrans,		M, N, ALPHA, A,		LDA, X, INCX,		BETA, Y,INCY);
+	else 
+		cblas_sgemv(CblasRowMajor, CblasTrans, M, N, ALPHA, A, LDA, X, INCX, BETA, Y, INCY);
+
+	
+   }

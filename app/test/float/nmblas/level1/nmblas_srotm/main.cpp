@@ -66,7 +66,7 @@ int main(){
 	printf("TEST PATTERN NOMBER 3 HAS FINISHED\n");
 	printf("RESULT OF 3rd CRC TEST PATTERN IS %d \n",crc);
 	printf("\n");
-	return crc;
+	return crc>>2;
 //////////////////////////////////////////////////////////////////////////////////case 4
 	nmppsRand_32f(buffer_a,SIZE+EXT,-10,10);
 	nmppsRand_32f(buffer_b,SIZE+EXT,-5,5);

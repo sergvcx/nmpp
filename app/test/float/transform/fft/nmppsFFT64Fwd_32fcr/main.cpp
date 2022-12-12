@@ -49,5 +49,10 @@ int main()
 	// for(i = 0; i < SIZE; i++) {
 	// 	printf("%.5f %.5f\n", dst[i].re, dst[i].im);
 	// }
-	return t2 - t1;
+	if (norm<0.02)
+		return 777;
+	return *(int*)&norm ;
+	
+	
+	//return t2 - t1;
 }

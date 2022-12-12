@@ -9,6 +9,7 @@ begin "text"
   push ar1,gr1;
   push ar2,gr2;
   push ar3,gr3;
+  push ar5,gr5;
   push ar6,gr6;
 
 
@@ -34,15 +35,22 @@ begin "text"
 
   call _fpu_dgemv; 
   pop ar6,gr6;
+  pop ar5,gr5;
   pop ar3,gr3;
   pop ar2,gr2;
   pop ar1,gr1;
   pop ar0,gr0;
   return;
   <CALL_DGEMV_TRANS>
-  call _fpu_dgemv_trans;
+  gr5 = gr5 xor gr6;
+  gr6 = gr5 xor gr6;
+  delayed call _fpu_dgemv_trans;
+	gr5 = gr5 xor gr6; 
+	nul;
+  
 <END>
   pop ar6,gr6;
+  pop ar5,gr5;
   pop ar3,gr3;
   pop ar2,gr2;
   pop ar1,gr1;
