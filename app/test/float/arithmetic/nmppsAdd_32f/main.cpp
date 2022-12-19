@@ -1,5 +1,7 @@
 #include <nmpp.h>
 #define PI 3.14
+
+#include "stdio.h"
 int main()
 {
 	

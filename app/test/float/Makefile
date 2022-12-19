@@ -6,26 +6,33 @@ else
 	PYTHON = python3
 endif
 
+TESTER=python $(ROOT)/deeprun/deeprun.py
 
-default: kill configure build run match 
+default: 
+	echo OK
+	
+#	kill configure build run match 
 
 configure:
-	autotest configure 
+	$(TESTER) configure 
 
 build:
-	autotest make 
+	$(TESTER) make 
 	
 kill:
-	autotest kill
+	$(TESTER) kill
+
+killall:
+	$(TESTER) killall
 
 run :
-	autotest make run 
+	$(TESTER) make run
 
 match:
-	autotest match .exitcode
+	$(TESTER) match .exitcode
 
 qemu:
-	autotest make qemu
+	$(TESTER) make qemu
 
 clean :
-	autotest make clean
+	$(TESTER) make clean

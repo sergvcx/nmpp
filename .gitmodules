@@ -1,0 +1,3 @@
+[submodule "deeprun"]
+	path = deeprun
+	url = git@git.module.ru:nmc/deeprun.git
