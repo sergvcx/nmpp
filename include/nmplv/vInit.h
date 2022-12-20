@@ -16,7 +16,7 @@
 //------------------------------------------------------------------------
 #ifndef _VINIT_H_INCLUDED_
 #define _VINIT_H_INCLUDED_
-
+#include "nmtype.h"
 
 #ifdef __cplusplus
 		extern "C" {
