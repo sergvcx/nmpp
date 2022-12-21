@@ -44,8 +44,8 @@ void nmppsSet_64sp(nm64s*	Buffer,		// Destination array					:long Global [SizeIn
 
 ////////////////////////////////////////////////////////////////////////////
 //  Setting all 32-bit elements of Buffer to const value given by InitValue
-void nmppsSet_32s(nm32s*	Buffer,		// Destination array					:long Global [SizeInt32/2]
-		int		InitValue,	// Init value 
+void nmppsSet_32s(int		InitValue,	// Init value 
+		nm32s*	Buffer,		// Destination array					:long Global [SizeInt32/2]
 		int		SizeInt32	// nSize of Source array in 32-bit ints; :SizeInt32= [0,2,4...]
 		)
 {
@@ -56,8 +56,8 @@ void nmppsSet_32s(nm32s*	Buffer,		// Destination array					:long Global [SizeInt
 
 ////////////////////////////////////////////////////////////////////////////
 //  Setting all 16-bit elements of Buffer to const value given by InitValue
-void nmppsSet_16s(nm16s*	Buffer,		// Destination array					:long Global [SizeInt16/4]
-		int		InitValue,	// Init value 
+void nmppsSet_16s(int		InitValue,	// Init value 
+		nm16s*	Buffer,		// Destination array					:long Global [SizeInt16/4]
 		int		SizeInt16	// nSize of Source array in 16-bit shorts:SizeInt16= [0,4,8,...]
 		)
 {
@@ -69,8 +69,8 @@ void nmppsSet_16s(nm16s*	Buffer,		// Destination array					:long Global [SizeInt
 
 ////////////////////////////////////////////////////////////////////////////
 //  Setting all 8-bit elements of Buffer to const number given by InitValue
-void nmppsSet_8s(nm8s*	Buffer,		// Destination array					:long Global [SizeInt8/8]
-		int		InitValue,	// Init value
+void nmppsSet_8s(int		InitValue,	// Init value
+		nm8s*	Buffer,		// Destination array					:long Global [SizeInt8/8]		
 		int		SizeInt8	// nSize of Source array in 8-bit chars; :SizeInt8=  [0,8,16....]
 		)
 {
