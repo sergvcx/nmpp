@@ -29,6 +29,6 @@ int main()
 	free(src0);
 	free(dst);
 	//return t1-t0;
-	return crc >>2;
+	return (crc>>2)^290281468 ;
 }
 

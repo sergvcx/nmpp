@@ -19,8 +19,9 @@
 //------------------------------------------------------------------------
 extern unsigned int CRC32_Table[];
 //#include "vcrc.h"
-#include "nmpp.h"
-/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+extern "C"{
+	
 unsigned nmppsCrcAcc_64f(
     const double * pSrcVec, // Input Vector			:long Any[Size/2]
 	int numBitsToClear,
@@ -29,7 +30,8 @@ unsigned nmppsCrcAcc_64f(
     )
        
 {
-	nm32u* pTable=CRC32_Table; 
+	
+	unsigned* pTable=CRC32_Table; 
     unsigned long long a,b;
 	int i;
 
@@ -64,7 +66,8 @@ unsigned nmppsCrcAcc_64f(
 	}
     *crcAccumulator = ~ *crcAccumulator;
 	return *crcAccumulator;
+
 }
 
 
-
+};

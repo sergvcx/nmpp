@@ -38,7 +38,7 @@ int main (){
 	//printf("\n");
 	//dump(32,dst, 8, 1);
 	
-	return crc>>2;
+	return (crc>>2)^0;
 	//return t1-t0;
 	
 }

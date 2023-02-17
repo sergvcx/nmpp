@@ -30,6 +30,6 @@ int main(){
 		crc = nmppsCrcAcc_32f(&result,18,1,&crc);
 	}
 
-	return crc>>2;
+	return (crc>>2)^221751196 ;
 }
 

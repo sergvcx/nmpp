@@ -50,5 +50,5 @@ int main()
 	
 	
 	//return norm*1000000;
-	return crc>>2;
+	return (crc>>2)^660641127 ;
 }

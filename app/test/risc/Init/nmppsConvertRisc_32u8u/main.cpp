@@ -40,5 +40,5 @@ int main()
 	for(int i = 0; i < N_ST/4 + 10; i++) {
 		printf("%d  %d \n", i, out[i]);
 	}
-	return crc >> 2;
+	return (crc>>2)^0;
 }

@@ -30,5 +30,5 @@ int main(){
 		//t1 = clock();
 		nmppsCrcAcc_64f((nm64f*)dst, 0, size+1 , &crc);
 	}
-	return crc>>2;
+	return (crc>>2)^611769625 ;
 }

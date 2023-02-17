@@ -96,6 +96,6 @@ int main(){
 	
 	printf("RESULT OF 4rd CRC TEST PATTERN IS %d \n",crc);
 	printf("\n");
-	return crc >> 2;
+	return (crc>>2)^570324052 ;
 }
 	

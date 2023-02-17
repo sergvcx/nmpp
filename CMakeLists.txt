@@ -1,0 +1,411 @@
+cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
+
+
+#string(REGEX MATCH NM(d+). ARCH_VERSION ${ARCH})
+
+#MESSAGE("######## ${ARCH} ARCH_VERSION ${ARCH_VERSION} ############")
+#return()
+
+if (CMAKE_HOST_WIN32 AND CMAKE_GENERATOR MATCHES "Ninja")
+    file(
+        WRITE "${CMAKE_BINARY_DIR}/GNUMakeRulesOverwrite.cmake" 
+            "STRING(REPLACE \"-MD\" \"-MMD\" CMAKE_DEPFILE_FLAGS_C \"\${CMAKE_DEPFILE_FLAGS_C}\")\n"
+            "STRING(REPLACE \"-MD\" \"-MMD\" CMAKE_DEPFILE_FLAGS_CXX \"\${CMAKE_DEPFILE_FLAGS_CXX}\")\n"
+    )
+    set(CMAKE_USER_MAKE_RULES_OVERRIDE "${CMAKE_BINARY_DIR}/GNUMakeRulesOverwrite.cmake" CACHE INTERNAL "")
+endif()
+
+include(cmake-variables.cmake)
+
+#set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_LIST_DIR}/nmc-gcc-compile.cmake")
+#set(CMAKE_TOOLCHAIN_FILE "nmc-gcc-compile.cmake")
+
+#LIST(APPEND CMAKE_PROGRAM_PATH  $ENV{NMC_GCC_TOOLPATH} )
+
+
+#add_custom_target(nmc4cmd	COMMAND )
+#execute_process(
+#    COMMAND bash "-c" $ENV{NMC_GCC_TOOLPATH}/nmc4cmd.bat
+#    OUTPUT_VARIABLE FOO
+#)
+	
+set(CMAKE_CONFIGURATION_TYPES "Release;Debug")
+
+set(PROJECT nmpp)
+
+#set(CMAKE_BUILD_TYPE "")
+#set(CMAKE_TOOLCHAIN_FILE "nmc-gcc-compile.cmake")
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_C_EXTENSIONS OFF)
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/lib)
+
+set(X64_DIRS
+	src/risc/init/nm 
+	src/risc/init/common 
+	src/risc/linear/common 
+	src/risc/metric/nm 
+	src/risc/metric/common 
+	src/risc/support/nm 
+	src/risc/support/common 
+	src/risc/tables/nm
+	
+	src/fixed/image/Arithmetics/pc 
+	src/fixed/image/Convert/pc 
+	src/fixed/image/Convert/common 
+	src/fixed/image/Filtration/pc
+	src/fixed/image/Filtration/common
+	src/fixed/image/Floodfill/pc 
+	src/fixed/image/Floodfill/common 
+	src/fixed/image/Init/common 
+	src/fixed/image/Plessy 
+	src/fixed/image/Print/pc
+	src/fixed/image/Reodering/pc
+	src/fixed/image/Resample/pc
+	src/fixed/image/Resample/common
+	src/fixed/image/Select/pc
+	src/fixed/image/Support/common
+	
+	src/fixed/matrix/core/pc 
+	src/fixed/matrix/init/pc 
+	src/fixed/matrix/init/common 
+	src/fixed/matrix/linear/pc 
+	src/fixed/matrix/metric/common
+	
+	src/fixed/signal/arithmetic/pc 
+	src/fixed/signal/arithmetic/common
+	src/fixed/signal/conditional/pc 
+	src/fixed/signal/conditional/common 
+	src/fixed/signal/core/pc 
+	src/fixed/signal/correlation/pc
+	src/fixed/signal/filtering/pc 
+	src/fixed/signal/filtering/common 
+	src/fixed/signal/init/pc 
+	src/fixed/signal/init/common 
+	src/fixed/signal/logical/pc 
+	src/fixed/signal/reordering/pc
+	src/fixed/signal/reordering/common
+	src/fixed/signal/sampling/pc 
+	src/fixed/signal/sampling/common 
+	src/fixed/signal/statistical/pc 
+	src/fixed/signal/statistical/common 
+	
+	src/float
+	src/float/core/pc
+	src/float/arithmetic/pc
+	src/float/arithmetic/common
+	src/float/conditional/pc
+	src/float/init/common
+	src/float/init/pc
+	src/float/linear
+	src/float/metric/common 
+	src/float/metric/pc 
+	src/float/pcblas/core/pc 
+	src/float/pcblas/level1/pc 
+	src/float/pcblas/level2/pc 
+	#src/float/statistical/Norm/pc
+	src/float/statistical/NormDiff/common
+	src/float/pcpps/sqrt/pc
+	
+	
+	src/float/transform/fft/common
+	src/float/transform/fft/FFTFree/common
+	src/float/transform/fft/FFT0032/pc
+	src/float/transform/fft/IFFT0032/pc
+	src/float/transform/fft/FFT0064/pc
+	src/float/transform/fft/IFFT0064/pc
+	src/float/transform/fft/FFT0128/pc
+	src/float/transform/fft/IFFT0128/pc
+	src/float/transform/fft/FFT0256/pc
+	src/float/transform/fft/IFFT0256/pc
+	src/float/transform/fft/FFT0512/pc
+	src/float/transform/fft/IFFT0512/pc
+	src/float/transform/fft/FFT1024/pc
+	src/float/transform/fft/IFFT1024/pc
+	src/float/transform/fft/FFT2048/pc
+	src/float/transform/fft/IFFT2048/pc
+	src/float/transform/fft/FFT4096/pc
+	src/float/transform/fft/IFFT4096/pc
+	
+	
+	src/float/pcpps/sqrt
+	src/float/pcpps/div
+	src/float/pcpps/atan
+	
+)
+# [R]ISC source directories
+set(NMC4R_DIRS
+	#src/risc/fixpoint32/nm
+	#src/risc/fixpoint64/nm 
+	src/risc/init/nm 
+	src/risc/init/common 
+	src/risc/linear/common 
+	src/risc/metric/nm 
+	src/risc/metric/common 
+	src/risc/support/nm 
+	src/risc/support/common 
+	src/risc/tables/nm
+)
+
+# [I]nteger math source directories
+set(NMC4I_DIRS
+	
+	src/fixed/image/Arithmetics/nm 
+	src/fixed/image/Convert/nm 
+	src/fixed/image/Convert/common 
+	src/fixed/image/Filtration/nm
+	src/fixed/image/Filtration/common
+	src/fixed/image/Floodfill/nm 
+	src/fixed/image/Floodfill/common 
+	src/fixed/image/Init/common 
+	src/fixed/image/Plessy 
+	src/fixed/image/Print/nm
+	src/fixed/image/Reodering/nm
+	src/fixed/image/Resample/nm
+	src/fixed/image/Resample/common
+	src/fixed/image/Select/nm
+	src/fixed/image/Support/common
+	
+	src/fixed/matrix/core/nm 
+	src/fixed/matrix/init/nm 
+	src/fixed/matrix/init/common 
+	src/fixed/matrix/linear/nm 
+	src/fixed/matrix/metric/common
+	
+	src/fixed/signal/arithmetic/nm 
+	src/fixed/signal/arithmetic/common
+	src/fixed/signal/conditional/nm 
+	src/fixed/signal/conditional/common 
+	src/fixed/signal/core/nm 
+	src/fixed/signal/correlation/nm
+	src/fixed/signal/filtering/nm 
+	src/fixed/signal/filtering/common 
+	src/fixed/signal/init/nm 
+	src/fixed/signal/init/common 
+	src/fixed/signal/logical/nm 
+	src/fixed/signal/reordering/nm
+	src/fixed/signal/reordering/common
+	src/fixed/signal/sampling/nm 
+	src/fixed/signal/sampling/common 
+	src/fixed/signal/statistical/nm 
+	src/fixed/signal/statistical/common 
+	#src/fixed/signal/transform/fft/common
+	#src/fixed/signal/transform/fft/FFT0016/nm 
+	#src/fixed/signal/transform/fft/FFT0016/common 
+	#src/fixed/signal/transform/fft/FFT0032/nm 
+	#src/fixed/signal/transform/fft/FFT0032/common 
+	#src/fixed/signal/transform/fft/FFT0064/nm 
+	#src/fixed/signal/transform/fft/FFT0064/common 
+	#src/fixed/signal/transform/fft/FFT0128/nm 
+	#src/fixed/signal/transform/fft/FFT0256/nm 
+	#src/fixed/signal/transform/fft/FFT0256/common 
+	#src/fixed/signal/transform/fft/FFT0512/nm 
+	#src/fixed/signal/transform/fft/FFT0512/common 
+	#src/fixed/signal/transform/fft/FFT1024/nm
+	#src/fixed/signal/transform/fft/FFT1024/common
+	#src/fixed/signal/transform/fft/FFT2048/nm 
+	#src/fixed/signal/transform/fft/FFT2048/common 
+	#src/fixed/signal/transform/fft/FFT4096/nm 
+	#src/fixed/signal/transform/fft/FFT4096/common 
+	#src/fixed/signal/transform/fft/FFT8192/nm 
+	#src/fixed/signal/transform/fft/FFT8192/common 
+	#src/fixed/signal/transform/fft/IFFT0256/nm 
+	#src/fixed/signal/transform/fft/IFFT0256/common 
+	#src/fixed/signal/transform/fft/IFFT0512/nm 
+	#src/fixed/signal/transform/fft/IFFT0512/common 
+	#src/fixed/signal/transform/fft/IFFT1024/nm 
+	#src/fixed/signal/transform/fft/IFFT1024/common 
+	#src/fixed/signal/transform/fft/IFFT2048/nm 
+	#src/fixed/signal/transform/fft/IFFT4096/common 
+	#src/fixed/signal/transform/fft/IFFT8192/nm 
+	#src/fixed/signal/transform/fft/FFTFree/common 
+
+	)
+
+# [F]loat point math source directories
+set(NMC4F_DIRS
+	src/float
+	src/float/core/nm
+	src/float/arithmetic/nm
+	src/float/arithmetic/common
+	src/float/conditional/nm
+	src/float/init/common
+	src/float/init/nm
+	src/float/linear
+	src/float/metric/common 
+	src/float/metric/nm 
+	src/float/nmblas/core/nm 
+	src/float/nmblas/level1/nm 
+	src/float/nmblas/level2/nm 
+	#src/float/statistical/Norm/nm
+	src/float/statistical/NormDiff/common
+	src/float/nmpps/sqrt/nm
+	
+	
+	src/float/transform/fft/common
+	src/float/transform/fft/FFTFree/common
+	src/float/transform/fft/FFT0032/nm
+	src/float/transform/fft/IFFT0032/nm
+	src/float/transform/fft/FFT0064/nm
+	src/float/transform/fft/IFFT0064/nm
+	src/float/transform/fft/FFT0128/nm
+	src/float/transform/fft/IFFT0128/nm
+	src/float/transform/fft/FFT0256/nm
+	src/float/transform/fft/IFFT0256/nm
+	src/float/transform/fft/FFT0512/nm
+	src/float/transform/fft/IFFT0512/nm
+	src/float/transform/fft/FFT1024/nm
+	src/float/transform/fft/IFFT1024/nm
+	src/float/transform/fft/FFT2048/nm
+	src/float/transform/fft/IFFT2048/nm
+	src/float/transform/fft/FFT4096/nm
+	src/float/transform/fft/IFFT4096/nm
+	
+	
+	src/float/nmpps/sqrt
+	src/float/nmpps/div
+	src/float/nmpps/atan
+)
+
+
+foreach(dir ${X64_DIRS})
+	file(GLOB 	cpp_files 	${dir}/*.cpp)
+	file(GLOB 	c_files 	${dir}/*.c)
+	list(APPEND x64_cpp_files ${cpp_files})
+	list(APPEND x64_c_files 	${c_files})
+endforeach()
+
+foreach(dir ${NMC4F_DIRS})
+	file(GLOB 	cpp_files 	${dir}/*.cpp)
+	file(GLOB 	asm_files 	${dir}/*.asm)	
+	file(GLOB 	c_files 	${dir}/*.c)
+	file(GLOB 	s_files 	${dir}/*.s)
+	list(APPEND nmc4f_cpp_files ${cpp_files})
+	list(APPEND nmc4f_asm_files ${asm_files})	
+	list(APPEND nmc4f_c_files 	${c_files})
+	list(APPEND nmc4f_s_files 	${s_files})
+endforeach()
+
+foreach(dir ${NMC4I_DIRS})
+	file(GLOB 	cpp_files 	${dir}/*.cpp)
+	file(GLOB 	asm_files 	${dir}/*.asm)	
+	file(GLOB 	c_files 	${dir}/*.c)
+	file(GLOB 	s_files 	${dir}/*.s)
+	list(APPEND nmc4i_cpp_files ${cpp_files})
+	list(APPEND nmc4i_asm_files ${asm_files})	
+	list(APPEND nmc4i_c_files 	${c_files})
+	list(APPEND nmc4i_s_files 	${s_files})
+endforeach()
+
+foreach(dir ${NMC4R_DIRS})
+	file(GLOB 	cpp_files 	${dir}/*.cpp)
+	file(GLOB 	asm_files 	${dir}/*.asm)	
+	file(GLOB 	c_files 	${dir}/*.c)
+	file(GLOB 	s_files 	${dir}/*.s)
+	list(APPEND nmc4r_cpp_files ${cpp_files})
+	list(APPEND nmc4r_asm_files ${asm_files})	
+	list(APPEND nmc4r_c_files 	${c_files})
+	list(APPEND nmc4r_s_files 	${s_files})
+endforeach()
+
+
+if (ARCH STREQUAL "nm6406")
+	MESSAGE("######## ARCH ${ARCH} ############")
+	set(CMAKE_TOOLCHAIN_FILE "nmc-gcc-compile.cmake")
+	project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C ASM)
+	add_library(${PROJECT}-${ARCH} STATIC  ${nmc4i_cpp_files} ${nmc4i_c_files} ${nmc4i_asm_files} ${nmc4i_s_files}
+										  ${nmc4r_cpp_files} ${nmc4r_c_files} ${nmc4r_asm_files} ${nmc4r_s_files}
+										)
+										
+	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C,CXX>:-mnmc3;-O2>)	
+	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:ASM>:-mnmc3;-Werror>)	
+	
+	target_include_directories(${PROJECT}-${ARCH} PUBLIC 
+		include
+		include/nmpps)
+	
+endif()
+
+if ( ARCH STREQUAL "nm6407i" OR ARCH STREQUAL "nm6476i" )
+	MESSAGE("######## ARCH ${ARCH} ############")
+	set(CMAKE_TOOLCHAIN_FILE "nmc-gcc-compile.cmake")
+	
+	project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C ASM)
+	add_library(${PROJECT}-${ARCH} STATIC  ${nmc4i_cpp_files} ${nmc4i_c_files} ${nmc4i_asm_files} ${nmc4i_s_files}
+										   ${nmc4r_cpp_files} ${nmc4r_c_files} ${nmc4r_asm_files} ${nmc4r_s_files}
+										)
+	
+	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C,CXX>:-mnmc4-fixed;-O2>)	
+	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:ASM>:-mnmc4-fixed;-Werror>)	
+	
+	target_include_directories(${PROJECT}-${ARCH} PUBLIC 
+		include
+		include/nmpps)
+	
+endif()
+
+if ( ARCH STREQUAL "nm6407f" OR ARCH STREQUAL "nm6408" OR ARCH STREQUAL "nm6476f" )
+	MESSAGE("######## ARCH ${ARCH} ############")
+	set(CMAKE_TOOLCHAIN_FILE "nmc-gcc-compile.cmake")
+	
+	project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C ASM)
+	add_library(${PROJECT}-${ARCH} STATIC ${nmc4f_cpp_files} ${nmc4f_c_files} ${nmc4f_asm_files} ${nmc4f_s_files}
+										  ${nmc4r_cpp_files} ${nmc4r_c_files} ${nmc4r_asm_files} ${nmc4r_s_files}
+										)
+	
+	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C,CXX>:-mnmc4-float;-O2>)	
+	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:ASM>:-mnmc4-float;-Werror>)	
+	
+	target_include_directories(${PROJECT}-${ARCH} PUBLIC 
+		include
+		include/nmpps)
+	
+endif()
+
+
+string(SUBSTRING ${ARCH} 2 4 NMC_CORE_VERSION )			 
+
+set_source_files_properties( ${nmc4f_asm_files} ${nmc4i_asm_files} ${nmc4r_asm_files}
+			 PROPERTY
+			 COMPILE_FLAGS " -mmas -Wa,-split_sir -Wa,-W-111"
+			 )
+
+set_source_files_properties( ${nmc4f_s_files} ${nmc4i_s_files} ${nmc4r_s_files}
+			 PROPERTY
+			 COMPILE_FLAGS "-mgas -DNMC_CORE_VERSION=${NMC_CORE_VERSION}"
+			 )
+			 
+			 #--defsym NMC_CORE_VERSION=6476
+#if(WIN32)
+	#add_dependencies(${PROJECT}-nmc4 nmc4cmd)
+	#add_dependencies(${PROJECT}-nmc4f nmc4cmd)
+#endif(WIN32)
+
+if (ARCH STREQUAL "x64")
+	project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C ASM)
+	add_library(${PROJECT}-${ARCH} STATIC ${x64_cpp_files} ${x64_c_files} )
+	target_include_directories(${PROJECT}-${ARCH} PUBLIC 
+        include
+        )
+	if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+		target_compile_options(${PROJECT}-${ARCH} PUBLIC -fpermissive)
+	endif()
+endif()
+
+
+
+
+
+
+#enable_testing()
+#add_subdirectory(app/test)
+					
+#add_subdirectory(test/context)
+
+#add_subdirectory(monitor)
+#add_subdirectory(examples/2nmc-demo-gcc/make_mc12101)

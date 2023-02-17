@@ -29,5 +29,5 @@ int main(){
 	//nmppsCopy_32f_even_odd_address(src, dst + 1, 2000);
 	//for(int i = 0; i < MAX_SIZE + 2; i++)
     //   printf("dst %f\n", dst[i]);
-	return crc >> 2;
+	return (crc>>2)^105750342 ;
 }

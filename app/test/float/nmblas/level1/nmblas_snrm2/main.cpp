@@ -53,6 +53,6 @@ int main(){
 	printf("TEST PATTER NUMBER 3 HAS FINISHED\n");
 	printf("THE FINAL CRC %d\n",crc);
 	printf("TEST HAS BEEN FINISHED\n");
-	return crc>>2;
+	return (crc>>2)^444420050 ;
 }
 

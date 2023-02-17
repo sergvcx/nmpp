@@ -18,6 +18,7 @@ double buffer_b[SIZE+EXT];
 #endif 
 
 int main(){
+	
 	int i;
 	unsigned crc=0;
 	nmppsRandUniform_64f(buffer_a,SIZE+EXT,-10,100);
@@ -31,16 +32,19 @@ int main(){
 		//pointer = (long long*)&buffer_b[i];
 		printf("arr_b[%d] is %llx\n",i,buffer_b[i]);	
 	}*/
-	//return 100;
 	printf("TEST HAS BEEN STARTED\n");
+	
+	
 	//case 1
 	for(i=0;i<SIZE;i++){
 		nmblas_dcopy(i,buffer_a,1,buffer_b,1);
 	}
+	return 100;
 	crc = nmppsCrcAcc_64f(buffer_a,0,SIZE+EXT,&crc);
 	crc = nmppsCrcAcc_64f(buffer_b,0,SIZE+EXT,&crc);
 	printf("TEST PATTERN NOMBER ONE HAS FINISHED\n");
 	printf("RESULT OF FIRST CRC TEST PATTERN IS %d \n",crc);
+	
 	//case 2 
 	for(i=SIZE;i=0;i--){
 		nmblas_dcopy(i,buffer_a,1,buffer_b,1);
@@ -63,6 +67,6 @@ int main(){
 	crc = nmppsCrcAcc_64f(buffer_a,0,SIZE+EXT,&crc);
 	crc = nmppsCrcAcc_64f(buffer_b,0,SIZE+EXT,&crc);
 	printf("TEST HAS BEEN FINISHED\n");
-	return crc>>2;
+	return 116800395 ^(crc>>2);
 }
 

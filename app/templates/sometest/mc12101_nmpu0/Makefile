@@ -39,10 +39,8 @@ $(TARGET): $(SRC_ALL) Makefile $(NMPP)/lib/libnmpp-nmc4f.a
 
 #PATH:=$(BSP)/bin;$(PATH)
 
-run: .exitcode
-	
-.exitcode: $(TARGET)
-	$(BOARD)run -v $(TARGET) -p -R & exitcode
+run: $(TARGET)
+	$(BOARD)run -v $(TARGET) -p -R 
 
 qemu:	
 	nmc-qemu $(TARGET)
@@ -51,11 +49,8 @@ gdb :
 	nmc-gdb  $(TARGET)
 	$(MAKE) LIBS="-lnmpp-nmc4 -lc " -B TARGET=$(TARGET)_qemu
 
-	
 nmc4vars_win.mk:
 	copy "$(NMC_GCC_TOOLPATH)\nmc4-ide\include\nmc4vars_win.mk" nmc4vars_win.mk
 	
-vs2015:
-	premake5 vs2015
 	
 		

@@ -33,6 +33,7 @@
 // ---------------------------------------------------------------------
 //
 
+
 global _nmblas_idamax:label;
 extern _fpu_idamax:label;
 

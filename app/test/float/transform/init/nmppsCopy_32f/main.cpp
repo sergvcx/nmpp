@@ -59,5 +59,5 @@ int main(){
     printf("odd to even crc = %d\n", crc >> 2);
     FullArray_32f(dst, MAX_SIZE + 2);
 
-	return crc >> 2;
+	return (crc>>2)^331393257 ;
 }

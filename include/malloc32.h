@@ -59,15 +59,6 @@ template<int QUEUE_HEAP_SIZE> class QueueHeap {
 #define HEAP_2 4
 #define HEAP_3 8
 
-#ifdef __NM__
-	//t_malloc_func malloc32=malloc;
-			inline void * malloc32(unsigned size) { return malloc(size); }
-
-#else 
-	//t_malloc_func malloc32=malloc;
-			inline void * malloc32(unsigned size) { return malloc(size << 2); }
-	//#define malloc32(size) malloc((size)<<2)
-#endif 
 
 //#define QUEUE_HEAP_SIZE 256
 
@@ -81,19 +72,11 @@ void* malloc1(unsigned int size);
 void* malloc2(unsigned int size);
 void* malloc3(unsigned int size);
 
-//void* malloc32 (unsigned size_int32, unsigned bank_mask);
-//#define  malloc32 (unsigned size_int32) 
-void  free32(void* p);
 
-/*
-t_malloc_func malloc32=ma(unsigned)=malloc
-#ifdef __NM__
-	#define malloc32(size) malloc(size)
 
-#else 
-	#define malloc32(size) malloc((size)<<2)
-#endif 
-*/
+
+
+
 // universal malloc for nmc-gcc and nmcc (универсальный маллок для nmc-gcc и nmcc)
 // size - размер выделяемой памяти в 32-битных словах
 // heap_num - номер кучи, в которой будет выделена память (для nmcc от 0 до 3, для nmc-gcc от 0 до 15)
@@ -137,20 +120,89 @@ struct NmppsTmpSpec {
 
 	
 
-//nm1*   nmppsMalloc_1  (unsigned sizeInt1) ;
-//nm2s*  nmppsMalloc_2s (unsigned sizeInt2) ;
-//nm2u*  nmppsMalloc_2u (unsigned sizeInt2) ;
-//nm4s*  nmppsMalloc_4s (unsigned sizeInt4) ;
-//nm4u*  nmppsMalloc_4u (unsigned sizeInt4) ;
-//nm8s*  nmppsMalloc_8s (unsigned sizeInt8) ;
-//nm8u*  nmppsMalloc_8u (unsigned sizeInt8) ;
-//nm16s* nmppsMalloc_16s(unsigned sizeInt16);
-//nm16u* nmppsMalloc_16u(unsigned sizeInt16);
-//nm32s* nmppsMalloc_32s(unsigned sizeInt32);
-//nm32u* nmppsMalloc_32u(unsigned sizeInt32);
-//nm64s* nmppsMalloc_64s(unsigned sizeInt64);
-//nm64u* nmppsMalloc_64u(unsigned sizeInt64);
-//void   nmppsFree32(void* buffer);
+
+
+
+
+//inline void nmppsFree(void* buffer){ free(buffer); }
+#define nmppsFree(buffer) free(buffer)
+/*
+inline nm1*     nmppsMalloc_1     (unsigned sizeInt1)  { return (nm1*)    	malloc32((sizeInt1+63)/64*2);}
+inline nm2s*    nmppsMalloc_2s    (unsigned sizeInt2)  { return (nm2s*)   	malloc32((sizeInt2+31)/32*2);}
+inline nm2u*    nmppsMalloc_2u    (unsigned sizeInt2)  { return (nm2u*)   	malloc32((sizeInt2+31)/32*2);}
+inline nm4s*    nmppsMalloc_4s    (unsigned sizeInt4)  { return (nm4s*)   	malloc32((sizeInt4+15)/16*2);}
+inline nm4u*    nmppsMalloc_4u    (unsigned sizeInt4)  { return (nm4u*)   	malloc32((sizeInt4+15)/16*2);}
+inline nm8s*    nmppsMalloc_8s    (unsigned sizeInt8)  { return (nm8s*)   	malloc32((sizeInt8+7)/8*2);}
+inline nm8u*    nmppsMalloc_8u    (unsigned sizeInt8)  { return (nm8u*)   	malloc32((sizeInt8+7)/8*2);}
+inline nm16s*   nmppsMalloc_16s   (unsigned sizeInt16) { return (nm16s*)  	malloc32((sizeInt16+3)/4*2);}
+inline nm16u*   nmppsMalloc_16u   (unsigned sizeInt16) { return (nm16u*)  	malloc32((sizeInt16+3)/4*2);}
+inline nm32s*   nmppsMalloc_32s   (unsigned sizeInt32) { return (nm32s*)  	malloc32(sizeInt32+(1&sizeInt32));}
+inline float*   nmppsMalloc_32f   (unsigned size)      { return (float*)  	malloc32(size);}
+inline double*  nmppsMalloc_64f   (unsigned size)      { return (double*) 	malloc32(size<<1);}
+inline nm32sc*  nmppsMalloc_32sc  (unsigned size)      { return (nm32sc*) 	malloc32(size<<1);}
+inline nm32fc*  nmppsMalloc_32fc  (unsigned size)      { return (nm32fc*) 	malloc32(size<<1);}
+inline nm32fcr* nmppsMalloc_32fcr (unsigned size)      { return (nm32fcr*)	malloc32(size<<1);}
+inline nm32u*   nmppsMalloc_32u   (unsigned sizeInt32) { return (nm32u*)  	malloc32(sizeInt32+(1&sizeInt32));}
+inline nm64s*   nmppsMalloc_64s   (unsigned sizeInt64) { return (nm64s*)  	malloc32((sizeInt64)<<1);}
+inline nm64u*   nmppsMalloc_64u   (unsigned sizeInt64) { return (nm64u*)  	malloc32((sizeInt64)<<1);}
+inline nm64sc*  nmppsMalloc_64sc  (unsigned sizeInt128){ return (nm64sc*) 	malloc32((sizeInt128)<<2);}
+
+*/
+//#ifdef __NM__
+	//inline void * malloc32(unsigned size) { return malloc(size); }
+	//#define malloc32(size)  malloc(size) 
+//#else 
+	//inline void * malloc32(unsigned size) { return malloc(size << 2); }
+	//#define malloc32(size)  malloc((size) << 2)
+//#endif 
+void * malloc32(unsigned size);
+
+void  free32(void* p);
+
+
+#define  nmppsMalloc_1(sizeInt1)  	( (nm1*)    	malloc32((sizeInt1+63)/64*2))
+#define  nmppsMalloc_2s(sizeInt2)  	( (nm2s*)   	malloc32((sizeInt2+31)/32*2))
+#define  nmppsMalloc_2u(sizeInt2)  	( (nm2u*)   	malloc32((sizeInt2+31)/32*2))
+#define  nmppsMalloc_4s(sizeInt4)  	( (nm4s*)   	malloc32((sizeInt4+15)/16*2))
+#define  nmppsMalloc_4u(sizeInt4)  	( (nm4u*)   	malloc32((sizeInt4+15)/16*2))
+#define  nmppsMalloc_8s(sizeInt8)  	( (nm8s*)   	malloc32((sizeInt8+7)/8*2))
+#define  nmppsMalloc_8u(sizeInt8)  	( (nm8u*)   	malloc32((sizeInt8+7)/8*2))
+#define  nmppsMalloc_16s(sizeInt16) ( (nm16s*)  	malloc32((sizeInt16+3)/4*2))
+#define  nmppsMalloc_16u(sizeInt16) ( (nm16u*)  	malloc32((sizeInt16+3)/4*2))
+#define  nmppsMalloc_32s(sizeInt32) ( (nm32s*)  	malloc32(sizeInt32+(1&sizeInt32)))
+#define  nmppsMalloc_32f(size)      ( (float*)  	malloc32(size))
+#define  nmppsMalloc_32sc(size)     ( (nm32sc*) 	malloc32(size<<1))
+#define  nmppsMalloc_32fc(size)     ( (nm32fc*) 	malloc32(size<<1))
+#define  nmppsMalloc_32fcr(size)    ( (nm32fcr*)	malloc32((size<<1)))
+#define  nmppsMalloc_32u(sizeInt32) ( (nm32u*)  	malloc32(sizeInt32+(1&sizeInt32)))
+#define  nmppsMalloc_64s(sizeInt64) ( (nm64s*)  	malloc32((sizeInt64)<<1))
+#define  nmppsMalloc_64u(sizeInt64) ( (nm64u*)  	malloc32((sizeInt64)<<1))
+#define  nmppsMalloc_64sc(sizeInt128)( (nm64sc*) 	malloc32((sizeInt128)<<2))
+#define  nmppsMalloc_64f(size)      ( (double*) 	malloc32(size<<1))
+
+
+/*
+void*  	 nmppsMalloc32    (unsigned sizeInt32);
+nm64s* 	 nmppsMalloc_64s  (unsigned nSize);
+nm1*   	 nmppsMalloc_1    (unsigned nSize) ;//{return  (nm1*  )nmppsMalloc_64s((nSize>>6) +1);}
+nm2s*  	 nmppsMalloc_2s   (unsigned nSize) ;//{return  (nm2s* )nmppsMalloc_64s((nSize>>5) +1);}
+nm2u*  	 nmppsMalloc_2u   (unsigned nSize) ;//{return  (nm2u* )nmppsMalloc_64s((nSize>>5) +1);}
+nm4s*  	 nmppsMalloc_4s   (unsigned nSize) ;//{return  (nm4s* )nmppsMalloc_64s((nSize>>4) +1);}
+nm4u*  	 nmppsMalloc_4u   (unsigned nSize) ;//{return  (nm4u* )nmppsMalloc_64s((nSize>>4) +1);}
+nm8u*  	 nmppsMalloc_8u   (unsigned nSize) ;//{return  (nm8u* )nmppsMalloc_64s((nSize>>3) +1);}
+nm8s*  	 nmppsMalloc_8s   (unsigned nSize) ;//{return  (nm8s* )nmppsMalloc_64s((nSize>>3) +1);}
+nm16u* 	 nmppsMalloc_16u  (unsigned nSize) ;//{return  (nm16u*)nmppsMalloc_64s((nSize>>2) +1);}
+nm16s* 	 nmppsMalloc_16s  (unsigned nSize) ;//{return  (nm16s*)nmppsMalloc_64s((nSize>>2) +1);}
+nm32u* 	 nmppsMalloc_32u  (unsigned nSize) ;//{return  (nm32u*)nmppsMalloc_64s((nSize>>1) +1);}
+nm32s* 	 nmppsMalloc_32s  (unsigned nSize) ;//{return  (nm32s*)nmppsMalloc_64s((nSize>>1) +1);}
+nm64u* 	 nmppsMalloc_64u  (unsigned nSize) ;//{return  (nm64u*)nmppsMalloc_64s(nSize);}
+nm64sc*  nmppsMalloc_64sc (unsigned nSize) ;//{return  (nm64u*)nmppsMalloc_64s(nSize);}
+nm32sc*  nmppsMalloc_32sc (unsigned sizeCmplxInt32);
+nm32fc*  nmppsMalloc_32fc (unsigned sizeCmplxFloat);
+nm32fcr* nmppsMalloc_32fcr(unsigned sizeCmplxFloat);
+float*   nmppsMalloc_32f  (unsigned sizeFloat);
+double*  nmppsMalloc_64f  (unsigned sizeDouble);
+*/
 
 typedef struct {
 	void* pull;
@@ -317,26 +369,7 @@ extern struct NmppsMallocSpec nmppsMallocSpec;
 		\~
     */
     //! \{
-void*  	 nmppsMalloc32    (unsigned sizeInt32);
-nm64s* 	 nmppsMalloc_64s  (unsigned nSize);
-nm1*   	 nmppsMalloc_1    (unsigned nSize) ;//{return  (nm1*  )nmppsMalloc_64s((nSize>>6) +1);}
-nm2s*  	 nmppsMalloc_2s   (unsigned nSize) ;//{return  (nm2s* )nmppsMalloc_64s((nSize>>5) +1);}
-nm2u*  	 nmppsMalloc_2u   (unsigned nSize) ;//{return  (nm2u* )nmppsMalloc_64s((nSize>>5) +1);}
-nm4s*  	 nmppsMalloc_4s   (unsigned nSize) ;//{return  (nm4s* )nmppsMalloc_64s((nSize>>4) +1);}
-nm4u*  	 nmppsMalloc_4u   (unsigned nSize) ;//{return  (nm4u* )nmppsMalloc_64s((nSize>>4) +1);}
-nm8u*  	 nmppsMalloc_8u   (unsigned nSize) ;//{return  (nm8u* )nmppsMalloc_64s((nSize>>3) +1);}
-nm8s*  	 nmppsMalloc_8s   (unsigned nSize) ;//{return  (nm8s* )nmppsMalloc_64s((nSize>>3) +1);}
-nm16u* 	 nmppsMalloc_16u  (unsigned nSize) ;//{return  (nm16u*)nmppsMalloc_64s((nSize>>2) +1);}
-nm16s* 	 nmppsMalloc_16s  (unsigned nSize) ;//{return  (nm16s*)nmppsMalloc_64s((nSize>>2) +1);}
-nm32u* 	 nmppsMalloc_32u  (unsigned nSize) ;//{return  (nm32u*)nmppsMalloc_64s((nSize>>1) +1);}
-nm32s* 	 nmppsMalloc_32s  (unsigned nSize) ;//{return  (nm32s*)nmppsMalloc_64s((nSize>>1) +1);}
-nm64u* 	 nmppsMalloc_64u  (unsigned nSize) ;//{return  (nm64u*)nmppsMalloc_64s(nSize);}
-nm64sc*  nmppsMalloc_64sc (unsigned nSize) ;//{return  (nm64u*)nmppsMalloc_64s(nSize);}
-nm32sc*  nmppsMalloc_32sc (unsigned sizeCmplxInt32);
-nm32fc*  nmppsMalloc_32fc (unsigned sizeCmplxFloat);
-nm32fcr* nmppsMalloc_32fcr(unsigned sizeCmplxFloat);
-float*   nmppsMalloc_32f  (unsigned sizeFloat);
-double*  nmppsMalloc_64f  (unsigned sizeDouble);
+
 
 
 /*
@@ -375,7 +408,7 @@ __INLINE__ void nmppsMalloc_64u(nm64u** pptr, int nSize, int hint) { nmppsMalloc
     //! \{
 
 
-   void nmppsFree(void* ptr); 
+   
     
     //! \}
     

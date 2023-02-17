@@ -67,6 +67,6 @@ int main()
    //nmppsCmpLteC_v2nm32f(in, (nm1*)maskX, (nm1*)maskY, threshold, 1, N);
    //t2 = clock();
    //printf("time = %d ticks (%d pairs)\n", t2 - t1, N);
-   return (crcX|crcY)>>2;
-   return 0;
+   return ((crcX|crcY)>>2)^800522205 ;
+
 }

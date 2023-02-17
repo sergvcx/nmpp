@@ -66,6 +66,6 @@ int main(){
 	crc = nmppsCrcAcc_32f(buffer_a,0,SIZE+EXT,&crc);
 	printf("TEST PATTERN NOMBER 4 HAS FINISHED\n");
 	printf("THE RESULT OF THE 4th CRC TEST PATTERN IS %d \n",crc);
-	return crc>>2;
+	return (crc>>2)^957021775 ;
 }
 

@@ -26,5 +26,5 @@ int main(){
 		nmppsMulC_Add_32fcr(src1, src2, dst, 15, size);
 		nmppsCrcAcc_32f((nm32f*)dst, 0, 2 * size + 2, &crc);
 	}
-	return crc;
+	return crc^235612930 ;
 }

@@ -27,7 +27,7 @@ int main()
 	free(src0);
 	free(src1);
 	free(dst);
-	return crc>>2;
+	return (crc>>2)^99079375 ;
 }
 
 // #include "nmtype.h"

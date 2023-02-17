@@ -81,7 +81,7 @@ int main()
 	// 	printf("%.5f %.5f\n", dst[i].re, dst[i].im);
 	// }
 	if (norm<0.02)
-		return 777;
+		return 0;
 	return *(int*)&norm ;
 	
 	

@@ -32,5 +32,5 @@ int main()
 	free(vec0);
 	free(vec1);
 	free(dst);
-	return crc >> 2;
+	return (crc>>2)^520455415 ;
 }

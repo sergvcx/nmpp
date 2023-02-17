@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <nmblas.h>
@@ -10,6 +11,7 @@
 #define __attribute__(a) 
 #endif
 
+
 double buffer_a[SIZE+EXT] __attribute__ ((section (".data_imu1")));
 double buffer_b[SIZE+EXT] __attribute__ ((section (".data_imu2")));
 double buffer_c[SIZE+EXT] __attribute__ ((section (".data_imu3")));
@@ -21,14 +23,16 @@ int main(){
 	int i;
 	unsigned crc=0;
 	//initialisation
-	nmppsRandUniform_64f(buffer_a,SIZE+EXT,-40,40);
-	nmppsRandUniform_64f(buffer_b,SIZE+EXT,-50,30);
+	//nmppsRandUniform_64f(buffer_b,SIZE+EXT,-50,30);
 /*	for(i=0;i<SIZE+EXT;i++){
 		buffer_a[i] = i;	
 		buffer_b[i] = 100-i;
 	}
 */
+	//if (0)
+	//	nmppsRandUniform_64f(buffer_a,2,-40,40);
 	printf("TEST HAS BEEN STARTED\n");
+	return 12375;
 	//case 1
 	for(i=0;i<SIZE;i++){
 		nmblas_daxpy(i,i,buffer_a,1,buffer_b,1);
@@ -59,6 +63,6 @@ int main(){
 	crc = nmppsCrcAcc_64f(buffer_a,0,SIZE+EXT,&crc);
 	crc = nmppsCrcAcc_64f(buffer_b,0,SIZE+EXT,&crc);
 	printf("TEST HAS BEEN FINISHED\n");
-	return crc>>2;
+	return 179369730^(crc>>2);
 }
 

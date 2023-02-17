@@ -29,7 +29,7 @@ int main(){
 		//printf("the resalt[%d] is %f\n",i,result);
 		crc = nmppsCrcAcc_64f(&result,16,1,&crc);
 	}
-	//return crc>>2;
+	//return (crc>>2)^0;
 	printf("TEST PATTER NUMBER 1 HAS FINISHED\n");
 	printf("current crc is %d\n",crc);
 	for(i=0;i<6;i++){
@@ -45,6 +45,6 @@ int main(){
 	printf("TEST PATTER NUMBER 3 HAS FINISHED\n");
 	printf("THE FINAL CRC %d\n",crc);
 	printf("TEST HAS BEEN FINISHED\n");
-	return crc>>2;
+	return 338311665 ^(crc>>2);
 }
 

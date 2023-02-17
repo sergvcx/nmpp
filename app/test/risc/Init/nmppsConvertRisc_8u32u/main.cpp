@@ -40,5 +40,5 @@ int main()
 	nmppsCrcAcc_32u(out, N_ST, &crc);
 	printf("%d\n", tm);
 	// printf("%d\n", crc2>>2);
-	return crc>>2;
+	return (crc>>2)^0;
 }

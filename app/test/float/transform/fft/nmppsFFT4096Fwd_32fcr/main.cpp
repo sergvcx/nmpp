@@ -90,7 +90,7 @@ int main()
 	// 	printf("[%d]  %.2f  %.2f          %.2f  %.2f\n", i, dst[i].re, dst[i].im, dst[i + 1].re, dst[i + 1].im);
 	// }
 	if (norm<0.04)
-		return 777;
+		return 0;
 	return *(int*)&norm ;
 	
 	

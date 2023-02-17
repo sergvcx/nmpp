@@ -38,6 +38,6 @@ int main()
 	nmppsFree(L0);
 	nmppsFree(L1);
 	nmppsFree(G0);
-	return crc>>2;
+	return (crc>>2)^0;
 }
 

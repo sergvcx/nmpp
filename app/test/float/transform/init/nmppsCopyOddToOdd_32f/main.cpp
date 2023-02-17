@@ -19,5 +19,5 @@ int main(){
 		nmppsCopyOddToOdd_32f(src + 1, dst + 1, size);
 		nmppsCrcAcc_32f((nm32f*)dst, 0, size + 2 , &crc);
 	}
-	return crc >> 2;
+	return (crc>>2)^821473980 ;
 }

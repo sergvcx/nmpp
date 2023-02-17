@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <nmblas.h>
@@ -38,7 +39,7 @@ int main(){
 	}
 	crc = nmppsCrcAcc_64f(buffer_a,0,SIZE+EXT,&crc);
 	crc = nmppsCrcAcc_64f(buffer_b,0,SIZE+EXT,&crc);
-	crc = crc>>2;
+	crc = (crc>>2)^0;
 	printf("RETURN CRC FROM CASE 1 IS  %d\n",crc);
 	printf("\n");
 
@@ -46,7 +47,6 @@ int main(){
 		printf("the x[%d] is  %f\n",i,buffer_a[i]);
 		printf("the y[%d] is  %f\n",i,buffer_b[i]);
 	}*/
-
 //////////////////////////////////////////////////////////////////////////////////////case 2  45 degree 
 	printf("CASE 2 rotation 45 degree\n");
 	for(i=0;i<SIZE;i++){
@@ -60,7 +60,7 @@ int main(){
 	
 	crc = nmppsCrcAcc_64f(buffer_a,25,SIZE+EXT,&crc);
 	crc = nmppsCrcAcc_64f(buffer_b,25,SIZE+EXT,&crc);
-	crc = crc>>2;
+	crc = (crc>>2)^0;
 	printf("RETURN CRC FROM CASE 2 IS  %d\n",crc);
 	printf("\n");
 	
@@ -85,6 +85,7 @@ int main(){
 
 	printf("RETURN CRC FROM CASE 4 IS  %d\n",crc);
 	printf("\n");
-	return(crc);
+	
+	return (crc)^305617107 ;
 }
 

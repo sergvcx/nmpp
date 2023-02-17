@@ -78,7 +78,8 @@ void nmppsSet_64sc(int64sc  val, nm64sc* pDst, int len);
 //void nmppsSet_64sp( int64b* pVal,nm64s* pDst, int len);
 //__INLINE__ void nmppsSet_64s(nm64s* pDst, int64b  val, int len)  {nmppsSet_64sp((nm64s*) pDst, (int64b*)&val, len);}
 
-__INLINE__ void nmppsSet_8u ( uint8b val, nm8u*  pDst, int len) {nmppsSet_8s ( (int8b)val,  (nm8s*) pDst, len);}
+//__INLINE__ void nmppsSet_1  (uint1b  val, nm8u*  pDst, int len) {nmppsSet_8s((int1b)val, (nm8s*)pDst, len); }
+__INLINE__ void nmppsSet_8u (uint8b  val, nm8u*  pDst, int len) {nmppsSet_8s ( (int8b)val,  (nm8s*) pDst, len);}
 __INLINE__ void nmppsSet_16u(uint16b val, nm16u* pDst, int len) {nmppsSet_16s((int16b)val, (nm16s*) pDst, len);}
 __INLINE__ void nmppsSet_32u(uint32b val, nm32u* pDst, int len) {nmppsSet_32s((int32b)val, (nm32s*) pDst, len);}
 __INLINE__ void nmppsSet_64u(uint64b val, nm64u* pDst, int len) {nmppsSet_64s((int64b)val, (nm64s*) pDst, len);}

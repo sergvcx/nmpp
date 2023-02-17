@@ -41,7 +41,7 @@ int main(){
 		//pointer = (int*)&buffer_b[i];
 		//printf("arr_a[%d] %0x\n",i,*pointer);
 	}
-		return crc>>2;
+
 ///////////////////////////////////////////////////////////////////////////////case 2 45 
 	nmppsRand_32f(buffer_a,SIZE+EXT,-10,10);
 	nmppsRand_32f(buffer_b,SIZE+EXT,-10,10);
@@ -54,7 +54,7 @@ int main(){
 	crc = nmppsCrcAcc_32f(buffer_b,18,SIZE+EXT,&crc);
 	printf("RETURN CRC FROM CASE 2 IS  %d\n",crc);
 	
-	return crc>>2;
+	return (crc)^438457490 ;
 	//nmblas_srot(SIZE,buffer_a,1,buffer_b,1,0.707,0.707);
 
 
@@ -65,7 +65,7 @@ int main(){
 	}
 	crc = nmppsCrcAcc_32f(buffer_a,10,SIZE+EXT,&crc);
 	crc = nmppsCrcAcc_32f(buffer_b,10,SIZE+EXT,&crc);
-	crc = crc>>2;
+	crc = (crc>>2)^0;
 	printf("RETURN CRC FROM CASE 2 IS  %d\n",crc);
 	printf("\n");
 
@@ -76,7 +76,7 @@ int main(){
 	}
 	crc = nmppsCrcAcc_32f(buffer_a,10,SIZE+EXT,&crc);
 	crc = nmppsCrcAcc_32f(buffer_b,10,SIZE+EXT,&crc);
-	crc = crc>>2;
+	crc = (crc>>2)^0;
 	printf("RETURN CRC FROM CASE 3 IS  %d\n",crc);
 	printf("\n");
 	printf("CASE 4 rotation 45 degree deferent offsets\n");
@@ -85,7 +85,7 @@ int main(){
 	}
 	crc = nmppsCrcAcc_32f(buffer_a,10,SIZE+EXT,&crc);
 	crc = nmppsCrcAcc_32f(buffer_b,10,SIZE+EXT,&crc);
-	crc = crc>>2;
+	crc = (crc>>2)^0;
 	printf("RETURN CRC FROM CASE 4 IS  %d\n",crc);
 	printf("\n");*/
 }

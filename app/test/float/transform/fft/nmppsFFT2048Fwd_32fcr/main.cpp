@@ -63,7 +63,7 @@ int main()
 	nmppsNormDiff_L2_32fcr(src, dst, SIZE, &norm);
 	printf("%.7f\n", norm);
 	if (norm<0.05)
-		return 777;
+		return 0;
 	return *(int*)&norm ;
 	
 	

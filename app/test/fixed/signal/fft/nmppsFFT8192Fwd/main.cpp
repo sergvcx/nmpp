@@ -41,7 +41,7 @@ int selfTest(){
 	nmppsFFT8192Fwd 	(src,dst,&specFwd); 	nmppsCrcAcc_32s((nm32s*)src,8192*2,&crc);
 	nmppsFFT8192FwdRaw 	(src,dst,&specFwd); 	nmppsCrcAcc_32s((nm32s*)src,8192*2,&crc);
 	
-	return crc>>2;
+	return (crc>>2)^0;
 }
 
 int main()

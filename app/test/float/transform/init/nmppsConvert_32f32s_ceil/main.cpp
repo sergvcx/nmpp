@@ -148,5 +148,5 @@ int main()
 	// printf("\n");
 	//
 	
-	return crc >> 2;
+	return (crc>>2)^655307234 ;
 }

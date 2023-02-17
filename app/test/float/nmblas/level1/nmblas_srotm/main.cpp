@@ -48,6 +48,8 @@ int main(){
 	printf("RESULT OF 2nd CRC TEST PATTERN IS %d \n",crc);
 	printf("\n");
 
+
+
 //////////////////////////////////////////////////////////////////////////////////case 3
 	nmppsRand_32f(buffer_a,SIZE+EXT,-10,10);
 	nmppsRand_32f(buffer_b,SIZE+EXT,-5,5);
@@ -66,7 +68,8 @@ int main(){
 	printf("TEST PATTERN NOMBER 3 HAS FINISHED\n");
 	printf("RESULT OF 3rd CRC TEST PATTERN IS %d \n",crc);
 	printf("\n");
-	return crc>>2;
+	
+	
 //////////////////////////////////////////////////////////////////////////////////case 4
 	nmppsRand_32f(buffer_a,SIZE+EXT,-10,10);
 	nmppsRand_32f(buffer_b,SIZE+EXT,-5,5);
@@ -81,17 +84,18 @@ int main(){
 	for(i=0;i<SIZE;i++){
 		nmblas_srotm(i,buffer_a,1,buffer_b,1,param);
 	}
-//	for(i=0;i<SIZE+EXT;i++){
-//		printf("arr_a[%d] is %f\n",i,buffer_a[i]);
-//		printf("arr_b[%d] is %f\n",i,buffer_b[i]);
-//	}
+	for(i=0;i<SIZE;i++){
+		printf("arr_a[%d] is %f\n",i,buffer_a[i]);
+		printf("arr_b[%d] is %f\n",i,buffer_b[i]);
+	}
 	printf("TEST PATTERN NOMBER 4 HAS FINISHED\n");
-	crc = nmppsCrcAcc_32f(buffer_a,10,SIZE,&crc);
-	crc = nmppsCrcAcc_32f(buffer_b,10,SIZE,&crc);
+	crc = nmppsCrcAcc_32f(buffer_a,12,SIZE,&crc);
+	crc = nmppsCrcAcc_32f(buffer_b,12,SIZE,&crc);
 	printf("RESULT OF 4rd CRC TEST PATTERN IS %d \n",crc);
 	printf("\n");
 	printf("TEST HAS BEEN FINISHED\n");
-
-	return crc>>2;
+	
+	return (crc>>2)^612317368;
+	
 }
 

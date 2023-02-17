@@ -40,6 +40,6 @@ int main(){
 	//	printf("result[%d] %f\n",i,result);
 	}
 	printf("TEST HAS BEEN FINISHED\n");
-	return crc>>2;
+	return (crc>>2)^883099888 ;
 }
 

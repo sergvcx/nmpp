@@ -58,5 +58,5 @@ int main()
 	free(in3);
 	free(in4);
 	free(out);
-	return crc >> 2;
+	return (crc>>2)^935712150 ;
 }

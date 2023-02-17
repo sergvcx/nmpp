@@ -127,8 +127,9 @@ int main(){
 
 
 	}
+	return 555;
 	printf(" ====== %x\n", crc>>2);
-	//return crc>>2;
+	//return (crc>>2)^0;
 	//nmblas_dgemv(nm_n,3,2,alpha,(double*)matrix,4,x,1,0,y,1);
 	//crc = nmppsCrcAcc_64f(y,16,n+2,&crc);
 	
@@ -142,7 +143,7 @@ int main(){
 	
 	
 	
-//return crc>>2;
+//return (crc>>2)^0;
 	for(int m=1;m<ROWS;m++){
 		for(int n=1;n<COLUMNS;n++){
 			nmblas_dgemv(nm_t,COLUMNS, ROWS, alpha,(double*)matrix,ROWS,x,1,beta,y,1);
@@ -160,6 +161,6 @@ int main(){
 		}
 	}
 	printf(" ====== %x\n", crc >> 2);
-   return crc>>2;
+   return (crc>>2)^359121296 ;
    
 }

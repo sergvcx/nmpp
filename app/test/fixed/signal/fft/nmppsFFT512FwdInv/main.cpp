@@ -57,7 +57,7 @@ int selfTest(){
 	
 	nmppsFree(src);
 	nmppsFree(dst);
-	return crc>>2;
+	return (crc>>2)^0;
 	
 }
 

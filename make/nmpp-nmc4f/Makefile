@@ -67,7 +67,7 @@ ASM              = asm
 CXXFLAGS         = -m$(ARCH) $(INC_DIRS)  -std=c++11 -c -O2
 ARFLAGS          = rcs $(TARGET_LIB)
 ASFLAGS          = -m$(ARCH) -mgas -c $(INC_DIRS)
-ASMFLAGS         = -$(ARCH) -nm2ms  -split_sir -W-111 -W-109 $(INC_DIRS) 
+ASMFLAGS         = -nmc4  -nm2ms  -split_sir -W-111 -W-109 $(INC_DIRS) 
 
 ifdef DEBUG      
 TARGET_LIB       = $(OUT_DIR)/$(PROJECT)d.a

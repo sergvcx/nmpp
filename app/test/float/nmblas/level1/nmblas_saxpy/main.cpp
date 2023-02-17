@@ -57,6 +57,6 @@ int main(){
 	crc = nmppsCrcAcc_32f(buffer_b,0,SIZE+EXT,&crc);
 	printf("TEST HAS BEEN FINISHED\n");
 
-	return crc>>2;
+	return (crc>>2)^820225680 ;
 }
 

@@ -62,7 +62,7 @@ int main(){
 	crc = nmppsCrcAcc_32f(buffer_b,0,SIZE+EXT,&crc);
 	printf("TEST PATTERN 3 HAS FINISHED\n");
 	printf("current crc is %d\n",crc);	
-	return crc;	
+	return (crc>>2)^(728661438>>2);	
 }
 
 
@@ -138,9 +138,9 @@ int main(){
 	crc = nmppsCrcAcc_32f(buffer_b,0,SIZE+EXT,&crc);
 	printf("TEST PATTERN 4 HAS FINISHED\n");
 	printf("current crc is %d\n",crc);
-	return crc>>2;
+	return (crc>>2)^0;
 
 	printf("TEST HAS BEEN FINISHED\n");
-	return crc>>2;
+	return (crc>>2)^0;
 }*/
 

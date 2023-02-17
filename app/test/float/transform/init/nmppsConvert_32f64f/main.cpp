@@ -34,7 +34,7 @@ int main()
 	nmppsFree(src_32f);
 	nmppsFree(dst_64f);
 
-	return crc >> 2;
+	return (crc>>2)^434678226 ;
 }
 
 // crc = 438322565

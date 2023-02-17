@@ -55,6 +55,6 @@ int main(){
 	printf("THE PATTERN NUMBER 4 HAS FINISHED\n");
 	printf("THE FINAL CRC %d\n",crc);
 	printf("TEST HAS BEEN FINISHED\n");
-	return crc>>2;
+	return (crc>>2)^942730130 ;
 }
 

@@ -30,6 +30,6 @@ int main()
 
 	nmppsFree(src);
 	nmppsFree(dst);
-	return crc>>2;	
+	return (crc>>2)^0;	
 //	return t1-t0;	
 }

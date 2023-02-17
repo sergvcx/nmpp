@@ -116,5 +116,5 @@ int main(){
    }
    */
   printf("FINAL crc = %x\n",crc);
-   return crc>>2;
+   return (crc>>2)^179032050 ;
 }

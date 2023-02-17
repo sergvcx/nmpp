@@ -84,7 +84,7 @@ int main()
 	nmppsCrcAcc_32s((nm32s*)dst_32f,100, &crc);
 	//crc = nmppsCrcAcc_32f(dst_32f,8,SIZE,&crc);
 
-	//return crc>>2;
+	//return (crc>>2)^0;
 	
 	//for (int i = 0; i < 100; i++) {
 	//	printf("%d nm_ceil(%.8e)=%f \t c_ceil=%f\n", i, src_32f[i], dst_32f[i], ceil(src_32f[i]));
@@ -130,5 +130,5 @@ int main()
 	// printf("\n");
 	//
 	
-	return crc >> 2;
+	return (crc>>2)^221964802 ;
 }

@@ -15,6 +15,7 @@ default:
 
 configure:
 	$(TESTER) configure 
+#	$(ARGS)
 
 build:
 	$(TESTER) make 

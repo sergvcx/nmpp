@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "nmblas.h"
 #include "nmpp.h"
+#include "math.h"
 
 #define SIZE 1024
 //unsigned int buff[1000];
@@ -16,19 +17,28 @@ int main(){
 	//asm("pswr clear 0x40;");
 	int i=0;
 	int r;
+	
 	unsigned int result =0;
 	unsigned int crc=0;
 	float *pointer;
 	//nmppsRandUniform_64f(buffer_a,SIZE,-30,30);
 	//nmppsSet_64f(buffer_a,SIZE,0);
-	for(int i=0; i<SIZE; i++)
-		buffer_a[i]=0;
 	
-	buffer_a[947] =  -1000000;
+	//double ddd=NAN;
+	
+	//printf("%llx\n",*((long long*)&ddd));
+	//printf("")
+
+	for(int i=0; i<SIZE; i++ )
+		buffer_a[i]=i;
+	
+	//dis7] =  -1000000;
 	buffer_a[600]  = -845;
 	buffer_a[10]  =  -45;
-	buffer_a[30]  =  -68;
-	buffer_a[50]  =  -101;
+	buffer_a[35]  =  63;
+	buffer_a[36]  =  63;
+	buffer_a[37]  =  63;
+	buffer_a[122]  =  126;
 	buffer_a[70]  =   104;
 	buffer_a[601]  = -845;
 	buffer_a[567] =  -700;
@@ -40,15 +50,48 @@ int main(){
 
 /////////////////////////////////////////////////////////////////////// case 1 
 	printf("TEST HAS BEEN STARTED\n");
-	for(i=0;i<SIZE;i++){
+	
+	//for(int i=0; i<SIZE; i++ )
+	//	printf("%f\n",buffer_a[i]);
+	
+	//result = nmblas_idamax(105,buffer_a,1);
+	result = nmblas_idamax(64,buffer_a,1);
+	
+	
+	printf("res=%d\n", result) ;
+	return result;
+	
+	//for(i=0;i<SIZE;i++){
+	for(i=2;i<106;i++){
 		result = nmblas_idamax(i,buffer_a,1);
 		//printf("ARR[%d] THE INDEX OF MAX IS  %d\n",i,result);
+		
 		nmppsCrcAcc_32u(&result,1,&crc);
+		
 		//pointer	= (float*)&result;
 		//crc = nmppsCrcAcc_32f(pointer,0,1,&crc);	
 	}
+	//return 1;
+	//register int sir asm("gr5");
+	//asm volatile ("pswr clear 0x40;\n\t":::);
+	//
+	//result = nmblas_idamax(10,buffer_a,1);
+	//
+	//asm volatile ("sir = FPIOIR;\n\t":::);
+	//asm volatile ("%0 = sir;\n\t":"=r" (sir)::);
+	//
+	//printf("Bad data - FPIOIR: 0x%x\n", sir);
+	//
+	//asm volatile ("pswr set 0x40;\n\t":::);
+
+
+	//for(int i=0; i<SIZE; i++ )
+	//	printf("%f\n",result);
+	
+	printf("index=%d \n",result);
 	printf("CURRENT CRC IS %d\n",crc);
 	printf("TEST PATTER NUMBER 1 HAS FINISHED\n");
+	//return (crc>>2)^0;
 /////////////////////////////////////////////////////////////////////// case 2 
 	
 	for(i=0;i<6;i++){
@@ -71,7 +114,8 @@ int main(){
 /////////////////////////////////////////////////////////////////////// case 4 
 	printf("THE FINAL CRC %d\n",crc);
 	printf("TEST HAS BEEN FINISHED\n");
-	return crc>>2;
+	return (crc>>2)^40 ;
 
 }
+
 
