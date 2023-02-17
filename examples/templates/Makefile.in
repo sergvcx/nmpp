@@ -1,0 +1,50 @@
+@SHELL@
+@INCLUDE_MK@
+OS_RM    = @OS_RM@ 
+.SUFFIXES:
+
+
+TARGET   = @TARGET@.abs
+TARGETD  = @TARGET@d.abs
+
+CC       = nmc-g++
+AS       = nmc-gcc
+CXXFLAGS = @CXXFLAGS@
+LIBS     = @LIBS@
+LIBSD    = @LIBSD@ 
+LDFLAGS  = -Wl,-Map=@TARGET@.map  -Wl,-T@LDS@
+LDFLAGSD = -Wl,-Map=@TARGET@d.map -Wl,-T@LDS@ 
+INC_DIRS = -I"$(@BSP@)/include" -I$(NMPP)/include
+LIB_DIRS = -L"$(@BSP@)/lib" -L$(NMPP)/lib
+SOURCES  = @SRC_FILES@
+
+.DEFAULT_GOAL := all
+
+all: $(TARGET) $(TARGETD)
+
+$(TARGET): $(SOURCES) Makefile 
+	@echo ----------------------
+	$(CC)  -o$(TARGET) $(SOURCES) $(CXXFLAGS) $(LDFLAGS)  $(INC_DIRS) $(LIB_DIRS)   $(LIBS)
+
+$(TARGETD): $(SOURCES) Makefile 
+	@echo ----------------------
+	$(CC)  -o$(TARGETD) $(SOURCES) $(CXXFLAGS) $(LDFLAGSD) $(INC_DIRS) $(LIB_DIRS)  $(LIBSD) 
+	
+run: $(TARGET)
+	@RUNNER@ @RUNOPT@ $(TARGET)
+
+rund: $(TARGETD) 
+	@RUNNER@ @RUNOPTD@ $(TARGETD)
+
+# set path to MinGW/bin    For example:  SET PATH=%PATH%;d:\SDK\msys64\mingw64\bin\
+monitor:
+	@MONITOR@
+	
+gdb :	
+	nmc-gdb  $(TARGETD)
+
+
+clean: 
+	-$(OS_RM) *.abs *.elf *.map 
+	
+
