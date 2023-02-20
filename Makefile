@@ -30,7 +30,6 @@ nm6476f:
 	cmake -B build_$@ . -D ARCH="$@"  -G Ninja
 	cmake --build build_$@ --verbose
 
-
 x64:
 	cmake -B build_$@ . -D ARCH="$@" -G "Visual Studio 15 2017 Win64"
 	cmake --build build_$@

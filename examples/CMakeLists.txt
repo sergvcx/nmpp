@@ -1,5 +1,12 @@
 cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
 
+if (NOT BOARD STREQUAL "x64")
+	MESSAGE("########## NMC BUILD ###########")
+	set(CMAKE_TOOLCHAIN_FILE "../nmc-gcc-compile.cmake")
+endif()
+
+project(nmpp-examples VERSION 0.1.0 LANGUAGES CXX C ASM)
+
 enable_testing()
 #SET(CMAKE_MAKE_PROGRAM d:/programs/GnuWin32/bin/make.exe FORCE )
 #string(REGEX MATCH NM(d+). ARCH_VERSION ${ARCH})
@@ -21,7 +28,6 @@ if (CMAKE_HOST_WIN32 AND CMAKE_GENERATOR MATCHES "Ninja")
 endif()
 
 
-
 if (CMAKE_HOST_WIN32)
 	STRING(REPLACE " " "\\ " NMC_GCC_TOOLPATH_SPACED $ENV{NMC_GCC_TOOLPATH})
 	set( SHELL "SHELL=cmd" )
@@ -33,7 +39,7 @@ endif()
 	
 
 include(../cmake-variables.cmake)
-include(../nmc-gcc-compile.cmake)
+##include(../nmc-gcc-compile.cmake)
 
 #set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_LIST_DIR}/nmc-gcc-compile.cmake")
 #set(CMAKE_TOOLCHAIN_FILE "nmc-gcc-compile.cmake")
@@ -49,7 +55,7 @@ include(../nmc-gcc-compile.cmake)
 	
 set(CMAKE_CONFIGURATION_TYPES "Release;Debug")
 
-set(TEST_NAME step1)
+
 
 #set(CMAKE_BUILD_TYPE "")
 #set(CMAKE_TOOLCHAIN_FILE "nmc-gcc-compile.cmake")
@@ -182,10 +188,45 @@ function(CONFIGURE_TEST IN_TEST_DIR BOARD CORE )
 
 endfunction()
 
+function(CONFIGURE_TEST_X64 IN_TEST_DIR BOARD CORE )	
+	#set(ARCH NM6407)
+	
+	get_filename_component(STEP_NAME ${IN_TEST_DIR} NAME)
+	
+	set(TEST_NAME test-${BOARD}${CORE}-${STEP_NAME})
+	file(GLOB 	s_files   RELATIVE ${CMAKE_CURRENT_LIST_DIR} ${IN_TEST_DIR}/*.S)
+	file(GLOB 	cpp_files RELATIVE ${CMAKE_CURRENT_LIST_DIR} ${IN_TEST_DIR}/*.cpp)
+	file(GLOB 	c_files   RELATIVE ${CMAKE_CURRENT_LIST_DIR} ${IN_TEST_DIR}/*.c)
+	
+	list(APPEND SRC_LIST ${s_files})
+	list(APPEND SRC_LIST ${cpp_files})
+	list(APPEND SRC_LIST ${c_files})
+	list(LENGTH SRC_LIST SRC_COUNT)
+	
+	#MESSAGE("### BOARD:${BOARD} core:${CORE} dir:${TEST_DIR} name:${STEP_NAME}") # src: ${SRC_FILES}")	
+
+	if (NOT SRC_COUNT  )
+		return()
+	endif()	
+	
+	string(TOUPPER ${BOARD} BSP)
+	
+	add_executable(${TEST_NAME}  ${SRC_LIST})
+	#add_dependencies(${TEST_NAME} ${test_lib})
+	string(REPLACE " " ";" LIBS_LIST ${LIBS})
+	target_link_directories   (${TEST_NAME} PUBLIC	$ENV{${BSP}}/lib ../lib)
+	target_link_libraries     (${TEST_NAME} ${LIBS_LIST})
+	target_include_directories(${TEST_NAME} PUBLIC $ENV{BSP}/include ../include)
+	target_link_options(${TEST_NAME} PUBLIC	-T${CMAKE_CURRENT_SOURCE_DIR}/templates/${LDS}  ) # -v 
+	
+	
+	add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME} $<TARGET_FILE:${TEST_NAME}> ${OPTS})
+
+endfunction()
 
 
-set(CMAKE_TOOLCHAIN_FILE "../nmc-gcc-compile.cmake")
-project(${TEST_NAME} VERSION 0.1.0 LANGUAGES CXX C ASM)
+
+
 
 #set(steps_risc steps_risc/step01 steps_risc/step02 steps_risc/step03 steps_risc/step03a steps_risc/step04 steps_risc/step04a) 
 #set(stepis_fixed steps_fixed/stepi05 steps_fixed/stepi06 steps_fixed/stepi06a steps_fixed/stepi06b steps_fixed/stepi07 steps_fixed/stepi08 steps_fixed/stepi09 steps_fixed/stepi10 steps_fixed/stepi11 steps_fixed/stepi12 steps_fixed/stepi13 steps_fixed/stepi13a steps_fixed/stepi14) 
@@ -294,8 +335,9 @@ if ( BOARD STREQUAL "mc12705")
     endforeach()
 endif()	
 
-MESSAGE("####### 5 #######")
+
 if ( BOARD STREQUAL "qemu" )
+	
 	MESSAGE("##############")
 	set(dir_list ${examples_risc} ${examples_fixed} ${examples_float})
 	set(CXXFlAGS " -O2 -Wall -mnmc4 -g -I$(NMPP)/include -L$(NMPP)/lib")
@@ -311,6 +353,22 @@ if ( BOARD STREQUAL "qemu" )
     endforeach()
 endif()	
 
+
+if ( BOARD STREQUAL "x64" )
+	MESSAGE("######## x64 ######")
+	set(dir_list ${examples_risc} ${examples_fixed} ${examples_float})
+	#set(CXXFlAGS " -O2 -Wall -mnmc4 -g -I$(NMPP)/include -L$(NMPP)/lib")
+	set(LIBS  	"nmpp-x64")
+	set(LIBSD 	"nmpp-x64d")
+	#set(LDS 	"qemu.lds")
+	#set(RUNNER 	"nmc-qemu")
+	#set(RUNOPT 	" ")
+	#set(RUNOPTD "-g 5555")
+	#set(MONITOR "")
+	foreach(dir ${dir_list})
+		CONFIGURE_TEST_X64(${dir} x64 "")
+    endforeach()
+endif()	
 	
 
 

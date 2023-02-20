@@ -43,5 +43,9 @@ mb7707:
 	cmake --build build_$@
 	cd build_$@ && ctest
 
+x64:
+	cmake -B build_$@ -G "Visual Studio 15 2017 Win64" -D BOARD=$@
+	cmake --build build_$@
+	
 test:
 	cd build_mc12705 && ctest
