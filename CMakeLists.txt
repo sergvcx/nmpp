@@ -325,10 +325,14 @@ if (ARCH STREQUAL "nm6406")
 	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C,CXX>:-mnmc3;-O2>)	
 	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:ASM>:-mnmc3;-Werror>)	
 	
-	target_include_directories(${PROJECT}-${ARCH} PUBLIC 
-		include
-		include/nmpps)
-	
+	target_include_directories(${PROJECT}-${ARCH} 
+		PUBLIC 
+			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
+			"$<INSTALL_INTERFACE:include>" 
+			)
+	export(TARGETS ${PROJECT}-${ARCH}
+		FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT}-${ARCH}-targets.cmake
+		NAMESPACE hal::)		
 endif()
 
 if ( ARCH STREQUAL "nm6407i" OR ARCH STREQUAL "nm6476i" )
@@ -343,10 +347,14 @@ if ( ARCH STREQUAL "nm6407i" OR ARCH STREQUAL "nm6476i" )
 	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C,CXX>:-mnmc4-fixed;-O2>)	
 	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:ASM>:-mnmc4-fixed;-Werror>)	
 	
-	target_include_directories(${PROJECT}-${ARCH} PUBLIC 
-		include
-		include/nmpps)
-	
+	target_include_directories(${PROJECT}-${ARCH} 
+		PUBLIC 
+			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
+			"$<INSTALL_INTERFACE:include>" 
+			)
+	export(TARGETS ${PROJECT}-${ARCH}
+		FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT}-${ARCH}-targets.cmake
+		NAMESPACE hal::)
 endif()
 
 if ( ARCH STREQUAL "nm6407f" OR ARCH STREQUAL "nm6408" OR ARCH STREQUAL "nm6476f" )
@@ -361,9 +369,14 @@ if ( ARCH STREQUAL "nm6407f" OR ARCH STREQUAL "nm6408" OR ARCH STREQUAL "nm6476f
 	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C,CXX>:-mnmc4-float;-O2>)	
 	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:ASM>:-mnmc4-float;-Werror>)	
 	
-	target_include_directories(${PROJECT}-${ARCH} PUBLIC 
-		include
-		include/nmpps)
+	target_include_directories(${PROJECT}-${ARCH} 
+		PUBLIC 
+			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
+			"$<INSTALL_INTERFACE:include>" 
+			)
+	export(TARGETS ${PROJECT}-${ARCH}
+		FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT}-${ARCH}-targets.cmake
+		NAMESPACE hal::)
 	
 endif()
 
@@ -389,13 +402,20 @@ set_source_files_properties( ${nmc4f_s_files} ${nmc4i_s_files} ${nmc4r_s_files}
 if (ARCH STREQUAL "x64")
 	project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C ASM)
 	add_library(${PROJECT}-${ARCH} STATIC ${x64_cpp_files} ${x64_c_files} )
-	target_include_directories(${PROJECT}-${ARCH} PUBLIC 
-        include
-        )
+	target_include_directories(${PROJECT}-${ARCH} 
+		PUBLIC 
+			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
+			"$<INSTALL_INTERFACE:include>" 
+			)
 	if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 		target_compile_options(${PROJECT}-${ARCH} PUBLIC -fpermissive)
 	endif()
+	export(TARGETS ${PROJECT}-${ARCH}
+		FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT}-${ARCH}-targets.cmake
+		NAMESPACE hal::)
 endif()
+
+
 
 
 
