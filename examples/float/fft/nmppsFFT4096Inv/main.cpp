@@ -11,15 +11,8 @@
 
 #define SIZE 4096
 
-#ifdef __GNUC__ // NMC-GCC C++ compilier 
-nm32fcr src[SIZE] __attribute__ ((section (".data_imu1")));
-nm32fcr dst[SIZE] __attribute__ ((section (".data_imu2")));
-#else 			// NMSDK C++ compiler
-#pragma data_section ".data_imu1"
-nm32fcr src[SIZE];
-#pragma data_section ".data_imu2"
-nm32fcr dst[SIZE];
-#endif 
+nm32fcr src[SIZE] __attribute__ ((section (".data.imu1")));
+nm32fcr dst[SIZE] __attribute__ ((section (".data.imu2")));
 
 
 int main()

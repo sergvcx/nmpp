@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
 
 
+#set(CMAKE_USE_RELATIVE_PATHS ON)
 #string(REGEX MATCH NM(d+). ARCH_VERSION ${ARCH})
 
 #MESSAGE("######## ${ARCH} ARCH_VERSION ${ARCH_VERSION} ############")
@@ -30,10 +31,48 @@ include(cmake-variables.cmake)
 #)
 	
 set(CMAKE_CONFIGURATION_TYPES "Release;Debug")
+#set(CMAKE_CONFIGURATION_TYPES "Release;Debug;MinSizeRel")
 
 set(PROJECT nmpp)
 
-#set(CMAKE_BUILD_TYPE "")
+
+option (NMC_TOOLCHAIN "Default toolchain is NMC " ON)
+
+if (NMC_TOOLCHAIN)
+	MESSAGE("########## NMC BUILD ###########")
+	set(CMAKE_TOOLCHAIN_FILE "../nmc-gcc-compile.cmake")
+	project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C ASM)
+else()
+	project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C)
+endif()
+	
+
+MESSAGE("!!!!!!!!! CMAKE_TOOLCHAIN_FILE= ${CMAKE_TOOLCHAIN_FILE}")
+MESSAGE("!!!!!!!!! CMAKE_CXX_COMPILER_ID= ${CMAKE_CXX_COMPILER_ID}")
+
+
+add_subdirectory(examples examples-${ARCH})
+#-G ${nm_generator}
+if (NMC_TOOLCHAIN)
+execute_process(
+		COMMAND ${CMAKE_COMMAND} 
+		-B ${CMAKE_CURRENT_BINARY_DIR}/build_x64 -D ARCH=x64 -D X64_BUILD=ON -D NMC_TOOLCHAIN=OFF  -G "Visual Studio 15 2017 Win64"
+		${CMAKE_CURRENT_LIST_DIR}
+		COMMENT "Building x64")
+
+	if(WIN32)
+		add_custom_target(nmpp_x64_build 
+			ALL 
+			COMMAND $ENV{NMC_GCC_TOOLPATH}/nmc4cmd.bat
+			COMMAND ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/build_x64 )
+	else()
+		add_custom_target(nmpp_x64_build 
+			ALL 
+			COMMAND ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/build_x64 )
+	endif()
+endif()	
+
+#set(CMAKE_BUILD_TYPE "Release")
 #set(CMAKE_TOOLCHAIN_FILE "nmc-gcc-compile.cmake")
 
 set(CMAKE_CXX_STANDARD 11)
@@ -46,14 +85,14 @@ set(CMAKE_C_EXTENSIONS OFF)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/lib)
 
 set(X64_DIRS
-	src/risc/init/nm 
+	src/risc/init/pc 
 	src/risc/init/common 
 	src/risc/linear/common 
-	src/risc/metric/nm 
+	src/risc/metric/pc 
 	src/risc/metric/common 
-	src/risc/support/nm 
+	src/risc/support/pc 
 	src/risc/support/common 
-	src/risc/tables/nm
+	
 	
 	src/fixed/image/Arithmetics/pc 
 	src/fixed/image/Convert/pc 
@@ -105,16 +144,18 @@ set(X64_DIRS
 	src/float/linear
 	src/float/metric/common 
 	src/float/metric/pc 
-	src/float/pcblas/core/pc 
-	src/float/pcblas/level1/pc 
-	src/float/pcblas/level2/pc 
+	src/float/nmblas/core/pc 
+	src/float/nmblas/level1/pc 
+	src/float/nmblas/level2/pc 
 	#src/float/statistical/Norm/pc
 	src/float/statistical/NormDiff/common
-	src/float/pcpps/sqrt/pc
+	src/float/nmpps/sqrt/pc
 	
 	
 	src/float/transform/fft/common
 	src/float/transform/fft/FFTFree/common
+	src/float/transform/fft/DFT0008/pc
+	src/float/transform/fft/FFT0016/pc
 	src/float/transform/fft/FFT0032/pc
 	src/float/transform/fft/IFFT0032/pc
 	src/float/transform/fft/FFT0064/pc
@@ -316,8 +357,8 @@ endforeach()
 
 if (ARCH STREQUAL "nm6406")
 	MESSAGE("######## ARCH ${ARCH} ############")
-	set(CMAKE_TOOLCHAIN_FILE "nmc-gcc-compile.cmake")
-	project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C ASM)
+	#set(CMAKE_TOOLCHAIN_FILE "nmc-gcc-compile.cmake")
+	#project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C ASM)
 	add_library(${PROJECT}-${ARCH} STATIC  ${nmc4i_cpp_files} ${nmc4i_c_files} ${nmc4i_asm_files} ${nmc4i_s_files}
 										  ${nmc4r_cpp_files} ${nmc4r_c_files} ${nmc4r_asm_files} ${nmc4r_s_files}
 										)
@@ -328,7 +369,9 @@ if (ARCH STREQUAL "nm6406")
 	target_include_directories(${PROJECT}-${ARCH} 
 		PUBLIC 
 			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
+			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/nmpps>"
 			"$<INSTALL_INTERFACE:include>" 
+			"$<INSTALL_INTERFACE:include/nmpps>" 
 			)
 	export(TARGETS ${PROJECT}-${ARCH}
 		FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT}-${ARCH}-targets.cmake
@@ -337,9 +380,9 @@ endif()
 
 if ( ARCH STREQUAL "nm6407i" OR ARCH STREQUAL "nm6476i" )
 	MESSAGE("######## ARCH ${ARCH} ############")
-	set(CMAKE_TOOLCHAIN_FILE "nmc-gcc-compile.cmake")
+	#set(CMAKE_TOOLCHAIN_FILE "nmc-gcc-compile.cmake")
 	
-	project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C ASM)
+	#project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C ASM)
 	add_library(${PROJECT}-${ARCH} STATIC  ${nmc4i_cpp_files} ${nmc4i_c_files} ${nmc4i_asm_files} ${nmc4i_s_files}
 										   ${nmc4r_cpp_files} ${nmc4r_c_files} ${nmc4r_asm_files} ${nmc4r_s_files}
 										)
@@ -350,18 +393,20 @@ if ( ARCH STREQUAL "nm6407i" OR ARCH STREQUAL "nm6476i" )
 	target_include_directories(${PROJECT}-${ARCH} 
 		PUBLIC 
 			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
+			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/nmpps>"
 			"$<INSTALL_INTERFACE:include>" 
+			"$<INSTALL_INTERFACE:include/nmpps>" 
 			)
 	export(TARGETS ${PROJECT}-${ARCH}
 		FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT}-${ARCH}-targets.cmake
-		NAMESPACE hal::)
+		NAMESPACE nmpp::)
 endif()
 
 if ( ARCH STREQUAL "nm6407f" OR ARCH STREQUAL "nm6408" OR ARCH STREQUAL "nm6476f" )
 	MESSAGE("######## ARCH ${ARCH} ############")
-	set(CMAKE_TOOLCHAIN_FILE "nmc-gcc-compile.cmake")
+	#set(CMAKE_TOOLCHAIN_FILE "nmc-gcc-compile.cmake")
 	
-	project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C ASM)
+	#project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C ASM)
 	add_library(${PROJECT}-${ARCH} STATIC ${nmc4f_cpp_files} ${nmc4f_c_files} ${nmc4f_asm_files} ${nmc4f_s_files}
 										  ${nmc4r_cpp_files} ${nmc4r_c_files} ${nmc4r_asm_files} ${nmc4r_s_files}
 										)
@@ -372,11 +417,13 @@ if ( ARCH STREQUAL "nm6407f" OR ARCH STREQUAL "nm6408" OR ARCH STREQUAL "nm6476f
 	target_include_directories(${PROJECT}-${ARCH} 
 		PUBLIC 
 			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
+			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/nmpps>"
 			"$<INSTALL_INTERFACE:include>" 
+			"$<INSTALL_INTERFACE:include/nmpps>" 
 			)
 	export(TARGETS ${PROJECT}-${ARCH}
 		FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT}-${ARCH}-targets.cmake
-		NAMESPACE hal::)
+		NAMESPACE nmpp::)
 	
 endif()
 
@@ -400,7 +447,7 @@ set_source_files_properties( ${nmc4f_s_files} ${nmc4i_s_files} ${nmc4r_s_files}
 #endif(WIN32)
 
 if (ARCH STREQUAL "x64")
-	project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C ASM)
+	#project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C ASM)
 	add_library(${PROJECT}-${ARCH} STATIC ${x64_cpp_files} ${x64_c_files} )
 	target_include_directories(${PROJECT}-${ARCH} 
 		PUBLIC 
@@ -410,9 +457,18 @@ if (ARCH STREQUAL "x64")
 	if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 		target_compile_options(${PROJECT}-${ARCH} PUBLIC -fpermissive)
 	endif()
+	
+	set_target_properties(${PROJECT}-${ARCH}  
+	PROPERTIES 
+	LINKER_LANGUAGE CXX
+	ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/lib
+	ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_LIST_DIR}/lib
+	ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_LIST_DIR}/lib
+	PUBLIC_HEADER "${public_headers}")
+	
 	export(TARGETS ${PROJECT}-${ARCH}
 		FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT}-${ARCH}-targets.cmake
-		NAMESPACE hal::)
+		NAMESPACE nmpp::)
 endif()
 
 
@@ -429,3 +485,4 @@ endif()
 
 #add_subdirectory(monitor)
 #add_subdirectory(examples/2nmc-demo-gcc/make_mc12101)
+#set(CMAKE_SUPPRESS_REGENERATION ON)

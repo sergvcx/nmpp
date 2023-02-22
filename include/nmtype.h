@@ -28,6 +28,12 @@
 #define HEAP2 2
 #define HEAP3 3
 
+#if defined(_MSC_VER)
+#define __attribute__(xxx) // Note: actually gcc seems to also supports this syntax.
+#define nmc_malloc_set_heap(xxx)
+#endif
+
+
 #ifdef __GNUC__
 #define __int64 long long
 #endif

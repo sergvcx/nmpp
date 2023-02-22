@@ -5,15 +5,8 @@
 
 #define SIZE 16
 
-#ifdef __GNUC__ //  NMC-GCC C++ compilier 
-float buffer_a[SIZE] __attribute__ ((section (".data_imu1")));
-float buffer_b[SIZE] __attribute__ ((section (".data_imu2")));
-#else 		// NMSDK C++ compiler
-#pragma data_section ".data_imu1"
-float buffer_a[SIZE];
-#pragma data_section ".data_imu2"
-float buffer_b[SIZE];
-#endif 
+float buffer_a[SIZE] __attribute__ ((section (".data.imu1")));
+float buffer_b[SIZE] __attribute__ ((section (".data.imu2")));
 
 /*
 NAME

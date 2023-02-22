@@ -4,13 +4,7 @@
 #include "nmpp.h"
 
 #define SIZE 16
-#ifdef __GNUC__ //  NMC-GCC C++ compilier 
-double buffer_a[SIZE] __attribute__ ((section (".data_imu1")));
-#else 		// NMSDK C++ compiler
-#pragma data_section ".data_imu1"
-double buffer_a[SIZE];
-
-#endif 
+double buffer_a[SIZE] __attribute__ ((section (".data.imu1")));
 /*
 NAME
        DSCAL - BLAS level one, scales a double precision vector
