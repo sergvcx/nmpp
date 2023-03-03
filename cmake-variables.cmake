@@ -98,7 +98,7 @@ function(GENERATE_TESTS_MC12101 dir_list  test_prefix ld_script board_core test_
 
   
 		add_executable(${TEST_NAME} ${dir}/main.cpp)
-        add_dependencies(${TEST_NAME} ${test_lib})
+        #add_dependencies(${TEST_NAME} ${test_lib})
         target_link_directories(${TEST_NAME} PUBLIC
             ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/lib
             ${MC12101}/lib)
@@ -179,6 +179,32 @@ function(GENERATE_TESTS_NM_CARD dir_list  test_prefix ld_script cluster core tes
 
     endforeach()
 endfunction()
+
+
+function(GENERATE_TESTS_X64 dir_list  test_prefix test_lib)
+    set(extra_args "${ARGN}")	
+	if (X64_BUILD)
+		foreach(dir ${dir_list})
+		
+			get_filename_component(basename ${dir} NAME)
+			set(TEST_NAME ${test_prefix}_${basename}_${board_core}_test)
+			
+			MESSAGE(STATUS "###### ${TEST_NAME} #####")
+
+	  
+			add_executable(${TEST_NAME} ${dir}/main.cpp)
+			target_link_directories(${TEST_NAME} PUBLIC  ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/lib)
+			target_link_libraries(${TEST_NAME} ${test_lib} ${extra_args})
+			target_include_directories(${TEST_NAME} PUBLIC ${CMAKE_CURRENT_FUNCTION_LIST_DIR}/include)
+			#target_compile_options(${TEST_NAME} PUBLIC -include nmc_printf.h)
+			add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME} $<TARGET_FILE:${TEST_NAME}> ${OPTS})
+
+		endforeach()
+	else()
+		MESSAGE("WARNING: GENERATE_TESTS_X64 SKIPPED DUE X64_BUILD IS ${X64_BUILD}")
+	endif()
+endfunction()
+
 
 
 

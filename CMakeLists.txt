@@ -16,6 +16,8 @@ if (CMAKE_HOST_WIN32 AND CMAKE_GENERATOR MATCHES "Ninja")
     set(CMAKE_USER_MAKE_RULES_OVERRIDE "${CMAKE_BINARY_DIR}/GNUMakeRulesOverwrite.cmake" CACHE INTERNAL "")
 endif()
 
+set(CMAKE_DEBUG_POSTFIX d)
+
 include(cmake-variables.cmake)
 
 #set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_LIST_DIR}/nmc-gcc-compile.cmake")
@@ -36,14 +38,16 @@ set(CMAKE_CONFIGURATION_TYPES "Release;Debug")
 set(PROJECT nmpp)
 
 
-option (NMC_TOOLCHAIN "Default toolchain is NMC " ON)
+#option (NMC_TOOLCHAIN "Default toolchain is NMC " ON)
+option (X64_BUILD "Default toolchain is X64 " OFF)
 
-if (NMC_TOOLCHAIN)
-	MESSAGE("########## NMC BUILD ###########")
-	set(CMAKE_TOOLCHAIN_FILE "../nmc-gcc-compile.cmake")
-	project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C ASM)
-else()
+if (X64_BUILD)
+	MESSAGE("########## X64 BUILD ###########")
 	project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C)
+else()
+	MESSAGE("########## NMC BUILD ###########")
+	set(CMAKE_TOOLCHAIN_FILE "./nmc-gcc-compile.cmake")
+	project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C ASM)
 endif()
 	
 
@@ -51,26 +55,28 @@ MESSAGE("!!!!!!!!! CMAKE_TOOLCHAIN_FILE= ${CMAKE_TOOLCHAIN_FILE}")
 MESSAGE("!!!!!!!!! CMAKE_CXX_COMPILER_ID= ${CMAKE_CXX_COMPILER_ID}")
 
 
-add_subdirectory(examples examples-${ARCH})
-#-G ${nm_generator}
-if (NMC_TOOLCHAIN)
-execute_process(
-		COMMAND ${CMAKE_COMMAND} 
-		-B ${CMAKE_CURRENT_BINARY_DIR}/build_x64 -D ARCH=x64 -D X64_BUILD=ON -D NMC_TOOLCHAIN=OFF  -G "Visual Studio 15 2017 Win64"
-		${CMAKE_CURRENT_LIST_DIR}
-		COMMENT "Building x64")
 
-	if(WIN32)
-		add_custom_target(nmpp_x64_build 
-			ALL 
-			COMMAND $ENV{NMC_GCC_TOOLPATH}/nmc4cmd.bat
-			COMMAND ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/build_x64 )
-	else()
-		add_custom_target(nmpp_x64_build 
-			ALL 
-			COMMAND ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/build_x64 )
-	endif()
-endif()	
+
+
+#-G ${nm_generator}
+#if (NMC_TOOLCHAIN)
+#execute_process(
+#		COMMAND ${CMAKE_COMMAND} 
+#		-B ${CMAKE_CURRENT_BINARY_DIR}/build_x64 -D ARCH=x64 -D X64_BUILD=ON -D NMC_TOOLCHAIN=OFF  -G "Visual Studio 15 2017 Win64"
+#		${CMAKE_CURRENT_LIST_DIR}
+#		COMMENT "Building x64")
+#
+#	if(WIN32)
+#		add_custom_target(nmpp_x64_build 
+#			ALL 
+#			COMMAND $ENV{NMC_GCC_TOOLPATH}/nmc4cmd.bat
+#			COMMAND ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/build_x64 )
+#	else()
+#		add_custom_target(nmpp_x64_build 
+#			ALL 
+#			COMMAND ${CMAKE_COMMAND} --build ${CMAKE_CURRENT_BINARY_DIR}/build_x64 )
+#	endif()
+#endif()	
 
 #set(CMAKE_BUILD_TYPE "Release")
 #set(CMAKE_TOOLCHAIN_FILE "nmc-gcc-compile.cmake")
@@ -83,6 +89,11 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_C_EXTENSIONS OFF)
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/lib)
+
+#file(GLOB_RECURSE public_headers RELATIVE ${CMAKE_CURRENT_LIST_DIR} include/*.h)
+
+#MESSAGE("HHH=${public_headers}")
+#return()
 
 set(X64_DIRS
 	src/risc/init/pc 
@@ -425,6 +436,15 @@ if ( ARCH STREQUAL "nm6407f" OR ARCH STREQUAL "nm6408" OR ARCH STREQUAL "nm6476f
 		FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT}-${ARCH}-targets.cmake
 		NAMESPACE nmpp::)
 	
+	install(TARGETS nmpp-nm6408
+		RUNTIME
+			DESTINATION bin
+		ARCHIVE 
+			DESTINATION lib
+		PUBLIC_HEADER 
+			DESTINATION include
+		COMPONENT nmpp_nm6408
+		)	
 endif()
 
 
@@ -469,14 +489,27 @@ if (ARCH STREQUAL "x64")
 	export(TARGETS ${PROJECT}-${ARCH}
 		FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT}-${ARCH}-targets.cmake
 		NAMESPACE nmpp::)
+		
+	install(TARGETS nmpp-x64
+		RUNTIME
+			DESTINATION bin
+		ARCHIVE 
+			DESTINATION lib
+		PUBLIC_HEADER 
+			DESTINATION include
+		COMPONENT nmpp_x64
+		)
+	install(DIRECTORY include    DESTINATION .)
+	install(FILES examples/templates/CMakeLists.txt DESTINATION examples-x64) # copy main.cpp & co
+
 endif()
 
 
+include(cmake/Packing.cmake)
 
 
 
-
-
+add_subdirectory(examples examples-${ARCH})
 
 #enable_testing()
 #add_subdirectory(app/test)

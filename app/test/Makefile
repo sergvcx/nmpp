@@ -1,13 +1,29 @@
-export GCC_EXEC_PREFIX=/cygdrive/C/Program Files/Module/NMC-SDK/nmc4-ide/lib/gcc/
-$(info  $(GCC_EXEC_PREFIX))
-PATH:=$(NMC_GCC_TOOLPATH)\nmc4-ide\bin;$(NMC_GCC_TOOLPATH)\nmc4-ide\lib;$(PATH)
+ifeq ($(OS),Windows_NT)
+SHELL=cmd
+space := $(subst ,, )
+NMC_TOOLPATH=$(subst $(space),\$(space),$(NMC_GCC_TOOLPATH))
+-include $(NMC_TOOLPATH)\nmc4-ide\include\nmc4vars_win.mk
+OS_RM    = del 
+else 
+OS_RM    = rm -f -r
+endif
 
-shell=cmd
+
+x64:
+	cmake -B build_$@ -G "Visual Studio 15 2017 Win64" -D X64_BUILD=ON
+	cmake --build build_$@ -v
+	cd build_$@ && ctest -v
 
 mc12101f:
-	cmake -B build_$@ -G "Unix Makefiles" -D BOARD=mc12101 -D CORE=-nmpu0
-	cmake --build build_$@
-	cd build_$@ && ctest
+	cmake -B build_$@ -G "Unix Makefiles" -D MC12101_BUILD=ON
+	cmake --build build_$@ -v
+	cd build_$@ && ctest -v
+
+mk:
+	cmake --build build_mc12101f -v
+	
+test:
+	cd build_mc12101f && ctest -v
 
 
 ROOT=../..
