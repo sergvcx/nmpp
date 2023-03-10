@@ -19,6 +19,7 @@ if (MC12101_BUILD OR MB7707_BUILD OR MC5103_BUILD OR MC7601_BUILD OR MC12705_BUI
 	project(nmpp-examples VERSION 0.1.0 LANGUAGES CXX C ASM)
 	MESSAGE("########## NMC BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
 else()
+	MESSAGE("########## X64 BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
 	set(NMC_TOOLCHAIN OFF)
 	project(nmpp-examples VERSION 0.1.0 LANGUAGES CXX C)
 endif()
@@ -408,6 +409,8 @@ if ( X64_BUILD )
     endforeach()
 	
 	file(COPY ./templates/CMakeLists.txt DESTINATION examples-x64) # copy main.cpp & co
+	set (ROOT "../.." )
+	configure_file ("./templates/CMakeLists.txt.in" "examples-x64/CMakeLists.txt" )
 	
 endif()	
 	

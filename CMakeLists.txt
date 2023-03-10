@@ -42,11 +42,11 @@ set(PROJECT nmpp)
 option (X64_BUILD "Default toolchain is X64 " OFF)
 
 if (X64_BUILD)
-	MESSAGE("########## X64 BUILD ###########")
+	MESSAGE("########## X64 BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
 	project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C)
 else()
-	MESSAGE("########## NMC BUILD ###########")
-	set(CMAKE_TOOLCHAIN_FILE "./nmc-gcc-compile.cmake")
+	set(CMAKE_TOOLCHAIN_FILE "nmc-gcc-compile.cmake")
+	MESSAGE("########## NMC BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
 	project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C ASM)
 endif()
 	
@@ -436,15 +436,22 @@ if ( ARCH STREQUAL "nm6407f" OR ARCH STREQUAL "nm6408" OR ARCH STREQUAL "nm6476f
 		FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT}-${ARCH}-targets.cmake
 		NAMESPACE nmpp::)
 	
-	install(TARGETS nmpp-nm6408
+	install(TARGETS ${PROJECT}-${ARCH}
 		RUNTIME
 			DESTINATION bin
 		ARCHIVE 
 			DESTINATION lib
 		PUBLIC_HEADER 
 			DESTINATION include
-		COMPONENT nmpp_nm6408
-		)	
+		COMPONENT ${PROJECT}_${ARCH}
+		)
+	install(DIRECTORY include    DESTINATION .)		
+	if (NM_CARD_BUILD)
+		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-nm_card DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
+	endif()
+	if (QEMU_BUILD)
+		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-qemu DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
+	endif()
 endif()
 
 
@@ -490,17 +497,18 @@ if (ARCH STREQUAL "x64")
 		FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT}-${ARCH}-targets.cmake
 		NAMESPACE nmpp::)
 		
-	install(TARGETS nmpp-x64
+	install(TARGETS ${PROJECT}-${ARCH}
 		RUNTIME
 			DESTINATION bin
 		ARCHIVE 
 			DESTINATION lib
 		PUBLIC_HEADER 
 			DESTINATION include
-		COMPONENT nmpp_x64
+		COMPONENT ${PROJECT}_${ARCH}
 		)
 	install(DIRECTORY include    DESTINATION .)
-	install(FILES examples/templates/CMakeLists.txt DESTINATION examples-x64) # copy main.cpp & co
+	#install(FILES examples/templates/CMakeLists.txt DESTINATION examples-x64) # copy main.cpp & co
+	install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-x64 DESTINATION examples) # copy main.cpp & co
 
 endif()
 
@@ -509,7 +517,8 @@ include(cmake/Packing.cmake)
 
 
 
-add_subdirectory(examples examples-${ARCH})
+#add_subdirectory(examples examples-${ARCH})
+add_subdirectory(examples)
 
 #enable_testing()
 #add_subdirectory(app/test)

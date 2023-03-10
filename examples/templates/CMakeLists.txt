@@ -50,9 +50,9 @@ function(CONFIGURE_EXAMPLE IN_TEST_DIR)
 	
 	add_executable(${TEST_NAME}  ${SRC_LIST})
 	string(REPLACE " " ";" LIBS_LIST ${LIBS})
-	target_link_directories   (${TEST_NAME} PUBLIC	../lib)
+	target_link_directories   (${TEST_NAME} PUBLIC	@ROOT@/lib)
 	target_link_libraries     (${TEST_NAME} ${LIBS_LIST})
-	target_include_directories(${TEST_NAME} PUBLIC ../include)
+	target_include_directories(${TEST_NAME} PUBLIC @ROOT@/include)
 	set_target_properties(${TEST_NAME} PROPERTIES LINKER_LANGUAGE CXX)
 	
 endfunction()
