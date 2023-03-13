@@ -1,6 +1,6 @@
 
 #set(CPACK_PACKAGE_NAME ${PROJECT_NAME})
-set(CPACK_PACKAGE_NAME nmpp)
+set(CPACK_PACKAGE_NAME nmpp-${PACK_BOARD})
 
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Neuro Matrix Performance Primitives")
 

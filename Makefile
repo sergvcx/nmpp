@@ -58,9 +58,9 @@ nm:
 #	cmake -B build_x64_debug . 		-G "Visual Studio 15 2017 Win64" -DCMAKE_BUILD_TYPE=Debug 	-D X64_BUILD=ON -D ARCH=x64 -D NMC_TOOLCHAIN=OFF
 #	cmake --build build_x64_debug --config Debug
 nm6408pack:
-	cmake -B build_x64 . 	-G "Visual Studio 15 2017 Win64"  			-D ARCH=x64 	 	-D X64_BUILD=ON
-	cmake -B build_nmc_debug . 		-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6408  	-D NM_CARD_BUILD=ON -D QEMU_BUILD=ON
-	cmake -B build_nmc_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release -D ARCH=nm6408 		-D NM_CARD_BUILD=ON -D QEMU_BUILD=ON
+	cmake -B build_x64 . 			-G "Visual Studio 15 2017 Win64"  	-D ARCH=x64 	 	-D X64_BUILD=ON							-D PACK_BOARD=nm_card
+	cmake -B build_nmc_debug . 		-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6408  	-D NM_CARD_BUILD=ON -D QEMU_BUILD=ON	-D PACK_BOARD=nm_card
+	cmake -B build_nmc_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release -D ARCH=nm6408 		-D NM_CARD_BUILD=ON -D QEMU_BUILD=ON	-D PACK_BOARD=nm_card
 	
 	cmake --build build_x64 --config Release
 	cmake --build build_x64 --config Debug

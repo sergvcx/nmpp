@@ -41,13 +41,15 @@ set(PROJECT nmpp)
 #option (NMC_TOOLCHAIN "Default toolchain is NMC " ON)
 option (X64_BUILD "Default toolchain is X64 " OFF)
 
+option (PACK_BOARD "package suffix" "")
+
 if (X64_BUILD)
 	MESSAGE("########## X64 BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
-	project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C)
+	project(${PROJECT} VERSION 2.1.0 LANGUAGES CXX C)
 else()
 	set(CMAKE_TOOLCHAIN_FILE "nmc-gcc-compile.cmake")
 	MESSAGE("########## NMC BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
-	project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C ASM)
+	project(${PROJECT} VERSION 2.1.0 LANGUAGES CXX C ASM)
 endif()
 	
 
@@ -386,7 +388,7 @@ if (ARCH STREQUAL "nm6406")
 			)
 	export(TARGETS ${PROJECT}-${ARCH}
 		FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT}-${ARCH}-targets.cmake
-		NAMESPACE hal::)		
+		NAMESPACE nmpp::)		
 endif()
 
 if ( ARCH STREQUAL "nm6407i" OR ARCH STREQUAL "nm6476i" )
