@@ -408,7 +408,7 @@ if ( X64_BUILD )
 		CONFIGURE_TEST_X64(${dir} x64 "")
     endforeach()
 	
-	file(COPY ./templates/CMakeLists.txt DESTINATION examples-x64) # copy main.cpp & co
+	#file(COPY ./templates/CMakeLists.txt DESTINATION examples-x64) # copy main.cpp & co
 	set (ROOT "../.." )
 	configure_file ("./templates/CMakeLists.txt.in" "examples-x64/CMakeLists.txt" )
 	
