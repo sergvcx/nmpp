@@ -41,7 +41,7 @@ set(PROJECT nmpp)
 #option (NMC_TOOLCHAIN "Default toolchain is NMC " ON)
 option (X64_BUILD "Default toolchain is X64 " OFF)
 
-option (PACK_BOARD "package suffix" "")
+option (PACK_SUFFIX "package suffix" "---")
 
 if (X64_BUILD)
 	MESSAGE("########## X64 BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
@@ -413,6 +413,7 @@ if ( ARCH STREQUAL "nm6407i" OR ARCH STREQUAL "nm6476i" )
 	export(TARGETS ${PROJECT}-${ARCH}
 		FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT}-${ARCH}-targets.cmake
 		NAMESPACE nmpp::)
+
 endif()
 
 if ( ARCH STREQUAL "nm6407f" OR ARCH STREQUAL "nm6408" OR ARCH STREQUAL "nm6476f" )
@@ -438,25 +439,26 @@ if ( ARCH STREQUAL "nm6407f" OR ARCH STREQUAL "nm6408" OR ARCH STREQUAL "nm6476f
 		FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT}-${ARCH}-targets.cmake
 		NAMESPACE nmpp::)
 	
-	install(TARGETS ${PROJECT}-${ARCH}
-		RUNTIME
-			DESTINATION bin
-		ARCHIVE 
-			DESTINATION lib
-		PUBLIC_HEADER 
-			DESTINATION include
-		COMPONENT ${PROJECT}_${ARCH}
-		)
-	install(DIRECTORY include    DESTINATION .)		
-	if (NM_CARD_BUILD)
-		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-nm_card DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
-	endif()
-	if (QEMU_BUILD)
-		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-qemu DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
-	endif()
+	#install(TARGETS ${PROJECT}-${ARCH}
+	#	RUNTIME
+	#		DESTINATION bin
+	#	ARCHIVE 
+	#		DESTINATION lib
+	#	PUBLIC_HEADER 
+	#		DESTINATION include
+	#	COMPONENT ${PROJECT}_${ARCH}
+	#	)
+	#install(DIRECTORY include    DESTINATION .)		
+	#if (NM_CARD_BUILD)
+	#	install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-nm_card DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
+	#endif()
+	#if (QEMU_BUILD)
+	#	install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-qemu DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
+	#endif()
 endif()
 
-
+	
+	
 string(SUBSTRING ${ARCH} 2 4 NMC_CORE_VERSION )			 
 
 set_source_files_properties( ${nmc4f_asm_files} ${nmc4i_asm_files} ${nmc4r_asm_files}
@@ -499,6 +501,22 @@ if (ARCH STREQUAL "x64")
 		FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT}-${ARCH}-targets.cmake
 		NAMESPACE nmpp::)
 		
+	#install(TARGETS ${PROJECT}-${ARCH}
+	#	RUNTIME
+	#		DESTINATION bin
+	#	ARCHIVE 
+	#		DESTINATION lib
+	#	PUBLIC_HEADER 
+	#		DESTINATION include
+	#	COMPONENT ${PROJECT}_${ARCH}
+	#	)
+	#install(DIRECTORY include    DESTINATION .)
+	##install(FILES examples/templates/CMakeLists.txt DESTINATION examples-x64) # copy main.cpp & co
+	#install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-x64 DESTINATION examples) # copy main.cpp & co
+
+endif()
+
+
 	install(TARGETS ${PROJECT}-${ARCH}
 		RUNTIME
 			DESTINATION bin
@@ -508,19 +526,28 @@ if (ARCH STREQUAL "x64")
 			DESTINATION include
 		COMPONENT ${PROJECT}_${ARCH}
 		)
-	install(DIRECTORY include    DESTINATION .)
-	#install(FILES examples/templates/CMakeLists.txt DESTINATION examples-x64) # copy main.cpp & co
-	install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-x64 DESTINATION examples) # copy main.cpp & co
+	install(DIRECTORY include    DESTINATION .)		
+	if (MC12101_BUILD)
+		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-mc12101 DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
+	endif()
+	if (NM_CARD_BUILD)
+		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-nm_card DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
+	endif()
+	if (QEMU_BUILD)
+		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-qemu DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
+	endif()	
+	if (X64_BUILD)
+		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-x64 DESTINATION examples) # copy main.cpp & co
+	endif()
 
-endif()
 
-
-include(cmake/Packing.cmake)
 
 
 
 #add_subdirectory(examples examples-${ARCH})
 add_subdirectory(examples)
+
+include(cmake/Packing.cmake)
 
 #enable_testing()
 #add_subdirectory(app/test)

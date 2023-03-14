@@ -12,61 +12,62 @@ endif
 
 #all: nm6406 nm6407i nm6407f nm6408 nm6476i nm6476f x64
 
-conf: 
-	cmake -B build . -D ARCH=nm6408 -G Ninja -D NM_CARD_BUILD=ON -D QEMU_BUILD=ON 
-
-mk:
-	cmake --build build
-	
 nm6406:
-	cmake -B build_$@ . -D ARCH="$@"  -G Ninja 
-	cmake --build build_$@
-
+	cmake -B 		build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6406  -D MC5103_BUILD=ON -D QEMU_BUILD=ON	
+	cmake --build 	build_$@_release
+	cmake -B 		build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6406   
+	cmake --build 	build_$@_debug 
+	
 nm6407i:
-	cmake -B build_$@ . -D ARCH="$@"  -G Ninja
-	cmake --build build_$@ --verbose
-
+	cmake -B 		build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407i  -D MC12101_BUILD=ON -D QEMU_BUILD=ON	
+	cmake --build 	build_$@_release
+	cmake -B 		build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6407i  
+	cmake --build 	build_$@_debug 
+	
+	
 nm6407f:
-	cmake -B build_$@ . -D ARCH="$@"  -G Ninja -D NM_CARD_BUILD=ON
-	cmake --build build_$@ --verbose
+	cmake -B 		build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407f  -D MC12101_BUILD=ON -D QEMU_BUILD=ON	
+	cmake --build 	build_$@_release
+	cmake -B 		build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6407f  
+	cmake --build 	build_$@_debug 
 
 nm6408:
-	cmake -B build_$@ . -D ARCH="$@"  -G Ninja -D NM_CARD_BUILD=ON -D QEMU_BUILD=ON  -D X64_BUILD=OFF 
-	
-r:
-	cmake --build build_nm6408 --config Release --verbose 
+	cmake -B 		build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6408  -D NM_CARD_BUILD=ON -D QEMU_BUILD=ON	
+	cmake --build 	build_$@_release
+	cmake -B 		build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6408  
+	cmake --build 	build_$@_debug 
 
-d:
-	cmake --build build_nm6408 --config Debug --verbose
-	
 nm6476i:
-	cmake -B build_$@ . -D ARCH="$@"  -G Ninja
-	cmake --build build_$@ --verbose
-
+	cmake -B 		build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407i  -D MC11101_BUILD=ON -D QEMU_BUILD=ON	
+	cmake --build 	build_$@_release
+	cmake -B 		build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6407i  
+	cmake --build 	build_$@_debug 
+	
+	
 nm6476f:
-	cmake -B build_$@ . -D ARCH="$@"  -G Ninja
-	cmake --build build_$@ --verbose
+	cmake -B 		build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407f  -D MC11101_BUILD=ON -D QEMU_BUILD=ON	
+	cmake --build 	build_$@_release
+	cmake -B 		build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6407f  
+	cmake --build 	build_$@_debug 
+
 
 x64:
-	cmake -B build_$@ . -D ARCH="$@" -G "Visual Studio 15 2017 Win64" -D X64_BUILD=ON 
-	cmake --build build_$@
+	cmake -B 		build_$@ . -G "Visual Studio 15 2017 Win64" -D ARCH=x64 -D X64_BUILD=ON -D PACK_SUFFIX=nm6408
+	cmake --build 	build_$@ 
 	
-nm:	
-	cmake -B build_nmc_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release  -D ARCH=nm6408 -D NMC_TOOLCHAIN=ON	-D NM_CARD_BUILD=ON
-	cmake --build build_nmc_release
-	
-#	cmake -B build_x64_debug . 		-G "Visual Studio 15 2017 Win64" -DCMAKE_BUILD_TYPE=Debug 	-D X64_BUILD=ON -D ARCH=x64 -D NMC_TOOLCHAIN=OFF
-#	cmake --build build_x64_debug --config Debug
-nm6408pack:
-	cmake -B build_x64 . 			-G "Visual Studio 15 2017 Win64"  	-D ARCH=x64 	 	-D X64_BUILD=ON							-D PACK_BOARD=nm_card
-	cmake -B build_nmc_debug . 		-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6408  	-D NM_CARD_BUILD=ON -D QEMU_BUILD=ON	-D PACK_BOARD=nm_card
-	cmake -B build_nmc_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release -D ARCH=nm6408 		-D NM_CARD_BUILD=ON -D QEMU_BUILD=ON	-D PACK_BOARD=nm_card
-	
-	cmake --build build_x64 --config Release
-	cmake --build build_x64 --config Debug
-	cmake --build build_nmc_debug
-	cmake --build build_nmc_release
-	cpack -G 7Z --config cmake/MultiCPackConfig.cmake -C "Debug;Release"
 
-	
-#cmake -B build_pc . -G Ninja
+nm6406pack: x64 nm6406
+	cmake -D PACK_SUFFIX=nm6406 build_x64
+	cpack -G 7Z --config cmake/MultiCPackConfig.cmake -C "Debug;Release" 
+
+nm6407pack: x64 nm6407i nm6407f 
+	cmake -D PACK_SUFFIX=nm6407 build_x64
+	cpack -G 7Z --config cmake/MultiCPackConfig.cmake -C "Debug;Release" 
+
+nm6476pack: x64 nm6467i nm6476f 
+	cmake -D PACK_SUFFIX=nm6476 build_x64
+	cpack -G 7Z --config cmake/MultiCPackConfig.cmake -C "Debug;Release" 
+
+nm6408pack: x64 nm6408 
+	cmake -D PACK_SUFFIX=nm6408 build_x64
+	cpack -DPACK_SUFFIX=nm6408 -DCPACK_PACK_SUFFIX=XXX --verbose -G 7Z --config cmake/MultiCPackConfig.cmake -C "Debug;Release" 

@@ -1,8 +1,8 @@
-
 #define ALL_FPU( instr ) 	"fpu 0 " instr "\n\t" \
 							"fpu 1 " instr "\n\t" \
 							"fpu 2 " instr "\n\t" \
 							"fpu 3 " instr "\n\t"
+
 
 //	код для исправления аппаратной ошибки №5 процессора 6407
 //	замедляет выполнение процентов на 8, можно отключить для 6408
@@ -16,24 +16,3 @@
 #endif
 
 #define DUP(x) x,x
-
-//	Запрещаем прерывания и прочее в том же духе, деструктор возвращает обратно
-class EnterHardMode
-{
-	static int inst;
-public:
-	EnterHardMode()
-	{
-		inst++;
-		asm volatile( 	"pswr clear 01e0h;						\n\t"	//	block interrupts
-//							".int 0xf7990000						\n\t"//set fp_wait
-				);
-	}
-	~EnterHardMode()
-	{
-		if (--inst==0)
-			asm volatile( 	"pswr set 01e0h;						\n\t"	//	allow interrupts"
-//								".int 0xf7d90000						\n\t"//set fp_branch
-					);
-	}
-};

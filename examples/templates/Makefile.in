@@ -31,11 +31,11 @@ all: $(TARGET) $(TARGETD)
 
 $(TARGET): $(SOURCES) Makefile 
 	@echo ----------------------
-	$(CC)  -o$(TARGET) $(SOURCES) $(CXXFLAGS) $(LDFLAGS)  $(INC_DIRS) $(LIB_DIRS)   $(LIBS)
+	$(CC)  -o$(TARGET)  $(SOURCES) $(CXXFLAGS) $(LDFLAGS)  $(INC_DIRS) $(LIB_DIRS) $(LIBS)
 
 $(TARGETD): $(SOURCES) Makefile 
 	@echo ----------------------
-	$(CC)  -o$(TARGETD) 	$(SOURCES) $(CXXFLAGS) $(LDFLAGSD) $(INC_DIRS) $(LIB_DIRS)  $(LIBSD) 
+	$(CC)  -o$(TARGETD) $(SOURCES) $(CXXFLAGS) $(LDFLAGSD) $(INC_DIRS) $(LIB_DIRS) $(LIBSD) 
 	
 run: $(TARGET)
 	@RUNNER@ @RUNOPT@ $(TARGET)
