@@ -41,7 +41,7 @@ set(PROJECT nmpp)
 #option (NMC_TOOLCHAIN "Default toolchain is NMC " ON)
 option (X64_BUILD "Default toolchain is X64 " OFF)
 
-option (PACK_SUFFIX "package suffix" "---")
+#option (PACK_SUFFIX "package suffix" "---")
 
 if (X64_BUILD)
 	MESSAGE("########## X64 BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
@@ -549,8 +549,8 @@ add_subdirectory(examples)
 
 include(cmake/Packing.cmake)
 
-#enable_testing()
-#add_subdirectory(app/test)
+enable_testing()
+add_subdirectory(test)
 					
 #add_subdirectory(test/context)
 

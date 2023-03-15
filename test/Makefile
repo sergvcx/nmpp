@@ -14,10 +14,15 @@ x64:
 	cmake --build build_$@ -v
 	cd build_$@ && ctest -v
 
-mc12101f:
+mc12101:
 	cmake -B build_$@ -G "Unix Makefiles" -D MC12101_BUILD=ON
 	cmake --build build_$@ -v
-	cd build_$@ && ctest -v
+	cd build_$@ && ctest -V
+
+nm_card:
+	cmake -B build_$@ -G "Unix Makefiles" -D NM_CARD_BUILD=ON
+	cmake --build build_$@ -v
+	cd build_$@ && ctest -V
 
 mk:
 	cmake --build build_mc12101f -v

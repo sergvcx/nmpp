@@ -12,9 +12,9 @@
 #define __attribute__(a) 
 #endif
 
-float matrix[ROWS+OFFSET][COLUMNS+OFFSET] __attribute__ ((section (".data_imu1")));;
-float x[COLUMNS+OFFSET] __attribute__ ((section (".data_imu3")));;
-float y[ROWS+OFFSET] __attribute__ ((section (".data_imu4")));;
+float matrix[ROWS+OFFSET][COLUMNS+OFFSET] __attribute__ ((section (".data.imu1")));;
+float x[COLUMNS+OFFSET] __attribute__ ((section (".data.imu3")));;
+float y[ROWS+OFFSET] __attribute__ ((section (".data.imu4")));;
 
 
 

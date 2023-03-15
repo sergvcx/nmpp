@@ -372,14 +372,14 @@ endif()
 if (NM_CARD_BUILD)
 	set(BOARD "nm_card")
 	set(dir_list ${examples_risc} ${examples_float} )
-	set(CXXFLAGS " -O2 -Wall -nmc4-float -g")
+	set(CXXFLAGS " -O2 -Wall -mnmc4-float -g")
 	set(LIBS  	"-lnmpp-nm6408 -Wl,--whole-archive -lnm6408load_nmc -lnmc_io -Wl,--no-whole-archive")
 	set(LIBSD 	"-lnmpp-nm6408 -Wl,--whole-archive -lnm6408load_nmc -lnmc_io -lnm6408_stub -Wl,--no-whole-archive")
 	set(LDS 	"${BOARD}.lds")
 	set(RUNNER  "${BOARD}_run")
 	set(RUNOPT 	"-c0 -n0 -v")
 	set(RUNOPTD "-c0 -n0 -v")
-	set(MONITOR "nmc-monitor")
+	set(MONITOR "nm_gdb_monitor_nm_card")
 	
 	foreach(dir ${dir_list})
 		CONFIGURE_EXAMPLE (${dir} ${BOARD} "")
@@ -430,7 +430,7 @@ if ( X64_BUILD )
 	
 	#file(COPY ./templates/CMakeLists.txt DESTINATION examples-x64) # copy main.cpp & co
 	set (ROOT "../.." )
-	configure_file ("./templates/CMakeLists.txt.in" "examples-x64/CMakeLists.txt" )
+	configure_file ("./templates/CMakeLists.txt.in" "examples-x64/CMakeLists.txt" @ONLY )
 	
 endif()	
 	

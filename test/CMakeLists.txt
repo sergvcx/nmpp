@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
 
-include(${CMAKE_CURRENT_LIST_DIR}/../../cmake-variables.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/../cmake/cmake-variables.cmake)
    
    
    	option(MC12101_BUILD "Build tests for mc12101" OFF)
@@ -15,9 +15,9 @@ include(${CMAKE_CURRENT_LIST_DIR}/../../cmake-variables.cmake)
 	option(NMC_TOOLCHAIN "Used NMC Toolchin" ON)
 
 #if (NMC_TOOLCHAIN)
-if (not X64_BUILD)
+if (NOT X64_BUILD)
 #if (MC12101_BUILD OR MB7707_BUILD OR MC5103_BUILD OR MC7601_BUILD OR MC12705_BUILD OR NM_CARD_BUILD OR QEMU_BUILD)
-	set(CMAKE_TOOLCHAIN_FILE "../../nmc-gcc-compile.cmake")
+	set(CMAKE_TOOLCHAIN_FILE "../../cmake/nmc-gcc-compile.cmake")
 	#set(NMC_TOOLCHAIN ON)
 	project(nmpp-tests VERSION 0.1.0 LANGUAGES CXX C ASM)
 	MESSAGE("########## NMC BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
@@ -64,20 +64,20 @@ MESSAGE("## listdir_fixed 1 =${listdir_fixed} ")
 #set(BOARD NM_CARD)
 
 if(MC12101_BUILD)
-GENERATE_TESTS_MC12101("${listdir_fixed}" mc12101_fixed ${CMAKE_CURRENT_LIST_DIR}/mc12101-nmpu1.lds 1 nmpp-nmc4 )
-GENERATE_TESTS_MC12101("${listdir_float}" mc12101_float ${CMAKE_CURRENT_LIST_DIR}/mc12101-nmpu0.lds 0 nmpp-nmc4f )
+	GENERATE_TESTS_MC12101("${listdir_fixed}" mc12101_fixed ${CMAKE_CURRENT_LIST_DIR}/lds/mc12101-nmpu1.lds 1 nmpp-nm6407i )
+	GENERATE_TESTS_MC12101("${listdir_float}" mc12101_float ${CMAKE_CURRENT_LIST_DIR}/lds/mc12101-nmpu0.lds 0 nmpp-nm6407f )
 endif()
 
 if(MC11101_BUILD)
-GENERATE_TESTS_MC11101("${listdir}" mc11101_float ${CMAKE_CURRENT_LIST_DIR}/mc11101_flt.lds 0 nmpp-nmc4f )
+	GENERATE_TESTS_MC11101("${listdir}" mc11101_float ${CMAKE_CURRENT_LIST_DIR}/lds/mc11101_flt.lds 0 nmpp-nm6476f )
 endif()
 
 if(NM_CARD_BUILD)
-GENERATE_TESTS_NM_CARD("${listdir}" nm_card_float ${CMAKE_CURRENT_LIST_DIR}/nm_card.lds 0 0 nmpp-nm6408f )
+	GENERATE_TESTS_NM_CARD("${listdir_float}" nm_card_float ${CMAKE_CURRENT_LIST_DIR}/lds/nm_card.lds 0 0 nmpp-nm6408 )
 endif()
 
 if(X64_BUILD)
-GENERATE_TESTS_X64("${listdir}" x64 nmpp-x64)
+	GENERATE_TESTS_X64("${listdir}" x64 nmpp-x64)
 endif()
 
 

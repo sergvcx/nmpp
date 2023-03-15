@@ -44,6 +44,7 @@ rund: $(TARGETD)
 	@RUNNER@ @RUNOPTD@ $(TARGETD)
 
 # set path to MinGW/bin    For example:  SET PATH=%PATH%;d:\SDK\msys64\mingw64\bin\
+
 monitor:
 	@MONITOR@
 	

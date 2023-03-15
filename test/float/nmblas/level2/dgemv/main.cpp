@@ -7,12 +7,11 @@
 #define COLUMNS 13
 #define PADDING 5
 
-//#pragma data_section ".my_data_2"
-double matrix[ROWS][COLUMNS];
-//#pragma data_section ".my_data_3"
-double x[MAX(ROWS,COLUMNS)];
-//#pragma data_section ".my_data_3"
-double y[MAX(ROWS,COLUMNS)+PADDING];
+
+double matrix[ROWS][COLUMNS] __attribute__ ((section (".data.imu1")));;
+double x[MAX(ROWS,COLUMNS)] __attribute__ ((section (".data.imu3")));;
+double y[MAX(ROWS,COLUMNS)+PADDING] __attribute__ ((section (".data.imu4")));;
+
 
 //void nmblas_sgemv(
 //   const enum nm_trans           TRANS,

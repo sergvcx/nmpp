@@ -8,13 +8,11 @@
 #define COLUMNS 16
 #define PADDING 10
 
-#ifndef __GNUC__ 
-#define __attribute__(a) 
-#endif
 
-float matrix[ROWS][COLUMNS] __attribute__ ((section (".data_imu1")));;
-float x[COLUMNS] __attribute__ ((section (".data_imu3")));;
-float y[MAX(ROWS,COLUMNS)+PADDING] __attribute__ ((section (".data_imu4")));;
+
+float matrix[ROWS][COLUMNS] __attribute__ ((section (".data.imu1")));;
+float x[COLUMNS] __attribute__ ((section (".data.imu3")));;
+float y[MAX(ROWS,COLUMNS)+PADDING] __attribute__ ((section (".data.imu4")));;
 
 int main(){
   int i,j;
