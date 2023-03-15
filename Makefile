@@ -71,3 +71,12 @@ nm6476pack: x64 nm6467i nm6476f
 nm6408pack: x64 nm6408 
 	cmake -D PACK_SUFFIX=nm6408 build_x64
 	cpack -DPACK_SUFFIX=nm6408 -DCPACK_PACK_SUFFIX=XXX --verbose -G 7Z --config cmake/MultiCPackConfig.cmake -C "Debug;Release" 
+
+nm6408preset:
+#	cmake --list-presets=all .
+	cmake --preset nmpp-nm6408
+	cmake --build --preset nmpp-nm6408-release
+#	ctest --preset nmpp-nm6408
+
+nm6408presetpack:
+	cpack --preset nmpp-nm6408

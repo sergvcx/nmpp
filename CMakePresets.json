@@ -1,5 +1,5 @@
 {
-    "version": 6,
+    "version": 4,
     "configurePresets": [
         {
             "name": "nmpp-nm6406",
@@ -11,6 +11,7 @@
 				"ARCH":"nm6406",
                 "MC5103_BUILD": "ON",
 				"QEMU_BUILD": "ON",
+                "CMAKE_BUILD_TYPE":"Debug",
                 "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/cmake/nmc-gcc-compile.cmake"
             }
         },
@@ -24,6 +25,7 @@
 				"ARCH":"nm6407i",
                 "MC12101_BUILD": "ON",
 				"QEMU_BUILD": "ON",
+                "CMAKE_BUILD_TYPE":"Debug",
                 "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/cmake/nmc-gcc-compile.cmake"
             }
         },
@@ -37,6 +39,7 @@
 				"ARCH":"nm6407f",
                 "MC12101_BUILD": "ON",
 				"QEMU_BUILD": "ON",
+                "CMAKE_BUILD_TYPE":"Debug",
                 "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/cmake/nmc-gcc-compile.cmake"
             }
         },
@@ -50,6 +53,7 @@
 				"ARCH":"nm6408",
                 "NM_CARD_BUILD": "ON",
 				"QEMU_BUILD": "ON",
+                "CMAKE_BUILD_TYPE":"Debug",
                 "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/cmake/nmc-gcc-compile.cmake"
             }
         },
@@ -63,6 +67,7 @@
                 "ARCH":"nm6476i",
                 "MC11101_BUILD": "ON",
 				"QEMU_BUILD": "ON",
+                "CMAKE_BUILD_TYPE":"Debug",
                 "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/cmake/nmc-gcc-compile.cmake"
             }
         },
@@ -71,9 +76,10 @@
             "displayName": "Configure preset for virtual with ninja",
             "description": "Sets Ninja generator, build and install directory",
             "generator": "Ninja Multi-Config",
-            "binaryDir": "${sourceDir}/build/${presetName}",
+            "binaryDir": "${sourceDir}/build_x64",
             "cacheVariables": {
                 "ARCH":"x64",
+                "CMAKE_BUILD_TYPE":"Debug",
                 "X64_BUILD":"ON"
             }
         },
@@ -81,7 +87,7 @@
             "name": "nmpp-x64-windows-only",
             "displayName": "Configure preset for virtual with cl compiler",
             "description": "Sets cl compiler",
-            "binaryDir": "${sourceDir}/build/${presetName}",
+            "binaryDir": "${sourceDir}/build_x64",
             "architecture": {
                 "value": "x64",
                 "strategy": "set"
@@ -98,59 +104,75 @@
                 "type": "equals",
                 "lhs": "${hostSystemName}",
                 "rhs": "Windows"
-              }
+            }
         }        
     ],
     "buildPresets": [
         {
-            "name": "Release",
+            "name": "nmpp-nm6406-release",
             "configurePreset": "nmpp-nm6406",
             "configuration": "Release"
         },
         {
-            "name": "Debug",
+            "name": "nmpp-nm6406-debug",
             "configurePreset": "nmpp-nm6406",
             "configuration": "Debug"
         },        
         {
-            "name": "Release",
+            "name": "nmpp-nm6407i-release",
             "configurePreset": "nmpp-nm6407i",
             "configuration": "Release"
         },
         {
-            "name": "Debug",
+            "name": "nmpp-nm6407i-debug",
             "configurePreset": "nmpp-nm6407i",
             "configuration": "Debug"
         },
         {
-            "name": "Release",
+            "name": "nmpp-nm6407f-release",
             "configurePreset": "nmpp-nm6407f",
             "configuration": "Release"
         },
         {
-            "name": "Debug",
+            "name": "nmpp-nm6407f-debug",
             "configurePreset": "nmpp-nm6407f",
             "configuration": "Debug"
         },
         {
-            "name": "Release",
+            "name": "nmpp-nm6408-release",
             "configurePreset": "nmpp-nm6408",
             "configuration": "Release"
         },
         {
-            "name": "Debug",
+            "name": "nmpp-nm6408-debug",
             "configurePreset": "nmpp-nm6408",
             "configuration": "Debug"
         },
         {
-            "name": "Release",
+            "name": "nmpp-x64-windows-only-release",
             "configurePreset": "nmpp-x64-windows-only",
             "configuration": "Release"
         },
         {
-            "name": "Debug",
+            "name": "nmpp-x64-windows-only-debug",
             "configurePreset": "nmpp-x64-windows-only",
             "configuration": "Debug"
+        }
+    ],
+    "packagePresets": [
+        {
+          "name": "nmpp-nm6408",
+          "configurePreset": "nmpp-nm6408",
+          "generators": [
+            "7Z"
+          ],
+          "configFile":"${sourceDir}/cmake/MultiCPackConfig.cmake",
+          "configurations": [
+            "Debug","Release"
+          ],
+          "variables": {
+            "PACK_SUFFIX":"nm6408"
+          }
         }
     ]
 }
