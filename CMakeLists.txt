@@ -18,7 +18,7 @@ endif()
 
 set(CMAKE_DEBUG_POSTFIX d)
 
-include(cmake-variables.cmake)
+include(cmake/cmake-variables.cmake)
 
 #set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_LIST_DIR}/nmc-gcc-compile.cmake")
 #set(CMAKE_TOOLCHAIN_FILE "nmc-gcc-compile.cmake")
@@ -47,7 +47,7 @@ if (X64_BUILD)
 	MESSAGE("########## X64 BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
 	project(${PROJECT} VERSION 2.1.0 LANGUAGES CXX C)
 else()
-	set(CMAKE_TOOLCHAIN_FILE "nmc-gcc-compile.cmake")
+	set(CMAKE_TOOLCHAIN_FILE "cmake/nmc-gcc-compile.cmake")
 	MESSAGE("########## NMC BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
 	project(${PROJECT} VERSION 2.1.0 LANGUAGES CXX C ASM)
 endif()
@@ -81,7 +81,7 @@ MESSAGE("!!!!!!!!! CMAKE_CXX_COMPILER_ID= ${CMAKE_CXX_COMPILER_ID}")
 #endif()	
 
 #set(CMAKE_BUILD_TYPE "Release")
-#set(CMAKE_TOOLCHAIN_FILE "nmc-gcc-compile.cmake")
+
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_C_STANDARD 99)
@@ -370,8 +370,6 @@ endforeach()
 
 if (ARCH STREQUAL "nm6406")
 	MESSAGE("######## ARCH ${ARCH} ############")
-	#set(CMAKE_TOOLCHAIN_FILE "nmc-gcc-compile.cmake")
-	#project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C ASM)
 	add_library(${PROJECT}-${ARCH} STATIC  ${nmc4i_cpp_files} ${nmc4i_c_files} ${nmc4i_asm_files} ${nmc4i_s_files}
 										  ${nmc4r_cpp_files} ${nmc4r_c_files} ${nmc4r_asm_files} ${nmc4r_s_files}
 										)
@@ -393,9 +391,6 @@ endif()
 
 if ( ARCH STREQUAL "nm6407i" OR ARCH STREQUAL "nm6476i" )
 	MESSAGE("######## ARCH ${ARCH} ############")
-	#set(CMAKE_TOOLCHAIN_FILE "nmc-gcc-compile.cmake")
-	
-	#project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C ASM)
 	add_library(${PROJECT}-${ARCH} STATIC  ${nmc4i_cpp_files} ${nmc4i_c_files} ${nmc4i_asm_files} ${nmc4i_s_files}
 										   ${nmc4r_cpp_files} ${nmc4r_c_files} ${nmc4r_asm_files} ${nmc4r_s_files}
 										)
@@ -418,9 +413,6 @@ endif()
 
 if ( ARCH STREQUAL "nm6407f" OR ARCH STREQUAL "nm6408" OR ARCH STREQUAL "nm6476f" )
 	MESSAGE("######## ARCH ${ARCH} ############")
-	#set(CMAKE_TOOLCHAIN_FILE "nmc-gcc-compile.cmake")
-	
-	#project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C ASM)
 	add_library(${PROJECT}-${ARCH} STATIC ${nmc4f_cpp_files} ${nmc4f_c_files} ${nmc4f_asm_files} ${nmc4f_s_files}
 										  ${nmc4r_cpp_files} ${nmc4r_c_files} ${nmc4r_asm_files} ${nmc4r_s_files}
 										)
@@ -439,22 +431,6 @@ if ( ARCH STREQUAL "nm6407f" OR ARCH STREQUAL "nm6408" OR ARCH STREQUAL "nm6476f
 		FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT}-${ARCH}-targets.cmake
 		NAMESPACE nmpp::)
 	
-	#install(TARGETS ${PROJECT}-${ARCH}
-	#	RUNTIME
-	#		DESTINATION bin
-	#	ARCHIVE 
-	#		DESTINATION lib
-	#	PUBLIC_HEADER 
-	#		DESTINATION include
-	#	COMPONENT ${PROJECT}_${ARCH}
-	#	)
-	#install(DIRECTORY include    DESTINATION .)		
-	#if (NM_CARD_BUILD)
-	#	install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-nm_card DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
-	#endif()
-	#if (QEMU_BUILD)
-	#	install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-qemu DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
-	#endif()
 endif()
 
 	
@@ -471,14 +447,7 @@ set_source_files_properties( ${nmc4f_s_files} ${nmc4i_s_files} ${nmc4r_s_files}
 			 COMPILE_FLAGS "-mgas -DNMC_CORE_VERSION=${NMC_CORE_VERSION}"
 			 )
 			 
-			 #--defsym NMC_CORE_VERSION=6476
-#if(WIN32)
-	#add_dependencies(${PROJECT}-nmc4 nmc4cmd)
-	#add_dependencies(${PROJECT}-nmc4f nmc4cmd)
-#endif(WIN32)
-
 if (ARCH STREQUAL "x64")
-	#project(${PROJECT} VERSION 0.1.0 LANGUAGES CXX C ASM)
 	add_library(${PROJECT}-${ARCH} STATIC ${x64_cpp_files} ${x64_c_files} )
 	target_include_directories(${PROJECT}-${ARCH} 
 		PUBLIC 
@@ -501,19 +470,6 @@ if (ARCH STREQUAL "x64")
 		FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT}-${ARCH}-targets.cmake
 		NAMESPACE nmpp::)
 		
-	#install(TARGETS ${PROJECT}-${ARCH}
-	#	RUNTIME
-	#		DESTINATION bin
-	#	ARCHIVE 
-	#		DESTINATION lib
-	#	PUBLIC_HEADER 
-	#		DESTINATION include
-	#	COMPONENT ${PROJECT}_${ARCH}
-	#	)
-	#install(DIRECTORY include    DESTINATION .)
-	##install(FILES examples/templates/CMakeLists.txt DESTINATION examples-x64) # copy main.cpp & co
-	#install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-x64 DESTINATION examples) # copy main.cpp & co
-
 endif()
 
 
