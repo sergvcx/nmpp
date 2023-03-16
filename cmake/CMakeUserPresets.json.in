@@ -1,0 +1,54 @@
+{
+    "version": 6,
+    "include": ["CMakePresets.json"],
+    "configurePresets": [
+        {
+            "name": "win_vars",
+            "environment": {
+                "PATH":"@APPEND_PATH@;$penv{PATH}",
+                "GCC_EXEC_PREFIX":"@GCC_EXEC_PREFIX@"
+            },
+            "hidden": true
+        },
+        {
+            "name": "nmpp-nm6406-win-debug",
+            "inherits": ["win_vars", "nmpp-nm6406-debug"]
+        },
+        {
+            "name": "nmpp-nm6406-win-release",
+            "inherits": ["win_vars", "nmpp-nm6406-release"]
+        },
+        {
+            "name": "nmpp-nm6407i-win-debug",
+            "inherits": ["win_vars", "nmpp-nm6407i-debug"]
+        },
+        {
+            "name": "nmpp-nm6407i-win-release",
+            "inherits": ["win_vars", "nmpp-nm6407i-release"]
+        },
+        {
+            "name": "nmpp-nm6407f-win-debug",
+            "inherits": ["win_vars", "nmpp-nm6407f-debug"]
+        },
+        {
+            "name": "nmpp-nm6407f-win-release",
+            "inherits": ["win_vars", "nmpp-nm6407f-release"]
+        },
+        {
+            "name": "nmpp-nm6408-win-debug",
+            "inherits": ["win_vars", "nmpp-nm6408-debug"]
+        },
+        {
+            "name": "nmpp-nm6408-win-release",
+            "inherits": ["win_vars", "nmpp-nm6408-release"]
+        },
+        {
+            "name": "nmpp-nm6476i-win-release",
+            "inherits": ["win_vars", "nmpp-nm6476i-release"]
+        },
+        {
+            "name": "nmpp-nm6476i-win-debug",
+            "inherits": ["win_vars", "nmpp-nm6476i-debug"]
+        }
+    ]
+}
