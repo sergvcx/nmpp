@@ -6,16 +6,9 @@
 #define SIZE 2048
 #define EXT 20
 
-#ifdef __GNUC__ //  NMC-GCC C++ compilier 
-double buffer_a[SIZE+EXT] __attribute__ ((section (".data_imu1")));
-double buffer_b[SIZE+EXT] __attribute__ ((section (".data_imu2")));
-#else 		// NMSDK C++ compiler
-#pragma data_section ".data_imu1"
-double buffer_a[SIZE+EXT];
-#pragma data_section ".data_imu2"
-double buffer_b[SIZE+EXT];
+double buffer_a[SIZE+EXT] __attribute__ ((section (".data.imu1")));
+double buffer_b[SIZE+EXT] __attribute__ ((section (".data.imu2")));
 
-#endif 
 
 int main(){
 	

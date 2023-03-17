@@ -77,7 +77,7 @@ if(NM_CARD_BUILD)
 endif()
 
 if(X64_BUILD)
-	GENERATE_TESTS_X64("${listdir}" x64 nmpp-x64)
+	GENERATE_TESTS_X64("${listdir_float}" x64 nmpp-x64)
 endif()
 
 
