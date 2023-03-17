@@ -44,7 +44,7 @@ mc12705:
 	cmake --build build_$@
 
 nm_card:
-	cmake -B build   -G "Unix Makefiles" -D NM_CARD_BUILD=ON
+	cmake -B build   -G "Unix Makefiles" -D NM_CARD_BUILD=ON -D QEMU_BUILD=ON
 	cmake --build build
 
 mc5103:

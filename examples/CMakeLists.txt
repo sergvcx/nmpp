@@ -28,7 +28,7 @@ elseif (ARCH STREQUAL nm6467f )
 endif()
 
 if (MC12101_BUILD OR MB7707_BUILD OR MC5103_BUILD OR MC7601_BUILD OR MC12705_BUILD OR NM_CARD_BUILD OR QEMU_BUILD)
-	set(CMAKE_TOOLCHAIN_FILE "../nmc-gcc-compile.cmake")
+	set(CMAKE_TOOLCHAIN_FILE "../cmake/nmc-gcc-compile.cmake")
 	set(NMC_TOOLCHAIN ON)
 	project(nmpp-examples VERSION 0.1.0 LANGUAGES CXX C ASM)
 	MESSAGE("########## NMC BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
