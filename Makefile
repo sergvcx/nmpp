@@ -53,7 +53,8 @@ nm6476f:
 
 x64:
 	cmake -B 		build_$@ . -G "Visual Studio 15 2017 Win64" -D ARCH=x64 -D X64_BUILD=ON 
-	cmake --build 	build_$@ 
+	cmake --build 	build_$@ --config Release
+	cmake --build 	build_$@ --config Debug
 	
 
 nm6406pack: x64 nm6406

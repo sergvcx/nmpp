@@ -48,10 +48,10 @@ function(CONFIGURE_EXAMPLE IN_TEST_DIR)
 		return()
 	endif()	
 	
-	string(REPLACE " " ";" LIBS_LIST ${LIBS})
+#	string(REPLACE " " ";" LIBS_LIST ${LIBS})
 	add_executable			 	(${TEST_NAME}  ${SRC_LIST})
 	target_link_directories   	(${TEST_NAME} PUBLIC	@ROOT@/lib)
-	target_link_libraries     	(${TEST_NAME} ${LIBS_LIST})
+	target_link_libraries     	(${TEST_NAME} $<$<CONFIG:DEBUG>:${LIBSD}> $<$<CONFIG:RELEASE>:${LIBS}>  )
 	target_include_directories	(${TEST_NAME} PUBLIC @ROOT@/include)
 	set_target_properties     	(${TEST_NAME} PROPERTIES LINKER_LANGUAGE CXX)
 	

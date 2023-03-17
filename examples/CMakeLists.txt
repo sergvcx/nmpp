@@ -429,8 +429,9 @@ if ( X64_BUILD )
     endforeach()
 	
 	#file(COPY ./templates/CMakeLists.txt DESTINATION examples-x64) # copy main.cpp & co
-	set (ROOT "../.." )
+	set (ROOT "\$ENV\{NMPP\}")
 	configure_file ("./templates/CMakeLists.txt.in" "examples-x64/CMakeLists.txt" @ONLY )
+	configure_file ("./templates/configure_vs17.bat" "examples-x64/configure_vs17.bat" @ONLY )
 	
 endif()	
 	
