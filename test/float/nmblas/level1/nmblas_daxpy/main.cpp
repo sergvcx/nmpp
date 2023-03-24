@@ -7,15 +7,11 @@
 #define SIZE 1024
 #define EXT 30
 
-#ifndef __GNUC__ 
-#define __attribute__(a) 
-#endif
 
-
-double buffer_a[SIZE+EXT] __attribute__ ((section (".data_imu1")));
-double buffer_b[SIZE+EXT] __attribute__ ((section (".data_imu2")));
-double buffer_c[SIZE+EXT] __attribute__ ((section (".data_imu3")));
-double buffer_d[SIZE+EXT] __attribute__ ((section (".data_imu4")));
+double buffer_a[SIZE+EXT] __attribute__ ((section (".data.imu1")));
+double buffer_b[SIZE+EXT] __attribute__ ((section (".data.imu2")));
+double buffer_c[SIZE+EXT] __attribute__ ((section (".data.imu3")));
+double buffer_d[SIZE+EXT] __attribute__ ((section (".data.imu4")));
 
 
 
@@ -32,7 +28,7 @@ int main(){
 	//if (0)
 	//	nmppsRandUniform_64f(buffer_a,2,-40,40);
 	printf("TEST HAS BEEN STARTED\n");
-	return 12375;
+	//return 12375;
 	//case 1
 	for(i=0;i<SIZE;i++){
 		nmblas_daxpy(i,i,buffer_a,1,buffer_b,1);
@@ -63,6 +59,6 @@ int main(){
 	crc = nmppsCrcAcc_64f(buffer_a,0,SIZE+EXT,&crc);
 	crc = nmppsCrcAcc_64f(buffer_b,0,SIZE+EXT,&crc);
 	printf("TEST HAS BEEN FINISHED\n");
-	return 179369730^(crc>>2);
+	return 0x0236555e ^(crc>>2);
 }
 

@@ -11,8 +11,8 @@
 #endif
 
 
-nm32fcr src[4096] 		__attribute__ ((section (".data_imu4")));
-nm32fcr dst[4096 + 12] 	__attribute__ ((section (".data_imu5")));
+nm32fcr src[4096] 		__attribute__ ((section (".data.imu4")));
+nm32fcr dst[4096 + 12] 	__attribute__ ((section (".data.imu5")));
 
 #define		SIZE 		4096
 #include "math.h"

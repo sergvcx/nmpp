@@ -10,7 +10,7 @@
 	void * malloc32(unsigned size) { return malloc(size); }
 #else 
 	
-	void * malloc32(unsigned size) {	malloc((size) << 2);}
+	void * malloc32(unsigned size) { return	malloc((size) << 2);}
 #endif 
 
 

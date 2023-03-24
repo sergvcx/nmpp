@@ -64,22 +64,31 @@ MESSAGE("## listdir_fixed 1 =${listdir_fixed} ")
 #set(BOARD NM_CARD)
 
 if(MC12101_BUILD)
-	GENERATE_TESTS_MC12101("${listdir_fixed}" mc12101_fixed ${CMAKE_CURRENT_LIST_DIR}/lds/mc12101-nmpu1.lds 1 nmpp-nm6407i )
-	GENERATE_TESTS_MC12101("${listdir_float}" mc12101_float ${CMAKE_CURRENT_LIST_DIR}/lds/mc12101-nmpu0.lds 0 nmpp-nm6407f )
+	GENERATE_TESTS_MC12101("${listdir_fixed}" mc12101i ${CMAKE_CURRENT_LIST_DIR}/lds/mc12101-nmpu1.lds 1 nmpp-nm6407i )
+	#GENERATE_TESTS_MC12101("${listdir_float}" mc12101f ${CMAKE_CURRENT_LIST_DIR}/lds/mc12101-nmpu0.lds 0 nmpp-nm6407f )
 endif()
 
 if(MC11101_BUILD)
-	GENERATE_TESTS_MC11101("${listdir}" mc11101_float ${CMAKE_CURRENT_LIST_DIR}/lds/mc11101_flt.lds 0 nmpp-nm6476f )
+	GENERATE_TESTS_MC11101("${listdir_float}" mc11101 ${CMAKE_CURRENT_LIST_DIR}/lds/mc11101.lds nmpp-nm6476f )
+endif()
+
+if(MC11102_BUILD)
+	GENERATE_TESTS_MC11101("${listdir_fixed}" mc11102 ${CMAKE_CURRENT_LIST_DIR}/lds/mc11102.lds nmpp-nm6476i )
+endif()
+
+if(MC12705_BUILD)
+	GENERATE_TESTS_MC12705("${listdir_float}" mc12705 ${CMAKE_CURRENT_LIST_DIR}/lds/mc12705.lds 0 0 nmpp-nm6408 )
 endif()
 
 if(NM_CARD_BUILD)
-	GENERATE_TESTS_NM_CARD("${listdir_float}" nm_card_float ${CMAKE_CURRENT_LIST_DIR}/lds/nm_card.lds 0 0 nmpp-nm6408 )
+	GENERATE_TESTS_NM_CARD("${listdir_float}" nm_card ${CMAKE_CURRENT_LIST_DIR}/lds/nm_card.lds 0 0 nmpp-nm6408 )
 endif()
 
 if(X64_BUILD)
 	GENERATE_TESTS_X64("${listdir_float}" x64 nmpp-x64)
 endif()
 
+#${listdir_float}
 
 #GENERATE_TESTS(${CMAKE_CURRENT_LIST_DIR}/level2 level2 ${CMAKE_CURRENT_LIST_DIR}/mc12101-nmpu0.lds 0 nmpp-nmc4f )
 

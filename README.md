@@ -1,17 +1,90 @@
 ﻿# [NMPP](https://github.com/RC-MODULE/nmpp)
 
-# Документация:  
-  HTML: http://rc-module.github.io/nmpp/modules.html  
-  CHM(ZIP):  http://rc-module.github.io/nmpp/nmpp.zip  
-  CHM:  http://rc-module.github.io/nmpp/nmpp.chm (При открытии необходимо снять галочку "Всегда спрашивать при открытии этого файла")  
-  PDF:  http://rc-module.github.io/nmpp/nmpp.pdf  
-> Описание  функций сопровождается таблицами производительности при разных параметрах 
-
 # Назначение  
   NMPP (Neuro Matrix Performance Primitives) - C/C++ библиотека примитивов для архитектуры NeuroMatrix.
   Содержит оптимизированные функции для работы со скалярами, векторами, матрицами, сигналами и изображениями.
   Поддерживает как целочисленную арифметику с 1,2,4,8,16,32,64-разрядными данными процессоров семейства NMC3,
   так и арифметику с плавающей точкой одинарной и двойной точности для процессора NMC4. 
+
+# Структура 
+`/doc` Документация:  
+`/exmaples` Документация:  
+
+## Структура каталогов :  
+```
+nmpp    
+¦ 
+--doc                             - Documentation folder  
++---include                         - Header folder  
++---doc                            - scalar functions  
++---lib                            - Library folder  
++---examples                       -Folder with examples  
+¦   +---examples-nm6407f                      - Scalar library usage examples  
+¦   ¦   +---examples-mc12101
+¦   ¦   ¦   +---fixed             - build for emulator  
+¦   ¦   ¦   +---float\          - build for MB7707  
+¦   ¦   ¦   L---risc\          - build for MC5103  
+¦   ¦   L---examples-qemu  
+¦   ¦       +---make_emu  
+¦   ¦       +---make_mb7707  
+¦   ¦       L---make_mc5103  
+.  
+¦   +---examples-nm6408\
+¦   ¦   +---IMG_Filter_32s32s  
+¦   ¦   ¦   +---make_emu               - build for emulator  
+¦   ¦   ¦   +---make_gcc               - build for x86 by gcc   
+¦   ¦   ¦   +---make_mb7707            - build for MB7707  
+¦   ¦   ¦   +---make_mc5103            - build for MC5103  
+¦   ¦   ¦   L---make_vs8              - build for Microsoft Visual Studio 8.0  
+¦   ¦   ¦   L---make_vs13              - build for Microsoft Visual Studio 13.0  
+¦   ¦   +---IMG_Filter_8s16s  
+.  
+¦   +---examples-x64\                    - Matrix processing library usage examples  
+¦   ¦   +---Inverse  
+¦   ¦   ¦   +---make_emu  
+¦   ¦   ¦   +---make_gcc  
+¦   ¦   ¦   +---make_mb7707  
+¦   ¦   ¦   +---make_mc5103  
+¦   ¦   ¦   L---make_vs8  
+¦   ¦   ¦   L---make_vs13  
+¦   ¦   L---Simple  
+.  
+¦   +---nmpls                    - Signal processing library usage examples  
+¦   ¦   +---FFT  
+¦   ¦   ¦   L---FFT256  
+¦   ¦   ¦   ¦    +---make_emu  
+¦   ¦   ¦   ¦    +---make_gcc  
+¦   ¦   ¦   ¦    +---make_mb7707  
+¦   ¦   ¦   ¦    +---make_mc5103  
+¦   ¦   ¦   ¦    L---make_vs8  
+¦   ¦   ¦   ¦    L---make_vs13  
+.  
+¦   ¦   +---Filter  
+¦   ¦   ¦   +---SIG_Filter_16s16s  
+.  
+¦   ¦   ¦   +---SIG_Filter_16s32s  
+.  
+¦   +---nmplv                   - Vector processing library usage examples  
+¦   ¦   +---Simple  
+.  
+¦   L---nmvcore                 - Vector core function usage exmaples  
+¦       L---VecMulC  
+¦           +---make_emu  
+¦           +---make_mb7707  
+¦           L---make_mc5103  
+.  
++---templates                   - Temaplates for example projects generation  
+¦   L---sometest  
+¦       +---make_emu  
+¦       +---make_gcc  
+¦       +---make_mb7707  
+¦       +---make_mc5103  
+¦       +---make_mc7601  
+¦       L---make_vs8  
+  
+```
+
+
 
 # Компоненты библиотеки  
   NMPP библиотека включает в себя следующие компоненты:  
@@ -24,64 +97,53 @@
   - nmblas - BLAS библиотека 
 
 # Архитектуры 
-  Поддерживаются архитектуры NMC3 и NMC4.  Для NMC4 библиотеки разделяются по типу ядра: с плавающей точкой и целочисленной арифметикой.
+  Поддерживаются архитектуры NMC3 и NMC4.  Для NMC4 библиотеки разделяются по типу ядра: с плавающей точкой (nmc4f) и целочисленной арифметикой (nmc4i).
 
  Поддерживаемые процессоры :  
 
-|Процессор/ядро   													|nmc3	| nmc4 	| nmc4f	| arm	| модули                                                           |
-|-------------------------------------------------------------------|-------|-------|-------|-------|------------------------------------------------------------------|
-|[1879ХБ1Я](https://www.module.ru/products/1/18791-2)				|   +   |     	|       |   +   |[MB77.07](https://www.module.ru/products/2-moduli/7707),[МВ73.02](https://www.module.ru/products/2-moduli/7302)           |
-|[К1879ВЯ1Я](https://www.module.ru/products/1/23-18791) 	 		|   +   |     	|       |   +   |[МС76.01](https://www.module.ru/products/2-moduli/13--7601)       |
-|[К1888ВС018](https://www.module.ru/products/1/1888018-2) 		 	|   +   |     	|       |   +   |[MB115.01](https://www.module.ru/products/2-moduli/mb11501)       |
-|[1879ВМ5(NM6406)](https://www.module.ru/products/1/3-18795) 		|   +   |     	|       |       |[МС51.03](https://www.module.ru/products/2-moduli/15--5103)       |
-|[К1879ВМ6Я(6407)](https://www.module.ru/products/1/81-18796)       |       |   + 	|   +   |       |[МС121.01](https://www.module.ru/products/2-moduli/12101)         |
-|[1879ВМ8Я(6408)](https://www.module.ru/products/1/26-18798)       	|       |       |   +   |   +   |[МС127.05](https://www.module.ru/products/2-moduli/12705)         |
+|Процессор/ядро   								|nmc3	| nmc4i	| nmc4f	| arm	| модули                                                           |
+|-----------------------------------------------|-------|-------|-------|-------|------------------------------------------------------------------|
+|[1879ХБ1Я](https://www.module.ru/)				|   +   |     	|       |   +   |[MB77.07](https://www.module.ru/)       |
+|[К1879ВЯ1Я](https://www.module.ru/) 	 		|   +   |     	|       |   +   |[МС76.01](https://www.module.ru/)       |
+|[К1888ВС018](https://www.module.ru/) 		 	|   +   |     	|       |   +   |[MB115.01](https://www.module.ru/)      |
+|[1879ВМ5(NM6406)](https://www.module.ru/) 		|   +   |     	|       |       |[МС51.03](https://www.module.ru/)       |
+|[К1879ВМ6Я(6407)](https://www.module.ru/)      |       |   + 	|   +   |       |[МС121.01](https://www.module.ru/)      |
+|[1879ВМ8Я(6408)](https://www.module.ru/)     	|       |       |   +   |   +   |[МС127.05](https://www.module.ru/)      |
+|[1879ВМ7Я(nm6476)](https://www.module.ru/)   	|       |   +   |       |       |[МС111.02](https://www.module.ru/)      |
+|[1879ВМ9Я(nm6476)](https://www.module.ru/)   	|       |       |   +   |       |[МС111.01](https://www.module.ru/)      |
  
 
 
 # Кроссплатформенность    
   Для отладки и прототипирования проектов на x86/64 архитектуре предоставляются библиотеки-эмуляторы в ОС  Windows/Linux. 
-  Библиотеки точно имитируют исполнение функций для NeuroMatrix c побитовой точностью в x86/64-приложении .
+  Библиотеки точно имитируют исполнение функций для NeuroMatrix c побитовой точностью на x64-платоформе.
   Функции имеют единый интерфейс и могут использоваться в кроссплатформенной (x86/NeuroMatrix) разработке приложений под Windows/Linux. 
   
   Также имеется  **ARM** библиотека осуществляющая  вызов NMC функций со стороны ARM-ядра средствами rpc (для систем на кристалле с ARM ядром):  
   /lib/libnmpp-arm-rpc.a
   В частности ,данная библиотека осуществляют взаимосвязь [Matlab/Simulink с NeuroMatrix](https://exponenta.ru/news/podderzhka-mikroprocessorov-neuromatrix-ot-ntc-modul-v-simulink-i-embedded-coder)
 
-# Сборка 
-  Сборка под NeuroMatrix  осуществляется NMСGCC компилятором. Также поддерживается устаревший (legacy)  компилятор.  Эмуляторы библиотек собираются через  VisualStudio/MinGW  под Windows и GCC в Linux .
-  
 
-# Установка NMPP 
+# Установка NMPP
+установить переменную окружения  NMPP. Из корневой директории nmpp выпонить команду
+`setx NMPP %CD%`
+
+
 ## Системные требования
 * NeuroMatrix [NMGCC-SDK](https://www.module.ru/products/5/neuromatrix-nmc-sdk)
-  Для сборки библиотек под NeuroMatrix  gcc компилятором 
+  Необходим для компиляции примеров с использованием библиотеки NMPP под NeuroMatrix  nmc-gcc компилятором.
 
-* Leqacy NeuroMatrix SDK  (устаревшая версия SDK)
-  Для сборки библиотек под NeuroMatrix предыдущим  (legacy ) компилятором требуется  NMSDK версией не ниже 3.07
+* make  
+Сборка примеров построена на Makefile скриптах. Для корректного запуска сборочных Makefile-ов требуется установленный **make**.
+Для ОС Windows рекомендуется версия [make 3.81](https://sourceforge.net/projects/gnuwin32/files/make/3.81/)   
 
-* x86/x64 SDK   
-  Для эмуляции NeuroMatrix функций из состава NMPP под x86/x64 возможна сборка библиотек с помощью   Gnu GCC.  http://www.mingw.org/  или http://win-builds.org/doku.php или Microsoft Visual Studio, и в частности версиями Express:  
-[Visual Studio 2005 Express](http://apdubey.blogspot.ru/2009/04/microsoft-visual-studio-2005-express.html)  
-[Visual Studio Express](https://visualstudio.microsoft.com/ru/vs/older-downloads/)  
+*БЗИО  (Библиотека Загрузки И Обмена )
+Для запуска примеров на отладочных модулях необходимо установить соответсвуюещее ПО поддержки
 
-*  Сборка компонент (статические lib-библиотеки, тесты, примеры) построена на Makefile скриптах. Для корректного запуска сборочных Makefile-ов  под Windows требуется установленный GNU **make**.
-Для ОС Windows рекомендуется версия [make 3.81](https://sourceforge.net/projects/gnuwin32/files/make/3.81/)  (3.82- проявляет себя нестабильно). 
+* cmake (https://cmake.org/download/)
+Необходим для геренрации сборочных проектов примеров для x64 платформы 
 
-* Генерация сборочных проектов x86/x64 библиотек/тестов, в т.ч. для VisualStudio, осуществляется [premake5](https://premake.github.io/) . Требуется версия не ниже premake-5.0.0-alpha15
-
-<!---
-* Для обеспечения полной функциональности Makefile-ов (тестов/примеров/генерации проектов и т.д.), а также кросс-платформенной работы Makefile в ОС Windows и Linux  используются UNIX-утилиты:   
-[rm,cp,mkdir,rmdir,...](http://gnuwin32.sourceforge.net/packages/coreutils.htm ),  
-[find](http://gnuwin32.sourceforge.net/packages/findutils.htm ) (find.exe требуется переименовать в gfind.exe для устранения конфликта с системным Windows\System32\find.exe)  
--->
-
-* Для запуска примеров на вычислительных модулях (МС51.03, МС121.01, МВ77.07   и др.) требуются библиотеки загрузки и обмена  (БЗИО) с установленными соответствующими переменными окружения  (MC5103, MC12101, MB7707... )
-
-
-> Пути к make, premake5 и GnuWin утилитам должны быть прописаны в PATH 
-
-> Установить  переменные окружения , все необходимые утилиты (make, premake5, GnuWin утилиты  и пр.), ПО поддержки плат (БЗИО-библиотеки загрузки и обмена) под Windows  можно с помощью инсталятора nmkit.
+* средства компиляции под x64:  GCC, MinGW, Microsoft Visual Studio 
 
 
 

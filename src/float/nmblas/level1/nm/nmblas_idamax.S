@@ -32,25 +32,28 @@
 //
 // ---------------------------------------------------------------------
 //
+#define DEBUG 1
+#include "printx.hs"
+//#include "uassert.hs"
+.global _nmblas_idamax
+.text
+_nmblas_idamax:
+	ar5 = ar7 - 2;
 
+	push ar5,gr5;
+	push ar0,gr0;
 
-global _nmblas_idamax:label;
-extern _fpu_idamax:label;
+	gr5 = [--ar5];//N
+	ar0 = [--ar5];//X
+	gr0 = [--ar5];//INCX
 
-begin "text"
-<_nmblas_idamax>  
-  ar5 = ar7 - 2;
-  
-  push ar5,gr5;
-  push ar0,gr0;
+	//return ;
+	//PRINTF("_nmblas_idamax\n")
+	//PRINTF1("size=%x\n",gr5)
+	//PRINTF2("size=%x %x\n",gr5,ar7)
+	//uassert(gr5,=0)
+	call _fpu_idamax;
 
-  gr5 = [--ar5];//N
-  ar0 = [--ar5];//X
-  gr0 = [--ar5];//INCX
-
-  call _fpu_idamax;
-
-  pop ar0,gr0;
-  pop ar5,gr5;
-  return;
-end "text";
+	pop ar0,gr0;
+	pop ar5,gr5;
+	return;

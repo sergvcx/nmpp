@@ -5,12 +5,7 @@
 
 #define SIZE 1024
 
-#ifdef __GNUC__ //  NMC-GCC C++ compilier 
-float buffer_a[SIZE] __attribute__ ((section (".data_imu1")));
-#else 		// NMSDK C++ compiler
-#pragma data_section ".data_imu1"
-float buffer_a[SIZE];
-#endif 
+float buffer_a[SIZE] __attribute__ ((section (".data.imu1")));
 
 int main(){
 

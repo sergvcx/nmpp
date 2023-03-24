@@ -17,6 +17,12 @@ nm6406:
 	cmake --build 	build_$@_release
 	cmake -B 		build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6406   
 	cmake --build 	build_$@_debug 
+
+nm6407:
+	cmake -B 		build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407  -D MC12101_BUILD=ON -D QEMU_BUILD=ON	
+	cmake --build 	build_$@_release
+	cmake -B 		build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6407  
+	cmake --build 	build_$@_debug 
 	
 nm6407i:
 	cmake -B 		build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407i  -D MC12101_BUILD=ON -D QEMU_BUILD=ON	
@@ -26,7 +32,7 @@ nm6407i:
 	
 	
 nm6407f:
-	cmake -B 		build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407f  -D MC12101_BUILD=ON -D QEMU_BUILD=ON	
+	cmake -B 		build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407f  -D MC12101_BUILD=ON -D QEMU_BUILD=ON 
 	cmake --build 	build_$@_release
 	cmake -B 		build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6407f  
 	cmake --build 	build_$@_debug 
@@ -61,7 +67,7 @@ nm6406pack: x64 nm6406
 	cmake -D PACK_SUFFIX=nm6406 build_x64
 	cpack -G 7Z --config cmake/MultiCPackConfig.cmake -C "Debug;Release" 
 
-nm6407pack: x64 nm6407i nm6407f 
+nm6407pack: x64 nm6407
 	cmake -D PACK_SUFFIX=nm6407 build_x64
 	cpack -G 7Z --config cmake/MultiCPackConfig.cmake -C "Debug;Release"  
 

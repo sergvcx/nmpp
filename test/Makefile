@@ -12,11 +12,27 @@ endif
 x64:
 	cmake -B build_$@ -G "Visual Studio 15 2017 Win64" -D X64_BUILD=ON
 	cmake --build build_$@ -v
-	cd build_$@ && ctest -v
+	cd build_$@ && ctest -C Debug
 
-mc12101:
-	cmake -B build_$@ -G "Unix Makefiles" -D MC12101_BUILD=ON
+mc11101:
+	cmake -B build_$@ -G "Unix Makefiles" -D MC11101_BUILD=ON
 	cmake --build build_$@ -v
+	cd build_$@ && ctest -V
+
+mc11102:
+	cmake -B build_$@ -G "Unix Makefiles" -D MC11102_BUILD=ON
+	cmake --build build_$@ -v
+	cd build_$@ && ctest -V
+
+#	cmake -B build_$@ -G "Unix Makefiles" -D MC12101_BUILD=ON
+mc12101:
+	cmake -B build_$@ -G "Ninja" -D MC12101_BUILD=ON
+	cmake --build build_$@ 
+	cd build_$@ && ctest -V
+
+mc12705:
+	cmake -B build_$@ -G "Unix Makefiles" -D MC12705_BUILD=ON
+	cmake --build build_$@ 
 	cd build_$@ && ctest -V
 
 nm_card:

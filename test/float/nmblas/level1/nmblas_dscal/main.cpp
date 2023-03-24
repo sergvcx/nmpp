@@ -5,13 +5,7 @@
 
 #define SIZE 1024
 #define EXT 20
-#ifdef __GNUC__ //  NMC-GCC C++ compilier 
-double buffer_a[SIZE+EXT] __attribute__ ((section (".data_imu1")));
-#else 		// NMSDK C++ compiler
-#pragma data_section ".data_imu1"
-double buffer_a[SIZE];
-
-#endif 
+double buffer_a[SIZE+EXT] __attribute__ ((section (".data.imu1")));
 
 int main(){
 	int i;

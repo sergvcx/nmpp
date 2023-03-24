@@ -6,15 +6,8 @@
 #define SIZE 1024
 #define EXT 20
 
-#ifdef __GNUC__ //  NMC-GCC C++ compilier 
-float buffer_a[SIZE+EXT] __attribute__ ((section (".data_imu1")));
-float buffer_b[SIZE+EXT] __attribute__ ((section (".data_imu2")));
-#else 		// NMSDK C++ compiler
-#pragma data_section ".data_imu1"
-float buffer_a[SIZE+EXT];
-#pragma data_section ".data_imu2"
-float buffer_b[SIZE+EXT];
-#endif 
+float buffer_a[SIZE+EXT] __attribute__ ((section (".data.imu1")));
+float buffer_b[SIZE+EXT] __attribute__ ((section (".data.imu2")));
 
 int main(){
 	int i;
@@ -54,7 +47,7 @@ int main(){
 	crc = nmppsCrcAcc_32f(buffer_b,18,SIZE+EXT,&crc);
 	printf("RETURN CRC FROM CASE 2 IS  %d\n",crc);
 	
-	return (crc)^438457490 ;
+	return (crc>>2)^ 0x14000b0c;
 	//nmblas_srot(SIZE,buffer_a,1,buffer_b,1,0.707,0.707);
 
 

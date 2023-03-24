@@ -32,7 +32,7 @@ int main(){
 	for(i=0;i<SIZE;i++){
 		nmblas_dcopy(i,buffer_a,1,buffer_b,1);
 	}
-	return 100;
+	//return 100;
 	crc = nmppsCrcAcc_64f(buffer_a,0,SIZE+EXT,&crc);
 	crc = nmppsCrcAcc_64f(buffer_b,0,SIZE+EXT,&crc);
 	printf("TEST PATTERN NOMBER ONE HAS FINISHED\n");
@@ -60,6 +60,6 @@ int main(){
 	crc = nmppsCrcAcc_64f(buffer_a,0,SIZE+EXT,&crc);
 	crc = nmppsCrcAcc_64f(buffer_b,0,SIZE+EXT,&crc);
 	printf("TEST HAS BEEN FINISHED\n");
-	return 116800395 ^(crc>>2);
+	return  (0x06f63b8b) ^(crc>>2);
 }
 

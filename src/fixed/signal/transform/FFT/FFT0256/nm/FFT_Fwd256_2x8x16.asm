@@ -1,6 +1,6 @@
 //***************************************************************************/
 //*                     RC Module Inc., Moscow, Russia                      */
-//*                     NeuroMatrix(r) NM6403 Software                      */
+//*                     NeuroMatrix(r)        Software                      */
 //*                                                                         */
 //*   Fast Fourie Transform Library                                         */
 //*   (C-callable functions)                                                */
@@ -11,21 +11,9 @@
 //*                                                                         */
 //*   Software design:  S.Mushkaev                                          */
 //*                                                                         */
-//*   Version           1.2                                                 */
-//*   Start date:       03.07.2000                                          */
-//*   Release  $Date: 2005/02/10 11:47:59 $*/
 //*                                                                         */
 //*                                                                         */
 //***************************************************************************/
-
-    //--------------------------------------------------------------------
-    //! \fn int FFT_Fwd256(nm32sc*	GSrcBuffer, nm32sc*	LDstBuffer, void*	LBuffer, void*	GBuffer, int ShiftR=-1)
-	//!
-	//! \perfinclude _FFT_Fwd256__F6nm32scP6nm32scPPvPvi.html
-    //--------------------------------------------------------------------
-
-
-
 
 data ".data_fft_L"
 	

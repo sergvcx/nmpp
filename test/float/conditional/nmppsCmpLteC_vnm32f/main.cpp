@@ -11,9 +11,9 @@
 #define __attribute__(a) 
 #endif
 
-v2nm32f in[COUNT] __attribute__ ((section (".data_imu1")));;
-nm32s maskX[(N >> 5) + 5] __attribute__ ((section (".data_imu2")));;
-nm32s maskY[(N >> 5) + 5] __attribute__ ((section (".data_imu2")));;
+v2nm32f in[COUNT] __attribute__ ((section (".data.imu1")));
+nm32s maskX[(N >> 5) + 5] __attribute__ ((section (".data.imu2")));
+nm32s maskY[(N >> 5) + 5] __attribute__ ((section (".data.imu2")));
 v2nm32f threshold;
 
 int main()

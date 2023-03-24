@@ -1,13 +1,5 @@
 #include <stdlib.h>
-void nmppsCopy_64s(const double*	pSrcVec,		// Source array
-			double*	pDstVec,		// Destination array
-			int			SizeInt64	// nSize of Source array in 64-bit longs; nSize=[0,1,2...]
-		)
-{
-	int idx;
-	for(idx=0;idx<SizeInt64;idx++)
-		pDstVec[idx]=pSrcVec[idx];
-}
+
 
 void nmppmCopy_32fc(
 		double*	SrcMtr,

@@ -39,15 +39,15 @@ int main()
 //
 // #ifdef __GNUC__
 // /**************************NMC-GCC************************/
-// __attribute__((section(".data_imu1"))) 	nm32f in[N];
-// __attribute__((section(".data_imu2"))) 	nm32f out[N + 10];
+// __attribute__((section(".data.imu1"))) 	nm32f in[N];
+// __attribute__((section(".data.imu2"))) 	nm32f out[N + 10];
 // #else
 // /***************************NMCC*************************/
-// #pragma data_section ".data_imu1"
+// #pragma data_section ".data.imu1"
 // 	nm32f in1[N];
-// #pragma data_section ".data_imu2"
+// #pragma data_section ".data.imu2"
 // 	nm32f in2[N];
-// #pragma data_section ".data_imu3"
+// #pragma data_section ".data.imu3"
 // 	nm32f out[N + 10];
 // #endif
 //

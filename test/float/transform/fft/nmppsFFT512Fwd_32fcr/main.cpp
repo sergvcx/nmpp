@@ -12,8 +12,8 @@
 #endif
 
 
-nm32fcr src[SIZE] __attribute__ ((section (".data_imu2")));
-nm32fcr dst[SIZE] __attribute__ ((section (".data_imu5")));
+nm32fcr src[SIZE] __attribute__ ((section (".data.imu2")));
+nm32fcr dst[SIZE] __attribute__ ((section (".data.imu5")));
 
 
 int main()

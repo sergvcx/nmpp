@@ -5,9 +5,9 @@
 
 #define		N_ST	400 // число байт
 
-#pragma data_section ".data_imu1"
+#pragma data_section ".data.imu1"
 	nm32u in[N_ST/4];
-#pragma data_section ".data_imu2"
+#pragma data_section ".data.imu2"
 	nm32u out[N_ST];
 
 // extern "C" {

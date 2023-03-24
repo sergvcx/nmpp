@@ -7,10 +7,10 @@
 
 
 #ifdef __GNUC__
-__attribute__((section(".data_imu1"))) 	nm32f src[SIZE];
-__attribute__((section(".data_imu2"))) 	nm32f dst[SIZE + 10];
-__attribute__((section(".data_imu2"))) 	nm32f dst_ethalon[SIZE + 10];
-__attribute__((section(".data_imu3"))) 	nm32f tmp[SIZE];
+__attribute__((section(".data.imu1"))) 	nm32f src[SIZE];
+__attribute__((section(".data.imu2"))) 	nm32f dst[SIZE + 10];
+__attribute__((section(".data.imu2"))) 	nm32f dst_ethalon[SIZE + 10];
+__attribute__((section(".data.imu3"))) 	nm32f tmp[SIZE];
 #else
 nm32f src[SIZE];
 nm32f dst[SIZE + 10];

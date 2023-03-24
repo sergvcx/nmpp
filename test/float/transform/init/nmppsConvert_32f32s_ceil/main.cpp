@@ -6,9 +6,9 @@
 
 #define 				SIZE			1024
 
-#pragma data_section ".data_imu5"
+#pragma data_section ".data.imu5"
 	nm32f src_32f[SIZE];
-#pragma data_section ".data_imu5"
+#pragma data_section ".data.imu5"
 	nm32s dst_32s[SIZE + 12];
 
 	int Round(nm32f value)

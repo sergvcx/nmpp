@@ -98,7 +98,6 @@ function(GENERATE_TESTS_MC12101 dir_list  test_prefix ld_script board_core test_
 
   
 		add_executable(${TEST_NAME} ${dir}/main.cpp)
-        #add_dependencies(${TEST_NAME} ${test_lib})
         target_link_directories(${TEST_NAME} PUBLIC
             ${CMAKE_CURRENT_LIST_DIR}/../lib
             ${MC12101}/lib)
@@ -116,17 +115,16 @@ function(GENERATE_TESTS_MC12101 dir_list  test_prefix ld_script board_core test_
     endforeach()
 endfunction()
 
-function(GENERATE_TESTS_MC11101 dir_list  test_prefix ld_script board_core test_lib)
+function(GENERATE_TESTS_MC11101 dir_list  test_prefix ld_script test_lib)
     set(extra_args "${ARGN}")	
     foreach(dir ${dir_list})
 	
 		get_filename_component(basename ${dir} NAME)
-	    set(TEST_NAME ${test_prefix}_${basename}_${board_core}_test)
+	    set(TEST_NAME ${test_prefix}_${basename}_test)
         
 		MESSAGE(STATUS "###### ${TEST_NAME} #####")
   
 		add_executable(${TEST_NAME} ${dir}/main.cpp)
-        add_dependencies(${TEST_NAME} ${test_lib})
         target_link_directories(${TEST_NAME} PUBLIC
             ${CMAKE_CURRENT_LIST_DIR}/../lib
             ${MC11101}/lib
@@ -145,6 +143,64 @@ function(GENERATE_TESTS_MC11101 dir_list  test_prefix ld_script board_core test_
     endforeach()
 endfunction()
 
+function(GENERATE_TESTS_MC11102 dir_list  test_prefix ld_script test_lib)
+    set(extra_args "${ARGN}")	
+    foreach(dir ${dir_list})
+	
+		get_filename_component(basename ${dir} NAME)
+	    set(TEST_NAME ${test_prefix}_${basename}_test)
+        
+		MESSAGE(STATUS "###### ${TEST_NAME} #####")
+  
+		add_executable(${TEST_NAME} ${dir}/main.cpp)
+        target_link_directories(${TEST_NAME} PUBLIC
+            ${CMAKE_CURRENT_LIST_DIR}/../lib
+            ${MC11101}/lib
+			)
+        target_link_libraries(${TEST_NAME} ${test_lib} ${extra_args})
+        target_include_directories(${TEST_NAME} PUBLIC            
+            ${CMAKE_CURRENT_LIST_DIR}/../include
+			${MC11101}/include
+            )
+		
+        target_link_options(${TEST_NAME} PUBLIC
+            -T${ld_script}
+            -Wl,--whole-archive -lmc11101load_nm -lnm6407_io_nmc -Wl,--no-whole-archive)
+        add_test(NAME ${TEST_NAME}
+            COMMAND mc11101run $<TARGET_FILE:${TEST_NAME}> -p -v)
+    endforeach()
+endfunction()
+
+function(GENERATE_TESTS_MC12705 dir_list  test_prefix ld_script cluster core test_lib)
+    set(extra_args "${ARGN}")	
+    foreach(dir ${dir_list})
+	
+		get_filename_component(basename ${dir} NAME)
+	    set(TEST_NAME ${test_prefix}_${basename}_${board_core}_test)
+        
+		MESSAGE(STATUS "###### ${TEST_NAME} #####")
+
+  
+		add_executable(${TEST_NAME} ${dir}/main.cpp)
+        target_link_directories(${TEST_NAME} PUBLIC
+            ${CMAKE_CURRENT_LIST_DIR}/../lib
+            ${NM_CARD}/lib
+			)
+        target_link_libraries(${TEST_NAME} ${test_lib} ${extra_args})
+        target_include_directories(${TEST_NAME} PUBLIC            
+            ${CMAKE_CURRENT_LIST_DIR}/../include
+			${NM_CARD}/include
+            )
+		target_compile_options(${TEST_NAME} PUBLIC -include nmc_printf.h)
+        target_link_options(${TEST_NAME} PUBLIC
+            -T${ld_script}
+            -Wl,--whole-archive -lnm6408load_nmc -lnmc_io -Wl,--no-whole-archive)
+        add_test(NAME ${TEST_NAME}
+            COMMAND nm_card_run $<TARGET_FILE:${TEST_NAME}> -c${cluster} -n${core} -v -p)
+			
+
+    endforeach()
+endfunction()
 
 function(GENERATE_TESTS_NM_CARD dir_list  test_prefix ld_script cluster core test_lib)
     set(extra_args "${ARGN}")	
@@ -157,7 +213,6 @@ function(GENERATE_TESTS_NM_CARD dir_list  test_prefix ld_script cluster core tes
 
   
 		add_executable(${TEST_NAME} ${dir}/main.cpp)
-        #add_dependencies(${TEST_NAME} ${test_lib})
         target_link_directories(${TEST_NAME} PUBLIC
             ${CMAKE_CURRENT_LIST_DIR}/../lib
             ${NM_CARD}/lib

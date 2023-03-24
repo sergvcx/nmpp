@@ -8,13 +8,10 @@
 #define COLUMNS 100
 #define OFFSET 10
 
-#ifndef __GNUC__ 
-#define __attribute__(a) 
-#endif
 
-float matrix[ROWS+OFFSET][COLUMNS+OFFSET] __attribute__ ((section (".data.imu1")));;
-float x[COLUMNS+OFFSET] __attribute__ ((section (".data.imu3")));;
-float y[ROWS+OFFSET] __attribute__ ((section (".data.imu4")));;
+float matrix[ROWS+OFFSET][COLUMNS+OFFSET] __attribute__ ((section (".data.imu1")));
+float x[COLUMNS+OFFSET] __attribute__ ((section (".data.imu3")));
+float y[ROWS+OFFSET] __attribute__ ((section (".data.imu4")));
 
 
 

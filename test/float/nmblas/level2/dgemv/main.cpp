@@ -8,9 +8,9 @@
 #define PADDING 5
 
 
-double matrix[ROWS][COLUMNS] __attribute__ ((section (".data.imu1")));;
-double x[MAX(ROWS,COLUMNS)] __attribute__ ((section (".data.imu3")));;
-double y[MAX(ROWS,COLUMNS)+PADDING] __attribute__ ((section (".data.imu4")));;
+double matrix[ROWS][COLUMNS] __attribute__ ((section (".data.imu1")));
+double x[MAX(ROWS,COLUMNS)] __attribute__ ((section (".data.imu3")));
+double y[MAX(ROWS,COLUMNS)+PADDING] __attribute__ ((section (".data.imu4")));
 
 
 //void nmblas_sgemv(
@@ -126,7 +126,7 @@ int main(){
 
 
 	}
-	return 555;
+	//return 555;
 	printf(" ====== %x\n", crc>>2);
 	//return (crc>>2)^0;
 	//nmblas_dgemv(nm_n,3,2,alpha,(double*)matrix,4,x,1,0,y,1);
@@ -160,6 +160,6 @@ int main(){
 		}
 	}
 	printf(" ====== %x\n", crc >> 2);
-   return (crc>>2)^359121296 ;
+   return (crc>>2)^  0x1567c190;
    
 }

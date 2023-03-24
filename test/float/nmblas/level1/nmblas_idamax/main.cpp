@@ -6,14 +6,12 @@
 
 #define SIZE 1024
 //unsigned int buff[1000];
-#ifdef __GNUC__ //  NMC-GCC C++ compilier 
-double buffer_a[SIZE] __attribute__ ((section (".data_imu1")));
-#else 		// NMSDK C++ compiler
-#pragma data_section ".data_imu1"
-double buffer_a[SIZE];
-#endif 
-
+double buffer_a[SIZE] __attribute__ ((section (".data.imu1")));
 int main(){
+	int result = nmblas_idamax(32,buffer_a,1);
+	return result;
+}
+int main1(){
 	//asm("pswr clear 0x40;");
 	int i=0;
 	int r;
@@ -51,27 +49,37 @@ int main(){
 /////////////////////////////////////////////////////////////////////// case 1 
 	printf("TEST HAS BEEN STARTED\n");
 	
-	//for(int i=0; i<SIZE; i++ )
-	//	printf("%f\n",buffer_a[i]);
+	//for(int i=0; i<32; i++ )
+	//	printf("%i %f\n",i,buffer_a[i]);
 	
-	//result = nmblas_idamax(105,buffer_a,1);
-	result = nmblas_idamax(64,buffer_a,1);
-	
-	
-	printf("res=%d\n", result) ;
+	for (int i=0;i<32; i++){
+		buffer_a[i]=100+i;
+		result = nmblas_idamax(32,buffer_a,1);
+		printf("result=%i %f\n",result,buffer_a[result]);
+	}
+	if (0) for (int i=32; i<48; i++){
+		result = nmblas_idamax(i,buffer_a,1);
+		printf("size=%i %f\n",result,buffer_a[result]);
+	//result^= nmblas_idamax(32,buffer_a,1);
+	}
 	return result;
 	
 	//for(i=0;i<SIZE;i++){
-	for(i=2;i<106;i++){
+	for(i=32;i<1024;i++){
 		result = nmblas_idamax(i,buffer_a,1);
 		//printf("ARR[%d] THE INDEX OF MAX IS  %d\n",i,result);
+	
+		printf("res=%d\n", result) ;
+		//return result;
 		
 		nmppsCrcAcc_32u(&result,1,&crc);
 		
 		//pointer	= (float*)&result;
-		//crc = nmppsCrcAcc_32f(pointer,0,1,&crc);	
+		//crc = nmppsCrcAcc_64f(pointer,0,1,&crc);	
 	}
-	//return 1;
+	
+
+	return crc^0xD3763898;
 	//register int sir asm("gr5");
 	//asm volatile ("pswr clear 0x40;\n\t":::);
 	//
@@ -114,7 +122,7 @@ int main(){
 /////////////////////////////////////////////////////////////////////// case 4 
 	printf("THE FINAL CRC %d\n",crc);
 	printf("TEST HAS BEEN FINISHED\n");
-	return (crc>>2)^40 ;
+	return (crc>>2)^ 0x2ce6f03b;
 
 }
 

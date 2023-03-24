@@ -5,14 +5,8 @@
 
 #define		N_ST	400 // число целых чисел
 
-#pragma data_section ".data_imu1"
-	nm32u in[N_ST];
-#pragma data_section ".data_imu2"
-	nm32u out[N_ST/4];
-
-// extern "C" {
-// 	void nmppsConvertRisc_8u32u(nm32u *x, nm32u *X, int size);
-// }
+unsigned int in[N_ST/4]  __attribute__ ((section (".data.imu1")));
+unsigned int out[N_ST/4] __attribute__ ((section (".data.imu2")));
 
 
 

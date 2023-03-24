@@ -17,7 +17,7 @@
 //! \endif
 //!
 //------------------------------------------------------------------------
-extern unsigned int CRC32_Table[];
+extern "C" unsigned int CRC32_Table[];
 //#include "vcrc.h"
 
 extern "C"{

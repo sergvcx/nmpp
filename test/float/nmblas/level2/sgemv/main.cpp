@@ -10,9 +10,9 @@
 
 
 
-float matrix[ROWS][COLUMNS] __attribute__ ((section (".data.imu1")));;
-float x[COLUMNS] __attribute__ ((section (".data.imu3")));;
-float y[MAX(ROWS,COLUMNS)+PADDING] __attribute__ ((section (".data.imu4")));;
+float matrix[ROWS][COLUMNS] __attribute__ ((section (".data.imu1")));
+float x[COLUMNS] __attribute__ ((section (".data.imu3")));
+float y[MAX(ROWS,COLUMNS)+PADDING] __attribute__ ((section (".data.imu4")));
 
 int main(){
   int i,j;

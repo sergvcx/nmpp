@@ -29,22 +29,32 @@ qemu2:
 qemu3:	
 	cd build_qemu && ctest	
 
-mc12101:
-	cmake -B build_$@ -G "Unix Makefiles" -D MC12101_BUILD=ON -D X64_BUILD=ON
-	cmake --build build_$@ -v
+mc11101:
+	cmake -B build_$@ -G "Unix Makefiles" -D MC11101_BUILD=ON 
+	cmake --build build_$@ 
+	cd build_$@ && ctest 
+
+mc11102:
+	cmake -B build_$@ -G "Unix Makefiles" -D MC11101_BUILD=ON 
+	cmake --build build_$@ 
 	cd build_$@ && ctest
 
-mc12101i:
-	cmake -B build_$@ -G "Unix Makefiles" -D BOARD=mc12101 -D CORE=-nmpu0  
-	cmake --build build_$@
+mc12101:
+	cmake -B build_$@ -G "Unix Makefiles" -D MC12101_BUILD=ON 
+	cmake --build build_$@ 
 	cd build_$@ && ctest
+
+#mc12101i:
+#	cmake -B build_$@ -G "Unix Makefiles" -D MC12101_BUILD=ON -D ARCH=nm6407i
+#	cmake --build build_$@
+#	cd build_$@ && ctest
 
 mc12705:
-	cmake -B build_$@   -G "Unix Makefiles" -D BOARD=$@ -D RUNNER=mc12101run 
+	cmake -B build_$@   -G "Unix Makefiles" -D MC12705_BUILD=ON
 	cmake --build build_$@
 
 nm_card:
-	cmake -B build   -G "Unix Makefiles" -D NM_CARD_BUILD=ON -D QEMU_BUILD=ON -D ARCH=nm6408
+	cmake -B build   -G "Unix Makefiles" -D NM_CARD_BUILD=ON -D QEMU_BUILD=ON 
 	cmake --build build
 
 mc5103:

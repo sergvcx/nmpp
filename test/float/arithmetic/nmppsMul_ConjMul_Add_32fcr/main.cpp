@@ -5,15 +5,15 @@
 
 #define		N			256
 
-// #pragma data_section ".data_imu1"
+// #pragma data_section ".data.imu1"
 // 	nm32fcr in1[N];
-// #pragma data_section ".data_imu2"
+// #pragma data_section ".data.imu2"
 // 	nm32fcr in2[N];
-// #pragma data_section ".data_imu3"
+// #pragma data_section ".data.imu3"
 // 	nm32fcr in3[N];
-// #pragma data_section ".data_imu4"
+// #pragma data_section ".data.imu4"
 // 	nm32fcr in4[N];
-// #pragma data_section ".data_imu5"
+// #pragma data_section ".data.imu5"
 // 	nm32fcr out[N + 10];
 
 int main()
