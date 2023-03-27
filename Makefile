@@ -4,9 +4,11 @@ SHELL=cmd
 space := $(subst ,, )
 NMC_TOOLPATH=$(subst $(space),\$(space),$(NMC_GCC_TOOLPATH))
 -include $(NMC_TOOLPATH)\nmc4-ide\include\nmc4vars_win.mk
+X64_TOOLCHAIN="Visual Studio 15 2017 Win64"
 OS_RM    = del 
 else 
 OS_RM    = rm -f -r
+X64_TOOLCHAIN="Unix Makefiles"
 endif
 
 
@@ -58,7 +60,7 @@ nm6476f:
 
 
 x64:
-	cmake -B 		build_$@ . -G "Visual Studio 15 2017 Win64" -D ARCH=x64 -D X64_BUILD=ON 
+	cmake -B 		build_$@ . -G $(X64_TOOLCHAIN) -D ARCH=x64 -D X64_BUILD=ON 
 	cmake --build 	build_$@ --config Release
 	cmake --build 	build_$@ --config Debug
 	
