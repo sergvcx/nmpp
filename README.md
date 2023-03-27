@@ -6,85 +6,6 @@
   Поддерживает как целочисленную арифметику с 1,2,4,8,16,32,64-разрядными данными процессоров семейства NMC3,
   так и арифметику с плавающей точкой одинарной и двойной точности для процессора NMC4. 
 
-# Структура 
-`/doc` Документация:  
-`/exmaples` Документация:  
-
-## Структура каталогов :  
-```
-nmpp    
-¦ 
---doc                             - Documentation folder  
-+---include                         - Header folder  
-+---doc                            - scalar functions  
-+---lib                            - Library folder  
-+---examples                       -Folder with examples  
-¦   +---examples-nm6407f                      - Scalar library usage examples  
-¦   ¦   +---examples-mc12101
-¦   ¦   ¦   +---fixed             - build for emulator  
-¦   ¦   ¦   +---float\          - build for MB7707  
-¦   ¦   ¦   L---risc\          - build for MC5103  
-¦   ¦   L---examples-qemu  
-¦   ¦       +---make_emu  
-¦   ¦       +---make_mb7707  
-¦   ¦       L---make_mc5103  
-.  
-¦   +---examples-nm6408\
-¦   ¦   +---IMG_Filter_32s32s  
-¦   ¦   ¦   +---make_emu               - build for emulator  
-¦   ¦   ¦   +---make_gcc               - build for x86 by gcc   
-¦   ¦   ¦   +---make_mb7707            - build for MB7707  
-¦   ¦   ¦   +---make_mc5103            - build for MC5103  
-¦   ¦   ¦   L---make_vs8              - build for Microsoft Visual Studio 8.0  
-¦   ¦   ¦   L---make_vs13              - build for Microsoft Visual Studio 13.0  
-¦   ¦   +---IMG_Filter_8s16s  
-.  
-¦   +---examples-x64\                    - Matrix processing library usage examples  
-¦   ¦   +---Inverse  
-¦   ¦   ¦   +---make_emu  
-¦   ¦   ¦   +---make_gcc  
-¦   ¦   ¦   +---make_mb7707  
-¦   ¦   ¦   +---make_mc5103  
-¦   ¦   ¦   L---make_vs8  
-¦   ¦   ¦   L---make_vs13  
-¦   ¦   L---Simple  
-.  
-¦   +---nmpls                    - Signal processing library usage examples  
-¦   ¦   +---FFT  
-¦   ¦   ¦   L---FFT256  
-¦   ¦   ¦   ¦    +---make_emu  
-¦   ¦   ¦   ¦    +---make_gcc  
-¦   ¦   ¦   ¦    +---make_mb7707  
-¦   ¦   ¦   ¦    +---make_mc5103  
-¦   ¦   ¦   ¦    L---make_vs8  
-¦   ¦   ¦   ¦    L---make_vs13  
-.  
-¦   ¦   +---Filter  
-¦   ¦   ¦   +---SIG_Filter_16s16s  
-.  
-¦   ¦   ¦   +---SIG_Filter_16s32s  
-.  
-¦   +---nmplv                   - Vector processing library usage examples  
-¦   ¦   +---Simple  
-.  
-¦   L---nmvcore                 - Vector core function usage exmaples  
-¦       L---VecMulC  
-¦           +---make_emu  
-¦           +---make_mb7707  
-¦           L---make_mc5103  
-.  
-+---templates                   - Temaplates for example projects generation  
-¦   L---sometest  
-¦       +---make_emu  
-¦       +---make_gcc  
-¦       +---make_mb7707  
-¦       +---make_mc5103  
-¦       +---make_mc7601  
-¦       L---make_vs8  
-  
-```
-
-
 
 # Компоненты библиотеки  
   NMPP библиотека включает в себя следующие компоненты:  
@@ -95,6 +16,7 @@ nmpp
   - nmpps  - функции обработки сигналов
   - nmppi  - функции обработки изображений 
   - nmblas - BLAS библиотека 
+  
 
 # Архитектуры 
   Поддерживаются архитектуры NMC3 и NMC4.  Для NMC4 библиотеки разделяются по типу ядра: с плавающей точкой (nmc4f) и целочисленной арифметикой (nmc4i).
@@ -113,19 +35,53 @@ nmpp
 |[1879ВМ9Я(nm6476)](https://www.module.ru/)   	|       |       |   +   |       |[МС111.01](https://www.module.ru/)      |
  
 
+  
+## Структура каталогов :  
+```
+nmpp    
+¦ 
++--doc                            - Папка с документацией
++---include                       - Заголовочные файлы 
++---lib                           - Библиотечные файлы
++---examples                      - Примеры 
+¦   +---examples-nm6407           - Примеры под процессор nm6407 
+¦   ¦   +---examples-mc12101      - Примеры для платы МЦ 121.01
+¦   ¦   ¦   +---fixed             -    	векторных целочисленных функций     для ядра nmpu1
+¦   ¦   ¦   +---float             -     векторных функций с плавающей точкой для ядра nmpu0
+¦   ¦   ¦   L---risc              -     скалярных функций на RISC-ядре 
+¦   ¦   L---examples-qemu-f       - Примеры на эмуляторе QEMU для ядра с плавающей точкой  (nmpu0)
+¦   ¦   ¦   +---float             -     векторных функций с плавающей точкой для ядра nmpu0
+¦   ¦   ¦   +---risc              -     скалярных функций на RISC-ядре  nmpu0
+¦   ¦   L---examples-qemu-i       - Примеры на эмуляторе QEMU для целочисленного ядра (nmpu1)
+¦   ¦       +---fixed             -     векторных целочисленных функций     для ядра nmpu1
+¦   ¦       +---risc              -     скалярных функций на RISC-ядре  nmpu1
+¦   ¦       
+¦   +---examples-nm6408           - Примеры под процессор nm6408
+¦   ¦   +---exmaples-nm_card      - Примеры для модуля NM-CARD
+¦   ¦   ¦   +---float             -     векторных функций с плавающей точкой 
+¦   ¦   ¦   +---risc              -     скалярных функций на RISC-ядре 
+¦   ¦   L---examples-qemu         - Примеры на эмуляторе QEMU для nm6408
+¦   ¦   ¦   +---float  
+¦   ¦   ¦   +---risc
+¦   ¦       
+¦   +---examples-x64              - Примеры для x64
+¦   ¦   +---fixed                 -     целочисленных векторных функций 
+¦   ¦   +---float                 -     функций с плавающей точкой 
+¦   ¦   L---risc                  -     скалярных функций 
+¦   ¦   L---CMakeLists.txt        - Сборочный файл
+
+  
+```
+
 
 # Кроссплатформенность    
-  Для отладки и прототипирования проектов на x86/64 архитектуре предоставляются библиотеки-эмуляторы в ОС  Windows/Linux. 
-  Библиотеки точно имитируют исполнение функций для NeuroMatrix c побитовой точностью на x64-платоформе.
+  Для отладки и прототипирования проектов в ОС Windows/Linux предоставляются x86/x64 прототип-библиотеки. 
+  Функции прототип-библиотек точно имитируют исполнение функций для NeuroMatrix c побитовой точностью на x64-платоформе. (За исключением функций с плаваюей точкой )
   Функции имеют единый интерфейс и могут использоваться в кроссплатформенной (x86/NeuroMatrix) разработке приложений под Windows/Linux. 
   
-  Также имеется  **ARM** библиотека осуществляющая  вызов NMC функций со стороны ARM-ядра средствами rpc (для систем на кристалле с ARM ядром):  
-  /lib/libnmpp-arm-rpc.a
-  В частности ,данная библиотека осуществляют взаимосвязь [Matlab/Simulink с NeuroMatrix](https://exponenta.ru/news/podderzhka-mikroprocessorov-neuromatrix-ot-ntc-modul-v-simulink-i-embedded-coder)
-
-
 # Установка NMPP
-установить переменную окружения  NMPP. Из корневой директории nmpp выпонить команду
+Распаковать архив , переименовать архив в `nmpp` , установить переменную окружения  NMPP:
+Из корневой директории nmpp выпонить команду
 `setx NMPP %CD%`
 
 
@@ -147,244 +103,171 @@ nmpp
 
 
 
-## Сборка NeuroMatrix библиотек  GCC  компилятором (Windows/Linux)
-  Сборка библиотек осуществляется командой ```make``` из соответствующей архитектуре папки */make/nmpp-\<archictecture\>* :  
 
-| Команда 									| Результат сборки         |
-|-------------------------------------------|--------------------------|
-|``` /nmpp/make/nmpp-nmc3> make ```  		| nmpp/lib/libnmpp-nmc3.a  |
-|``` /nmpp/make/nmpp-nmc3> make DEBUG=y```	| nmpp/lib/libnmpp-nmc3d.a |
-|``` /nmpp/make/nmpp-nmc4> make ```  		| nmpp/lib/libnmpp-nmc4.a  |
-|``` /nmpp/make/nmpp-nmc4> make DEBUG=y```	| nmpp/lib/libnmpp-nmc4d.a |
-|``` /nmpp/make/nmpp-nmc4f> make ```  		| nmpp/lib/libnmpp-nmc4f.a |
-|``` /nmpp/make/nmpp-nmc4f> make DEBUG=y```	| nmpp/lib/libnmpp-nmc4fd.a |
-> **d** - признак Debug версии библиотеки  
-> **f** - признак библиотеки для ядра с плавающей точкой . Если  без префикса - для целочисленного ядра.
-
-
-
-## Сборка NeuroMatrix библиотек Legacy  компилятором 
-  Сборка устаревшим компилятором возможна командой ```make``` с ключом ```legacy``` из соответствующей архитектуре папки */make/nmpp-\<archictecture\>*:   
-
-| Команда 											| Результат сборки 	      |
-|-----------------------------------------------	|-------------------------|
-|```/nmpp/make/nmpp-nmc3> make legacy```  			| nmpp/lib/nmpp-nmc3.lib  |
-|```/nmpp/make/nmpp-nmc3> make legacy DEBUG=y```	| nmpp/lib/nmpp-nmc3d.lib |
-|```/nmpp/make/nmpp-nmc4> make legacy```  			| nmpp/lib/nmpp-nmc4.lib  |
-|```/nmpp/make/nmpp-nmc4> make legacy DEBUG=y```	| nmpp/lib/nmpp-nmc4d.lib |
-|```/nmpp/make/nmpp-nmc4f> make legacy ```  		| nmpp/lib/nmpp-nmc4f.lib |
-|```/nmpp/make/nmpp-nmc4f> make legacy DEBUG=y```	| nmpp/lib/nmpp-nmc4fd.lib |
-
-
-## Сборка x86/x64 библиотек  
-  Генерация сборочных файлов/проектов для x86/64 архитектуры в Windows/Linux оcуществляется средствами [**premake5**](https://premake.github.io/).  
-Сконфигурировать проект и собрать библиотеку можно одной из команд:   
-
-| Команда                                   | Результат сборки               |
-|-------------------------------------------|------------------------------- |
-|``` \nmpp\make\nmpp-x86-x64> make vs2015```| nmpp\lib\nmpp-x86.lib          |
-|											| nmpp\lib\nmpp-x86d.lib         | 
-|											| nmpp\lib\nmpp-x64.lib          |
-|											| nmpp\lib\nmpp-x64d.lib         |
-|``` \nmpp\make\nmpp-x86-x64> make gmake32```	| nmpp\lib\nmpp-x86.lib (Windows)|   
-|``` /nmpp/make/nmpp-x86-x64> make gmake64```	| nmpp/lib/libnmpp-x64.a (Linux) |   
+## Сборка и запуск nmc-примеров на плате 
  
-> x86/x64 эмуляторы библиотек включают в себя функции как с плавающей  , так и с целочисленной арифметикой. 
-
-Возможные ключи ```make```:
-| Ключ   | ОС      | Toolchain             |
-|--------|---------|-----------------------|
-| vs2005 | Windows | MS Visual Studio 2005 |
-| vs2015 | Windows | MS Visual Studio 2015 |
-| vs2017 | Windows | MS Visual Studio 2017 |
-| gmake32  | Windows | MinGW                 |
-| gmake64  | Linux   | GCC                   |
-
-
-
-> Команда ```  nmpp\make\nmpp-x86-x64> make ```  без ключа инициирует сборку под VS2015 в Windows и под GСС в Linux.
-
-## Настройка переменных окружения  
-Для удобства подключения библиотек к собственным проектам, а также к примерам и тестам  рекомендуется использовать переменную окружения **NMPP**. В Windows cоздать переменную **NMPP** и присвоить ей путь к установленной папке NMPP можно с помощью команды  
-```\nmpp\make\> make setenv```
-
-
-## Сборка примеров и тестов   
- Для сборки тестов и примеров  может быть необходим [HAL](https://github.com/RC-MODULE/hal) со скомпилированными соответствующими библиотеками и прописанной переменной окружения *HAL*.
- Некоторые тесты и примеров идут только с исходными С++ текстами. Сконфигурировать сборочные проекты пакетно можно командой ```make configure ``` из корневой папки с тестами или примерами, например:  
-
-
- 
-```\nmpp\app\examples-float\nmblas\> make configure ```    
-Далее собрать все проекты командой :   
-```\nmpp\app\examples-float\nmblas\> make build  ```     
-запуcтить все примеры поочердно:    
-```\nmpp\app\examples-float\nmblas\> make run  ```     
-Удалить все конфигуарции :    
-```\nmpp\app\examples-float\nmblas\> make kill  ```     
-
-Список платформ для которых будут сформированы сборочные проекты определяются в файле \nmpp\app\examples-float\nmblas\local.json  и требуют редактирования под имеющиеся платы. 
-Глобальные настройки находятся в \nmpp\app\global.json . Генерация проектов производится через копирование шаблонов , полный перечень которых сдержится в папке \nmpp\app\templates\sometest 
+Сборка примера осуществляется командой `make` из папки с примером
+`nmpp\examples\examples-nm6407\examples-mc12101\float\fft\nmppsFFT128Fwd> make`
+ Результат - испольняемый файл `main.abs`
   
-Сборка и запуск отдельного примера также осуществляется командами ```make ``` и ```make run ``` из соответствующей папки */make_\<board_core_compiler\>*, например:   
+Запуск примера осуществляется командой `make run ` 
+`nmpp\examples\examples-nm6407\examples-mc12101\float\fft\nmppsFFT128Fwd> make run` 
+Результат:
+```
+nmpp\examples\examples-nm6407\examples-mc12101\float\fft\nmppsFFT128Fwd>make run
 
-```\nmpp\app\examples-float\nmblas\level1\nmblas_dcopy\make_mc12101_nmpu0> make ```   
-запуcтить пример на плате:    
-```\nmpp\app\examples-float\nmblas\level1\nmblas_dcopy\make_mc12101_nmpu0> make run```   
-запуcтить пример на эмуляторе nmc-qemu:    
-```\nmpp\app\examples-float\nmblas\level1\nmblas_dcopy\make_mc12101_nmpu0> make qemu```   
+mc12101run -p -R -a0 -v test.abs
+Batch loader for MC121.01 v6.1. (C) 2022 RC Module Inc.
+Performing reset...
+Done.
+Firmware v6.0
+Start user program on core 0...
+src[0].re = 0.000000, src[0].im = 0.000000,
+src[1].re = 0.841471, src[1].im = 0.000000,
+src[2].re = 0.909297, src[2].im = 0.000000,
+src[3].re = 0.141120, src[3].im = 0.000000,
+src[4].re = -0.756802, src[4].im = 0.000000,
+src[5].re = -0.958924, src[5].im = 0.000000,
+src[6].re = -0.279415, src[6].im = 0.000000,
+src[7].re = 0.656987, src[7].im = 0.000000,
+src[8].re = 0.989358, src[8].im = 0.000000,
+src[9].re = 0.412118, src[9].im = 0.000000,
 
-> Должны быть установлены соответствующие переменные окружения к корневым каталогам ПО поддержки плат   (MС5103,MC12101,MC12705 и .т.д.)
-> Для генерации сборочных проектов требуется Python не ниже 3.6 
 
-<!--
-## Примеры:  
-Each library component contains several examples in *./app/examples*.
-Each example can be built for different targets.  
+dst[0].re = 1.188894, dst[0].im = 0.000000,
+dst[1].re = 1.192964, dst[1].im = -0.038583,
+dst[2].re = 1.205296, dst[2].im = -0.077684,
+dst[3].re = 1.226254, dst[3].im = -0.117849,
+dst[4].re = 1.256482, dst[4].im = -0.159674,
+dst[5].re = 1.296947, dst[5].im = -0.203848,
+dst[6].re = 1.349026, dst[6].im = -0.251185,
+dst[7].re = 1.414623, dst[7].im = -0.302699,
+dst[8].re = 1.496373, dst[8].im = -0.359679,
+dst[9].re = 1.597926, dst[9].im = -0.423831,
+test.abs :: Core 0 return 0 = 0x0.
+```
 
-There are next supported targets:
- - NM6405 emulator  
- - MC12101 board  
- - MC5103 board  
- - M77601 board  
- - MB7707 board (Specify MAC-address of your Ethernet adapter in /app/templates/sometest/make_mb7707/Makefile )  
- - x86(gcc) host  
- - x86(vs)  host   
+## Сборка и запуск nmc-примеров череp dbg-отладчик 
+Сборка примера осуществляется командой `make` из папки с примером
+`nmpp\examples\examples-nm6407\examples-mc12101\float\fft\nmppsFFT128Fwd> make`
+Результат - испольняемый файл `maind.abs`
+В этой же консоле запустить примера в режиме отладки командой `make rund ` 
+Результат:
+```
+nmpp\examples\examples-nm6407\examples-mc12101\float\fft\nmppsFFT128Fwd>make rund
+
+mc12101run -p -R -a0 -v testd.abs
+Batch loader for MC121.01 v6.1. (C) 2022 RC Module Inc.
+Performing reset...
+Done.
+Firmware v6.0
+Start user program on core 0...
+```
+
+Во второй консоле зпустить монитор командой  `make monitor` 
+Результат:
+```
+nmpp\examples\examples-nm6407\examples-mc12101\float\fft\nmppsFFT128Fwd>make monitor
+
+nm_gdb_monitor_mc12101.exe
+Enter 'q', 'x' or 'exit' to quit.
+14:27:52.513 [tgt_0_1] stub not initialized!
+14:27:52.514 [tgt_0_0] target init successefuly...
+14:27:52.515 [tcp_0_0] [b0,c0] server listening on port 5555...
+```
+
+
+В третьей консоли запустить dbg отладчик командой  `make dbg` 
+Результат:
+```
+nmpp\examples\examples-nm6407\examples-mc12101\float\fft\nmppsFFT128Fwd>make gdb
+
+nmc-gdb  testd.abs
+GNU gdb (NMC SDK Binutils ) 7.8
+Copyright (C) 2014 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "--host=x86_64-unknown-cygwin --target=nm-unknown-elf".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from testd.abs...done.
+(gdb)
+``` 
+Далее подключиться к монитору командой `target remote :5555`  и продлжить отладку программы команды gdb , например:
+``` 
+(gdb) target remote :5555
+Remote debugging using :5555
+0x2000018e in gdb_bp_template ()
+(gdb) b main
+Breakpoint 1 at 0x2b4: file main.cpp, line 19.
+(gdb) c
+Continuing.
+
+Breakpoint 1, main () at main.cpp:19
+19      {
+(gdb) n
+22        for(int i = 0; i < SIZE; i++) {
+(gdb) n
+23              src[i].re = sinf(i);
+(gdb) n
+22        for(int i = 0; i < SIZE; i++) {
+(gdb) c
+Continuing.
+``` 
+
+
+## Сборка и запуск nmc-примеров на эмуляторе
+ Сборка примера осуществляется командой `make` из папки с примером
  
+`nmpp\examples\examples-nm6407\examples-qemu-f\float\fft\nmppsFFT128Fwd> make `
+результат:
+`test.abs`
 
-List of actual target platforms is specified by **PLATFORMS** variable in **global.mk**.
-Action of **global.mk** may be overriden by **local.mk** if exists.
-
-  Run  **make** command from *./app/examples* folder to generate Makefiles and build all examples  
-  Run  **make run**  command    to run all examples  
-  Run  **make kill** command     to delete all generated Makefiles, binary and temporary files  
-
-  
->WARNING:  
-  Building and running of examples for some targets may be skipped if appropriate environment    variable (**VS80COMNTOOLS**,**VS120COMNTOOLS**,**CROSS_COMPILE**)
-  containing path to according SDK  is not defined in your system.
-
-## Тесты:  
-Running tests is performed by execution and comparision of results on different target paltforms:
-```bat
-  cd /app/test
-  make configure
-  make 
-  make test TARGET1=mc5103 TARGET2=vs8
-```
-Macro PLATFORMS in ./global.mk defines list of platforms for which tests need to be compiled.
-```bat
-PLATFORMS = vs8 mc5103 emu6405 mc7601 mb7707_libload
-```
-
-## Структура каталогов :  
-```bat
-NMPP    
-¦    
-+---app                         -Applications    
-¦   +---examples                   -Folder with examples  
-¦   ¦   +---nmplc                      - Scalar library usage examples  
-¦   ¦   ¦   +---Fixpoint32  
-¦   ¦   ¦   ¦   +---make_emu             - build for emulator  
-¦   ¦   ¦   ¦   +---make_mb7707          - build for MB7707  
-¦   ¦   ¦   ¦   L---make_mc5103          - build for MC5103  
-¦   ¦   ¦   L---Sqrt64  
-¦   ¦   ¦       +---make_emu  
-¦   ¦   ¦       +---make_mb7707  
-¦   ¦   ¦       L---make_mc5103  
-.....  
-¦   ¦   +---nmpli                     - Image processing library usage examples  
-¦   ¦   ¦   +---IMG_Filter_32s32s  
-¦   ¦   ¦   ¦   +---make_emu               - build for emulator  
-¦   ¦   ¦   ¦   +---make_gcc               - build for x86 by gcc   
-¦   ¦   ¦   ¦   +---make_mb7707            - build for MB7707  
-¦   ¦   ¦   ¦   +---make_mc5103            - build for MC5103  
-¦   ¦   ¦   ¦   L---make_vs8              - build for Microsoft Visual Studio 8.0  
-¦   ¦   ¦   ¦   L---make_vs13              - build for Microsoft Visual Studio 13.0  
-¦   ¦   ¦   +---IMG_Filter_8s16s  
-.....  
-¦   ¦   +---nmplm                    - Matrix processing library usage examples  
-¦   ¦   ¦   +---Inverse  
-¦   ¦   ¦   ¦   +---make_emu  
-¦   ¦   ¦   ¦   +---make_gcc  
-¦   ¦   ¦   ¦   +---make_mb7707  
-¦   ¦   ¦   ¦   +---make_mc5103  
-¦   ¦   ¦   ¦   L---make_vs8  
-¦   ¦   ¦   ¦   L---make_vs13  
-¦   ¦   ¦   L---Simple  
-.....  
-¦   ¦   +---nmpls                    - Signal processing library usage examples  
-¦   ¦   ¦   +---FFT  
-¦   ¦   ¦   ¦   L---FFT256  
-¦   ¦   ¦   ¦   ¦    +---make_emu  
-¦   ¦   ¦   ¦   ¦    +---make_gcc  
-¦   ¦   ¦   ¦   ¦    +---make_mb7707  
-¦   ¦   ¦   ¦   ¦    +---make_mc5103  
-¦   ¦   ¦   ¦   ¦    L---make_vs8  
-¦   ¦   ¦   ¦   ¦    L---make_vs13  
-.....  
-¦   ¦   ¦   +---Filter  
-¦   ¦   ¦   ¦   +---SIG_Filter_16s16s  
-.....  
-¦   ¦   ¦   ¦   +---SIG_Filter_16s32s  
-.....  
-¦   ¦   +---nmplv                   - Vector processing library usage examples  
-¦   ¦   ¦   +---Simple  
-.....  
-¦   ¦   L---nmvcore                 - Vector core function usage exmaples  
-¦   ¦       L---VecMulC  
-¦   ¦           +---make_emu  
-¦   ¦           +---make_mb7707  
-¦   ¦           L---make_mc5103  
-.....  
-¦   +---templates                   - Temaplates for example projects generation  
-¦   ¦   L---sometest  
-¦   ¦       +---make_emu  
-¦   ¦       +---make_gcc  
-¦   ¦       +---make_mb7707  
-¦   ¦       +---make_mc5103  
-¦   ¦       +---make_mc7601  
-¦   ¦       L---make_vs8  
-....  
-+---doc                             - Documentation folder  
-+---include                         - Header folder  
-¦   +---nmplc                            - scalar functions  
-¦   +---nmpli                            - image  functions    
-¦   +---nmplm                            - matrix functions  
-¦   +---nmpls                            - signal functions  
-¦   +---nmplv                            - vector functions  
-¦   +---nmtl                             - templates functions  
-¦   L---nmvcore                          - vector core function  
-+---lib                            - Library folder  
-¦   +---libnmpp_gcc.a                 - emulation library compiled by GNU GCC(mingw32)  
-¦   +---nmpp_nmc3.lib                 - NeuroMatrix Core3 compatible library (Release)  
-¦   +---nmpp_nmc3d.lib                - NeuroMatrix Core3 copatibale library (Debug)  
-¦   +---nmpp_x86.lib                 - emulation library compiled by Microsoft Visual Studio (Release)  
-¦   L---nmpp_x86d.lib                - emulation library compiled by Microsoft Visual Studio  (Debug)  
-¦
-+---make                           - Make folder  
-¦   +---distrib                        
-¦   +---doxy                           
-¦   +---nmc3                           - library project for NMSDK/NMC3 architecture  
-¦   +---nmpp-x86-x64                   - cmake folder to generate  x86 library  with GNU GCC  / Visual Studio 8.0/  Visual Studio 13.0 ...
-¦
-L---src                           - Sources  
-    +---nmplc                        - Scalar   
-	...  
-    +---nmpli                        - Image  
-    ¦   +---Convert  
-    ¦   ¦   +---common                  - NM&PC source folder  
-    ¦   ¦   +---nm                      - NM source only  
-    ¦   ¦   L---pc                      - PC source only  
-    ...  
-    +---nmplm                        - Matrix  
-    +---nmpls                        - Signal  
-    +---nmplv                        - Vector  
-    L---nmvcore                      - Vector core   
-```
-
--->
-## Обратная связь:  
-Предложения , вопросы , замечания  можно направлять на  <mushkaev@module.ru>
+ Запуск примера осуществляется командой `make run ` из папки с примером
+`nmpp\examples\examples-nm6407\examples-qemu-i\fixed\nmpps\nmppsAbs> make run` 
+ Результат:
+``` 
+nmpp\examples\examples-nm6407\examples-qemu-f\float\fft\nmppsFFT128Fwd>make run
+nmc-qemu   test.abs
+src[0].re = 0.000000, src[0].im = 0.000000,
+src[1].re = 0.841471, src[1].im = 0.000000,
+src[2].re = 0.909297, src[2].im = 0.000000,
+src[3].re = 0.141120, src[3].im = 0.000000,
+src[4].re = -0.756802, src[4].im = 0.000000,
+src[5].re = -0.958924, src[5].im = 0.000000,
+src[6].re = -0.279415, src[6].im = 0.000000,
+src[7].re = 0.656987, src[7].im = 0.000000,
+src[8].re = 0.989358, src[8].im = 0.000000,
+src[9].re = 0.412118, src[9].im = 0.000000,
 
 
+dst[0].re = 1.251059, dst[0].im = 3.705276,
+dst[1].re = 0.610468, dst[1].im = -6.178358,
+dst[2].re = 4.337256, dst[2].im = -0.049518,
+dst[3].re = -7.188754, dst[3].im = -10.601990,
+dst[4].re = -7.569518, dst[4].im = -21.431576,
+dst[5].re = 5.101729, dst[5].im = 4.800550,
+dst[6].re = 5.666995, dst[6].im = -1.939366,
+dst[7].re = -1.638571, dst[7].im = 1.385757,
+dst[8].re = 0.835347, dst[8].im = -0.257366,
+dst[9].re = 0.550331, dst[9].im = -1.148862,
+
+Successful end of simulation!
+``` 
+
+## Сборка и запуск x64-примеров на PC
+Конфигирурация сборочного проекта для x64 осуществляется с помощью `сmake`  
+например 
+`nmpp\examples\examples-x64> cmake -B build -G "Visual Studio 15 2017 Win64"`
+ Результат:
+`exmaples-x64.sln`
+ 
+ Далее сборка и запуск примеров осуществляется из среды  Visual Studio 
+ 

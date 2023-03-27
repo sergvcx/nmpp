@@ -45,11 +45,11 @@ option (X64_BUILD "Default toolchain is X64 " OFF)
 
 if (X64_BUILD)
 	MESSAGE("########## X64 BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
-	project(${PROJECT} VERSION 2.1.0 LANGUAGES CXX C)
+	project(${PROJECT} VERSION 2.1.1 LANGUAGES CXX C)
 else()
 	set(CMAKE_TOOLCHAIN_FILE "cmake/nmc-gcc-compile.cmake")
 	MESSAGE("########## NMC BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
-	project(${PROJECT} VERSION 2.1.0 LANGUAGES CXX C ASM)
+	project(${PROJECT} VERSION 2.1.1 LANGUAGES CXX C ASM)
 endif()
 	
 
@@ -547,6 +547,7 @@ else()
 endif()	
 	install(DIRECTORY include    DESTINATION .)		
 	install(DIRECTORY doc        DESTINATION .)		
+	install(FILES README.md      DESTINATION .)		
 	
 	if (MC12101_BUILD)
 		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-mc12101 DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
