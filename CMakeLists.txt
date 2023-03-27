@@ -338,10 +338,12 @@ foreach(dir ${NMC4F_DIRS})
 	file(GLOB 	asm_files 	${dir}/*.asm)	
 	file(GLOB 	c_files 	${dir}/*.c)
 	file(GLOB 	s_files 	${dir}/*.s)
+	file(GLOB 	S_files 	${dir}/*.S)
 	list(APPEND nmc4f_cpp_files ${cpp_files})
 	list(APPEND nmc4f_asm_files ${asm_files})	
 	list(APPEND nmc4f_c_files 	${c_files})
 	list(APPEND nmc4f_s_files 	${s_files})
+	list(APPEND nmc4r_s_files 	${S_files})
 endforeach()
 
 foreach(dir ${NMC4I_DIRS})
@@ -349,10 +351,12 @@ foreach(dir ${NMC4I_DIRS})
 	file(GLOB 	asm_files 	${dir}/*.asm)	
 	file(GLOB 	c_files 	${dir}/*.c)
 	file(GLOB 	s_files 	${dir}/*.s)
+	file(GLOB 	S_files 	${dir}/*.S)
 	list(APPEND nmc4i_cpp_files ${cpp_files})
 	list(APPEND nmc4i_asm_files ${asm_files})	
 	list(APPEND nmc4i_c_files 	${c_files})
 	list(APPEND nmc4i_s_files 	${s_files})
+	list(APPEND nmc4r_s_files 	${S_files})
 endforeach()
 
 foreach(dir ${NMC4R_DIRS})
@@ -360,10 +364,12 @@ foreach(dir ${NMC4R_DIRS})
 	file(GLOB 	asm_files 	${dir}/*.asm)	
 	file(GLOB 	c_files 	${dir}/*.c)
 	file(GLOB 	s_files 	${dir}/*.s)
+	file(GLOB 	S_files 	${dir}/*.S)
 	list(APPEND nmc4r_cpp_files ${cpp_files})
 	list(APPEND nmc4r_asm_files ${asm_files})	
 	list(APPEND nmc4r_c_files 	${c_files})
 	list(APPEND nmc4r_s_files 	${s_files})
+	list(APPEND nmc4r_s_files 	${S_files})
 endforeach()
 
 
@@ -527,7 +533,7 @@ if(ARCH STREQUAL nm6407)
 			DESTINATION include
 		COMPONENT ${PROJECT}_${ARCH}
 		)
-elseif()
+else()
 
 	install(TARGETS ${PROJECT}-${ARCH}
 		RUNTIME
@@ -544,20 +550,24 @@ endif()
 	
 	if (MC12101_BUILD)
 		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-mc12101 DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
-		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-qemu-i  DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
-		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-qemu-f  DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
 	endif()
 	if (NM_CARD_BUILD)
 		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-nm_card DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
+		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-qemu    DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
 	endif()
-	#if (QEMU_BUILD)
-	#	install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-qemu DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
-	#endif()	
 	if (X64_BUILD)
 		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-x64 DESTINATION examples) # copy main.cpp & co
 	endif()
 
 
+	if (QEMU_BUILD)
+		if(ARCH STREQUAL nm6407) 
+			install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-qemu-i  DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
+			install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-qemu-f  DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
+		else()	
+			install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-qemu DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
+		endif()
+	endif()
 
 
 
