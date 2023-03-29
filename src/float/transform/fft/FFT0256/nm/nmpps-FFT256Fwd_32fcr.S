@@ -9,24 +9,22 @@
 //*                     of complex array with 32 bit elements				*/
 //*	  Max Speed:		1812 ticks											*/
 //***************************************************************************/
+//extern _FFTFwd16x32Core: label;
 
-global _nmppsFFT256Fwd_32fcr: label;
-global _nmppsFFT256Inv_32fcr: label;
+.global _nmppsFFT256Fwd_32fcr
+.global _nmppsFFT256Inv_32fcr
 
-extern _FFTFwd16x32Core: label;
+.section .data.nmpp.fft.imu2
+AddrForDFT16_256: .long 0, 16, 8,  24, \
+						4, 20, 12, 28, \
+						2, 18, 10, 26, \
+						6, 22, 14, 30
+				
 
-data ".data_imu2"
-AddrForDFT16_256: word[16] = (
-					0, 16, 8, 24,
-					 4, 20, 12, 28,
-					  2, 18, 10, 26,
-					   6, 22, 14, 30
-					);
-end ".data_imu2";
 
-begin ".text"
-<_nmppsFFT256Fwd_32fcr>
-<_nmppsFFT256Inv_32fcr>
+.section .text.nmpp.fft
+_nmppsFFT256Fwd_32fcr:
+_nmppsFFT256Inv_32fcr:
 	ar5 = ar7 - 2;
 	push ar6, gr6;
 	push ar5, gr5;
@@ -54,7 +52,7 @@ begin ".text"
 
 	gr4 = ar0;
 	gr7 = ar6;
-<SORT_16_16_256>
+SORT_16_16_256:
 	gr3 = [ar4++];
 	ar1 = ar3 + gr3;
 	fpu 0 rep 16 vreg0 = [ar1++gr1];
@@ -105,7 +103,7 @@ begin ".text"
 	fpu 2 vreg0 = fpu 1 vreg0;
 	fpu 3 vreg0 = fpu 2 vreg0;
 
-<COMP_8_FFT32>
+COMP_8_FFT32:
 	fpu 0 rep 16 vreg1 = [ar0++];
 	fpu 0 rep 16 vreg2 = [ar6++];
 	fpu 0 .complex vreg5 = vreg0 * vreg2 + vreg1; // 1 - FFT32
@@ -241,7 +239,7 @@ begin ".text"
 	fpu 2 rep 32 [ar2++] = vreg5;
 	fpu 3 rep 32 [ar2++] = vreg5;
 
-<exit_FFTFwd256>
+exit_FFTFwd256:
 	pop ar0, gr0;
 	pop ar1, gr1;
 	pop ar2, gr2;
@@ -250,4 +248,4 @@ begin ".text"
 	pop ar5, gr5;
 	pop ar6, gr6;
 	return;
-end ".text";
+

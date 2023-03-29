@@ -65,7 +65,7 @@ MESSAGE("## listdir_fixed 1 =${listdir_fixed} ")
 
 if(MC12101_BUILD)
 	GENERATE_TESTS_MC12101("${listdir_fixed}" mc12101i ${CMAKE_CURRENT_LIST_DIR}/lds/mc12101-nmpu1.lds 1 nmpp-nm6407i )
-	#GENERATE_TESTS_MC12101("${listdir_float}" mc12101f ${CMAKE_CURRENT_LIST_DIR}/lds/mc12101-nmpu0.lds 0 nmpp-nm6407f )
+	GENERATE_TESTS_MC12101("${listdir_float}" mc12101f ${CMAKE_CURRENT_LIST_DIR}/lds/mc12101-nmpu0.lds 0 nmpp-nm6407f )
 endif()
 
 if(MC11101_BUILD)

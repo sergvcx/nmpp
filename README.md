@@ -40,33 +40,33 @@
 ```
 nmpp    
 ¦ 
-+--doc                            - Папка с документацией
-+---include                       - Заголовочные файлы 
-+---lib                           - Библиотечные файлы
-+---examples                      - Примеры 
-¦   +---examples-nm6407           - Примеры под процессор nm6407 
-¦   ¦   +---examples-mc12101      - Примеры для платы МЦ 121.01
-¦   ¦   ¦   +---fixed             -    	векторных целочисленных функций     для ядра nmpu1
-¦   ¦   ¦   +---float             -     векторных функций с плавающей точкой для ядра nmpu0
+L--doc                            - Папка с документацией
+L---include                       - Заголовочные файлы 
+L---lib                           - Библиотечные файлы
+L---examples                      - Примеры 
+¦   L---examples-nm6407           - Примеры под процессор nm6407 
+¦   ¦   L---examples-mc12101      - Примеры для платы МЦ 121.01
+¦   ¦   ¦   L---fixed             -    	векторных целочисленных функций     для ядра nmpu1
+¦   ¦   ¦   L---float             -     векторных функций с плавающей точкой для ядра nmpu0
 ¦   ¦   ¦   L---risc              -     скалярных функций на RISC-ядре 
 ¦   ¦   L---examples-qemu-f       - Примеры на эмуляторе QEMU для ядра с плавающей точкой  (nmpu0)
-¦   ¦   ¦   +---float             -     векторных функций с плавающей точкой для ядра nmpu0
-¦   ¦   ¦   +---risc              -     скалярных функций на RISC-ядре  nmpu0
+¦   ¦   ¦   L---float             -     векторных функций с плавающей точкой для ядра nmpu0
+¦   ¦   ¦   L---risc              -     скалярных функций на RISC-ядре  nmpu0
 ¦   ¦   L---examples-qemu-i       - Примеры на эмуляторе QEMU для целочисленного ядра (nmpu1)
-¦   ¦       +---fixed             -     векторных целочисленных функций     для ядра nmpu1
-¦   ¦       +---risc              -     скалярных функций на RISC-ядре  nmpu1
+¦   ¦       L---fixed             -     векторных целочисленных функций     для ядра nmpu1
+¦   ¦       L---risc              -     скалярных функций на RISC-ядре  nmpu1
 ¦   ¦       
-¦   +---examples-nm6408           - Примеры под процессор nm6408
-¦   ¦   +---exmaples-nm_card      - Примеры для модуля NM-CARD
-¦   ¦   ¦   +---float             -     векторных функций с плавающей точкой 
-¦   ¦   ¦   +---risc              -     скалярных функций на RISC-ядре 
+¦   L---examples-nm6408           - Примеры под процессор nm6408
+¦   ¦   L---exmaples-nm_card      - Примеры для модуля NM-CARD
+¦   ¦   ¦   L---float             -     векторных функций с плавающей точкой 
+¦   ¦   ¦   L---risc              -     скалярных функций на RISC-ядре 
 ¦   ¦   L---examples-qemu         - Примеры на эмуляторе QEMU для nm6408
-¦   ¦   ¦   +---float  
-¦   ¦   ¦   +---risc
+¦   ¦       L---float  
+¦   ¦       L---risc
 ¦   ¦       
 ¦   +---examples-x64              - Примеры для x64
-¦   ¦   +---fixed                 -     целочисленных векторных функций 
-¦   ¦   +---float                 -     функций с плавающей точкой 
+¦   ¦   L---fixed                 -     целочисленных векторных функций 
+¦   ¦   L---float                 -     функций с плавающей точкой 
 ¦   ¦   L---risc                  -     скалярных функций 
 ¦   ¦   L---CMakeLists.txt        - Сборочный файл
 
@@ -76,12 +76,12 @@ nmpp
 
 # Кроссплатформенность    
   Для отладки и прототипирования проектов в ОС Windows/Linux предоставляются x86/x64 прототип-библиотеки. 
-  Функции прототип-библиотек точно имитируют исполнение функций для NeuroMatrix c побитовой точностью на x64-платоформе. (За исключением функций с плаваюей точкой )
+  Функции прототип-библиотек точно имитируют исполнение функций для NeuroMatrix c побитовой точностью на x64-платформе. (За исключением функций с плавающей точкой )
   Функции имеют единый интерфейс и могут использоваться в кроссплатформенной (x86/NeuroMatrix) разработке приложений под Windows/Linux. 
   
 # Установка NMPP
 Распаковать архив , переименовать архив в `nmpp` , установить переменную окружения  NMPP:
-Из корневой директории nmpp выпонить команду
+Из корневой директории nmpp выполнить команду
 `setx NMPP %CD%`
 
 
@@ -108,7 +108,7 @@ nmpp
  
 Сборка примера осуществляется командой `make` из папки с примером
 `nmpp\examples\examples-nm6407\examples-mc12101\float\fft\nmppsFFT128Fwd> make`
- Результат - испольняемый файл `main.abs`
+ Результат - исполняемый файл `main.abs`
   
 Запуск примера осуществляется командой `make run ` 
 `nmpp\examples\examples-nm6407\examples-mc12101\float\fft\nmppsFFT128Fwd> make run` 
@@ -150,8 +150,8 @@ test.abs :: Core 0 return 0 = 0x0.
 ## Сборка и запуск nmc-примеров череp dbg-отладчик 
 Сборка примера осуществляется командой `make` из папки с примером
 `nmpp\examples\examples-nm6407\examples-mc12101\float\fft\nmppsFFT128Fwd> make`
-Результат - испольняемый файл `maind.abs`
-В этой же консоле запустить примера в режиме отладки командой `make rund ` 
+Результат - исполняемый файл `maind.abs`
+В этой же консоли запустить примера в режиме отладки командой `make rund ` 
 Результат:
 ```
 nmpp\examples\examples-nm6407\examples-mc12101\float\fft\nmppsFFT128Fwd>make rund
@@ -164,7 +164,7 @@ Firmware v6.0
 Start user program on core 0...
 ```
 
-Во второй консоле зпустить монитор командой  `make monitor` 
+Во второй консоли запустить монитор командой  `make monitor` 
 Результат:
 ```
 nmpp\examples\examples-nm6407\examples-mc12101\float\fft\nmppsFFT128Fwd>make monitor
@@ -181,8 +181,7 @@ Enter 'q', 'x' or 'exit' to quit.
 Результат:
 ```
 nmpp\examples\examples-nm6407\examples-mc12101\float\fft\nmppsFFT128Fwd>make gdb
-
-nmc-gdb  testd.abs
+nmc-gdb   -ex "target remote :5555" testd.abs
 GNU gdb (NMC SDK Binutils ) 7.8
 Copyright (C) 2014 Free Software Foundation, Inc.
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
@@ -198,11 +197,29 @@ Find the GDB manual and other documentation resources online at:
 For help, type "help".
 Type "apropos word" to search for commands related to "word"...
 Reading symbols from testd.abs...done.
-(gdb)
+Remote debugging using :5555
+0x2000018e in gdb_bp_template ()
 ``` 
-Далее подключиться к монитору командой `target remote :5555`  и продлжить отладку программы команды gdb , например:
+После подключения к монитору продолжить отладку программы команды gdb , например:
 ``` 
-(gdb) target remote :5555
+nmpp\examples\examples-nm6407\examples-mc12101\float\fft\nmppsFFT128Fwd>make gdb
+
+nmc-gdb  -ex "target remote :5555"  testd.abs
+GNU gdb (NMC SDK Binutils ) 7.8
+Copyright (C) 2014 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "--host=x86_64-unknown-cygwin --target=nm-unknown-elf".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from testd.abs...done.
 Remote debugging using :5555
 0x2000018e in gdb_bp_template ()
 (gdb) b main
@@ -216,10 +233,10 @@ Breakpoint 1, main () at main.cpp:19
 22        for(int i = 0; i < SIZE; i++) {
 (gdb) n
 23              src[i].re = sinf(i);
-(gdb) n
-22        for(int i = 0; i < SIZE; i++) {
 (gdb) c
 Continuing.
+[Inferior 1 (Remote target) exited normally]
+(gdb) q
 ``` 
 
 
@@ -263,7 +280,7 @@ Successful end of simulation!
 ``` 
 
 ## Сборка и запуск x64-примеров на PC
-Конфигирурация сборочного проекта для x64 осуществляется с помощью `сmake`  
+Конфигурация сборочного проекта для x64 осуществляется с помощью `сmake`  
 например 
 `nmpp\examples\examples-x64> cmake -B build -G "Visual Studio 15 2017 Win64"`
  Результат:

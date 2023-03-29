@@ -8,6 +8,7 @@ else
 OS_RM    = rm -f -r
 endif
  
+P?=5555
 
 .SUFFIXES:
 
@@ -49,8 +50,7 @@ monitor:
 	@MONITOR@
 	
 gdb :	
-	nmc-gdb  $(TARGETD)
-
+	nmc-gdb  -ex "target remote :$(P)"  $(TARGETD)
 
 clean: 
 	-$(OS_RM) *.abs *.elf *.map 
