@@ -30,7 +30,7 @@ if (CPACK_PACK_SUFFIX STREQUAL nm6407)
 else ()
 	set(CPACK_INSTALL_CMAKE_PROJECTS
 		"build_x64;nmpp;ALL;/"
-		#"build_${CPACK_PACK_SUFFIX}_debug;nmpp;ALL;/"
+		"build_${CPACK_PACK_SUFFIX}_debug;nmpp;ALL;/"
 		"build_${CPACK_PACK_SUFFIX}_release;nmpp;ALL;/"
     )
 endif()

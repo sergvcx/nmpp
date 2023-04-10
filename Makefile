@@ -55,9 +55,8 @@ nm6476i:
 nm6476f:
 	cmake -B 		build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6476f  -D MC11101_BUILD=ON -D QEMU_BUILD=ON	
 	cmake --build 	build_$@_release
-
-#cmake -B 		build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6476f  
-#cmake --build 	build_$@_debug 
+	cmake -B 		build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6476f  
+	cmake --build 	build_$@_debug 
 
 
 x64:
