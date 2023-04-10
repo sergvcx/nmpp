@@ -2,37 +2,31 @@
 #include "nmpp.h"
 #include "time.h"
 #include <stdio.h>
+#include <string.h>
 
-#define		N_ST	400 // число байт
+#define		N	400 // число элементов
 
-unsigned int in[N_ST/4]  __attribute__ ((section (".data.imu1")));
-unsigned int out[N_ST/4] __attribute__ ((section (".data.imu2")));
+unsigned int  in[N/4] __attribute__ ((section (".data.imu1")));
+unsigned int out[N]   __attribute__ ((section (".data.imu2")));
 
 int main()
 {
-	int tm;
 	clock_t t1, t2;
-	unsigned int crc = 0;
-	in[0] = 66051;
-	for(int i = 1; i < N_ST/4; i++) {
-	 	in[i] = in[i - 1] + 16843009;
+	in[0] = 0x03020100;
+	for(int i = 1; i < N/4; i++) {
+	 	in[i] = in[i - 1] + 0x04040404;
 	}
 	t1 = clock();
-	nmppsConvertRisc_8u32u((nm8u *)in, out, N_ST);
+	nmppsConvertRisc_8u32u((nm8u *)in, out, N);
 	t2 = clock();
-	tm = t2 - t1;
-	// int count = 0;
-	// for(int i = 0; i < N_ST; i++) {
-	// 	printf("%d\n", out[i]);
-	// 	count++;
-	// 	if(count == 4) {
-	// 		printf("\n");
-	// 		count = 0;
-	// 	}
-	// }
-
-	nmppsCrcAcc_32u(out, N_ST, &crc);
-	printf("%d\n", tm);
-	// printf("%d\n", crc2>>2);
-	return (crc>>2)^0;
+	
+	
+	for(int i = 0; i < 4; i++) {
+		printf("in[%d]  %08x \n", i, in[i]);
+	}
+	for(int i = 0; i < 16; i++) {
+		printf("out[%d] %08x \n", i, out[i]);
+	}
+	
+	return (t2-t1);
 }

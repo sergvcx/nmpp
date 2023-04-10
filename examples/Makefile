@@ -9,10 +9,11 @@ OS_RM    = rm -f -r
 endif
 
 
-all: 
-	cmake -B build_$@ -G "Unix Makefiles" -D MC12101_BUILD=ON -D NM_CARD_BUILD=ON
-	cmake --build build_$@ -v
-	cd build && ctest
+all: mc11101 mc11102 mc12101
+
+#	cmake -B build_$@ -G "Unix Makefiles" -D MC12101_BUILD=ON -D NM_CARD_BUILD=ON
+#	cmake --build build_$@ -v
+#	cd build && ctest
 
 
 qemu:
@@ -30,17 +31,17 @@ qemu3:
 	cd build_qemu && ctest	
 
 mc11101:
-	cmake -B build_$@ -G "Unix Makefiles" -D MC11101_BUILD=ON 
+	cmake -B build_$@ -G "Unix Makefiles" -D MC11101_BUILD=ON -D QEMU_BUILD=ON
 	cmake --build build_$@ 
 	cd build_$@ && ctest 
 
 mc11102:
-	cmake -B build_$@ -G "Unix Makefiles" -D MC11101_BUILD=ON 
+	cmake -B build_$@ -G "Unix Makefiles" -D MC11101_BUILD=ON -D QEMU_BUILD=ON
 	cmake --build build_$@ 
 	cd build_$@ && ctest
 
 mc12101:
-	cmake -B build_$@ -G "Unix Makefiles" -D MC12101_BUILD=ON 
+	cmake -B build_$@ -G "Unix Makefiles" -D MC12101_BUILD=ON -D QEMU_BUILD=ON
 	cmake --build build_$@ 
 	cd build_$@ && ctest
 

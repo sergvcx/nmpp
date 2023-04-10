@@ -12,6 +12,11 @@ P?=5555
 
 .SUFFIXES:
 
+ifndef @BSP@
+$(WARNING *** ERROR: '@BSP@' environment variable is not defined!  )
+endif 
+
+
 TARGET   = @TARGET@.abs
 TARGETD  = @TARGET@d.abs
 

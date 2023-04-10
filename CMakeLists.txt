@@ -45,11 +45,11 @@ option (X64_BUILD "Default toolchain is X64 " OFF)
 
 if (X64_BUILD)
 	MESSAGE("########## X64 BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
-	project(${PROJECT} VERSION 2.1.2 LANGUAGES CXX C)
+	project(${PROJECT} VERSION 2.1.3 LANGUAGES CXX C)
 else()
 	set(CMAKE_TOOLCHAIN_FILE "cmake/nmc-gcc-compile.cmake")
 	MESSAGE("########## NMC BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
-	project(${PROJECT} VERSION 2.1.2 LANGUAGES CXX C ASM)
+	project(${PROJECT} VERSION 2.1.3 LANGUAGES CXX C ASM)
 endif()
 	
 
@@ -550,25 +550,35 @@ endif()
 	install(FILES README.md      DESTINATION .)		
 	
 	if (MC12101_BUILD)
-		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-mc12101 DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
+		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-mc12101 DESTINATION examples/examples-${ARCH}) 
+		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-qemu-i  DESTINATION examples/examples-${ARCH}) 
+		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-qemu-f  DESTINATION examples/examples-${ARCH}) 
+	endif()
+	if (MC11101_BUILD)
+		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-mc11101 DESTINATION examples/examples-${ARCH}) 
+		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-qemu 	DESTINATION examples/examples-${ARCH}) 
+	endif()
+	if (MC11102_BUILD)
+		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-mc11102 DESTINATION examples/examples-${ARCH}) 
+		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-qemu 	DESTINATION examples/examples-${ARCH})
 	endif()
 	if (NM_CARD_BUILD)
-		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-nm_card DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
-		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-qemu    DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
+		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-nm_card DESTINATION examples/examples-${ARCH}) 
+		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-qemu    DESTINATION examples/examples-${ARCH}) 
 	endif()
 	if (X64_BUILD)
-		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-x64 DESTINATION examples) # copy main.cpp & co
+		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-x64 	DESTINATION examples) # copy main.cpp & co
 	endif()
 
 
-	if (QEMU_BUILD)
-		if(ARCH STREQUAL nm6407) 
-			install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-qemu-i  DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
-			install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-qemu-f  DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
-		else()	
-			install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-qemu DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
-		endif()
-	endif()
+	#if (QEMU_BUILD)
+	#	if(ARCH STREQUAL nm6407) 
+	#		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-qemu-i  DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
+	#		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-qemu-f  DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
+	#	else()	
+	#		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-qemu DESTINATION examples/examples-${ARCH}) # copy main.cpp & co
+	#	endif()
+	#endif()
 
 
 
