@@ -45,11 +45,11 @@ option (X64_BUILD "Default toolchain is X64 " OFF)
 
 if (X64_BUILD)
 	MESSAGE("########## X64 BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
-	project(${PROJECT} VERSION 2.1.3 LANGUAGES CXX C)
+	project(${PROJECT} VERSION 2.1.4 LANGUAGES CXX C)
 else()
 	set(CMAKE_TOOLCHAIN_FILE "cmake/nmc-gcc-compile.cmake")
 	MESSAGE("########## NMC BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
-	project(${PROJECT} VERSION 2.1.3 LANGUAGES CXX C ASM)
+	project(${PROJECT} VERSION 2.1.4 LANGUAGES CXX C ASM)
 endif()
 	
 
