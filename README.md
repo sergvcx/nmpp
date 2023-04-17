@@ -94,15 +94,57 @@ L---examples                      - Примеры
 Для ОС Windows рекомендуется версия [make 3.81](https://sourceforge.net/projects/gnuwin32/files/make/3.81/)   
 
 *БЗИО  (Библиотека Загрузки И Обмена )
-Для запуска примеров на отладочных модулях необходимо установить соответсвуюещее ПО поддержки
+Для запуска примеров на отладочных модулях необходимо установить соответствующее ПО поддержки
 
 * cmake (https://cmake.org/download/)
-Необходим для геренрации сборочных проектов примеров для x64 платформы 
+Необходим для генерации сборочных проектов примеров для x64 платформы 
 
 * средства компиляции под x64:  GCC, MinGW, Microsoft Visual Studio 
 
 
+# Сборка библиотек NMPP
+## Сборка библиотек для nm6406
+```
+nmpp>make nm6406
+```
+Результат: 
+```
+nmpp/lib/libnmpp-nm6406.a 
+nmpp/lib/libnmpp-nm6406d.a 
+```
 
+## Сборка библиотек для nm6407
+```
+nmpp>make nm6407
+```
+Результат: 
+```
+nmpp/lib/libnmpp-nm6407f.a 
+nmpp/lib/libnmpp-nm6407fd.a 
+nmpp/lib/libnmpp-nm6407i.a 
+nmpp/lib/libnmpp-nm6407id.a 
+```
+## Сборка библиотек для nm6408
+```
+nmpp>make nm6408
+```
+Результат: 
+```
+nmpp/lib/libnmpp-nm6408.a 
+nmpp/lib/libnmpp-nm6408d.a 
+```
+
+## Сборка библиотек для x64
+```
+nmpp>make x64
+```
+Результат: 
+```
+nmpp/lib/nmpp-x64.lib 
+nmpp/lib/nmpp-x64d.lib
+```
+
+	
 
 ## Сборка и запуск nmc-примеров на плате 
  
