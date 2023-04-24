@@ -583,12 +583,16 @@ endif()
 
 
 #add_subdirectory(examples examples-${ARCH})
+if (EXAMPLES)
 add_subdirectory(examples)
+endif()
 
 include(cmake/Packing.cmake)
 
+if(TESTS)
 enable_testing()
 add_subdirectory(test)
+endif()
 					
 #add_subdirectory(test/context)
 

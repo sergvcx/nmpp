@@ -15,29 +15,29 @@ endif
 all: nm6406 nm6407i nm6407f nm6408 nm6476i nm6476f x64
 
 nm6406:
-	cmake -B 		build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6406  -D MC5103_BUILD=ON -D QEMU_BUILD=ON	
-	cmake --build 	build_$@_release
-	cmake -B 		build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6406   
-	cmake --build 	build_$@_debug 
+	cmake -B 		build/$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6406  -D MC5103_BUILD=ON -D QEMU_BUILD=ON	
+	cmake --build 	build/$@_release
+	cmake -B 		build/$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6406   
+	cmake --build 	build/$@_debug 
 
 nm6407: 
-	cmake -B 		build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407  -D MC12101_BUILD=ON -D QEMU_BUILD=ON	
-	cmake --build 	build_$@_release
-	cmake -B 		build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6407  
-	cmake --build 	build_$@_debug 
+	cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407 -D TESTS=ON -D EXAMPLES=ON -D MC12101_BUILD=ON -D QEMU_BUILD=ON	
+	cmake --build 	build/build_$@_release
+	cmake -B 		build/build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6407  
+	cmake --build 	build/build_$@_debug 
 	
 nm6407i:
-	cmake -B 		build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407i  -D MC12101_BUILD=ON -D QEMU_BUILD=ON	
-	cmake --build 	build_$@_release
-	cmake -B 		build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6407i  
-	cmake --build 	build_$@_debug 
+	cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407i -D TESTS=OFF -D EXAMPLES=OFF -D MC12101_BUILD=ON -D QEMU_BUILD=ON	
+	cmake --build 	build/build_$@_release                                                        
+	cmake -B 		build/build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6407i 
+	cmake --build 	build/build_$@_debug 
 	
 	
 nm6407f:
-	cmake -B 		build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407f  -D MC12101_BUILD=ON -D QEMU_BUILD=ON 
-	cmake --build 	build_$@_release
-	cmake -B 		build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6407f  
-	cmake --build 	build_$@_debug 
+	cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407f  -D TESTS=OFF -D EXAMPLES=OFF -D MC12101_BUILD=ON -D QEMU_BUILD=ON 
+	cmake --build 	build/build_$@_release
+	cmake -B 		build/build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6407f  
+	cmake --build 	build/build_$@_debug 
 
 nm6408:
 	cmake -B 		build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6408  -D NM_CARD_BUILD=ON -D QEMU_BUILD=ON	
