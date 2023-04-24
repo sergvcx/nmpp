@@ -275,6 +275,12 @@ Breakpoint 1, main () at main.cpp:19
 22        for(int i = 0; i < SIZE; i++) {
 (gdb) n
 23              src[i].re = sinf(i);
+(gdb) display src
+1: src = (nm8s *) 0x8180
+(gdb) display ((int*)src)[0]
+9: ((int*)src)[0] = 0
+(gdb) p $gr7
+$1 = 2864434397
 (gdb) c
 Continuing.
 [Inferior 1 (Remote target) exited normally]

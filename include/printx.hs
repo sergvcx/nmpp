@@ -129,6 +129,14 @@ skip_text\@:
 #define PRINTF1(Format, Arg) PRINTF1_MACRO Format,Arg
 #define PRINTF2(Format, Arg1,Arg2) PRINTF2_MACRO Format,Arg1,Arg2
 
+
+// USAGE:
+// #include "printx.hs"
+// PRINTF("Result\: \n")
+// PRINTF1("C addr =%X\n",ar5)
+// PRINTF2("[C]={%d,%d}\n",[ar5++],[ar5++])
+	
+	
 .macro PRINTF_MACRO format
 	push ar5,gr5;
 	skip skip_text\@;
