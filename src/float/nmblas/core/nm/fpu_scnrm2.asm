@@ -96,5 +96,6 @@ begin "text"
 <END>
   delayed return;
   gr7 = false;
-  nop;
+  nul;
+  nul;
 end "text";

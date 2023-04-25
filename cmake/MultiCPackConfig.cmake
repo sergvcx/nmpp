@@ -1,4 +1,4 @@
-include("build_x64/CPackConfig.cmake")
+include("build/build_x64/CPackConfig.cmake")
 
 MESSAGE("########### PACK_SUFFIX = ${PACK_SUFFIX}         ") 
 MESSAGE("########### CPACK_PACK = ${CPACK_PACK_SUFFIX}         ") 
@@ -6,9 +6,9 @@ MESSAGE("########### CPACK_PACK = ${CPACK_PACK_SUFFIX}         ")
 
 if (CPACK_PACK_SUFFIX STREQUAL nm6407)
 	set(CPACK_INSTALL_CMAKE_PROJECTS
-		"build_x64;nmpp;ALL;/"
-		"build_${CPACK_PACK_SUFFIX}_debug;nmpp;ALL;/"
-		"build_${CPACK_PACK_SUFFIX}_release;nmpp;ALL;/"
+		"build/build_x64;nmpp;ALL;/"
+		"build/build_${CPACK_PACK_SUFFIX}_debug;nmpp;ALL;/"
+		"build/build_${CPACK_PACK_SUFFIX}_release;nmpp;ALL;/"
     )
 #if (CPACK_PACK_SUFFIX STREQUAL nm6407)
 #	set(CPACK_INSTALL_CMAKE_PROJECTS
@@ -29,9 +29,9 @@ if (CPACK_PACK_SUFFIX STREQUAL nm6407)
 #    )
 else ()
 	set(CPACK_INSTALL_CMAKE_PROJECTS
-		"build_x64;nmpp;ALL;/"
-		"build_${CPACK_PACK_SUFFIX}_debug;nmpp;ALL;/"
-		"build_${CPACK_PACK_SUFFIX}_release;nmpp;ALL;/"
+		"build/build_x64;nmpp;ALL;/"
+		"build/build_${CPACK_PACK_SUFFIX}_debug;nmpp;ALL;/"
+		"build/build_${CPACK_PACK_SUFFIX}_release;nmpp;ALL;/"
     )
 endif()
 	

@@ -10,7 +10,7 @@
 global _fpu_drotm : label;
 
 data "data"
-  cofficients:long[4] = (double(-1),double(1));
+  cofficients:long[2] = (double(-1),double(1));
   param_test:word[2] = (0bff00000h,3ff00000h);//-1 1 0
 end "data";
 
@@ -86,8 +86,8 @@ begin "text"
 
 <REMAINDER>  
   if =0 delayed goto END;
-  gr7--;
-  vlen = gr7;
+	gr7--;
+	vlen = gr7;
   fpu 0 rep vlen vreg0 = [ar1++gr1];//load y
   fpu 0 .double vreg1 = vreg0*.retrive(vreg6);//sy
   fpu 1 rep vlen vreg0 = [ar0++gr0];//load x

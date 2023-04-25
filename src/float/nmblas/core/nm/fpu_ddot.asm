@@ -92,8 +92,10 @@ begin "text"
   delayed return;
   gr7 = [ar5++];
   gr6 = [ar5];  
+  
 <END_N_LE_ZERO>
   delayed return;
   gr7 = false;
   gr6 = false;
+  nul;
 end "text";

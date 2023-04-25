@@ -246,6 +246,7 @@ begin "text"
   return;
 <CASE_AMMOUNT_EQS_1>
   delayed return;
-  gr7 = false;
-  nop;  
+	gr7 = false;
+	nop; 
+	nop;
 end "text";

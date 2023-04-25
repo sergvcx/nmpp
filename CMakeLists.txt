@@ -16,6 +16,9 @@ if (CMAKE_HOST_WIN32 AND CMAKE_GENERATOR MATCHES "Ninja")
     set(CMAKE_USER_MAKE_RULES_OVERRIDE "${CMAKE_BINARY_DIR}/GNUMakeRulesOverwrite.cmake" CACHE INTERNAL "")
 endif()
 
+option(TESTS  "Build tests" ON)
+option(EXAMPLES  "Build examples " ON)
+	
 set(CMAKE_DEBUG_POSTFIX d)
 
 include(cmake/cmake-variables.cmake)
@@ -45,11 +48,11 @@ option (X64_BUILD "Default toolchain is X64 " OFF)
 
 if (X64_BUILD)
 	MESSAGE("########## X64 BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
-	project(${PROJECT} VERSION 2.1.4 LANGUAGES CXX C)
+	project(${PROJECT} VERSION 2.1.5 LANGUAGES CXX C)
 else()
 	set(CMAKE_TOOLCHAIN_FILE "cmake/nmc-gcc-compile.cmake")
 	MESSAGE("########## NMC BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
-	project(${PROJECT} VERSION 2.1.4 LANGUAGES CXX C ASM)
+	project(${PROJECT} VERSION 2.1.5 LANGUAGES CXX C ASM)
 endif()
 	
 
@@ -343,7 +346,7 @@ foreach(dir ${NMC4F_DIRS})
 	list(APPEND nmc4f_asm_files ${asm_files})	
 	list(APPEND nmc4f_c_files 	${c_files})
 	list(APPEND nmc4f_s_files 	${s_files})
-	list(APPEND nmc4r_s_files 	${S_files})
+	list(APPEND nmc4f_s_files 	${S_files})
 endforeach()
 
 foreach(dir ${NMC4I_DIRS})
@@ -356,7 +359,7 @@ foreach(dir ${NMC4I_DIRS})
 	list(APPEND nmc4i_asm_files ${asm_files})	
 	list(APPEND nmc4i_c_files 	${c_files})
 	list(APPEND nmc4i_s_files 	${s_files})
-	list(APPEND nmc4r_s_files 	${S_files})
+	list(APPEND nmc4i_s_files 	${S_files})
 endforeach()
 
 foreach(dir ${NMC4R_DIRS})
@@ -373,10 +376,11 @@ foreach(dir ${NMC4R_DIRS})
 endforeach()
 
 
+# ${nmc4r_s_files}
 if (ARCH STREQUAL "nm6406")
 	MESSAGE("######## ARCH ${ARCH} ############")
-	add_library(${PROJECT}-${ARCH} STATIC  ${nmc4i_cpp_files} ${nmc4i_c_files} ${nmc4i_asm_files} ${nmc4i_s_files}
-										  ${nmc4r_cpp_files} ${nmc4r_c_files} ${nmc4r_asm_files} ${nmc4r_s_files}
+	add_library(${PROJECT}-${ARCH} STATIC  ${nmc4i_cpp_files} ${nmc4i_c_files} ${nmc4i_asm_files}  ${nmc4i_s_files}
+										   ${nmc4r_cpp_files} ${nmc4r_c_files} ${nmc4r_asm_files} ${nmc4r_s_files}
 										)
 										
 	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C,CXX>:-mnmc3;-O2>)	
@@ -489,7 +493,7 @@ string(SUBSTRING ${ARCH} 2 4 NMC_CORE_VERSION )
 
 set_source_files_properties( ${nmc4f_asm_files} ${nmc4i_asm_files} ${nmc4r_asm_files}
 			 PROPERTY
-			 COMPILE_FLAGS " -mmas -Wa,-split_sir -Wa,-W-111"
+			 COMPILE_FLAGS " -mmas -Wa,-split_sir -Wa,-W-111,-W-109"
 			 )
 
 set_source_files_properties( ${nmc4f_s_files} ${nmc4i_s_files} ${nmc4r_s_files}

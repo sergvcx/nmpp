@@ -2,7 +2,6 @@
 //*                     RC Module Inc., Moscow, Russia                      */
 //*                     NeuroMatrix(r) NM640x Software                      */
 //*                                                                         */
-//*   Software design:  A.Brodyazhenko                                      */
 //*                                                                         */
 //*   File:             nmpps-FFT256Fwd_32fcr.s                             */
 //*   Contents:         Routine for forward and inverse FFT 256             */

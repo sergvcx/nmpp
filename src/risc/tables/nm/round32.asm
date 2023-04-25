@@ -1,6 +1,6 @@
 
 data ".data_nmpp"
-	global _tblBitRun32:	word[33] = (
+	global _nmppRoundTable32:	word[33] = (
 		00000000h, 
 		00000001h, 
 		00000002h,

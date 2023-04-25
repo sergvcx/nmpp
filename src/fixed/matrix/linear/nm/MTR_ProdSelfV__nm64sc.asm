@@ -133,7 +133,7 @@ ar5=ar6+80;
 	pop ar1,gr1;
 	pop ar0,gr0;
  
- delayed return;
+ return;
 // gr7=[_nmppsTmpBuffer256_G_+2];
- nul;
+ 
 end ".text_nmplm";

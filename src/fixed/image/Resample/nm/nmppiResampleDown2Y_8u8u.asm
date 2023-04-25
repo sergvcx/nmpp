@@ -21,7 +21,7 @@
 import from macros.mlb;
 
 data ".data_nmpli_G"
-	Mask:	long = 0fefefefefefefefeh;
+	Mask:	long = 0fefefefefefefefehl;
 end ".data_nmpli_G";
 /////////////////////////////////////////////////////////////////////////////////////////
 begin ".text_nmpli"

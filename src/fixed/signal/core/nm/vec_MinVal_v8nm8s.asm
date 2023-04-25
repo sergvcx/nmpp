@@ -69,8 +69,8 @@ global vec_MinVal_v8nm8s:label;
 		gr7 = gr0;								//  запись Min=[7|6|5|4|3|2|1] в приемник(младшее слово)
 		nul;
 		nul;
-	delayed return 
-		with gr1 A>>=24;						//  ,иначе Min=[0] ; сдвиг Min вправо до младшего байта
+	delayed return ; 
+		gr1 A>>=24;						//  ,иначе Min=[0] ; сдвиг Min вправо до младшего байта
 		gr7=gr1;								//  ,запись Min=[0] в приемник(младшее слово)
 		nul;
 .wait;

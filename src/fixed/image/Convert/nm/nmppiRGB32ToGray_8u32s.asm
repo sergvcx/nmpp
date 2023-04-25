@@ -46,7 +46,8 @@ vr=0l; skip job;
 
 global _nmppiRGB32ToGray_8u32u:label;
 <_nmppiRGB32ToGray_8u32u>
-vr=80000000800000hl;
+vrl=00800000h;
+vrh=00800000h;
 <job>  ar5=ar7-2;
   push ar0,gr0 with gr7=true;push ar1,gr1 with gr7<<=31;
 

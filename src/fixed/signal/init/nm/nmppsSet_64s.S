@@ -32,7 +32,7 @@
 
 .global _nmppsSet_64s
 _nmppsSet_64s:
-//.branch;
+
     ar5 = ar7 - 4	with gr7=false;
 	
 	// sp 		top stack 
@@ -56,8 +56,3 @@ _nmppsSet_64s:
 	pop ar5,gr5;
 	pop ar0,gr0;
 	return;
-//.wait;
-
-
-
-//end ".text_nmplv";

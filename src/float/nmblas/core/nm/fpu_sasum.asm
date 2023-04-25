@@ -128,5 +128,6 @@ begin "text"
   delayed return;
   gr7 = gr7<<1;
   gr7 = gr7>>1;
+  nul;
 
 end "text";
