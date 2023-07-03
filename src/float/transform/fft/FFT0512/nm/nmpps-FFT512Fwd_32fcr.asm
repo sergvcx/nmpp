@@ -14,14 +14,14 @@ global _nmppsFFT512Inv_32fcr: label;
 
 extern _FFTFwd16x32Core: label;
 
-data ".data_imu1"
+data ".data.nmpp.fft"
 AddrFor32FFT16_512: word[32] = (0, 32, 16, 48, 8, 40, 24, 56,
 							 	 4, 36, 20, 52, 12, 44, 28, 60,
 							 	  2, 34, 18, 50, 10, 42, 26, 58,
 							 	   6, 38, 22, 54, 14, 46, 30, 62);
-end ".data_imu1";
+end ".data.nmpp.fft";
 
-begin ".text"
+begin ".text.nmpp.fft"
 <_nmppsFFT512Fwd_32fcr>
 <_nmppsFFT512Inv_32fcr>
 	ar5 = ar7 - 2;
@@ -343,4 +343,4 @@ begin ".text"
 	pop ar5, gr5;
 	pop ar6, gr6;
 	return;
-end ".text";
+end ".text.nmpp.fft";

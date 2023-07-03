@@ -1,5 +1,5 @@
 global _LastLayerFFT_32fcr: label;
-begin "text"
+begin ".text.nmpp.fft"
 <_LastLayerFFT_32fcr>
 	ar5 = ar7 - 2;
 	push ar3, gr3;
@@ -53,4 +53,4 @@ begin "text"
 	pop ar2, gr2;
 	pop ar3, gr3;
 	return;
-end "text";
+end ".text.nmpp.fft";

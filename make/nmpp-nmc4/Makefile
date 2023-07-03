@@ -36,10 +36,10 @@
 
 ROOT             = ../..
 ifeq ($(OS),Windows_NT)
-nmc4vars_win.mk:
-	-copy "$(NMC_GCC_TOOLPATH)\nmc4-ide\include\nmc4vars_win.mk" nmc4vars_win.mk
+#nmc4vars_win.mk:
+#	-copy "$(NMC_GCC_TOOLPATH)\nmc4-ide\include\nmc4vars_win.mk" nmc4vars_win.mk
 
--include 		 nmc4vars_win.mk
+#-include 		 nmc4vars_win.mk
 SHELL 			 = cmd
 endif
 
@@ -180,4 +180,4 @@ RESOURCES        =Makefile
 #	$(MAKE) -f $(ROOT)/deps/projector/vs13.mk nmc-app MAK=$(realpath .)/Makefile --silent >$(PROJECT).vcxproj
 
 #========================== cleanup ===================
-include $(ROOT)/clean.mk
+#include $(ROOT)/clean.mk

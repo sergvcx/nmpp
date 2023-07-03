@@ -5,10 +5,10 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <time.h>
 #include "nmtype.h"           // The type nm32fcr was declared here (здесь объявлен тип nm32fcr)
 #include "fft_32fcr.h"
-#include "time.h"
+
 
 #define SIZE 256
 
@@ -49,10 +49,9 @@ int main()
   
 	// computing forward fft256 from a generated sin func
 	// вычисление прямого БПФ256 от сгенерированной функции синуса
-	time_t t0,t1;
-	t0=clock();
+	clock_t t0=clock();
 	nmppsFFT256Fwd_32fcr(src, dst, spec);
-	t1=clock();
+	clock_t t1=clock();
   
 	// a printing of first 10 dst elements
 	// печать первых 10 элементов dst
@@ -61,7 +60,7 @@ int main()
 	}
 	printf("%ld clocks\n", t1-t0); 
   
-  
+	printf("clocks=%ld  clocks/element=%.3f \n",t1-t0,float(t1-t0)/SIZE);
 	return 0;
 }
 

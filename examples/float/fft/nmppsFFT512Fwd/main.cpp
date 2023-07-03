@@ -5,7 +5,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <time.h>
 #include "nmtype.h"           // The type nm32fcr was declared here (здесь объявлен тип nm32fcr)
 #include "fft_32fcr.h"
 
@@ -48,7 +48,9 @@ int main()
   
   // computing forward fft512 from a generated sin func
   // вычисление прямого БПФ512 от сгенерированной функции синуса
+  clock_t t0=clock();
   nmppsFFT512Fwd_32fcr(src, dst, spec);
+  clock_t t1=clock();
   
   // a printing of first 10 dst elements
   // печать первых 10 элементов dst
@@ -56,6 +58,7 @@ int main()
   	printf("dst[%d].re = %f, dst[%d].im = %f, \n", i, dst[i].re, i, dst[i].im);
   }
   
+  printf("clocks=%ld  clocks/element=%.3f \n",t1-t0,float(t1-t0)/SIZE);
   return 0;
 }
 

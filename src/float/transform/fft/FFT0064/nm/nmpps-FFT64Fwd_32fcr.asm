@@ -1,10 +1,10 @@
 global _nmppsFFT64Fwd_32fcr: label;
 global _nmppsFFT64Inv_32fcr: label;
-data ".data_imu1"
+data ".data.nmpp.fft"
 AddrForDFT8_64: word[8] = (0, 8, 4, 12, 2, 10, 6, 14);
-end ".data_imu1";
+end ".data.nmpp.fft";
 
-begin ".data_imu7"
+begin ".text.nmpp.fft"
 <_nmppsFFT64Fwd_32fcr>
 <_nmppsFFT64Inv_32fcr>
 	ar5 = ar7 - 2;
@@ -190,4 +190,4 @@ begin ".data_imu7"
 	pop ar5, gr5;
 	pop ar6, gr6;
 	return;
-end ".data_imu7";
+end ".text.nmpp.fft";

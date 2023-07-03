@@ -13,7 +13,7 @@
 .global _nmppsFFT256Fwd_32fcr
 .global _nmppsFFT256Inv_32fcr
 
-.section .data.nmpp.fft.imu2
+.section .data.nmpp.fft
 AddrForDFT16_256: .long 0, 16, 8,  24, \
 						4, 20, 12, 28, \
 						2, 18, 10, 26, \

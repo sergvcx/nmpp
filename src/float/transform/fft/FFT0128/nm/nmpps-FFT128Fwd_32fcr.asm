@@ -11,14 +11,14 @@
 
 global _nmppsFFT128Fwd_32fcr: label;
 global _nmppsFFT128Inv_32fcr: label;
-data ".data_imu1"
+data ".data.nmpp.fft"
 AddrForDFT8_128: word[16] = (
 						0, 16, 8, 24, 4, 20, 12, 28,
 						 2, 18, 10, 26, 6, 22, 14, 30
 						);
-end ".data_imu1";
+end ".data.nmpp.fft";
 
-begin ".data_imu7"
+begin ".text.nmpp.fft"
 <_nmppsFFT128Fwd_32fcr>
 <_nmppsFFT128Inv_32fcr>
 	ar5 = ar7 - 2;
@@ -238,4 +238,4 @@ begin ".data_imu7"
 	pop ar4, gr4;
 	pop ar6, gr6;	
 	return;
-end ".data_imu7";
+end ".text.nmpp.fft";
