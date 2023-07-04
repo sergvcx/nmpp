@@ -23,9 +23,8 @@ nm6406:
 nm6407:                   
 	cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407 -D TESTS=ON -D EXAMPLES=ON -D MC12101_BUILD=ON -D QEMU_BUILD=ON -DMC12101_RUNNER="hal-run --server_ip=proton --server_port=5557"
 	cmake --build 	build/build_$@_release
-
-#	cmake -B 		build/build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6407  
-#	cmake --build 	build/build_$@_debug 
+	cmake -B 		build/build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6407  
+	cmake --build 	build/build_$@_debug 
 						  
 nm6407i:                  
 	cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407i -D TESTS=ON -D EXAMPLES=ON -D MC12101_BUILD=ON -D QEMU_BUILD=ON -DMC12101_RUNNER="hal-run --server_ip=proton --server_port=5557"
@@ -43,7 +42,7 @@ nm6407f:
 	#cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6408  -D NM_CARD_BUILD=ON -D QEMU_BUILD=ON		
 	
 nm6408:                   
-	cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6408  -D MC12705_BUILD=ON -D QEMU_BUILD=ON		
+	cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6408  -D TESTS=ON -D EXAMPLES=ON -D MC12705_BUILD=ON -D QEMU_BUILD=ON		
 	cmake --build 	build/build_$@_release
 	cmake -B 		build/build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6408  
 	cmake --build 	build/build_$@_debug 
@@ -85,8 +84,27 @@ nm6476fpack: x64 nm6476f
 	cpack -G 7Z --config cmake/MultiCPackConfig.cmake -C "Debug;Release" 
 
 nm6408pack: x64 nm6408 
-	cmake -D PACK_SUFFIX=nm6408 build/build_x64
-	cpack -D PACK_SUFFIX:STRING=nm6408 -DCPACK_PACK_SUFFIX=XXX -G 7Z --config cmake/MultiCPackConfig.cmake -C "Debug;Release" 
+	cmake -B 		build/build_nm6408_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6408  -D TESTS=ON -D EXAMPLES=ON -D NM_CARD_BUILD=ON -D QEMU_BUILD=OFF
+	cmake --build 	build/build_nm6408_release
+	cmake -B 		build/build_nm6408_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6408  
+	cmake --build 	build/build_nm6408_debug 
+	cmake -D PACK_SUFFIX:STRING=nm6408 build/build_x64
+	cpack -G 7Z --config cmake/MultiCPackConfig.cmake -C "Debug;Release"  
+
+#nm6408pack_mc12705: 
+#	cmake -B 		build/build_x64 . -A x64 -D ARCH=x64 -D X64_BUILD=ON  -D TESTS=OFF -D EXAMPLES=ON
+#	cmake --build 	build/build_x64 --config Release
+#	cmake --build 	build/build_x64 --config Debug
+#	
+#	cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6408  -D TESTS=OFF -D EXAMPLES=ON -D MC12705_BUILD=ON -D QEMU_BUILD=ON		
+#	cmake --build 	build/build_$@_release
+#	cmake -B 		build/build_$@_debug .   	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6408  
+#	cmake --build 	build/build_$@_debug 
+#	cmake -D PACK_SUFFIX:STRING=nm6408 build/build_x64
+#	cpack -G 7Z --config cmake/MultiCPackConfig.cmake -C "Debug;Release"  
+	
+	
+#	cpack -D PACK_SUFFIX:STRING=nm6408 -DCPACK_PACK_SUFFIX=XXX -G 7Z --config cmake/MultiCPackConfig.cmake -C "Debug;Release" 
 
 #cmake -D PACK_SUFFIX:STRING=nm6408 build_x64
 
@@ -95,6 +113,7 @@ nm6408preset: x64
 	cmake --preset nmpp-nm6408
 	cmake --build --preset nmpp-nm6408-release
 #	ctest --preset nmpp-nm6408
+
 
 nm6408presetpack:
 	cpack --preset nmpp-nm6408
