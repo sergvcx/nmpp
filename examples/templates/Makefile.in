@@ -23,6 +23,7 @@ TARGETD  = @TARGET@d.abs
 CC       = nmc-g++
 AS       = nmc-gcc
 CXXFLAGS = @CXXFLAGS@
+CXXFLAGSD= @CXXFLAGSD@
 LIBS     = @LIBS@
 LIBSD    = @LIBSD@ 
 LDFLAGS  = -Wl,-Map=@TARGET@.map  -Wl,-T@LDS@
@@ -41,7 +42,7 @@ $(TARGET): $(SOURCES) Makefile
 
 $(TARGETD): $(SOURCES) Makefile 
 	@echo ----------------------
-	$(CC)  -o$(TARGETD) $(SOURCES) $(CXXFLAGS) $(LDFLAGSD) $(INC_DIRS) $(LIB_DIRS) $(LIBSD) 
+	$(CC)  -o$(TARGETD) $(SOURCES) $(CXXFLAGSD) $(LDFLAGSD) $(INC_DIRS) $(LIB_DIRS) $(LIBSD) 
 	
 run: $(TARGET)
 	@RUNNER@ @RUNOPT@ $(TARGET)

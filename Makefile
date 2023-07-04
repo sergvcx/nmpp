@@ -21,26 +21,29 @@ nm6406:
 	cmake --build 	build/build_$@_debug 
 						  
 nm6407:                   
-	cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407 -D TESTS=ON -D EXAMPLES=ON -D MC12101_BUILD=ON -D QEMU_BUILD=ON	
+	cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407 -D TESTS=ON -D EXAMPLES=ON -D MC12101_BUILD=ON -D QEMU_BUILD=ON -DMC12101_RUNNER="hal-run --server_ip=proton --server_port=5557"
 	cmake --build 	build/build_$@_release
-	cmake -B 		build/build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6407  
-	cmake --build 	build/build_$@_debug 
+
+#	cmake -B 		build/build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6407  
+#	cmake --build 	build/build_$@_debug 
 						  
 nm6407i:                  
-	cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407i -D TESTS=OFF -D EXAMPLES=OFF -D MC12101_BUILD=ON -D QEMU_BUILD=ON	
+	cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407i -D TESTS=ON -D EXAMPLES=ON -D MC12101_BUILD=ON -D QEMU_BUILD=ON -DMC12101_RUNNER="hal-run --server_ip=proton --server_port=5557"
 	cmake --build 	build/build_$@_release                                                        
 	cmake -B 		build/build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6407i 
 	cmake --build 	build/build_$@_debug 
 						  
 						  
 nm6407f:                  
-	cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407f  -D TESTS=OFF -D EXAMPLES=OFF -D MC12101_BUILD=ON -D QEMU_BUILD=ON 
+	cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407f  -D TESTS=OFF -D EXAMPLES=OFF -D MC12101_BUILD=ON -D QEMU_BUILD=ON  -DMC12101_RUNNER="hal-run --server_ip=proton --server_port=5557"
 	cmake --build 	build/build_$@_release
 	cmake -B 		build/build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6407f  
 	cmake --build 	build/build_$@_debug 
-						  
+	
+	#cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6408  -D NM_CARD_BUILD=ON -D QEMU_BUILD=ON		
+	
 nm6408:                   
-	cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6408  -D NM_CARD_BUILD=ON -D QEMU_BUILD=ON	
+	cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6408  -D MC12705_BUILD=ON -D QEMU_BUILD=ON		
 	cmake --build 	build/build_$@_release
 	cmake -B 		build/build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6408  
 	cmake --build 	build/build_$@_debug 

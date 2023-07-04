@@ -87,14 +87,22 @@ ENDMACRO()
 # 			 COMPILE_FLAGS "${extra_args}")
 # endmacro()
 # base_dir = app/test/float/nmblas/level1
+
+	
 function(GENERATE_TESTS_MC12101 dir_list  test_prefix ld_script board_core test_lib)
+	#if (NMC_TOOLCHAIN)
+	#else()
+	#	MESSAGE("WARNING!: CONFIGURE_TEST_NMC SKIPPED DUE NMC_TOOLCHAIN IS ${NMC_TOOLCHAIN}")
+	#	exit()
+	#	return()
+	#endif()
     set(extra_args "${ARGN}")	
     foreach(dir ${dir_list})
 	
 		get_filename_component(basename ${dir} NAME)
-	    set(TEST_NAME ${test_prefix}_${basename}_${board_core}_test)
+	    set(TEST_NAME test_${test_prefix}_${basename}_${board_core})
         
-		MESSAGE(STATUS "###### ${TEST_NAME} #####")
+		MESSAGE(STATUS "###### GENERATE_TESTS_MC12101:${TEST_NAME}")
 
   
 		add_executable(${TEST_NAME} ${dir}/main.cpp)
@@ -110,8 +118,7 @@ function(GENERATE_TESTS_MC12101 dir_list  test_prefix ld_script board_core test_
         target_link_options(${TEST_NAME} PUBLIC
             -T${ld_script}
             -Wl,--whole-archive -lmc12101load_nm -lnm6407_io_nmc -Wl,--no-whole-archive)
-        add_test(NAME ${TEST_NAME}
-            COMMAND mc12101run $<TARGET_FILE:${TEST_NAME}> -a${board_core} -p -v)
+        add_test(NAME ${TEST_NAME} COMMAND mc12101run $<TARGET_FILE:${TEST_NAME}> -a${board_core} -p -v)
     endforeach()
 endfunction()
 
@@ -120,7 +127,7 @@ function(GENERATE_TESTS_MC11101 dir_list  test_prefix ld_script test_lib)
     foreach(dir ${dir_list})
 	
 		get_filename_component(basename ${dir} NAME)
-	    set(TEST_NAME ${test_prefix}_${basename}_test)
+	    set(TEST_NAME test_${test_prefix}_${basename})
         
 		MESSAGE(STATUS "###### ${TEST_NAME} #####")
   
@@ -138,8 +145,7 @@ function(GENERATE_TESTS_MC11101 dir_list  test_prefix ld_script test_lib)
         target_link_options(${TEST_NAME} PUBLIC
             -T${ld_script}
             -Wl,--whole-archive -lmc11101load_nm -lnm6407_io_nmc -Wl,--no-whole-archive)
-        add_test(NAME ${TEST_NAME}
-            COMMAND mc11101run $<TARGET_FILE:${TEST_NAME}> -p -v)
+        add_test(NAME ${TEST_NAME} COMMAND mc11101run $<TARGET_FILE:${TEST_NAME}> -p -v)
     endforeach()
 endfunction()
 
@@ -148,7 +154,7 @@ function(GENERATE_TESTS_MC11102 dir_list  test_prefix ld_script test_lib)
     foreach(dir ${dir_list})
 	
 		get_filename_component(basename ${dir} NAME)
-	    set(TEST_NAME ${test_prefix}_${basename}_test)
+	    set(TEST_NAME test_${test_prefix}_${basename})
         
 		MESSAGE(STATUS "###### ${TEST_NAME} #####")
   
@@ -166,8 +172,7 @@ function(GENERATE_TESTS_MC11102 dir_list  test_prefix ld_script test_lib)
         target_link_options(${TEST_NAME} PUBLIC
             -T${ld_script}
             -Wl,--whole-archive -lmc11101load_nm -lnm6407_io_nmc -Wl,--no-whole-archive)
-        add_test(NAME ${TEST_NAME}
-            COMMAND mc11101run $<TARGET_FILE:${TEST_NAME}> -p -v)
+        add_test(NAME ${TEST_NAME} COMMAND mc11101run $<TARGET_FILE:${TEST_NAME}> -p -v)
     endforeach()
 endfunction()
 
@@ -176,7 +181,7 @@ function(GENERATE_TESTS_MC12705 dir_list  test_prefix ld_script cluster core tes
     foreach(dir ${dir_list})
 	
 		get_filename_component(basename ${dir} NAME)
-	    set(TEST_NAME ${test_prefix}_${basename}_${board_core}_test)
+	    set(TEST_NAME test_${test_prefix}_${basename}_${board_core})
         
 		MESSAGE(STATUS "###### ${TEST_NAME} #####")
 
@@ -195,8 +200,7 @@ function(GENERATE_TESTS_MC12705 dir_list  test_prefix ld_script cluster core tes
         target_link_options(${TEST_NAME} PUBLIC
             -T${ld_script}
             -Wl,--whole-archive -lnm6408load_nmc -lnmc_io -Wl,--no-whole-archive)
-        add_test(NAME ${TEST_NAME}
-            COMMAND nm_card_run $<TARGET_FILE:${TEST_NAME}> -c${cluster} -n${core} -v -p)
+        add_test(NAME ${TEST_NAME} COMMAND nm_card_run $<TARGET_FILE:${TEST_NAME}> -c${cluster} -n${core} -v -p)
 			
 
     endforeach()
@@ -207,7 +211,7 @@ function(GENERATE_TESTS_NM_CARD dir_list  test_prefix ld_script cluster core tes
     foreach(dir ${dir_list})
 	
 		get_filename_component(basename ${dir} NAME)
-	    set(TEST_NAME ${test_prefix}_${basename}_${board_core}_test)
+	    set(TEST_NAME test_${test_prefix}_${basename}_${board_core})
         
 		MESSAGE(STATUS "###### ${TEST_NAME} #####")
 
@@ -226,8 +230,7 @@ function(GENERATE_TESTS_NM_CARD dir_list  test_prefix ld_script cluster core tes
         target_link_options(${TEST_NAME} PUBLIC
             -T${ld_script}
             -Wl,--whole-archive -lnm6408load_nmc -lnmc_io -Wl,--no-whole-archive)
-        add_test(NAME ${TEST_NAME}
-            COMMAND nm_card_run $<TARGET_FILE:${TEST_NAME}> -c${cluster} -n${core} -v -p)
+        add_test(NAME ${TEST_NAME} COMMAND nm_card_run $<TARGET_FILE:${TEST_NAME}> -c${cluster} -n${core} -v -p)
 			
 
     endforeach()
@@ -237,25 +240,24 @@ endfunction()
 function(GENERATE_TESTS_X64 dir_list  test_prefix test_lib)
     set(extra_args "${ARGN}")	
 	if (X64_BUILD)
-		foreach(dir ${dir_list})
-		
-			get_filename_component(basename ${dir} NAME)
-			set(TEST_NAME ${test_prefix}_${basename}_${board_core}_test)
-			
-			MESSAGE(STATUS "###### ${TEST_NAME} #####")
-
-	  
-			add_executable(${TEST_NAME} ${dir}/main.cpp)
-			target_link_directories(${TEST_NAME} PUBLIC  ${CMAKE_CURRENT_LIST_DIR}/../lib)
-			target_link_libraries(${TEST_NAME} ${test_lib} ${extra_args})
-			target_include_directories(${TEST_NAME} PUBLIC ${CMAKE_CURRENT_LIST_DIR}/../include)
-			#target_compile_options(${TEST_NAME} PUBLIC -include nmc_printf.h)
-			add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME} $<TARGET_FILE:${TEST_NAME}> ${OPTS})
-
-		endforeach()
 	else()
 		MESSAGE("WARNING: GENERATE_TESTS_X64 SKIPPED DUE X64_BUILD IS ${X64_BUILD}")
+		return()
 	endif()
+
+	foreach(dir ${dir_list})
+		get_filename_component(basename ${dir} NAME)
+		set(TEST_NAME test_${test_prefix}_${basename}_${board_core})
+		
+		MESSAGE(STATUS "###### ${TEST_NAME} #####")
+		add_executable(${TEST_NAME} ${dir}/main.cpp)
+		target_link_directories(${TEST_NAME} PUBLIC  ${CMAKE_CURRENT_LIST_DIR}/../lib)
+		target_link_libraries(${TEST_NAME} ${test_lib} ${extra_args})
+		target_include_directories(${TEST_NAME} PUBLIC ${CMAKE_CURRENT_LIST_DIR}/../include)
+		#target_compile_options(${TEST_NAME} PUBLIC -include nmc_printf.h)
+		add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME} $<TARGET_FILE:${TEST_NAME}> ${OPTS})
+	endforeach()
+	
 endfunction()
 
 
