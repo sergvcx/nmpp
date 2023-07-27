@@ -1,12 +1,9 @@
 //------------------------------------------------------------------------
 //
-//  $Workfile:: QuickSort.as $
-//
 //  Векторно-матричная библиотека
 //
 //  Copyright (c) RC Module Inc.
 //
-//  $Revision: 1.1 $      $Date: 2004/11/22 13:50:13 $
 //
 //! \if file_doc
 //!
@@ -17,6 +14,7 @@
 //! \endif
 //!
 //------------------------------------------------------------------------
+#include "nmc.hs"
 //void vec_ClipMul4D4W4_AddVr(nmreg nb1, 
 //								nmreg sb, 
 //								nmreg F1CR, 
@@ -30,19 +28,22 @@
 //								nmreg ar6, nmreg gr6)
 
 //void nmppsDecimate_32s(nm32s* pSrc, int startPos, int step, nm32s* pDst, int nSize);
-extern vec_Mul2D2W2_AddVr:label;
 
-data ".data_nmplv"
-	weights: long[8] = (0000000000000001hl,0hl,						 
-						 0000000100000000hl,0hl,
-						 
-						 0hl,0000000000000001hl,
-						 0hl,0000000100000000hl);
-end ".data_nmplv";
 
-global _nmppsDecimate_32s: label;
-begin ".text_nmplv"
-<_nmppsDecimate_32s>
+.section .data.nmpp
+ 	.align 3
+	weights: .quad 		0x0000000000000001,0, \
+						0x0000000100000000,0, \
+					 \
+						0,0x0000000000000001, \
+						0,0x0000000100000000
+
+
+.section .text.nmpp
+BRANCH
+.global _nmppsDecimate_32s
+
+_nmppsDecimate_32s:
 	ar5 = sp - 2;
 	push ar0, gr0;
 	push ar1, gr1;
@@ -53,16 +54,17 @@ begin ".text_nmplv"
 	push ar6, gr6;
 	
 	ar0 = [--ar5]	with gr6 = false;
-	vr = gr6;		//vr = 0
+	SET vr  gr6		//vr = 0
 	gr4 = [--ar5]	with gr6++;
 	gr0 = [--ar5]	with gr6++;
 	ar6 = [--ar5];
 	gr5 = [--ar5]	with gr4 <<=3;
 		
-	nb1 = 80000000h	with gr5>>=1; 
-	sb  = 2h;
-	wtw;
+	SET nb1 80000000h	
 	
+	SET sb  2
+	wtw;
+	with gr5>>=1; 
 	ar4 = weights;
 	delayed call vec_Mul2D2W2_AddVr;
 		ar1 = ar0 + gr0 	with gr0<<=1;
@@ -77,4 +79,4 @@ begin ".text_nmplv"
 	pop ar0, gr0;
 
 	return;
-end ".text_nmplv";
+WAIT

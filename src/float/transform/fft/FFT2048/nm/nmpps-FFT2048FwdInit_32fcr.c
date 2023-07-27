@@ -13,43 +13,33 @@
 #include <math.h>
 #include "fft_32fcr.h"
 
-int nmppsFFT2048FwdInitAlloc_32fcr(NmppsFFTSpec_32fcr** addr)
+
+void nmppsFFT2048FwdInit_32fcr(NmppsFFTSpec_32fcr* spec_32fcr)
 {
-    int i;
+	
+	for(int i = 0; i < NUMBUFF1; i++) 
+		spec_32fcr->Buffers[i] = 0;
+	//for(int i = 4; i < NUMBUFF2; i++) 
+	//	spec_32fcr->Buffs[i] = 0;
+
+
     const float pi = 3.141592653;
-    float alpha;
-    NmppsFFTSpec_32fcr* spec_32fcr = (NmppsFFTSpec_32fcr*) malloc0(sizeof(NmppsFFTSpec_32fcr));
-    if(!spec_32fcr) {
-        return 0x2048F;
-    }
-
+    
 /*************************************Bank1*************************************/
-    spec_32fcr->Buffs[0] = (nm32fcr *) malloc1((1 + 1024) * sizeof(nm32fcr));
-    if(!spec_32fcr->Buffs[0])
-        return 0x2048F0;
-
+    
     spec_32fcr->Buffers[0] = spec_32fcr->Buffs[0];      // 1.0 or 1/2048
     spec_32fcr->Buffers[1] = spec_32fcr->Buffs[0] + 1;  // buff_fft2048
 
 /*************************************Bank2*************************************/
-    spec_32fcr->Buffs[1] = (nm32fcr *) malloc2((1024) * sizeof(nm32fcr));
-    if(!spec_32fcr->Buffs[1])
-        return 0x2048F1;
-
+    
     spec_32fcr->Buffers[2] = spec_32fcr->Buffs[1];      // buff_fft2048xW
 
 /*************************************Bank3*************************************/
-    spec_32fcr->Buffs[2] = (nm32fcr *) malloc3((1024) * sizeof(nm32fcr));
-    if(!spec_32fcr->Buffs[2])
-        return 0x2048F2;
-
+    
     spec_32fcr->Buffers[11] = spec_32fcr->Buffs[2];     // buff_fft2048mulW
 
 /*************************************Bank4*************************************/
-    spec_32fcr->Buffs[3] = (nm32fcr *) malloc0((7 + 1024) * sizeof(nm32fcr));
-    if(!spec_32fcr->Buffs[3])
-        return 0x2048F3;
-
+    
     spec_32fcr->Buffers[3] = spec_32fcr->Buffs[3];          // W4_16
     spec_32fcr->Buffers[4] = spec_32fcr->Buffs[3] + 1;      // W2_16
     spec_32fcr->Buffers[5] = spec_32fcr->Buffs[3] + 2;      // W6_16
@@ -57,9 +47,7 @@ int nmppsFFT2048FwdInitAlloc_32fcr(NmppsFFTSpec_32fcr** addr)
     spec_32fcr->Buffers[7] = spec_32fcr->Buffs[3] + 4;      // W3_16
     spec_32fcr->Buffers[8] = spec_32fcr->Buffs[3] + 5;      // W5_16
     spec_32fcr->Buffers[9] = spec_32fcr->Buffs[3] + 6;      // W7_16
-    spec_32fcr->Buffers[10] = spec_32fcr->Buffs[3] + 7;     // W2048
-
-    *addr = spec_32fcr;
+    spec_32fcr->Buffers[10]= spec_32fcr->Buffs[3] + 7;     // W2048
 
 /********************************Fields Fulliling********************************/
     spec_32fcr->Buffers[0]->im = 0;
@@ -87,10 +75,50 @@ int nmppsFFT2048FwdInitAlloc_32fcr(NmppsFFTSpec_32fcr** addr)
     spec_32fcr->Buffers[9]->re = -0.92387962341309;
 
 /************************************W2048*************************************/
-    for(i = 0; i < 1024; i++) {
-        alpha = (2 * pi * (float)i) / 2048.0;
+    for(int i = 0; i < 1024; i++) {
+        float alpha = (2 * pi * (float)i) / 2048.0;
         spec_32fcr->Buffers[10][i].im = -sinf(alpha);
         spec_32fcr->Buffers[10][i].re = cosf(alpha);
     }
+}
+
+int nmppsFFT2048FwdInitAlloc_32fcr(NmppsFFTSpec_32fcr** spec_32fcr_)
+{
+    *spec_32fcr_ = (NmppsFFTSpec_32fcr*) malloc0(sizeof(NmppsFFTSpec_32fcr));
+	NmppsFFTSpec_32fcr* spec_32fcr=*spec_32fcr_;
+    if(!spec_32fcr) {
+        return 0x2048F;
+    }
+
+/*************************************Bank1*************************************/
+	nmc_malloc_set_heap(1);
+    spec_32fcr->Buffs[0] = (nm32fcr *) malloc((1 + 1024) * sizeof(nm32fcr));
+    if(!spec_32fcr->Buffs[0])
+        return 0x2048F0;
+
+
+/*************************************Bank2*************************************/
+	nmc_malloc_set_heap(2);
+    spec_32fcr->Buffs[1] = (nm32fcr *) malloc((1024) * sizeof(nm32fcr));
+    if(!spec_32fcr->Buffs[1])
+        return 0x2048F1;
+
+
+/*************************************Bank3*************************************/
+	nmc_malloc_set_heap(3);
+    spec_32fcr->Buffs[2] = (nm32fcr *) malloc((1024) * sizeof(nm32fcr));
+    if(!spec_32fcr->Buffs[2])
+        return 0x2048F2;
+
+
+/*************************************Bank4*************************************/
+	nmc_malloc_set_heap(0);
+    spec_32fcr->Buffs[3] = (nm32fcr *) malloc((7 + 1024) * sizeof(nm32fcr));
+    if(!spec_32fcr->Buffs[3])
+        return 0x2048F3;
+
+
+	nmppsFFT2048FwdInit_32fcr(spec_32fcr);
+	
     return 0;
 }

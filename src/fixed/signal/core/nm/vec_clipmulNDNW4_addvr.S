@@ -6,39 +6,30 @@
 //
 //  Copyright (c) RC Module Inc.
 //
-//  $Revision: 1.4 $      $Date: 2005/01/22 13:50:27 $
 //
 //! \if file_doc
 //!
-//! \file   FilterCoreRow02.asm
 //! \author S. Mushkaev
-//! \brief  <Краткое описание>
 //!
 //! \endif
 //!
 //------------------------------------------------------------------------
 
 
+#include "nmc.hs"
 
 
-begin ".text_nmvcore"
-
-import from minrep.mlb;
-DEF_MIN_REP();
-
-macro FilterN(N)
-.if (NMPP_MIN_REP <= N);
-	own Next_Block:label;
-	// <First_Block>
-	rep N data=[ar0++gr0] with vsum ,activate data, vr;
+#define TAIL_REP(N) tail_rep N
+.macro tail_rep N
+	rep \N data=[ar0++gr0] with vsum ,activate data, vr;
 	nul;
-	<Next_Block>
+	Next_Block\@:
 		gr2 = [ar1++] with gr1--;	// Read next disp
 		ar0 = ar2 + gr2;			// Set next pointer
 		wtw;
 		nul;
-	if > delayed goto Next_Block;
-		rep N data=[ar0++gr0] with vsum ,activate data,afifo;
+	if > delayed goto Next_Block\@;
+		rep \N data=[ar0++gr0] with vsum ,activate data,afifo;
 		rep 4 wfifo=[ar4++],ftw;
 
 	//<Last_Block>
@@ -46,10 +37,9 @@ macro FilterN(N)
 	ar0 = ar2 + gr2;				// Set last pointer, Dec packet counter
 	delayed return;
 		wtw;
-		rep N data=[ar0++gr0] with vsum ,activate data,afifo;
-		rep N [ar6++gr6]=afifo;		// Output result
-.endif;
-end FilterN;
+		rep \N data=[ar0++gr0] with vsum ,activate data,afifo;
+		rep \N [ar6++gr6]=afifo;		// Output result
+.endm tail_rep;
 
 /////////////////////////////////////////////////////////////////////////////////////////
 // Core Weight summation of several vectors
@@ -74,37 +64,36 @@ end FilterN;
 //#define AR_4 ar3
 //#define GR_1 gr3
     //------------------------------------------------------------------------
-    //! \fn void vec_ClipMulNDNW4_AddVr(nmreg nb1, nmreg sb, nmreg f1cr, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6);
+    //! \fn void core_ClipMulNDNW4_AddVr(nmreg nb1, nmreg sb, nmreg f1cr, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6);
     //!			 
     //------------------------------------------------------------------------
-
-global vec_ClipMulNDNW4_AddVr:label;
-<vec_ClipMulNDNW4_AddVr>
-.branch;
+.section .text.nmpp.core
+core_ClipMulNDNW4_AddVr:
+BRANCH
 
 	push ar5,gr5;
-	ar3 = ar4 with					// Store pointer to weight array  
-	gr7 = gr5>>5;					// Count of blocks by rep 32
-	rep 4 wfifo=[ar4++],ftw,wtw;			// preload matrix for First_vsum
+	ar3 = ar4 with gr7 = gr5>>5;	// Store pointer to weight array  
+									// Count of blocks by rep 32
+	rep 4 wfifo=[ar4++],ftw,wtw;	// preload matrix for First_vsum
 
-	ar5 = ar1 with					// Store pointer to array of displacemts
-	gr3 = gr1 noflags;				// Store number of arrays
+	ar5 = ar1 with gr3 = gr1 noflags;// Store pointer to array of displacemts
+									// Store number of arrays
 	gr5 = ar0;						// Anchor pointer
 //	ar1 = ar5;						// Restore pointer to array of displacemts
 //	gr1 = gr3;						// Restore number of arrays
-	gr2 = [ar1++]   with gr1-- noflags;	// Read first disp   , Dec number of arrays
-	ar2 = gr5	with gr7;						// Restore anchor pointer
-	ar0 = ar2 + gr2 with gr1-- noflags;	// Set  first pointer, Dec number of arrays
+	gr2 = [ar1++] with gr1--;		// Read first disp   , Dec number of arrays
+	ar2 = gr5	  with gr1--;		// Restore anchor pointer Dec number of arrays
+	ar0 = ar2 + gr2 with gr7 ;		// Set  first pointer, 
 
 	if =0 delayed goto Rep_N;
 		rep 4 wfifo=[ar4++],ftw;		// Preload matrix for Next_vsum
 		nul;
-	<Next_Packet>
+	Next_Packet:
 		// <First_Block>
 		rep 32 data=[ar0++gr0] with vsum ,activate data, vr;
 		gr5 = ar0;						// Store new anchor pointer
 		gr5-= gr2;
-		<Next_Block>
+		Next_Block:
 			gr2 = [ar1++] with gr1--;	// Read next disp
 			ar0 = ar2 + gr2;			// Set next pointer
 			wtw;
@@ -122,69 +111,67 @@ global vec_ClipMulNDNW4_AddVr:label;
 		rep 4 wfifo=[ar4++],ftw;		// Preload matrix for First_Block
 		//<First_Block>
 		ar1 = ar5;						// Restore pointer to array of displacemts
-		ar2 = gr5 with					// Restore anchor pointer
-		gr1 = gr3 noflags;				// Restore number of arrays
-		gr2 = [ar1++]   with gr1-- noflags;		// Read first disp   , Dec number of arrays
-		ar0 = ar2 + gr2 with gr1-- noflags;		// Set  first pointer, Dec number of arrays
+		ar2 = gr5 with	gr1 = gr3 noflags;				// Restore anchor pointer
+										// Restore number of arrays
+		gr2 = [ar1++]   with gr1=gr1 - 1 noflags;		// Read first disp   , Dec number of arrays
+		ar0 = ar2 + gr2 with gr1=gr1 - 1 noflags;		// Set  first pointer, Dec number of arrays
 		wtw;
 	if > delayed goto Next_Packet;
 		rep 4 wfifo=[ar4++],ftw;		// Preload matrix for Next_Block
 		rep 32 [ar6++gr6]=afifo;		// Output result
 
 
-	<Rep_N>
-local Start:label;
+	Rep_N:
+//local Start:label;
 	pop ar5,gr5;	// restore size
-	gr3 = gr5<<32-5;
-	ar3 = Start with
+	gr3 = gr5 << 27 ;//(32-5);
+	ar3 = TailRep0 with gr3>>=23 ;//32-10+1;
 	///gr3>>=32-10;
-	gr3>>=32-10+1;
+	
 	ar3 += gr3;
 	if >= delayed goto ar3;
 		nul;
 		nul;
-<Start>
+TailRep0:
 	delayed return;
 		wtw;
 		nul;
 		nul;
-	///.repeat 28;
-	.repeat 12;
+	.rept 12;
 		nul;
-	.endrepeat;
+	.endr;
 
-	FilterN(1);
-	FilterN(2);
-	FilterN(3);
-	FilterN(4);
-	FilterN(5);
-	FilterN(6);
-	FilterN(7);
-	FilterN(8);
-	FilterN(9);
-	FilterN(10);
-	FilterN(11);
-	FilterN(12);
-	FilterN(13);
-	FilterN(14);
-	FilterN(15);
-	FilterN(16);
-	FilterN(17);
-	FilterN(18);
-	FilterN(19);
-	FilterN(20);
-	FilterN(21);
-	FilterN(22);
-	FilterN(23);
-	FilterN(24);
-	FilterN(25);
-	FilterN(26);
-	FilterN(27);
-	FilterN(28);
-	FilterN(29);
-	FilterN(30);
-	FilterN(31);
+	TAIL_REP(1)
+	TAIL_REP(2)
+	TAIL_REP(3)
+	TAIL_REP(4)
+	TAIL_REP(5)
+	TAIL_REP(6)
+	TAIL_REP(7)
+	TAIL_REP(8)
+	TAIL_REP(9)
+	TAIL_REP(10)
+	TAIL_REP(11)
+	TAIL_REP(12)
+	TAIL_REP(13)
+	TAIL_REP(14)
+	TAIL_REP(15)
+	TAIL_REP(16)
+	TAIL_REP(17)
+	TAIL_REP(18)
+	TAIL_REP(19)
+	TAIL_REP(20)
+	TAIL_REP(21)
+	TAIL_REP(22)
+	TAIL_REP(23)
+	TAIL_REP(24)
+	TAIL_REP(25)
+	TAIL_REP(26)
+	TAIL_REP(27)
+	TAIL_REP(28)
+	TAIL_REP(29)
+	TAIL_REP(30)
+	TAIL_REP(31)
 
 
-.wait;
-end ".text_nmvcore"; 
+WAIT

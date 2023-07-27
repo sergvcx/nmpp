@@ -12,14 +12,77 @@
 #include "fft_32fcr.h"
 #include <malloc.h>
 #include <math.h>
-
-int nmppsFFT1024FwdInitAlloc_32fcr(NmppsFFTSpec_32fcr** addr)
-{
-    int i, j, k;
+void nmppsFFT1024FwdInit_32fcr(NmppsFFTSpec_32fcr* spec_32fcr){
+	
+	for(int i = 7; i < NUMBUFF1; i++) 
+		spec_32fcr->Buffers[i] = 0;
+    
+	int i, j, k;
     int gr1;
     const float pi = 3.141592653;
     float alpha;
-    NmppsFFTSpec_32fcr* spec_32fcr = (NmppsFFTSpec_32fcr*) malloc(sizeof(NmppsFFTSpec_32fcr));
+   
+    k = 0;
+    for(i = 0; i <  8; i++) {
+        for(j = 0; j < 64; j = j + 8) {
+            alpha = (2 * pi * (float)i * (float)k) / 8.0;
+            spec_32fcr->Buffers[0][i + j].im = -sinf(alpha);
+            spec_32fcr->Buffers[0][i + j].re = cosf(alpha);
+            k++;
+        }
+        k = 0;
+    }
+    for(i = 0; i < 512; i++) {
+        alpha = (2 * pi * (float)i) / 1024.0;
+        spec_32fcr->Buffers[7][i].im = -sinf(alpha);
+        spec_32fcr->Buffers[7][i].re = cosf(alpha);
+    }
+    gr1 = 0;
+    for(i = 0; i < 8; i++) {
+        spec_32fcr->Buffers[1][i].im = spec_32fcr->Buffers[7][gr1].im;
+        spec_32fcr->Buffers[1][i].re = spec_32fcr->Buffers[7][gr1].re;
+        gr1 += 64;
+    }
+    gr1 = 0;
+    for(i = 0; i < 16; i++) {
+        spec_32fcr->Buffers[2][i].im = spec_32fcr->Buffers[7][gr1].im;
+        spec_32fcr->Buffers[2][i].re = spec_32fcr->Buffers[7][gr1].re;
+        gr1 += 32;
+    }
+    gr1 = 0;
+    for(i = 0; i < 32; i++) {
+        spec_32fcr->Buffers[3][i].im = spec_32fcr->Buffers[7][gr1].im;
+        spec_32fcr->Buffers[3][i].re = spec_32fcr->Buffers[7][gr1].re;
+        gr1 += 16;
+    }
+    gr1 = 0;
+    for(i = 0; i < 64; i++) {
+        spec_32fcr->Buffers[4][i].im = spec_32fcr->Buffers[7][gr1].im;
+        spec_32fcr->Buffers[4][i].re = spec_32fcr->Buffers[7][gr1].re;
+        gr1 += 8;
+    }
+    gr1 = 0;
+    for(i = 0; i < 128; i++) {
+        spec_32fcr->Buffers[5][i].im = spec_32fcr->Buffers[7][gr1].im;
+        spec_32fcr->Buffers[5][i].re = spec_32fcr->Buffers[7][gr1].re;
+        gr1 += 4;
+    }
+    gr1 = 0;
+    for(i = 0; i < 256; i++) {
+        spec_32fcr->Buffers[6][i].im = spec_32fcr->Buffers[7][gr1].im;
+        spec_32fcr->Buffers[6][i].re = spec_32fcr->Buffers[7][gr1].re;
+        gr1 += 2;
+    }
+    return 0;
+}
+int nmppsFFT1024FwdInitAlloc_32fcr(NmppsFFTSpec_32fcr** spec_32fcr_)
+{
+    int i, j, k;
+    //int gr1;
+    //const float pi = 3.141592653;
+    //float alpha;
+    *spec_32fcr_ = (NmppsFFTSpec_32fcr*) malloc(sizeof(NmppsFFTSpec_32fcr));
+	NmppsFFTSpec_32fcr *spec_32fcr=*spec_32fcr_;
     if(!spec_32fcr) {
         return 0x1024F;
     }
@@ -50,6 +113,8 @@ int nmppsFFT1024FwdInitAlloc_32fcr(NmppsFFTSpec_32fcr** addr)
     spec_32fcr->Buffers[7] = (nm32fcr *) malloc(512 * sizeof(nm32fcr)); // W512
     if (!spec_32fcr->Buffers[7])
         return 0x1024F7;
+	nmppsFFT1024FwdInit_32fcr(spec_32fcr);
+	/*
     *addr = spec_32fcr;
     k = 0;
     for(i = 0; i <  8; i++) {
@@ -102,5 +167,6 @@ int nmppsFFT1024FwdInitAlloc_32fcr(NmppsFFTSpec_32fcr** addr)
         spec_32fcr->Buffers[6][i].re = spec_32fcr->Buffers[7][gr1].re;
         gr1 += 2;
     }
+	*/
     return 0;
 }

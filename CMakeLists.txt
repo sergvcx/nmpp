@@ -1,4 +1,5 @@
-cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
+set(VERSION 2.20.0)
+cmake_minimum_required(VERSION 3.17.0 FATAL_ERROR)
 
 
 #set(CMAKE_USE_RELATIVE_PATHS ON)
@@ -46,14 +47,20 @@ option (X64_BUILD "Default toolchain is X64 " OFF)
 
 #option (PACK_SUFFIX "package suffix" "---")
 
-if (X64_BUILD)
-	MESSAGE("########## X64 BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
-	project(${PROJECT} VERSION 2.1.6 LANGUAGES CXX C)
-else()
-	set(CMAKE_TOOLCHAIN_FILE "cmake/nmc-gcc-compile.cmake")
-	MESSAGE("########## NMC BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
-	project(${PROJECT} VERSION 2.1.6 LANGUAGES CXX C ASM)
+project(${PROJECT} VERSION ${VERSION} LANGUAGES CXX C ASM)
+
+if (USE_CPACK)
+	include(cmake/CPacking.cmake)
+	return()
 endif()
+#if (X64_BUILD)
+#	MESSAGE("########## X64 BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
+#else()
+	#set(CMAKE_TOOLCHAIN_FILE "cmake/nmc-gcc-compile.cmake")
+#	set(CMAKE_TOOLCHAIN_FILE "../cmake-nmc-gcc-toolchain/nmc-gcc-toolchain.cmake")
+	#MESSAGE("########## NMC BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
+	#project(${PROJECT} VERSION ${VERSION} LANGUAGES CXX C ASM)
+#endif()
 	
 
 MESSAGE("!!!!!!!!! CMAKE_TOOLCHAIN_FILE= ${CMAKE_TOOLCHAIN_FILE}")
@@ -552,6 +559,7 @@ endif()
 	install(DIRECTORY include    DESTINATION .)		
 	install(DIRECTORY doc        DESTINATION .)		
 	install(FILES README.md      DESTINATION .)		
+	install(FILES nmpp2env.bat   DESTINATION .)		
 	
 	if (MC12101_BUILD)
 		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples-mc12101 DESTINATION examples/examples-${ARCH}) 

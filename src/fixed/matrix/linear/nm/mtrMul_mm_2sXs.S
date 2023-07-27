@@ -16,10 +16,11 @@
 //! \endif
 //!
 //------------------------------------------------------------------------
-import from mulmv.mlb;
+//import from mulmv.mlb;
+#include "nmc.hs"
+#include "mulmm.hs"
 
-
-begin ".text_nmplm"
+//begin ".text_nmplm"
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Low level function of multiplying 8-bit matrix(SrcMatrix) by matrix(pSrcVec)
 // with user-defined bit capacity and summary bit width of row = 64 bits.
@@ -42,11 +43,12 @@ begin ".text_nmplm"
 // NOTE:  Registers : ar0,ar1,   ,ar3,ar4,ar5,ar6,   ,
 //                   ,   ,gr1,gr2,   ,   ,   ,   ,gr7   will be changed after return !
 // wtw must be on return
-global  mtrMul_mm_2sXs:label;
-<mtrMul_mm_2sXs>
-	sb = 0aaaaaaaah;
-	REP_N_NUL_MxxV64(32);
-.wait;
 
+.section .text.nmpp.core
+.global  coreMul_mm_2sXs
+BRANCH
+coreMul_mm_2sXs:
+	SET sb 0aaaaaaaah
+	REP_N_MUL_MxxV64(32)
+WAIT
 
-end ".text_nmplm"; 

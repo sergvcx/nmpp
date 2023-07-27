@@ -26,7 +26,7 @@ begin ".text_nmpls"
 	//!
 	// \perfinclude _SIG_Filter__FPSsPSsiPl.html
     //--------------------------------------------------------------------
-extern vec_ClipMulNDNW4_AddVr:label;
+extern core_ClipMulNDNW4_AddVr:label;
 global _nmppsFIR_16s:label;
 <_nmppsFIR_16s>
 .branch;
@@ -61,7 +61,7 @@ global _nmppsFIR_16s:label;
 	nb1 = gr4;
 	f1cr= 0;
 	vr  = 0;
-	call vec_ClipMulNDNW4_AddVr with gr5>>=2;
+	call core_ClipMulNDNW4_AddVr with gr5>>=2;
 
     pop ar6,gr6;
 	pop ar5,gr5;

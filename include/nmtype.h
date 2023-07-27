@@ -30,7 +30,7 @@
 
 #if defined(_MSC_VER)
 #define __attribute__(xxx) // Note: actually gcc seems to also supports this syntax.
-#define nmc_malloc_set_heap(xxx)
+//#define nmc_malloc_set_heap(xxx)
 #endif
 
 
@@ -48,6 +48,7 @@
 #define sizeof32(t) sizeof(t)
 #define sizeof64(t) (sizeof(t)/2)
 #else
+#define nmc_malloc_set_heap(xxx)
 #define sizeof32(t) (sizeof(t)/4)
 #define sizeof64(t) (sizeof(t)/4/2)
 #endif

@@ -12,7 +12,7 @@ endif
 x64:
 	cmake -B build_$@ -G "Visual Studio 15 2017 Win64" -D X64_BUILD=ON
 	cmake --build build_$@ -v
-	cd build_$@ && ctest -C Debug
+	cd build_$@ && ctest -V -C Debug 
 
 mc11101:
 	cmake -B build_$@ -G "Unix Makefiles" -D MC11101_BUILD=ON

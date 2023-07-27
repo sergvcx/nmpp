@@ -35,7 +35,7 @@ begin ".text_nmpls"
 	//!
 	// \perfinclude nmppsFIR_16s32s.html
     //--------------------------------------------------------------------
-extern vec_ClipMulNDNW4_AddVr:label;
+extern core_ClipMulNDNW4_AddVr:label;
 extern vec_Mul2D2W4_AddVr:label;
 
 
@@ -96,7 +96,7 @@ global _nmppsFIR_16s32s:label;
 		pop ar0,gr0;
 	
 	<mul0N>
-	delayed call vec_ClipMulNDNW4_AddVr;
+	delayed call core_ClipMulNDNW4_AddVr;
 		gr0 = 2;
 		
 	pop ar6,gr6;
@@ -131,7 +131,7 @@ global _nmppsFIR_16s32s:label;
 		pop ar0,gr0;
 	
 	<mul1N>
-	delayed call vec_ClipMulNDNW4_AddVr;
+	delayed call core_ClipMulNDNW4_AddVr;
 		gr0 = 2;
 		
 	pop ar6,gr6;

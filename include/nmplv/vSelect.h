@@ -917,7 +917,7 @@ void nmppsCmpLt0_64s(const nm64s* pSrcVec, nm64s* pDstVec, int nSize);
 	/**
 	\defgroup snmppsCmpLteC nmppsCmpLteC
 	\ingroup vSelect_f
-	\brief Функция сравнения элементов массива с константой (меньше или равно)
+	\brief Функция сравнения элементов массива с константой на меньше или равно
 
 	\param [in] pSrcVec входной массив (элемент массива представляет собой структура v2nm32f, состоящая из двух чисел float)
 	\param [in] C константа (два числа float)
@@ -935,7 +935,7 @@ void nmppsCmpLteC_v2nm32f(const v2nm32f* pSrcVec, const v2nm32f* C, nm1* evenFla
 	/**
 	\defgroup snmppsCmpLtC nmppsCmpLtC
 	\ingroup vSelect_f
-	\brief Функция сравнения элементов массива с константой (меньше или равно)
+	\brief Функция сравнения элементов массива с константой на строго меньше 
 
 	\param [in] pSrcVec входной массив (элемент массива представляет собой структура v2nm32f, состоящая из двух чисел float)
 	\param [in] C константа (два числа float)

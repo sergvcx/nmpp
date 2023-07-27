@@ -1,9 +1,12 @@
 
- /**  \defgroup integer Целочисленные функции
+/** \defgroup integer Целочисленные функции
  */
 
 /** \defgroup float Функции с плавающей точкой
  */
+
+/** \defgroup extra Расширение 
+*/
 
 /** \defgroup TYPE_Group Типы данных
 */

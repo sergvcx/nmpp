@@ -33,20 +33,22 @@ enable_testing()
 #SUBDIRLIST(listdir0 ${CMAKE_CURRENT_LIST_DIR}/float/arithmetic)
 #SUBDIRLIST(listdir1 ${CMAKE_CURRENT_LIST_DIR}/float/conditional)
 #SUBDIRLIST(listdir2 ${CMAKE_CURRENT_LIST_DIR}/float/matrix)
-SUBDIRLIST(listdir3 ${CMAKE_CURRENT_LIST_DIR}/float/nmblas/level1)
-SUBDIRLIST(listdir4 ${CMAKE_CURRENT_LIST_DIR}/float/nmblas/level2)
+SUBDIRLIST(flistdir3 ${CMAKE_CURRENT_LIST_DIR}/float/nmblas/level1)
+SUBDIRLIST(flistdir4 ${CMAKE_CURRENT_LIST_DIR}/float/nmblas/level2)
 #SUBDIRLIST(listdir5 ${CMAKE_CURRENT_LIST_DIR}/float/transform/fft)
 #SUBDIRLIST(listdir6 ${CMAKE_CURRENT_LIST_DIR}/float/transform/init)
 
-LIST(APPEND listdir_float ${listdir0} ${listdir1} ${listdir2} ${listdir3} ${listdir4} ${listdir5} ${listdir6})
+LIST(APPEND listdir_float ${flistdir0} ${flistdir1} ${flistdir2} ${flistdir3} ${flistdir4} ${flistdir5} ${flistdir6})
 LIST(REMOVE_ITEM listdir_float ${CMAKE_CURRENT_LIST_DIR}/arithmetic/nmppsMulC_Add_32fcr)
 
 
 
-SUB2DIRLIST(listdir0 ${CMAKE_CURRENT_LIST_DIR}/fixed/matrix)
-SUB2DIRLIST(listdir1 ${CMAKE_CURRENT_LIST_DIR}/signal/Arithmetics)
+#SUB2DIRLIST(ilistdir0 ${CMAKE_CURRENT_LIST_DIR}/fixed/matrix)
+#SUB2DIRLIST(ilistdir1 ${CMAKE_CURRENT_LIST_DIR}/fixed/signal/Arithmetics)
+SUB2DIRLIST(ilistdir2 ${CMAKE_CURRENT_LIST_DIR}/fixed/signal/Transform/nmppsDecimate)
 
-LIST(APPEND listdir_fixed ${listdir0} ${listdir1})
+
+LIST(APPEND listdir_fixed ${ilistdir0} ${ilistdir1} ${ilistdir2})
 
 REMOVE_DIRS_WITHOUT_MAIN_CPP(listdir_fixed)
 
@@ -65,7 +67,7 @@ MESSAGE("## listdir_fixed 1 =${listdir_fixed} ")
 
 if(MC12101_BUILD)
 	GENERATE_TESTS_MC12101("${listdir_fixed}" mc12101i ${CMAKE_CURRENT_LIST_DIR}/lds/mc12101-nmpu1.lds 1 nmpp-nm6407i )
-	GENERATE_TESTS_MC12101("${listdir_float}" mc12101f ${CMAKE_CURRENT_LIST_DIR}/lds/mc12101-nmpu0.lds 0 nmpp-nm6407f )
+	#GENERATE_TESTS_MC12101("${listdir_float}" mc12101f ${CMAKE_CURRENT_LIST_DIR}/lds/mc12101-nmpu0.lds 0 nmpp-nm6407f )
 endif()
 
 if(MC11101_BUILD)
@@ -85,7 +87,8 @@ if(NM_CARD_BUILD)
 endif()
 
 if(X64_BUILD)
-	GENERATE_TESTS_X64("${listdir_float}" x64 nmpp-x64)
+	#GENERATE_TESTS_X64("${listdir_float}" x64 nmpp-x64)
+	GENERATE_TESTS_X64("${listdir_fixed}" x64 nmpp-x64)
 endif()
 
 #${listdir_float}

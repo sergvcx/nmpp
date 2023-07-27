@@ -18,8 +18,7 @@
 //!
 //------------------------------------------------------------------------
 
-
-begin ".text_nmplm"
+#include "nmc.hs"
 /////////////////////////////////////////////////////////////////////////////////////////
 
 //--------------------------------------------------------------------
@@ -28,14 +27,15 @@ begin ".text_nmplm"
 //! \perfinclude nmppmMul_mm_2s64s.html
 //--------------------------------------------------------------------
 
-extern mtrMul_mm_2sXs:label;
-extern _nmppsTmpBuffer64_G_: long[64];
-const LongColumns=_nmppsTmpBuffer64_G_;
+//extern mtrMul_mm_2sXs:label;
+//extern _nmppsTmpBuffer64_G_: long[64];
 
+#define  LongColumns _nmppsTmpBuffer64_G_
 
-global _nmppmMul_mm_2s64s:label;
-<_nmppmMul_mm_2s64s>
-.branch;
+.section .text.nmpp
+.global _nmppmMul_mm_2s64s
+_nmppmMul_mm_2s64s:
+BRANCH
 
 
 	ar5 = sp-2;
@@ -57,12 +57,12 @@ global _nmppmMul_mm_2s64s:label;
 	[LongColumns] = gr4 with gr0>>=4;	// nWidth A in 32-bit words
 	gr4 <<=1;
 	gr6 = gr4 with gr3=false;			
-	nb1 = gr3;
-	<Next_MulMV>
+	SET nb1 gr3
+	Next_MulMV:
 		push ar0,gr0;
 		push ar6,gr6;
 		
-		delayed call mtrMul_mm_2sXs;
+		delayed call coreMul_mm_2sXs;
 			ar4 = ar2;
 			nul;
 
@@ -84,8 +84,4 @@ global _nmppmMul_mm_2s64s:label;
 
 
 return with gr7=false;
-.wait;
-
-
-
-end ".text_nmplm"; 
+WAIT

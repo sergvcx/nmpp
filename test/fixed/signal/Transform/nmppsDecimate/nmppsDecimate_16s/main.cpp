@@ -1,44 +1,36 @@
 #include "nmpp.h"
 #include "time.h"
-#include "test.h"
+#include "stdio.h"
 
 #define MAX_SIZE 1024
-#define STEP 4
-
-#define xnmppsDecimate(bits,src0,pose,step,dst,size)  nmppsDecimate_##bits##s(src0,pose,step,dst,size)
-#define  nmppsDecimate(bits,src0,pose,step,dst,size) xnmppsDecimate(bits,src0,pose,step,dst,size)
-
-#define BITS 16
+#define MAX_STEP 16
 
 int main (){
-	NM_TYPE(BITS) *L0 = nmppsMalloc(BITS, MAX_SIZE*STEP);
-	NM_TYPE(BITS) *G0 = nmppsMalloc(BITS, MAX_SIZE+128);
 	
-	nmppsSet(BITS,G0,0xCDCDCDCD,MAX_SIZE+128);
-	if(L0==0 || G0==0)
-		return 0xDEADB00F;
-	
-	nmppsRandUniform(BITS,L0,MAX_SIZE*STEP);
-	
-	//dump(32,src, 8, STEP);
-	int dim = DIM(BITS);
 
+	nm16s* src  =nmppsMalloc_16s(MAX_SIZE);
+	nm16s* dst  =nmppsMalloc_16s(MAX_SIZE+128);
+	if ((src==0)||(dst==0)) return -1;
+
+	nmppsSet_16s(0xCDCD,dst,MAX_SIZE+128);
+	nmppsRandUniform_16s(src,MAX_SIZE);
+	
 	clock_t t1,t0;
 	unsigned crc = 0;
 	
-	for (int startPos=0;startPos<dim;startPos++){
-		for (int size =0;size<=MAX_SIZE;size+=dim){
-			t0 = clock();
-			nmppsDecimate(BITS, L0, 0, STEP, G0, size);
-			t1 = clock();
-			nmppsCrcAcc(BITS,G0,size+128,&crc);
+	for (int startPos=0; startPos<4; startPos++){
+		for (int step=4; step<MAX_STEP; step+=4){
+			for (int size =4; size<=MAX_SIZE/step; size+=4){
+				t0 = clock();
+				nmppsDecimate_16s(src, startPos, step, dst, size);
+				t1 = clock();
+				nmppsCrcAcc_16s(dst,size+128,&crc);
+			}
 		}	
 	}
 	
-	//printf("\n");
-	//dump(32,dst, 8, 1);
-	
-	return (crc>>2)^0;
+	printf("16 crc=0x%X",crc);
+	return crc^0xba345429;
 	//return t1-t0;
 	
 }
