@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Mul_V64N64.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:03 $
 //
 //! \if file_doc
 //!
 //! \file   Mul_V64N64.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции умножения для векторов.
 //!
 //! \endif
@@ -23,7 +23,7 @@ end ".data_nmplv_G";
 
 
 begin ".text_nmplv"
-extern vec_vsum_data_0:label;
+extern core_vsum_data_0:label;
 /////////////////////////////////////////////////////////////////////////////////////////
 
 //! \fn void nmppsMulC (nm64s *pSrcVec, int64b nVal, nm64s *pDstVec, int nSize) 
@@ -35,7 +35,7 @@ global _nmppsMulC_64s:label;
 .branch;
 
 
-	ar5 = sp-2		with gr7 = false;
+	ar5 = ar7 - 2		with gr7 = false;
 	push ar0,gr0;
 	push ar5,gr5;
 	push ar6,gr6;
@@ -56,7 +56,7 @@ global _nmppsMulC_64s:label;
 	ar6 = [--ar5] with gr0++;				// pDstVec
     gr5 = [--ar5] with gr6=gr0;				// nSize
 
-	delayed call vec_vsum_data_0;
+	delayed call core_vsum_data_0;
 		nul;
 		wtw;
 	

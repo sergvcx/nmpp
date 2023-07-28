@@ -25,7 +25,7 @@
  *  \param [in,out] C pointer to accumulator matrix
  *  \param [in] ldc C stride, first dimension of C holder
  *  \warning
- *  \copyright (c) RC Module Inc.
+ *  \copyright (c) RC Module
  *  \file nmblas_sgemm.h
  */
 

@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Abs.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:03 $
 //
 //! \if file_doc
 //!
 //! \file   Abs.Asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Абсолютное значение элементов вектора.
 //!
 //! \endif
@@ -19,7 +19,7 @@
 //------------------------------------------------------------------------
 //#include "vArithm.h"
 
-extern vec_activate_data_xor_data:label;
+extern core_activate_data_xor_data:label;
 
 begin ".text_nmplv"
 
@@ -34,7 +34,7 @@ global _nmppsAbs1_64s:label;
 
 <_nmppsAbs1_64s>
 .branch;
-	ar5 = sp - 2	with gr7=gr5;
+	ar5 = ar7 - 2	with gr7=gr5;
 	push ar0,gr0	with gr0=false;
 	push ar6,gr6	with gr0++;
 	
@@ -44,7 +44,7 @@ global _nmppsAbs1_64s:label;
 						
 	f1crl= 00000000h;   
 	f1crh= 80000000h;   
-	call  vec_activate_data_xor_data with gr5;	// nSize in 64-bit longs
+	call  core_activate_data_xor_data with gr5;	// nSize in 64-bit longs
 		
 
 	pop ar6,gr6;

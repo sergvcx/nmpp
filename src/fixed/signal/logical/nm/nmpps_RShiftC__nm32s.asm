@@ -2,16 +2,16 @@
 //
 //  $Workfile:: ARSH32.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:04 $
 //
 //! \if file_doc
 //!
 //! \file   ARSH32.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции сдвига для векторов.
 //!
 //! \endif
@@ -19,13 +19,13 @@
 //------------------------------------------------------------------------
 //#include "vShift.h"
 
-	extern vec_vsum_shift_data_0:label;
-	extern vec_vsum_data_0:label;
+	extern core_vsum_shift_data_0:label;
+	extern core_vsum_data_0:label;
 
 
 data ".data_nmplv_G"
 
-global	vec_tbl_nb_int_EvenRightShift:long[16]=(
+global	core_tbl_nb_int_EvenRightShift:long[16]=(
 		//  [  7   ][   6  ][   5  ][   4  ][  3   ][   2  ][   1  ][   0  ]
 			1000000000000000000000000000001010000000000000000000000000000010bl,	//nb 0
 			1000000000000000000000000000000010000000000000000000000000000000bl,	//nb 2
@@ -44,7 +44,7 @@ global	vec_tbl_nb_int_EvenRightShift:long[16]=(
 			1000000000000000000000000000000010000000000000000000000000000000bl,	//nb 28
 			1000000000000000000000000000000010000000000000000000000000000000bl	//nb 30
 			);
-global	vec_tbl_sb_int_EvenRightShift:long[16]=(
+global	core_tbl_sb_int_EvenRightShift:long[16]=(
 		//  [  7   ][   6  ][   5  ][   4  ][  3   ][   2  ][   1  ][   0  ]
 			0000000000000000000000000000101000000000000000000000000000001010bl, //sb 0
 			0000000000000000000000000000101000000000000000000000000000001010bl, //sb 2
@@ -64,7 +64,7 @@ global	vec_tbl_sb_int_EvenRightShift:long[16]=(
 			1000000000000000000000000000001010000000000000000000000000000010bl	//sb 30
 			);
 	
-global	vec_tbl_w_int_EvenRightShift:long[4*16]=(
+global	core_tbl_w_int_EvenRightShift:long[4*16]=(
 			// ShiftR 0
 			0000000000000001hl,
 			0000000000000004hl,
@@ -149,7 +149,7 @@ global	vec_tbl_w_int_EvenRightShift:long[4*16]=(
 			);
 
 
-global vec_tbl_sb_int_OddRightShift:long[16]=(
+global core_tbl_sb_int_OddRightShift:long[16]=(
 		//  [  7   ][   6  ][   5  ][   4  ][  3   ][   2  ][   1  ][   0  ]
 			1000000000000000000000000000101010000000000000000000000000001010bl, // sb 1
 			1000000000000000000000000000101010000000000000000000000000001010bl,	// sb 3
@@ -169,7 +169,7 @@ global vec_tbl_sb_int_OddRightShift:long[16]=(
 			1010000000000000000000000000001010100000000000000000000000000010bl	// sb 31
 			);
 
-global vec_tbl_nb_int_OddRightShift:long[16]=(
+global core_tbl_nb_int_OddRightShift:long[16]=(
 		//  [  7   ][   6  ][   5  ][   4  ][  3   ][   2  ][   1  ][   0  ]
 			1110000000000000000000000000001011100000000000000000000000000010bl,	// nb 1
 			1111100000000000000000000000000011111000000000000000000000000000bl,	// nb 3
@@ -189,7 +189,7 @@ global vec_tbl_nb_int_OddRightShift:long[16]=(
 			1111111111111111111111111111111111111111111111111111111111111111bl	// nb 31
 			);
 
-global vec_tbl_w_int_OddRightShift:long[6*16]=(
+global core_tbl_w_int_OddRightShift:long[6*16]=(
 			// ShiftR 1
 			0000000000000001hl,
 			0000000000000004hl,
@@ -591,7 +591,7 @@ begin ".text_nmplv"
 global _nmppsRShiftC_32s:label;
 <_nmppsRShiftC_32s>
 .branch;
-	ar5 = sp - 2;
+	ar5 = ar7 - 2;
 	push ar0,gr0	with gr7=false;
 	push ar1,gr1	with gr7++;
 	push ar4,gr4	with gr0=gr7<<1;
@@ -610,16 +610,16 @@ global _nmppsRShiftC_32s:label;
 		nul;
 	/////////////////////////////////////////////////////////////
 	// Shifting by odd number of bits to the right
-	ar4 = vec_tbl_sb_int_OddRightShift	with gr4--;
+	ar4 = core_tbl_sb_int_OddRightShift	with gr4--;
 	sb  = [ar4+=gr4]					with gr7 =gr4<<1;
-	ar4 = vec_tbl_nb_int_OddRightShift  with gr7+=gr4;
+	ar4 = core_tbl_nb_int_OddRightShift  with gr7+=gr4;
 	gr1 = [ar4+=gr4]					with gr4=gr7<<1;
 	nb1 = gr1;											
-	ar4 = vec_tbl_w_int_OddRightShift;
+	ar4 = core_tbl_w_int_OddRightShift;
 	ar4+= gr4;		
 	rep 6 wfifo=[ar4++],ftw,wtw;
 
-	call vec_vsum_shift_data_0;
+	call core_vsum_shift_data_0;
 		
 	
 	goto arsh32_Finish;
@@ -627,16 +627,16 @@ global _nmppsRShiftC_32s:label;
 	<arsh32_Even_by32>
 	/////////////////////////////////////////////////////////////
 	// Shifting by Even number of bits to the right
-	ar4 = vec_tbl_sb_int_EvenRightShift;
+	ar4 = core_tbl_sb_int_EvenRightShift;
 	sb  = [ar4+=gr4];
-	ar4 = vec_tbl_nb_int_EvenRightShift;
+	ar4 = core_tbl_nb_int_EvenRightShift;
 	gr1 = [ar4+=gr4];
 	nb1 = gr1;											
-	ar4 = vec_tbl_w_int_EvenRightShift with gr4<<=2;
+	ar4 = core_tbl_w_int_EvenRightShift with gr4<<=2;
 	ar4+= gr4;		
 	rep 4 wfifo=[ar4++],ftw,wtw;
 
-	call vec_vsum_data_0;
+	call core_vsum_data_0;
 		
 
 	<arsh32_Finish>

@@ -10,7 +10,7 @@ begin ".text_nmplv"
 global _nmppsCmpEqC_16u15b:label;
 <_nmppsCmpEqC_16u15b>
 .branch;    
-    ar5 = sp - 2;
+    ar5 = ar7 - 2;
     push ar0, gr0 with gr0 = false;
     push ar1, gr1 with gr0++;
     push ar5, gr5 with gr0++;

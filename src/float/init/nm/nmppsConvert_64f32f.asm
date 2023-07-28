@@ -1,5 +1,5 @@
 //***************************************************************************/
-//*                     RC Module Inc., Moscow, Russia                      */
+//*                     RC Module, Moscow, Russia                      */
 //*                     NeuroMatrix(r) NM640x Software, 2018                */
 //*                                                                         */
 //*   Software design:  A.Brodyazhenko                                      */

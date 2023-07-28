@@ -23,7 +23,7 @@ int main()
 	int w1=0;
 	for(int h0=1; h0<=maxH0; h0+=1){
 		for(int w0=8; w0<=maxW0; w0+=8){
-			printf("h0=%d w0=%d w1=%d %x\n",h0,w0,w1,crc);
+			//printf("h0=%d w0=%d w1=%d %x\n",h0,w0,w1,crc);
 			for(int w1=1; w1<=maxW1; w1+=1){
 				nmppmMul_mm_8s64s(src0,h0,w0,src1, dst, w1);				
 				nmppsCrcAcc_64s (dst, w1*(h0+1),&crc);

@@ -2,9 +2,9 @@
 //
 //  $Workfile:: CompareMin.asm     $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:05 $
 //
@@ -23,7 +23,7 @@ begin ".text_nmvcore"
 
 
     //------------------------------------------------------------------------
-    //! \fn void vec_CompareMinNV(nmreg nb1, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar3, nmreg gr3, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6);
+    //! \fn void core_CompareMinNV(nmreg nb1, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar3, nmreg gr3, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6);
     //!
     //------------------------------------------------------------------------
 	// ar0 - список массивов
@@ -42,8 +42,8 @@ begin ".text_nmvcore"
 	//  ar5, gr5 
 	//  ar6* gr6
 	
-global vec_CompareMinNV :label;
-<vec_CompareMinNV>
+global core_CompareMinNV :label;
+<core_CompareMinNV>
 .wait;
 	push ar0,gr0 with gr0--;
 	push ar1,gr1 with gr0--;

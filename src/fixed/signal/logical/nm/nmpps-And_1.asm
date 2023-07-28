@@ -2,16 +2,16 @@
 //
 //  $Workfile:: And.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:04 $
 //
 //! \if file_doc
 //!
 //! \file   And.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Логические функции над векторами.
 //!
 //! \endif
@@ -19,7 +19,7 @@
 //------------------------------------------------------------------------
 
 
-extern vec_And:label;
+extern core_And:label;
 begin ".text_nmplv"
 
 ///////////////////////////////////////////////////////////
@@ -40,7 +40,7 @@ global _nmppsAnd_1:label;
 	ar0 = [--ar5];		//	nm4u*		pSrcVec1,	// Input Buffer					:long Local[nSize]
 	ar1 = [--ar5];		//	nm4u*		pSrcVec2,	// Input Buffer					:long Local[nSize]
 	ar6 = [--ar5];		//	nm4u*		pDstVec,		// Output Buffer				:long Global[nSize
-	delayed call vec_And with gr6=gr7;
+	delayed call core_And with gr6=gr7;
 		gr5 = [--ar5];	//	int			nSize		// Vector size in 64-bit words	:nSize=[0,1,2,..,n
 		gr5>>=6;
 		

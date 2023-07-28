@@ -6,7 +6,7 @@
 //*                                                                         */
 //*             Вычисление квадратного корня в Fixed Point 64               */
 //*                                                                         */
-//*                1999 (c) RC Module Inc., Moscow, Russia                  */
+//*                1999 (c) RC Module, Moscow, Russia                  */
 //***************************************************************************/
 
 
@@ -73,7 +73,7 @@ begin ".text_nmplс"
 global _nmppcSqrt_64u :label; 
 <_nmppcSqrt_64u>
 .branch;
-	ar5=sp-2;
+	ar5=ar7 - 2;
 
 	push ar0,gr0 with gr7-=gr7;
     push ar1,gr1 with gr0-=gr0;

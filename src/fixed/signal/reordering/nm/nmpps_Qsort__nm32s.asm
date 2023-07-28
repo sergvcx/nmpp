@@ -2,9 +2,9 @@
 //
 //  $Workfile:: QuickSort.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:13 $
 //
@@ -28,7 +28,7 @@ global _nmppsQSort_32s : label;
 <_nmppsQSort_32s>
 .branch;  
 
-	ar5 = sp - 2;
+	ar5 = ar7 - 2;
 	
 	push ar0, gr0;// Registers saving
 	push ar1, gr1;// Registers saving
@@ -59,7 +59,7 @@ global _nmppsQSort_32s : label;
 //////////////////////////////////////////////////////////////
 <NextSort>
 
-	ar5 = sp - 2;
+	ar5 = ar7 - 2;
 
 	gr4 = [--ar5];					//Above address	
 	gr0 = [--ar5] with gr5 = gr4;	//Count;

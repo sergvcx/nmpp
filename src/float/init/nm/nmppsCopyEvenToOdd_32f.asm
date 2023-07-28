@@ -8,7 +8,7 @@
 
 global _nmppsCopyEvenToOdd_32f: label;
 
-extern vec_CopyOddToEven_32f: label;
+extern core_CopyOddToEven_32f: label;
 
 begin ".text_nmplv"
 <_nmppsCopyEvenToOdd_32f>
@@ -26,7 +26,7 @@ begin ".text_nmplv"
 	    gr0 = [ar0++];
 	    [ar6++] = gr0;
 
-	call vec_CopyOddToEven_32f;
+	call core_CopyOddToEven_32f;
 
 <exit_nmppsCopy_32f_even_odd_address>
 	pop ar0, gr0;

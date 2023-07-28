@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Mul_V32N32.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:03 $
 //
 //! \if file_doc
 //!
 //! \file   Mul_V32N32.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции умножения для векторов.
 //!
 //! \endif
@@ -19,7 +19,7 @@
 //------------------------------------------------------------------------
 //import from macros.mlb;
 
-extern vec_vsum_data_0	:label;
+extern core_vsum_data_0	:label;
 extern _nmppsTmpBuffer16_G_:long[16];
 
 begin ".text_nmplv"
@@ -34,7 +34,7 @@ global _nmppsMulC_32s:label;
 .branch;
 
 
-	ar5 = sp-2;
+	ar5 = ar7 - 2;
 	push ar0,gr0;
 	push ar5,gr5;
 	push ar6,gr6;
@@ -57,7 +57,7 @@ global _nmppsMulC_32s:label;
     gr5 = [--ar5] with gr0++;			// nSize
 
 	
-	delayed call vec_vsum_data_0 with gr5 >>= 1;
+	delayed call core_vsum_data_0 with gr5 >>= 1;
 		with gr6=gr0;
 		wtw;
 		

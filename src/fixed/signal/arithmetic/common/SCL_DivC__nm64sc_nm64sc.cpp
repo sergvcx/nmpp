@@ -4,7 +4,7 @@
 //
 //  nmplc
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.5 $      Date:: 27.06.2005
 //

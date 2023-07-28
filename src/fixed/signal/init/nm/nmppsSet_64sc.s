@@ -4,7 +4,7 @@
 //
 //  Векторно-матричная библиотека
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2022
 //
@@ -20,7 +20,7 @@
 
 //#include "vMinMax.h"
 
-.extern vec_ram
+.extern core_ram
 
 
 //.section .text_nmplv,"ax",@probits
@@ -35,7 +35,7 @@ _nmppsSet_64sc:
 
     ar5 = ar7 - 2	with gr7=false;
 	
-	// sp 		top stack 
+	// ar7 		top stack 
 	// -------------------
 	// 	        pswr
 	//	        ret addr
@@ -52,13 +52,13 @@ _nmppsSet_64sc:
 	ar0 = [--ar5];					// addr val
 	ar6 = [--ar5]  with gr6=gr7;	// pDst & step 4;		
 	
-	delayed call vec_ram;
+	delayed call core_ram;
 		gr5 = [--ar5];				// len
 		ar5 = ar6 with gr0 = gr5;
 	
 	ar0+= 2;						
 	ar6 = ar5 with gr5=gr0;
-	delayed call vec_ram;
+	delayed call core_ram;
 		ar6+=2;
 		
 	pop ar6,gr6;

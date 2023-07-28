@@ -3,12 +3,12 @@ begin ".text_nmplv"
 	//! \fn void nmppsCmpNe0_64s(nm64s* pSrcVec, nm64s* pDstVec, int nSize);
 	//!
 	//! \perfinclude _nmppsCmpNe0_64s.html
-extern vec_CmpNe0:label;
+extern core_CmpNe0:label;
 global _nmppsCmpNe0_64s:label;
 <_nmppsCmpNe0_64s>
  
 .branch;    
-    ar5 = sp - 2;
+    ar5 = ar7 - 2;
     push ar0, gr0 with gr0 = false;
     push ar1, gr1 with gr0++;
     push ar5, gr5 with gr0++;
@@ -23,7 +23,7 @@ global _nmppsCmpNe0_64s:label;
 	f1crh = 0FFFFFFFFh;
 	f2crl = 0FFFEFFFEh;
 	f2crh = 0FFFFFFFFh;	
-	call vec_CmpNe0 ;
+	call core_CmpNe0 ;
 		
     
     pop ar6, gr6;

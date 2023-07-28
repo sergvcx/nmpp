@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Mul_V32N32.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:03 $
 //
 //! \if file_doc
 //!
 //! \file   Mul_V32N32.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции поэлементного умножения для векторов.
 //!
 //! \endif
@@ -38,7 +38,7 @@ global _nmppsMul_AddC_64s:label;
 .branch;
 
 
-	ar5 = sp-2;
+	ar5 = ar7 - 2;
 	push ar0,gr0 with gr7 = false;
 	push ar1,gr1;
 	push ar2,gr2;

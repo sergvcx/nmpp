@@ -2,16 +2,16 @@
 //
 //  $Workfile:: mtrMulNM_AddVsVc.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/01/12 14:05:15 $
 //
 //! \if file_doc
 //!
 //! \file   mtrMulNM_AddVsVc.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  <Краткое описание файла.>
 //!
 //! \endif
@@ -28,7 +28,7 @@ data ".data_nmplm_G"
 end ".data_nmplm_G";
 
 
-extern vec_MulVN_AddVN:label;
+extern core_MulVN_AddVN:label;
 
 begin ".text_nmplm"
 
@@ -42,7 +42,7 @@ global _void._.8.8MTR_MulC_AddVsVc.1int.9._int._.0.9._int._.0.9._int._.0.9._int.
 <_MTR_MulC_AddVsVc__FiPiPiPiPiii>
 <_void._.8.8MTR_MulC_AddVsVc.1int.9._int._.0.9._int._.0.9._int._.0.9._int._.0.9._int.9._int.2>
 .branch;
-	ar5 = sp-2		with gr7=false;	
+	ar5 = ar7 - 2		with gr7=false;	
 	push ar0,gr0;
 	push ar1,gr1;
 	push ar2,gr2;
@@ -81,7 +81,7 @@ global _void._.8.8MTR_MulC_AddVsVc.1int.9._int._.0.9._int._.0.9._int._.0.9._int.
 	<Next_MulString>
 	gr7 = [ar2++];
 	vr = gr7;
-	call vec_MulVN_AddVN;
+	call core_MulVN_AddVN;
 	
 	with gr3--;
 	if <>0 delayed goto Next_MulString;

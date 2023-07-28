@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Activate.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:09 $
 //
 //! \if file_doc
 //!
 //! \file   Activate.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Пороговые функции над векторами.
 //!
 //! \endif
@@ -22,7 +22,7 @@ data ".data_nmplv_L"
 	i64la:	long = 8000000000000000hl;
 end ".data_nmplv_L";
 
-extern vec_activate_data:label;
+extern core_activate_data:label;
 begin ".text_nmplv"
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -41,7 +41,7 @@ global _nmppsCmpLt0_64s:label;
 	ar6 = [--ar5]	with gr6 = gr7;	// pDstVec,		
 	gr5 = [--ar5];					// nSize		
 	f1cr = [i64la]	with gr7++;
-	call vec_activate_data;
+	call core_activate_data;
 		
 	pop ar6,gr6;
 	pop ar5,gr5;

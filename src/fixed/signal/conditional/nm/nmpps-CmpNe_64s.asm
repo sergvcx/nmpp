@@ -4,7 +4,7 @@
 //
 //  Vector-processing library
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:09 $
 //
@@ -20,7 +20,7 @@
 
 begin ".text_nmplv"
 
-extern vec_CmpNeV:label;
+extern core_CmpNeV:label;
 /////////////////////////////////////////////////////////////////////////////////////////
 
 //! \fn void nmppsCmpNe_64s(nm64s* pSrcVec1, nm64s* pSrcVec2, nm64s* pDst, int nSize);
@@ -30,7 +30,7 @@ extern vec_CmpNeV:label;
 global _nmppsCmpNe_64s:label;
 <_nmppsCmpNe_64s>
 .branch;
-	ar5=sp-2;
+	ar5=ar7 - 2;
 	push ar0,gr0	with gr0=false;
 	nb1 = gr0;
 	push ar1,gr1	with gr0++;
@@ -48,7 +48,7 @@ global _nmppsCmpNe_64s:label;
 	f1crh = 0FFFFFFFFh;
     f2crh = 0FFFFFFFFh;  
 	
-	delayed call vec_CmpNeV;
+	delayed call core_CmpNeV;
 		wtw;
 		nul;
 		

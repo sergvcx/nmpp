@@ -1,5 +1,5 @@
 //***************************************************************************/
-//*                     RC Module Inc., Moscow, Russia                      */
+//*                     RC Module, Moscow, Russia                      */
 //*                     NeuroMatrix(r) NM6403 Software                      */
 //*                                                                         */
 //*   Vector Processing  Library                                            */
@@ -20,7 +20,7 @@
 //#include "vProd.h"
 
 import from macros.mlb;
-extern vec_vsum_data_0:label;
+extern core_vsum_data_0:label;
 
 data ".data_nmplv_G"
 
@@ -42,7 +42,7 @@ begin ".text_nmplv"
 
 global _nmppsDotProd_8s16s:label;
 <_nmppsDotProd_8s16s>
-	ar5 = sp - 2;
+	ar5 = ar7 - 2;
 
 	PUSH_REGS();
 
@@ -65,27 +65,27 @@ global _nmppsDotProd_8s16s:label;
 	gr7 = ar0		with gr5 = gr1>>2;
 	ar5 = ar6+gr6	with gr6<<=2;	// gr6=8
 		
-	delayed call vec_vsum_data_0;
+	delayed call core_vsum_data_0;
 		wtw;
 		ftw;		
 				
 	ar6 = ar5		with gr6>>=2;	// gr6=2
 	ar5 = ar6+gr6	with gr6<<=2;	// gr6=8
 	ar0 = gr7;
-	delayed call vec_vsum_data_0;
+	delayed call core_vsum_data_0;
 		wtw;
 		ftw;
 		
 	ar6 = ar5		with gr6>>=2;	// gr6=2
 	ar5 = ar6+gr6	with gr6<<=2;	// gr6=8
 	ar0 = gr7;
-	delayed call vec_vsum_data_0;
+	delayed call core_vsum_data_0;
 		wtw;
 		ftw;
 
 	ar6 = ar5		with gr6>>=2;	// gr6=2
 	ar5 = ar6+gr6	with gr6<<=2;	// gr6=8
-	delayed call vec_vsum_data_0;
+	delayed call core_vsum_data_0;
 		ar0 = gr7;
 		wtw;
 

@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Convert16to08.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:08 $
 //
 //! \if file_doc
 //!
 //! \file   Convert16to08.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции преобразования елементов вектора.
 //!
 //! \endif 
@@ -20,7 +20,7 @@
 //#include "vConvert.h"
 
 
-extern vec_ClipMul4D4W1_AddVr:label;
+extern core_ClipMul4D4W1_AddVr:label;
 extern _VEC_TBL_Diagonal_0001h_G:long[16];
 extern _VEC_TBL_Diagonal_0001h_L:long[16];
 
@@ -36,7 +36,7 @@ begin ".text_nmplv"
 global _nmppsConvert_64s16s:label;
 <_nmppsConvert_64s16s>
 .branch;
-	ar5 = sp - 2	with gr7=false;
+	ar5 = ar7 - 2	with gr7=false;
 	push ar0,gr0	with gr7++;
 	push ar1,gr1	with gr7++;		// gr7=2
 	push ar2,gr2	;
@@ -66,7 +66,7 @@ global _nmppsConvert_64s16s:label;
 	gr0 = gr3;
 	with gr7 = false;
 	vr  = gr7;
-	call vec_ClipMul4D4W1_AddVr with gr5>>=2;
+	call core_ClipMul4D4W1_AddVr with gr5>>=2;
 		
 	pop ar6,gr6;
 	pop ar5,gr5;

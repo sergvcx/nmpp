@@ -2,7 +2,7 @@
 
  
  //***************************************************************************/
-//*                     RC Module Inc., Moscow, Russia                      */
+//*                     RC Module, Moscow, Russia                      */
 //*                     NeuroMatrix(r) NM6403 Software                      */
 //*                                                                         */
 //*   Fast Fourie Transform Library                                         */

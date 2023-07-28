@@ -2,9 +2,9 @@
 //
 //  $Workfile:: ResizeDown2Y_S15.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/02/10 12:36:40 $
 //
@@ -33,12 +33,12 @@ begin ".text_nmpli"
 //! \perfinclude _nmppiResampleDown2Y__FPUsPUsii.html
     //--------------------------------------------------------------------
 
-extern vec_Add_VV_shift:label;
+extern core_Add_VV_shift:label;
 global _nmppiResampleDown2Y_16u16u:label;
 <_nmppiResampleDown2Y_16u16u>
 .branch;
 				
-	ar5 = sp - 2	with gr7=false;
+	ar5 = ar7 - 2	with gr7=false;
 	push ar0,gr0	with gr7++;
 	push ar1,gr1	with gr7++;		// gr7=2
 	push ar4,gr4	with gr1 = gr7;
@@ -66,7 +66,7 @@ global _nmppiResampleDown2Y_16u16u:label;
 		nul;
 		nul;
 <HS_Next>	
-	call vec_Add_VV_shift with gr5 = gr4;
+	call core_Add_VV_shift with gr5 = gr4;
 	with gr0 = gr4<<1;
 	ar0 += gr0 with gr1 = gr4<<1;
 	ar1 += gr1 with gr3--;
@@ -89,7 +89,7 @@ global _nmppiResampleDown2Y_16u16u:label;
 	push ar0,gr0;
 	push ar1,gr1;
 	push ar6,gr6;
-	call vec_Add_VV_shift with gr5 = gr3;
+	call core_Add_VV_shift with gr5 = gr3;
 	pop ar6,gr6;
 	pop ar1,gr1;
 	pop ar0,gr0;

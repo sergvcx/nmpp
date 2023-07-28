@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Math_Mul2D2W1.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:06 $
 //
 //! \if file_doc
 //!
 //! \file   Math_Mul2D2W1.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции векторного ядра.
 //!
 //! \endif
@@ -40,12 +40,12 @@ end MTR_MUL2D2W1_REP;
 
 
     //------------------------------------------------------------------------
-    //! \fn void vec_Mul2D2W1_AddVr(nmreg nb1, nmreg sb, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6)
+    //! \fn void core_Mul2D2W1_AddVr(nmreg nb1, nmreg sb, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6)
     //!
     //------------------------------------------------------------------------
 
-global vec_Mul2D2W1_AddVr:label;
-      <vec_Mul2D2W1_AddVr>
+global core_Mul2D2W1_AddVr:label;
+      <core_Mul2D2W1_AddVr>
 .branch;
 	Mul2D2W1_AddVr_rep0:label;
 	Next_Mul2D2W1_AddVr_rep32:label;

@@ -4,7 +4,7 @@
 //
 //  Vector-processing library
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:09 $
 //
@@ -20,7 +20,7 @@
 
 begin ".text_nmplv"
 
-extern vec_CompareMax:label;
+extern core_CompareMax:label;
 /////////////////////////////////////////////////////////////////////////////////////////
 
 //! \fn void nmppsMaxEvery_16s(nm16s15b*  pSrcVec1, nm16s15b* pSrcVec2,  nm16s15b*  pDstMax, int nSize);
@@ -31,7 +31,7 @@ global _nmppsMaxEvery__FPSsPSsPSsi_ :label;
 global _nmppsMaxEvery_16s:label;
 <_nmppsMaxEvery_16s>
 .branch;
-	ar5=sp-2;
+	ar5=ar7 - 2;
 	push ar0,gr0	with gr0=false;
 	push ar1,gr1	with gr0++;
 	push ar3,gr3;
@@ -46,7 +46,7 @@ global _nmppsMaxEvery_16s:label;
 	
 	nb1 =80008000h with gr5>>=2;
 	f1cr=80008000h;
-	delayed call vec_CompareMax;
+	delayed call core_CompareMax;
 		ar3 = ar1 with gr3 = gr1;
 		wtw;
 	

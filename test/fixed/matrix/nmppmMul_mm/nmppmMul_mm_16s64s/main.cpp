@@ -17,13 +17,13 @@ int main()
 
 	unsigned int crc = 0;
 	nmppsRandUniform_32u((nm32u*)src0,maxW0*maxH0/2);
-	nmppsRandUniform_32u((nm32u*)src1,maxW1*maxW0*2);
-	nmppsSet_32s((int)0xCCCCCCCC,(nm32s*)dst,maxW1*(maxH0+1)*2);
+	nmppsRandUniform_64s(src1,maxW1*maxW0);
+	nmppsSet_64s(0x55555555CCCCCCCC,dst,maxW1*(maxH0+1));
 	
 	int w1=0;
 	for(int h0=1; h0<=maxH0; h0+=1){
 		for(int w0=4; w0<=maxW0; w0+=4){
-			printf("h0=%d w0=%d w1=%d %x\n",h0,w0,w1,crc);
+			//printf("h0=%d w0=%d w1=%d %x\n",h0,w0,w1,crc);
 			for(int w1=1; w1<=maxW1; w1+=1){
 				nmppmMul_mm_16s64s(src0,h0,w0,src1, dst, w1);				
 				nmppsCrcAcc_64s (dst, w1*(h0+1),&crc);
@@ -35,6 +35,6 @@ int main()
 	nmppsFree(src1);
 	nmppsFree(dst);
 	
-
-	return (crc>>2)^ 0x319802de;
+	printf("crc= 0x%X\n",crc);
+	return crc^ 0x4F74598;
 }

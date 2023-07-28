@@ -1,8 +1,8 @@
 //------------------------------------------------------------------------
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //
 //! \if file_doc
@@ -15,7 +15,7 @@
 //!
 //------------------------------------------------------------------------
 #include "nmc.hs"
-//void vec_ClipMul4D4W4_AddVr(nmreg nb1, 
+//void core_ClipMul4D4W4_AddVr(nmreg nb1, 
 //								nmreg sb, 
 //								nmreg F1CR, 
 //								nmreg vr, 
@@ -44,7 +44,7 @@ BRANCH
 .global _nmppsDecimate_32s
 
 _nmppsDecimate_32s:
-	ar5 = sp - 2;
+	ar5 = ar7 - 2;
 	push ar0, gr0;
 	push ar1, gr1;
 	push ar2, gr2;
@@ -66,7 +66,7 @@ _nmppsDecimate_32s:
 	wtw;
 	with gr5>>=1; 
 	ar4 = weights;
-	delayed call vec_Mul2D2W2_AddVr;
+	delayed call core_Mul2D2W2_AddVr;
 		ar1 = ar0 + gr0 	with gr0<<=1;
 		ar4 += gr4			with gr1 = gr0;
 	

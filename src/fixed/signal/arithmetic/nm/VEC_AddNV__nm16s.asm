@@ -2,16 +2,16 @@
 //
 //  $Workfile:: MultipleAdd16.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:03 $
 //
 //! \if file_doc
 //!
 //! \file   MultipleAdd16.Asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции умножения с накоплением для векторов.
 //!
 //! \endif
@@ -44,7 +44,7 @@ begin ".text_nmplv"
 global _nmppsSumN_16s:label;
 <_nmppsSumN_16s>
 .branch;
-	ar5 = sp - 2;
+	ar5 = ar7 - 2;
 
 	
 	PUSH_REGS();

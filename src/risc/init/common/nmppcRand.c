@@ -2,16 +2,16 @@
 //
 //  $Workfile:: InitRand.cp $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/01/12 13:30:01 $
 //
 //! \if file_doc
 //!
 //! \file   InitRand.cpp
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции инициализации для скаляров.
 //!
 //! \endif

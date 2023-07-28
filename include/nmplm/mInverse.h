@@ -2,15 +2,15 @@
 //
 //  $Workfile:: mInverse.h  $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //
 //! \if file_doc
 //!
 //! \file   mtrInverse.h
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Обращение матрицы.
 //!
 //! \endif

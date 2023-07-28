@@ -6,7 +6,7 @@
 //*                 Медианный фильтр                                        */
 //*                                                                         */
 //*                                                                         */
-//* Date:25.01.2000     (c) RC Module Inc., Moscow, Russia                  */
+//* Date:25.01.2000     (c) RC Module, Moscow, Russia                  */
 //***************************************************************************/
 import from macros.mlb;
 
@@ -93,7 +93,7 @@ global _nmppsMedianX_16s:label;
 
 
 .branch;
-	ar5=sp-2;
+	ar5=ar7 - 2;
 	PUSH_REGS();   
 	gr5=[--ar5];				// SrcBuffer-исходная маcссив (vt16)
 	[SrcBuffer]=gr5;

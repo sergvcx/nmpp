@@ -2,9 +2,9 @@
 //
 //  $Workfile:: RSH16.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:05 $
 //
@@ -19,8 +19,8 @@
 //------------------------------------------------------------------------
 //#include "vShift.h"
 
-extern vec_vsum_shift_data_vr:label;
-extern vec_vsum_data_vr:label;
+extern core_vsum_shift_data_vr:label;
+extern core_vsum_data_vr:label;
 extern _VEC_TBL_BackTriangle_nm16_G:long;
 extern _VEC_TBL_Diagonal_0001h_G:long;
 extern _VEC_TBL_Diagonal_0001h_Interlace_G:long;
@@ -39,7 +39,7 @@ begin ".text_nmplv"
 global _nmppsRShiftC_AddC_16u:label;
 <_nmppsRShiftC_AddC_16u>
 .branch;
-	ar5 = sp - 2;
+	ar5 = ar7 - 2;
 	push ar0,gr0;
 	push ar5,gr5;
 	push ar6,gr6;
@@ -89,13 +89,13 @@ global _nmppsRShiftC_AddC_16u:label;
 		gr5 = [--ar5]	with gr0++; // int nSize
 
 	<Odd_RightShift>
-	delayed call vec_vsum_shift_data_vr with gr5>>=2;
+	delayed call core_vsum_shift_data_vr with gr5>>=2;
 		wtw;
 		gr6 = gr0;
 	goto End_RightShift;
 	
 	<Even_RightShift>
-	delayed call vec_vsum_data_vr with gr5>>=2;
+	delayed call core_vsum_data_vr with gr5>>=2;
 		wtw;
 		gr6 = gr0;
 

@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Remap32.asm   $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:13 $
 //
 //! \if file_doc
 //!
 //! \file   Remap32.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции перетаскивания по таблице для векторов.
 //!
 //! \endif

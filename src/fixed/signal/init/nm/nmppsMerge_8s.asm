@@ -2,9 +2,9 @@
 //
 //  $Workfile:: Swap.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:08 $
 //
@@ -37,7 +37,7 @@ end ".data_nmplv_L";
 begin ".text_nmplv"
 //  i=Merge_8s (int*psrc0, int* psrc1, int* pdst, int size);
 .branch;
-extern vec_Mul2D2W8_AddVr: label;
+extern core_Mul2D2W8_AddVr: label;
 global  _nmppsMerge_8s: label;
       <_nmppsMerge_8s>
    nb1=80808080h;  // 8 по 8 на выходе
@@ -62,12 +62,12 @@ global  _nmppsMerge_8s: label;
 //=========================================== even dbl
   ar4=matr1+8 with gr5>>=3; // was >>=4
   ar5=ar6+2 with gr4=gr5;
-  delayed call vec_Mul2D2W8_AddVr;
+  delayed call core_Mul2D2W8_AddVr;
   ar4=matr1+8;
 //=========================================== odd dbl
   ar0=ar3;
   ar1=gr3; ar6=ar5 with gr5=gr4;
-  delayed call vec_Mul2D2W8_AddVr;
+  delayed call core_Mul2D2W8_AddVr;
     ar4=matr1;
 
 <fin>// if size=1000h time=1275

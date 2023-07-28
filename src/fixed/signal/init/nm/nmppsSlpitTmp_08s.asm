@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Swap.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:08 $
 //
 //! \if file_doc
 //!
 //! \file   Split.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции инициализации и копирования.
 //!
 //! \endif
@@ -20,8 +20,8 @@
 
 
 
-extern vec_vsum_data_vr:label;
-extern vec_ClipMul1D1W_AddClipD:label;
+extern core_vsum_data_vr:label;
+extern core_ClipMul1D1W_AddClipD:label;
 
 data ".data_nmplv_L"
 	Weights:	long[17] = (
@@ -64,7 +64,7 @@ global _nmppsSplitTmp_8s:label;
 
 .branch;
 
-	ar5 = sp-2		with gr7=false;
+	ar5 = ar7 - 2		with gr7=false;
 	push ar0,gr0	with gr7++;
 	push ar1,gr1	with gr7++;
 	push ar2,gr2    with gr0=gr7<<1;	// gr0 = 4
@@ -88,26 +88,26 @@ global _nmppsSplitTmp_8s:label;
 	ar5=[--ar5]; 	// 	tmp
 	
 	//------- even bytes extraction --------------------------------------
-	delayed call vec_vsum_data_vr with gr5 = gr5>>4;
+	delayed call core_vsum_data_vr with gr5 = gr5>>4;
 		ar0 = gr2;	// ar0 = src	; gr0 = 4
 		ar6 = ar5;	// ar6 = tmp	; gr6 = 2
 	
 	ftw,wtw;
 	ar6 = ar2 ;		// ar6 = dstEven
-	delayed call vec_ClipMul1D1W_AddClipD  with gr7 = gr2 + gr6;
+	delayed call core_ClipMul1D1W_AddClipD  with gr7 = gr2 + gr6;
 		ar0 = gr7 ;	// ar0 = src+2 	; gr0 = 4
 		ar1 = ar5;	// ar1 = tmp	; gr1 = 2
 	
 	//------- odd byte extraction --------------------------------------
 	ar4 = Weights;
 	rep 16 wfifo=[ar4++],ftw,wtw;
-	delayed call vec_vsum_data_vr;
+	delayed call core_vsum_data_vr;
 		ar0 = gr2;	// ar0 = src
 		ar6 = ar5;	// ar6 = tmp
 	
 	ftw,wtw;
 	ar6 = ar3;		// ar6 = dstOdd
-	delayed call vec_ClipMul1D1W_AddClipD with gr7 = gr2 + gr6;
+	delayed call core_ClipMul1D1W_AddClipD with gr7 = gr2 + gr6;
 		ar0 = gr7;	// ar0 = src+2 ; gr0 = 4	
 		ar1 = ar5;	// ar1 = tmp
 

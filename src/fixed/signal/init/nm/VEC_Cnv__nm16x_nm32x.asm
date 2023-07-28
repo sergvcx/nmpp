@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Convert16to32.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:08 $
 //
 //! \if file_doc
 //!
 //! \file   Convert16to32.asm 
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции преобразования елементов вектора.
 //!
 //! \endif
@@ -21,7 +21,7 @@
 //#include "vConvert.h"
 
 import from macros.mlb;
-extern vec_vsum_data_0:label;
+extern core_vsum_data_0:label;
 data ".data_nmplv"
     WConvert16to32: long[8] =   ( 1l, 100000000hl, 0l dup 4, 1l, 100000000hl);
 end ".data_nmplv";
@@ -55,7 +55,7 @@ global _nmppsConvert_16u32u:label;
 	sb  = 00020002h;
 	rep 8 wfifo =[ar5++],ftw;
 
-	ar5 = sp - 2;
+	ar5 = ar7 - 2;
 	push ar0,gr0	with gr0=false;
 	push ar5,gr5	with gr0++;
 	push ar6,gr6	with gr0++;		//gr0=2
@@ -66,13 +66,13 @@ global _nmppsConvert_16u32u:label;
 	gr7 = ar0		with gr5>>=2;
 	ar5 = ar6+gr6	with gr6<<=1;	// gr6=4
 		
-	delayed call vec_vsum_data_0;
+	delayed call core_vsum_data_0;
 		wtw;
 		ftw;		
 		
 	ar0 = gr7;
 	ar6 = ar5;
-	delayed call vec_vsum_data_0;
+	delayed call core_vsum_data_0;
 		wtw;
 		nul;
 

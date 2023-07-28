@@ -4,7 +4,7 @@
 //
 //  Vector-processing library
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:09 $
 //
@@ -20,7 +20,7 @@
 
 begin ".text_nmplv"
 
-extern vec_CompareMinNV:label;
+extern core_CompareMinNV:label;
 /////////////////////////////////////////////////////////////////////////////////////////
 
 //! \fn void nmppsMinNV_32s(nm32s31b** pSrcVec1, int numVecs, nm32s31b* pDstMax, int nSize);
@@ -30,7 +30,7 @@ extern vec_CompareMinNV:label;
 global _nmppsMinNV_32s :label;
 <_nmppsMinNV_32s>
 .branch;
-	ar5=sp-2;
+	ar5=ar7 - 2;
 	push ar0,gr0;
 	push ar1,gr1	with gr1=false;
 	push ar5,gr5	with gr1++;
@@ -43,7 +43,7 @@ global _nmppsMinNV_32s :label;
 	
 	nb1 =80000000h with gr5>>=1;
 	f1cr=80000000h;
-	delayed call vec_CompareMinNV;
+	delayed call core_CompareMinNV;
 		wtw;
 		nul;
 	

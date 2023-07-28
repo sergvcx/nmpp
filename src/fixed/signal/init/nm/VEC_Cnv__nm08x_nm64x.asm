@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Convert08to64.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:08 $
 //
 //! \if file_doc
 //!
 //! \file   Convert08to64.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции преобразования елементов вектора.
 //!
 //! \endif 
@@ -20,7 +20,7 @@
 
 //#include "vConvert.h"
 
-extern vec_vsum_data_0:label;
+extern core_vsum_data_0:label;
 
 data ".data_nmplv"
     WConvert8to64: long[8*8] =  (			1hl, 0hl dup 7,	// Extract 1-st byte
@@ -67,7 +67,7 @@ global _nmppsConvert_8u64u:label;
 	sb  = 02020202h;
 	rep 32 wfifo =[ar5++],ftw;//First part
 
-	ar5 = sp - 2;
+	ar5 = ar7 - 2;
 	push ar0,gr0	with gr0=false;
 	push ar5,gr5	with gr0++;	
 	push ar6,gr6	with gr0++;		//gr0=2
@@ -78,14 +78,14 @@ global _nmppsConvert_8u64u:label;
 	gr7 = ar0		with gr5>>=3;
 	ar5 = ar6+gr6	with gr6<<=3;	// gr6=16
 		
-	delayed call vec_vsum_data_0;
+	delayed call core_vsum_data_0;
 		wtw;
 		ftw;		
 		
 	ar6 = ar5		with gr6>>=3;	// gr6=2
 	ar5 = ar6+gr6	with gr6<<=3;	// gr6=16
 	ar0 = gr7;
-	delayed call vec_vsum_data_0;
+	delayed call core_vsum_data_0;
 		wtw;
 		ftw;
 		
@@ -93,13 +93,13 @@ global _nmppsConvert_8u64u:label;
 	ar6 = ar5		with gr6>>=3;	// gr6=2
 	ar5 = ar6+gr6	with gr6<<=3;	// gr6=16
 	ar0 = gr7;
-	delayed call vec_vsum_data_0;
+	delayed call core_vsum_data_0;
 		wtw;
 		ftw;
 
 	ar6 = ar5		with gr6>>=3;	// gr6=2
 	ar5 = ar6+gr6	with gr6<<=3;	// gr6=16
-	delayed call vec_vsum_data_0;
+	delayed call core_vsum_data_0;
 		ar0 = gr7;
 		wtw;
 
@@ -111,7 +111,7 @@ global _nmppsConvert_8u64u:label;
 	ar6 = ar5		with gr6>>=3;	// gr6=2
 	ar5 = ar6+gr6	with gr6<<=3;	// gr6=16
 	ar0 = gr7;
-	delayed call vec_vsum_data_0;
+	delayed call core_vsum_data_0;
 		wtw;
 		ftw;
 		
@@ -119,20 +119,20 @@ global _nmppsConvert_8u64u:label;
 	ar6 = ar5		with gr6>>=3;	// gr6=2
 	ar5 = ar6+gr6	with gr6<<=3;	// gr6=16
 	ar0 = gr7;
-	delayed call vec_vsum_data_0;
+	delayed call core_vsum_data_0;
 		wtw;
 		ftw;
 
 	ar6 = ar5		with gr6>>=3;	// gr6=2
 	ar5 = ar6+gr6	with gr6<<=3;	// gr6=16
 	ar0 = gr7;
-	delayed call vec_vsum_data_0;
+	delayed call core_vsum_data_0;
 		wtw;
 		ftw;
 
 	ar6 = ar5		with gr6>>=3;	// gr6=2
 	ar5 = ar6+gr6	with gr6<<=3;	// gr6=16
-	delayed call vec_vsum_data_0;
+	delayed call core_vsum_data_0;
 		ar0 = gr7;
 		wtw;
 

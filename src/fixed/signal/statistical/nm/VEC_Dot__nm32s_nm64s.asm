@@ -1,5 +1,5 @@
 //***************************************************************************/
-//*                     RC Module Inc., Moscow, Russia                      */
+//*                     RC Module, Moscow, Russia                      */
 //*                     NeuroMatrix(r) NM6403 Software                      */
 //*                                                                         */
 //*   Vector Processing  Library                                            */
@@ -31,7 +31,7 @@ begin ".text_nmplv"
 
 global _nmppsDotProd_32s64s:label;
 <_nmppsDotProd_32s64s>
-	ar5 = sp - 2;
+	ar5 = ar7 - 2;
 
 	//return;
 	PUSH_REGS();

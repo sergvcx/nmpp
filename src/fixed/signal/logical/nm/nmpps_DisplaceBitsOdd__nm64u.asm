@@ -20,7 +20,7 @@ global _nmppsFwdShiftBitstream_Odd:label;
 begin ".text_nmplv"
 <_nmppsFwdShiftBitstream_Odd>
 .branch;
-/*	ar5 = sp - 2;	
+/*	ar5 = ar7 - 2;	
 	push ar0,gr0;
 	push ar1,gr1;
 	push ar2,gr2;

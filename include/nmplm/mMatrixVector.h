@@ -2,16 +2,16 @@
 //
 //  $Workfile:: mMatrixVec $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/01/12 14:03:24 $
 //
 //! \if file_doc
 //!
 //! \file   mtrArithm.h
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Базовы операции над элементами матрицы.
 //!
 //! \endif
@@ -90,7 +90,11 @@
     \endxmlonly
     */
     //! \{
+void nmppmMul_mm_2s8s  ( nm2s* pSrcMtr1,  int nHeight1, int nWidth1,  nm8s*  pSrcMtr2, nm8s*  pDstMtr, int nWidth2);
+void nmppmMul_mm_2s16s ( nm2s* pSrcMtr1,  int nHeight1, int nWidth1,  nm16s* pSrcMtr2, nm16s* pDstMtr, int nWidth2);
+void nmppmMul_mm_2s32s ( nm2s* pSrcMtr1,  int nHeight1, int nWidth1,  nm32s* pSrcMtr2, nm32s* pDstMtr, int nWidth2);
 void nmppmMul_mm_2s64s ( nm2s* pSrcMtr1,  int nHeight1, int nWidth1,  nm64s* pSrcMtr2, nm64s* pDstMtr, int nWidth2);
+
 void nmppmMul_mm_4s64s ( nm4s* pSrcMtr1,  int nHeight1, int nWidth1,  nm64s* pSrcMtr2, nm64s* pDstMtr, int nWidth2);
 		
 void nmppmMul_mm_8s8s  ( nm8s* pSrcMtr1,  int nHeight1, int nWidth1,  nm8s* pSrcMtr2,  nm8s*  pDstMtr, int nWidth2);

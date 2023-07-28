@@ -2,16 +2,16 @@
 //
 //  $Workfile:: vsum_data_vr.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:07 $
 //
 //! \if file_doc
 //!
 //! \file   vsum_data_vr.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции векторного ядра.
 //!
 //! \endif
@@ -31,12 +31,12 @@ macro VEC_MUL_VN_ADD_N_REP(N)
 end VEC_MUL_VN_ADD_N_REP;
 
     //------------------------------------------------------------------------
-    //! \fn void vec_vsum_data_vr(nmreg nb1, nmreg sb, nmreg woper, nmreg vr, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6)
+    //! \fn void core_vsum_data_vr(nmreg nb1, nmreg sb, nmreg woper, nmreg vr, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6)
     //!
     //------------------------------------------------------------------------
 
-global vec_vsum_data_vr :label;
-<vec_vsum_data_vr>
+global core_vsum_data_vr :label;
+<core_vsum_data_vr>
 .branch;
 	MulVN_AddN_rep0: label;
 	push ar2,gr2 with gr2=gr5<<27;

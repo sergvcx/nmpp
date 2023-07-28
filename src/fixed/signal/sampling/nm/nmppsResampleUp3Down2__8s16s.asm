@@ -4,14 +4,14 @@
 //
 //  Библиотека обработки сигналов
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/01/12 14:09:08 $
 //
 //! \if file_doc
 //!
 //! \file   Add.Asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции передескритизации сигнала в 3/2 раза
 //!
 //! \endif
@@ -20,7 +20,7 @@
 
 //#include "vArithm.h"
 
-extern vec_Mul2D2W8_AddVr:label;
+extern core_Mul2D2W8_AddVr:label;
 begin ".text_nmpls"
 
 //! \fn void nmppsResampleUp3Down2(nm8s* pSrcVec, nm16s* pDstVec, int nSrcVecSize, nm64s* pKernel);
@@ -31,7 +31,7 @@ begin ".text_nmpls"
 global _nmppsResampleUp3Down2_8s16s:label;
 <_nmppsResampleUp3Down2_8s16s>
 .branch;
-	ar5 = sp - 2;
+	ar5 = ar7 - 2;
 	
 	push ar0,gr0 with gr0 = false;
 	push ar1,gr1 with gr0++;
@@ -60,7 +60,7 @@ global _nmppsResampleUp3Down2_8s16s:label;
 	push ar1,gr1;
 	push ar6,gr6;
 
-	delayed call vec_Mul2D2W8_AddVr;
+	delayed call core_Mul2D2W8_AddVr;
 		nul;
 		nul;
 
@@ -76,7 +76,7 @@ global _nmppsResampleUp3Down2_8s16s:label;
 	push ar1,gr1;
 	push ar6,gr6;
 
-	delayed call vec_Mul2D2W8_AddVr;
+	delayed call core_Mul2D2W8_AddVr;
 		nul;
 		nul;
 
@@ -91,7 +91,7 @@ global _nmppsResampleUp3Down2_8s16s:label;
 	push ar1,gr1;
 	push ar6,gr6;
 
-	delayed call vec_Mul2D2W8_AddVr;
+	delayed call core_Mul2D2W8_AddVr;
 		nul;
 		nul;
 

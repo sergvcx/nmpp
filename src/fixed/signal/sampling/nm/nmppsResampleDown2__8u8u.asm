@@ -2,16 +2,16 @@
 //
 //  $Workfile:: ResampleDown2_C7.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/01/12 14:09:08 $
 //
 //! \if file_doc
 //!
 //! \file   ResampleDown2_C7.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции изменения размеров для векторов.
 //!
 //! \endif
@@ -46,7 +46,7 @@ end MTR_AVG_REP;
 /////////////////////////////////////////////////////////////////////////////////////////
 begin ".text_nmpls"
 /////////////////////////////////////////////////////////////////////////////////////////
-extern vec_MUL_2V8toW16_shift:label;
+extern core_MUL_2V8toW16_shift:label;
 
 //! \fn void nmppsResampleDown2_8u8u(nm8u7b* pSrcVec, nm8u7b* pDstVec, int nSrcVecSize, nm64s* pKernel);
 //!
@@ -57,7 +57,7 @@ global _nmppsResampleDown2_8u8u:label;
 <_nmppsResampleDown2_8u8u>
 .branch;
 					
-	ar5 = sp - 2	with gr7=false;
+	ar5 = ar7 - 2	with gr7=false;
 	push ar0,gr0	with gr7++;
 	push ar1,gr1	with gr7++;		// gr7=2
 	push ar4,gr4	with gr0=gr7;	// gr0=2
@@ -78,7 +78,7 @@ global _nmppsResampleDown2_8u8u:label;
 	ar3 = Mask with gr0 = gr1;// gr0=4	
 
 //////////////////////////////////////////////////////////////
-	call vec_MUL_2V8toW16_shift;
+	call core_MUL_2V8toW16_shift;
 //////////////////////////////////////////////////////////////
 
 	pop ar6,gr6;

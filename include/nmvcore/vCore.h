@@ -94,7 +94,7 @@
 //---------------------------------------------------------------------------------
     /**
 		\~
-	\defgroup vec_0_sub_data
+	\defgroup core_0_sub_data
     \ingroup vCore
     
         \ru Ядро функции nmppsNeg(). 
@@ -137,14 +137,14 @@
     */
 
 //! \{ 
- void vec_0_sub_data(nmreg nb1, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_0_sub_data(nmreg nb1, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-    \defgroup vec_activate_data
+    \defgroup core_activate_data
     \ingroup vCore
         \ru Ядро функции nmppsCmpLt0_(). 
         \en nmppsCmpLt0_() function core. 
@@ -185,14 +185,14 @@
 		*/
     
 //! \{ 
- void vec_activate_data(nmreg f1cr, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_activate_data(nmreg f1cr, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-    \defgroup vec_activate_data_add_0
+    \defgroup core_activate_data_add_0
     \ingroup vCore
         \ru Функция производит арифметическую активацию. 
         \en The function executes arithmetic activation. 
@@ -235,14 +235,14 @@
         \en On exiting the function the contents of registers changes: ar0,ar6. 
     */
 //! \{ 
- void vec_activate_data_add_0(nmreg f1cr, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_activate_data_add_0(nmreg f1cr, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-    \defgroup vec_activate_data_xor_data
+    \defgroup core_activate_data_xor_data
     \ingroup vCore
    
         \ru Функция позволяет вычислить приближенное значение модуля. 
@@ -286,14 +286,14 @@
         \en On exiting the function the contents of registers changes: ar0,ar6. 
     */
 //! \{ 
- void vec_activate_data_xor_data(nmreg f1cr, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_activate_data_xor_data(nmreg f1cr, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-    \defgroup vec_activate_data_add_ram
+    \defgroup core_activate_data_add_ram
     \ingroup vCore
    
         \ru Функция выполняет арифметическую активацию с прибавлением константы. 
@@ -344,7 +344,7 @@
     */
 
 //! \{ 
- void vec_activate_data_add_ram(nmreg nb1, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_activate_data_add_ram(nmreg nb1, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
@@ -416,14 +416,14 @@
     */
 
 //! \{ 
- void vec_Add_VV_shift(nmreg nb1, nmreg sb, nmreg woper, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_Add_VV_shift(nmreg nb1, nmreg sb, nmreg woper, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-    \defgroup vec_afifo
+    \defgroup core_afifo
     \ingroup vCore
    
         \ru Функция служит для заполнения массива константой. 
@@ -459,14 +459,14 @@
     */
 
 //! \{ 
- void vec_afifo(nmreg ar0, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_afifo(nmreg ar0, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-    \defgroup vec_data
+    \defgroup core_data
     \ingroup vCore
    
         \ru Ядро функции nmppsCopy_(). 
@@ -505,13 +505,13 @@
 		*/
 
 //! \{ 
- void vec_data(nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_data(nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
  //-----------------------------------------------------------------------------
     /**
 	\~
-    \defgroup vec_copyEvenToEven_32f
+    \defgroup core_copyEvenToEven_32f
     \ingroup vCore_f
    
         \ru Ядро функций nmppsCopyEvenToEven_32f и nmppsCopyOddToOdd_32f. 
@@ -542,14 +542,14 @@
 		*/
 
 //! \{ 
- void vec_CopyEvenToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5); 
+ void core_CopyEvenToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5); 
  //! \}
  
 
  //-----------------------------------------------------------------------------
     /**
 	\~
-    \defgroup vec_CopyOddToEven_32f
+    \defgroup core_CopyOddToEven_32f
     \ingroup vCore_f
    
         \ru Ядро функций nmppsCopyOddToEven_32f и nmppsCopyEvenToOdd_32f. 
@@ -581,14 +581,14 @@
 		*/
 
 //! \{ 
-void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5); 
+void core_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5); 
  //! \}
  
  
 //-----------------------------------------------------------------------------
     /**
 		\~
-    \defgroup vec_data_add_afifo
+    \defgroup core_data_add_afifo
     \ingroup vcomplex
    
         \ru Ядро функции nmppsSum(). 
@@ -631,14 +631,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_data_add_afifo(nmreg nb1, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6); 
+ void core_data_add_afifo(nmreg nb1, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-    \defgroup vec_data_add_ram
+    \defgroup core_data_add_ram
    \ingroup vCore
    
         \ru Ядро функции nmppsAddC(). 
@@ -685,14 +685,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_data_add_ram(nmreg nb1, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_data_add_ram(nmreg nb1, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-     \defgroup vec_data_and_ram
+     \defgroup core_data_and_ram
    \ingroup vCore
    
         \ru Ядро функции nmppsAndC_(). 
@@ -735,14 +735,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_data_and_ram(nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_data_and_ram(nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-     \defgroup vec_data_or_ram
+     \defgroup core_data_or_ram
    \ingroup vCore
    
         \ru Ядро функции nmppsOrC_(). 
@@ -785,14 +785,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_data_or_ram(nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_data_or_ram(nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-     \defgroup vec_data_sub_ram
+     \defgroup core_data_sub_ram
    \ingroup vCore
    
         \ru Ядро функции nmppsSubC(). 
@@ -839,14 +839,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_data_sub_ram(nmreg nb1, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_data_sub_ram(nmreg nb1, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-    \defgroup vec_data_xor_ram
+    \defgroup core_data_xor_ram
     \ingroup vCore
    
         \ru Ядро функции nmppsXorC_(). 
@@ -889,7 +889,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_data_xor_ram(nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_data_xor_ram(nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
@@ -897,7 +897,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 
     /**
 		\~
-     \defgroup vec_FilterCoreRow2
+     \defgroup core_FilterCoreRow2
    \ingroup vcomplex
    
     \par
@@ -906,13 +906,13 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_FilterCoreRow2(nmreg ar0, nmreg ar4, nmreg ar6, nmreg gr1, nmreg gr4, nmreg gr6); 
+ void core_FilterCoreRow2(nmreg ar0, nmreg ar4, nmreg ar6, nmreg gr1, nmreg gr4, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
-    \defgroup vec_FilterCoreRow4
+    \defgroup core_FilterCoreRow4
     \ingroup vcomplex
    
     \par
@@ -921,13 +921,13 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_FilterCoreRow4(nmreg ar0, nmreg ar4, nmreg ar6, nmreg gr1, nmreg gr4, nmreg gr6); 
+ void core_FilterCoreRow4(nmreg ar0, nmreg ar4, nmreg ar6, nmreg gr1, nmreg gr4, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
-    \defgroup vec_FilterCoreRow8
+    \defgroup core_FilterCoreRow8
     \ingroup vcomplex
    
     \par
@@ -936,13 +936,13 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_FilterCoreRow8(nmreg ar0, nmreg ar4, nmreg ar6, nmreg gr1, nmreg gr4, nmreg gr6); 
+ void core_FilterCoreRow8(nmreg ar0, nmreg ar4, nmreg ar6, nmreg gr1, nmreg gr4, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
-    \defgroup vec_And
+    \defgroup core_And
     \ingroup vCore
    
         \ru Ядро функции nmppsAnd_(). 
@@ -990,14 +990,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_And(nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_And(nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-      \defgroup vec_Mask
+      \defgroup core_Mask
   \ingroup vCore
    
         \ru Ядро функции nmppsMaskV_(). 
@@ -1052,14 +1052,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_Mask(nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar2, nmreg gr2, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_Mask(nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar2, nmreg gr2, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-    \defgroup vec_Or
+    \defgroup core_Or
     \ingroup vCore
    
         \ru Ядро функции nmppsOr_(). 
@@ -1107,14 +1107,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_Or(nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_Or(nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-     \defgroup vec_Xor
+     \defgroup core_Xor
    \ingroup vCore
    
         \ru Ядро функции nmppsXor_(). 
@@ -1162,14 +1162,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_Xor(nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_Xor(nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-     \defgroup vec_Abs
+     \defgroup core_Abs
    \ingroup vcomplex
    
         \ru Ядро функции nmppsAbs(). 
@@ -1223,14 +1223,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_Abs(nmreg nb1, nmreg sb, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_Abs(nmreg nb1, nmreg sb, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-     \defgroup vec_Add
+     \defgroup core_Add
    \ingroup vCore
    
         \ru Ядро функции nmppsAdd(). 
@@ -1282,14 +1282,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_Add(nmreg nb1, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_Add(nmreg nb1, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-     \defgroup vec_ClipExt
+     \defgroup core_ClipExt
    \ingroup vcomplex
    
         \ru Ядро функции nmppsClipCC_(). 
@@ -1354,13 +1354,13 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     \link nmppsClipCC_
     */
 //! \{ 
- void vec_ClipExt(nmreg nb1, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg ar2, nmreg ar3, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_ClipExt(nmreg nb1, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg ar2, nmreg ar3, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
-     \defgroup vec_ClipMul2D2W8_AddVr
+     \defgroup core_ClipMul2D2W8_AddVr
    \ingroup vsum
    
         \ru Взвешенное умножение двух массивов с накоплением и активацей 
@@ -1432,7 +1432,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
         \en On exiting the function the contents of registers changes: ar0,ar1,ar6,gr7. 
     */
 //! \{ 
- void vec_ClipMul2D2W8_AddVr(nmreg nb1, nmreg sb, nmreg f1cr, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_ClipMul2D2W8_AddVr(nmreg nb1, nmreg sb, nmreg f1cr, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
@@ -1441,7 +1441,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 
     /**
 		\~
-     \defgroup vec_ClipMulNDNW2_AddVr
+     \defgroup core_ClipMulNDNW2_AddVr
    \ingroup vsum
    
         \ru Взвешенное умножение нескольких массивов с накоплением и активацей 
@@ -1531,7 +1531,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
         \en On exiting the function the contents of registers changes: ar0,ar1,gr1,ar2,gr2,ar3,gr3,ar4,ar6,gr7. 
     */
 //! \{ 
- void vec_ClipMulNDNW2_AddVr(nmreg nb1, nmreg sb, nmreg f1cr, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_ClipMulNDNW2_AddVr(nmreg nb1, nmreg sb, nmreg f1cr, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
@@ -1540,7 +1540,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 
     /**
 		\~
-     \defgroup vec_ClipMulNDNW4_AddVr
+     \defgroup core_ClipMulNDNW4_AddVr
    \ingroup vsum
    
         \ru Взвешенное умножение нескольких массивов с накоплением и активацей 
@@ -1629,7 +1629,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
         \en On exiting the function the contents of registers changes: ar0,ar1,gr1,ar2,gr2,ar3,gr3,ar4,ar6,gr7.
 	*/
 //! \{ 
- void vec_ClipMulNDNW4_AddVr(nmreg nb1, nmreg sb, nmreg f1cr, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_ClipMulNDNW4_AddVr(nmreg nb1, nmreg sb, nmreg f1cr, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 // 	 \restr  
@@ -1642,7 +1642,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 
     /**
 		\~
-     \defgroup vec_ClipMulNDNW8_AddVr
+     \defgroup core_ClipMulNDNW8_AddVr
    \ingroup vsum
    
         \ru Взвешенное умножение нескольких массивов с накоплением и активацей 
@@ -1729,14 +1729,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
         \en On exiting the function the contents of registers changes: ar0,ar1,gr1,ar2,gr2,ar3,gr3,ar4,ar6,gr7. 
     */
 //! \{ 
- void vec_ClipMulNDNW8_AddVr(nmreg nb1, nmreg sb, nmreg f1cr, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_ClipMulNDNW8_AddVr(nmreg nb1, nmreg sb, nmreg f1cr, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-     \defgroup vec_IncNeg
+     \defgroup core_IncNeg
    \ingroup vcomplex
    
         \ru Увеличивает отрицательные числа на 1. 
@@ -1786,14 +1786,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_IncNeg(nmreg nb1, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_IncNeg(nmreg nb1, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
     
 //-----------------------------------------------------------------------------
     /**
 		\~
-     \defgroup vec_Mul2D2W1_AddVr
+     \defgroup core_Mul2D2W1_AddVr
    \ingroup vsum
    
         \ru Ядро функции nmppsConvert_64s(nm64s* ,nm32s* ,int ). 
@@ -1860,14 +1860,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_Mul2D2W1_AddVr(nmreg nb1, nmreg sb, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_Mul2D2W1_AddVr(nmreg nb1, nmreg sb, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
     
 //-----------------------------------------------------------------------------
     /**
 		\~
-    \defgroup vec_Mul2D2W2_AddVr
+    \defgroup core_Mul2D2W2_AddVr
     \ingroup vsum
    
         \ru Ядро функции nmppsConvert_32s(nm32s* ,nm16s* ,int ). 
@@ -1934,14 +1934,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_Mul2D2W2_AddVr(nmreg nb1, nmreg sb, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_Mul2D2W2_AddVr(nmreg nb1, nmreg sb, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-     \defgroup vec_Mul2D2W4_AddVr
+     \defgroup core_Mul2D2W4_AddVr
    \ingroup vsum
    
         \ru Ядро функции nmppsConvert_16s(nm16s* pSrcVec, nm8s* pDstVec, int nSize). 
@@ -2008,14 +2008,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_Mul2D2W4_AddVr(nmreg nb1, nmreg sb, nmreg f1cr, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_Mul2D2W4_AddVr(nmreg nb1, nmreg sb, nmreg f1cr, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr5, nmreg ar6, nmreg gr6); 
   //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-    \defgroup vec_Mul2D2W8_AddVr
+    \defgroup core_Mul2D2W8_AddVr
     \ingroup vsum
    
         \ru Применяется в MTR_Copyua(). 
@@ -2082,14 +2082,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_Mul2D2W8_AddVr(nmreg nb1, nmreg sb, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_Mul2D2W8_AddVr(nmreg nb1, nmreg sb, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-     \defgroup vec_Mul3D3W2_AddVr
+     \defgroup core_Mul3D3W2_AddVr
    \ingroup vsum
    
         \ru 
@@ -2164,7 +2164,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_Mul3D3W2_AddVr(nmreg nb1, nmreg sb, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar2, nmreg gr2, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_Mul3D3W2_AddVr(nmreg nb1, nmreg sb, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar2, nmreg gr2, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
@@ -2172,7 +2172,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 //-----------------------------------------------------------------------------
     /**
 		\~
-    \defgroup vec_Mul3D3W8_AddVr
+    \defgroup core_Mul3D3W8_AddVr
     \ingroup vsum
    
         \ru 
@@ -2247,7 +2247,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_Mul3D3W8_AddVr(nmreg nb1, nmreg sb, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar2, nmreg gr2, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_Mul3D3W8_AddVr(nmreg nb1, nmreg sb, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar2, nmreg gr2, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
@@ -2255,7 +2255,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 //-----------------------------------------------------------------------------
     /**
 		\~
-     \defgroup vec_Mul4D4W2_AddVr
+     \defgroup core_Mul4D4W2_AddVr
    \ingroup vsum
    
         \ru Ядро функции nmppsConvert_32s(nm32s* pSrcVec, nm8s* pDstVec, int nSize). 
@@ -2338,14 +2338,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_Mul4D4W2_AddVr(nmreg nb1, nmreg sb, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar2, nmreg gr2, nmreg ar3, nmreg gr3, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_Mul4D4W2_AddVr(nmreg nb1, nmreg sb, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar2, nmreg gr2, nmreg ar3, nmreg gr3, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-     \defgroup vec_MulVN_AddVN
+     \defgroup core_MulVN_AddVN
    \ingroup vsum
    
         \ru Ядро функции MTR_MulC_AddVsVc( ). 
@@ -2406,14 +2406,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_MulVN_AddVN(nmreg nb1, nmreg sb, nmreg f1cr, nmreg woper, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_MulVN_AddVN(nmreg nb1, nmreg sb, nmreg f1cr, nmreg woper, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-     \defgroup vec_Sub
+     \defgroup core_Sub
    \ingroup vCore
    
         \ru Ядро функции nmppsSub(). 
@@ -2462,14 +2462,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_Sub(nmreg nb1, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_Sub(nmreg nb1, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-    \defgroup vec_SubAbs
+    \defgroup core_SubAbs
     \ingroup vcomplex
    
         \ru Ядро функции nmppsAbsDiff(). 
@@ -2532,7 +2532,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_SubAbs(nmreg nb1, nmreg sb, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_SubAbs(nmreg nb1, nmreg sb, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
@@ -2540,7 +2540,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 
     /**
 		\~
-    \defgroup vec_SubVN_Abs
+    \defgroup core_SubVN_Abs
     \ingroup vcomplex
    
         \ru Ядро функции mtr_SubMV_Abs(). 
@@ -2607,13 +2607,13 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_SubVN_Abs(nmreg nb1, nmreg sb, nmreg f1cr, nmreg woper, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_SubVN_Abs(nmreg nb1, nmreg sb, nmreg f1cr, nmreg woper, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
-    \defgroup vec_Swap
+    \defgroup core_Swap
     \ingroup vcomplex
    
         \ru Ядро функции mtr_SubVN_Abs(). 
@@ -2676,14 +2676,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_Swap(nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_Swap(nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-     \defgroup vec_MUL_2V4toW8_shift
+     \defgroup core_MUL_2V4toW8_shift
    \ingroup vcomplex
    
         \ru Ядро функции SIG_ResizeDown2(nm8u7b* pSrcVec, nm8u7b* pDstVec, int nSize). 
@@ -2753,14 +2753,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_MUL_2V4toW8_shift(nmreg nb1, nmreg sb, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar3, nmreg gr4, nmreg ar5, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_MUL_2V4toW8_shift(nmreg nb1, nmreg sb, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar3, nmreg gr4, nmreg ar5, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-     \defgroup vec_MUL_2V8toW16_shift
+     \defgroup core_MUL_2V8toW16_shift
    \ingroup vcomplex
    
         \ru Ядро функции SIG_ResizeDown2(nm16u15b* pSrcVec, nm16u15b* pDstVec, int nSize). 
@@ -2830,14 +2830,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_MUL_2V8toW16_shift(nmreg nb1, nmreg sb, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar3, nmreg gr4, nmreg ar5, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_MUL_2V8toW16_shift(nmreg nb1, nmreg sb, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar3, nmreg gr4, nmreg ar5, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-    \defgroup vec_not_data
+    \defgroup core_not_data
     \ingroup vCore
    
         \ru Ядро функции nmppsNot_( ). 
@@ -2875,14 +2875,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_not_data(nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_not_data(nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-     \defgroup vec_ram
+     \defgroup core_ram
    \ingroup vCore
    
         \ru Ядро функции nmppsSet_(). 
@@ -2921,14 +2921,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_ram(nmreg ar0, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_ram(nmreg ar0, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-     \defgroup vec_ram_sub_data
+     \defgroup core_ram_sub_data
    \ingroup vCore
    
         \ru Ядро функции nmppsSubCRev(). 
@@ -2971,14 +2971,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_ram_sub_data(nmreg nb1, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_ram_sub_data(nmreg nb1, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-    \defgroup vec_vsum_activate_data_0
+    \defgroup core_vsum_activate_data_0
     \ingroup vCore
    
         \ru Действие функции эквивалентно следующим псевдоинструкциям: 
@@ -3034,14 +3034,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_vsum_activate_data_0(nmreg nb1, nmreg sb, nmreg f1cr, nmreg woper, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_vsum_activate_data_0(nmreg nb1, nmreg sb, nmreg f1cr, nmreg woper, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-    \defgroup vec_vsum_data_0
+    \defgroup core_vsum_data_0
     \ingroup vsum
    
         \ru Действие функции эквивалентно следующим псевдоинструкциям: 
@@ -3087,14 +3087,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_vsum_data_0(nmreg nb1, nmreg sb, nmreg woper, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_vsum_data_0(nmreg nb1, nmreg sb, nmreg woper, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-     \defgroup vec_vsum_data_afifo
+     \defgroup core_vsum_data_afifo
    \ingroup vcomplex
    
         \ru Используется в nmppsSum(nm1* pSrcVec, void* pTmpBuf, int nSize) 
@@ -3145,14 +3145,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_vsum_data_afifo(nmreg nb1, nmreg sb, nmreg woper, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6); 
+ void core_vsum_data_afifo(nmreg nb1, nmreg sb, nmreg woper, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-    \defgroup vec_vsum_data_vr
+    \defgroup core_vsum_data_vr
     \ingroup vsum
    
         \ru Действие функции эквивалентно следующим псевдоинструкциям: 
@@ -3206,14 +3206,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_vsum_data_vr(nmreg nb1, nmreg sb, nmreg woper, nmreg vr, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_vsum_data_vr(nmreg nb1, nmreg sb, nmreg woper, nmreg vr, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-    \defgroup vec_vsum_shift_data_0
+    \defgroup core_vsum_shift_data_0
     \ingroup vsum
    
         \ru Действие функции эквивалентно следующим псевдоинструкциям: 
@@ -3259,14 +3259,14 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_vsum_shift_data_0(nmreg nb1, nmreg sb, nmreg woper, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_vsum_shift_data_0(nmreg nb1, nmreg sb, nmreg woper, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-     \defgroup vec_vsum_shift_data_vr
+     \defgroup core_vsum_shift_data_vr
    \ingroup vsum
    
         \ru Действие функции эквивалентно следующим псевдоинструкциям: 
@@ -3316,13 +3316,13 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_vsum_shift_data_vr(nmreg nb1, nmreg sb, nmreg woper, nmreg vr, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_vsum_shift_data_vr(nmreg nb1, nmreg sb, nmreg woper, nmreg vr, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 //-----------------------------------------------------------------------------
     /**
 		\~
-     \defgroup vec_vsum_shift_data_afifo
+     \defgroup core_vsum_shift_data_afifo
    \ingroup vsum
    
         \ru Действие функции эквивалентно следующим псевдоинструкциям: 
@@ -3371,7 +3371,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
     */
 
 //! \{ 
- void vec_vsum_shift_data_afifo(nmreg nb1, nmreg sb, nmreg f1cr, nmreg woper, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6); 
+ void core_vsum_shift_data_afifo(nmreg nb1, nmreg sb, nmreg f1cr, nmreg woper, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6); 
  //! \}
 
 //-----------------------------------------------------------------------------
@@ -3380,7 +3380,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 
 	/**
 		\~
-    \defgroup vec_CompareMinV
+    \defgroup core_CompareMinV
 	\ingroup vcomplex
 	\brief
 		\ru Поэлементный поиск минимального 
@@ -3433,13 +3433,13 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
         \en On exiting the function the contents of registers changes: ar0,ar1,ar3,ar6.  
 	*/
 //! \{ 
- void vec_CompareMinV(nmreg nb1, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar3, nmreg gr3, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_CompareMinV(nmreg nb1, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar3, nmreg gr3, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 //-----------------------------------------------------------------------------	
 	/**
 		\~
-    \defgroup vec_CompareMaxV
+    \defgroup core_CompareMaxV
 	\ingroup vcomplex
 	\brief
 		\ru Поэлементный поиск максимального 
@@ -3492,7 +3492,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
         \en On exiting the function the contents of registers changes: ar0,ar1,ar3,ar6.  
 	*/
 //! \{ 
- void vec_CompareMaxV(nmreg nb1, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar3, nmreg gr3, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_CompareMaxV(nmreg nb1, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar3, nmreg gr3, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 
@@ -3500,7 +3500,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 
 	/**
 		\~
-    \defgroup vec_DupValueInVector8
+    \defgroup core_DupValueInVector8
 	\ingroup vcomplex
 	\brief
 		\ru Размножение 8-ми битового значения по всему вектору.
@@ -3531,7 +3531,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
         \en On exiting the function the contents of registers changes: ar1, gr1.  
 	*/
 //! \{ 
- void vec_DupValueInVector8(nmreg ar1, nmreg gr1); 
+ void core_DupValueInVector8(nmreg ar1, nmreg gr1); 
  //! \}
 
 
@@ -3539,7 +3539,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 
 	/**
 		\~
-    \defgroup vec_DupValueInVector16
+    \defgroup core_DupValueInVector16
 	\ingroup vcomplex
 	\brief
 		\ru Размножение 16-ти битового значения по всему вектору.
@@ -3569,7 +3569,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
         \en On exiting the function the contents of registers changes: ar1, gr1.  
 	*/
 //! \{ 
- void vec_DupValueInVector16(nmreg ar1, nmreg gr1); 
+ void core_DupValueInVector16(nmreg ar1, nmreg gr1); 
  //! \}
 
 
@@ -3577,7 +3577,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 
 	/**
 		\~
-    \defgroup vec_BuildDiagWeights8
+    \defgroup core_BuildDiagWeights8
 	\ingroup vcomplex
 	\brief
 		\ru Построение диагональной матрицы весовых коеффициентов (8x8).
@@ -3598,7 +3598,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 
 */
 //! \{ 
- void vec_BuildDiagWeights8(nmreg ar1, nmreg gr1); 
+ void core_BuildDiagWeights8(nmreg ar1, nmreg gr1); 
  //! \}
 
 
@@ -3607,7 +3607,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 
 	/**
 		\~
-    \defgroup vec_BuildDiagWeights16
+    \defgroup core_BuildDiagWeights16
 	\ingroup vcomplex
 	\brief
 		\ru Построение диагональной матрицы весовых коеффициентов (16x16).
@@ -3627,7 +3627,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
         \en On exiting the function the contents of registers changes: ar1, gr1.  
 	*/
 //! \{ 
- void vec_BuildDiagWeights16(nmreg ar1, nmreg gr1); 
+ void core_BuildDiagWeights16(nmreg ar1, nmreg gr1); 
  //! \}
 
 //-----------------------------------------------------------------------------
@@ -3635,7 +3635,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 
 	/**
 		\~
-    \defgroup vec_MaxVal_v8nm8s
+    \defgroup core_MaxVal_v8nm8s
 	\ingroup vcomplex
 	\brief
 		\ru Поиск максимума в 8 байтах
@@ -3656,13 +3656,13 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 		\en On exiting the function the contents of registers changes: gr0, gr1, gr2, gr3, ar5, gr5, gr7.  
 	*/
 //! \{ 
- void vec_MaxVal_v8nm8s(nmreg ar0, nmreg gr7); 
+ void core_MaxVal_v8nm8s(nmreg ar0, nmreg gr7); 
  //! \}
 
 //-----------------------------------------------------------------------------
 	/**
 		\~
-    \defgroup vec_MaxVal_v4nm16s
+    \defgroup core_MaxVal_v4nm16s
 	\ingroup vcomplex
 	\brief
 		\ru Поиск максимума в 4-х 16р. элементах
@@ -3682,7 +3682,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 		\en On exiting the function the contents of registers changes: gr0, gr1, gr2, gr3, ar5, gr5, gr7.  
 	*/
 //! \{ 
- void vec_MaxVal_v4nm16s(nmreg ar0, nmreg gr7); 
+ void core_MaxVal_v4nm16s(nmreg ar0, nmreg gr7); 
  //! \}
 
 //-----------------------------------------------------------------------------
@@ -3691,7 +3691,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 
 	/**
 		\~
-    \defgroup vec_MaxVal
+    \defgroup core_MaxVal
 	\ingroup vcomplex
 	\brief
 		\ru Поиск максимумов в колонках матрицы SrcMtr1.  
@@ -3733,7 +3733,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 
 	*/
 //! \{ 
- void vec_MaxVal( nmreg nb1, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg ar4, nmreg gr5, nmreg ar6); 
+ void core_MaxVal( nmreg nb1, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg ar4, nmreg gr5, nmreg ar6); 
  //! \}
 
 //-----------------------------------------------------------------------------
@@ -3741,7 +3741,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 
 	/**
 		\~
-    \defgroup vec_MinVal_v8nm8s
+    \defgroup core_MinVal_v8nm8s
 	\ingroup vcomplex
 	\brief
 		\ru Поиск минимума в 8 байтах
@@ -3762,13 +3762,13 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 		\en On exiting the function the contents of registers changes: gr0, gr1, gr2, gr3, ar5, gr5, gr7.  
 	*/
 //! \{ 
- void vec_MinVal_v8nm8s(nmreg ar0, nmreg gr7); 
+ void core_MinVal_v8nm8s(nmreg ar0, nmreg gr7); 
  //! \}
 
 //-----------------------------------------------------------------------------
 	/**
 		\~
-    \defgroup vec_MinVal_v4nm16s
+    \defgroup core_MinVal_v4nm16s
 	\ingroup vcomplex
 	\brief
 		\ru Поиск минимума в 4-х 16р. элементах
@@ -3788,7 +3788,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 		\en On exiting the function the contents of registers changes: gr0, gr1, gr2, gr3, ar5, gr5, gr7.  
 	*/
 //! \{ 
- void vec_MinVal_v4nm16s(nmreg ar0, nmreg gr7); 
+ void core_MinVal_v4nm16s(nmreg ar0, nmreg gr7); 
  //! \}
 
 //-----------------------------------------------------------------------------
@@ -3797,7 +3797,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 
 	/**
 		\~
-    \defgroup vec_MinVal
+    \defgroup core_MinVal
 	\ingroup vcomplex
 	\brief
 		\ru Поиск минимумов в колонках матрицы SrcMtr1.  
@@ -3837,7 +3837,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 
 	*/
 //! \{ 
- void vec_MinVal( nmreg nb1, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg ar4, nmreg gr5, nmreg ar6); 
+ void core_MinVal( nmreg nb1, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg ar4, nmreg gr5, nmreg ar6); 
  //! \}
 
 
@@ -3846,7 +3846,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 
 	/**
 		\~
-    \defgroup vec_AccMul1D1W32_AddVr
+    \defgroup core_AccMul1D1W32_AddVr
 	\ingroup vcomplex
 	\brief
 		\ru Умножение с накоплением 
@@ -3908,7 +3908,7 @@ void vec_CopyOddToEven_32f(nmreg ar0, nmreg ar6, nmreg gr5);
 	\param gr6 DstMtr stride
 	*/
 //! \{ 
- void vec_AccMul1D1W32_AddVr(nmreg nb1, nmreg sb, nmreg vr, nmreg ar0, nmreg gr0,  nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6); 
+ void core_AccMul1D1W32_AddVr(nmreg nb1, nmreg sb, nmreg vr, nmreg ar0, nmreg gr0,  nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6); 
  //! \}
 
 

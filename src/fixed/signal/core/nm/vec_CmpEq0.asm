@@ -2,9 +2,9 @@
 //
 //  $Workfile:: Cmp_Eq0.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2019/01/15 13:50:05 $
 //
@@ -36,12 +36,12 @@ end   VEC_CMP_EQ_0;
 Cmp_rep0:label;
 
     //------------------------------------------------------------------------
-    //! \fn void vec_CmpEq0(nmreg nb1, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg gr5, nmreg ar6, nmreg gr6)
+    //! \fn void core_CmpEq0(nmreg nb1, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg gr5, nmreg ar6, nmreg gr6)
     //!
     //------------------------------------------------------------------------
 
-global vec_CmpEq0 :label;
-<vec_CmpEq0>
+global core_CmpEq0 :label;
+<core_CmpEq0>
 .branch;
 	push ar2,gr2 with gr2=gr5<<27 ;
 	push ar5,gr5 with gr5>>=5;	

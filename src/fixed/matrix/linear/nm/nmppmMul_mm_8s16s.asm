@@ -2,16 +2,16 @@
 //
 //  $Workfile:: mtrMul_M08M16.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/01/12 14:05:15 $
 //
 //! \if file_doc
 //!
 //! \file   mtrMul_M08M16.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Умножение матрицы на матрицу.
 //!
 //! \endif
@@ -35,7 +35,7 @@ global _nmppmMul_mm_8s16s:label;
 .branch;
 
 
-	ar5 = sp-2;
+	ar5 = ar7 - 2;
 	push ar0,gr0;
 	push ar1,gr1;
 	push ar2,gr2;

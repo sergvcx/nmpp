@@ -7,7 +7,7 @@
 //*       ПОВОРОТ ВЕКТОРА НА ПЛОСКОСТИ В ДЕКАРТОВЫХ КООРДИНАТАХ             */
 //*                                                                         */
 //*                                                                         */
-//*                1999 (c) RC Module Inc., Moscow, Russia                  */
+//*                1999 (c) RC Module, Moscow, Russia                  */
 //***************************************************************************/
 
 //!!!!!!!!!!!!!!!!!!! МЕНЯТЬ ЗДЕСЬ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -78,7 +78,7 @@ begin ".text_nmplс"
 global _nmppcFixArcTan32 :label;
 <_nmppcFixArcTan32>
 .branch;
-	ar5 = sp-2;
+	ar5 = ar7 - 2;
 	push ar0,gr0;
 	push ar1,gr1;
 	push ar2,gr2;

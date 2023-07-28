@@ -2,16 +2,16 @@
 //
 //  $Workfile:: vArithmetics.h             $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.2 $      $Date: 2005/06/23 15:15:15 $
 //
 //! \if file_doc
 //!
 //! \file   vArithm.h
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Определение базовых арифметических функций над векторами
 //!
 //! \endif

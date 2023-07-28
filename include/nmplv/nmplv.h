@@ -237,7 +237,7 @@ For convenience of application programs development the library has implementati
     *  \ingroup nmppsGroup_
 	*/
 
-#include "vTransform.h"
+#include "vReodering.h"
 
 //*****************************************************************************
 

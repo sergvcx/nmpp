@@ -2,9 +2,9 @@
 //
 //  $Workfile:: mtrCopyMatrix16.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/01/12 14:05:15 $
 //
@@ -39,7 +39,7 @@ global _nmppmCopy_16s:label;
 <_nmppmCopy_16u>
 .branch;
 
-	ar5 = sp-2		with gr7=false;	
+	ar5 = ar7 - 2		with gr7=false;	
 
 	push ar0,gr0;
 	push ar1,gr1;

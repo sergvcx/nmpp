@@ -2,9 +2,9 @@
 //
 //  $Workfile:: Filter32to32.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.2 $      $Date: 2005/01/22 13:50:27 $
 //
@@ -30,7 +30,7 @@ extern core_ClipMulNDNW4_AddVr:label;
 global _nmppsFIR_16s:label;
 <_nmppsFIR_16s>
 .branch;
-	ar5 = sp - 2;
+	ar5 = ar7 - 2;
 
 	push ar0,gr0;
 	push ar1,gr1;

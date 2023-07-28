@@ -2,15 +2,15 @@
 //
 //  $Workfile:: mtrMul_MxxV64.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //
 //! \if file_doc
 //!
 //! \file   mtrMul_MxxV64.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Умножение матрицы на вектор.
 //!
 //! \endif

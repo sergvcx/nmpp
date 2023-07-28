@@ -2,16 +2,16 @@
 //
 //  $Workfile:: GetMax.cp $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.2 $      $Date: 2005/07/13 14:19:56 $
 //
 //! \if file_doc
 //!
 //! \file   GetMax.cpp
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Статистические функции.
 //!
 //! \endif

@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Log_Or.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:06 $
 //
 //! \if file_doc
 //!
 //! \file   Log_Or.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции векторного ядра.
 //!
 //! \endif
@@ -35,12 +35,12 @@ end   VEC_OR_REP;
 Or_rep0:label;
 
     //------------------------------------------------------------------------
-    //! \fn void vec_OrNV(nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg gr5, nmreg ar6, nmreg gr6)
+    //! \fn void core_OrNV(nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg gr5, nmreg ar6, nmreg gr6)
     //!
     //------------------------------------------------------------------------
 
-global vec_OrNV :label;
-<vec_OrNV>
+global core_OrNV :label;
+<core_OrNV>
 .branch;
 	push ar2,gr2 with gr2=gr5<<27 ;
 	push ar5,gr5 with gr5>>=5;	

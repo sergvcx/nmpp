@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Math_AccMul1D1W32.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:05 $
 //
 //! \if file_doc
 //!
 //! \file   Math_AccMul1D1W32.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции векторного ядра.
 //!
 //! \endif
@@ -28,12 +28,12 @@ begin ".text_nmvcore"
       
 
 	//------------------------------------------------------------------------
-    //! \fn void vec_AccMul1D1W32_AddVr(nmreg nb1, nmreg sb, nmreg vr, nmreg ar0, nmreg gr0,  nmreg ar4, nmreg03 gr4, nmreg gr5, nmreg ar6, nmreg gr6)
+    //! \fn void core_AccMul1D1W32_AddVr(nmreg nb1, nmreg sb, nmreg vr, nmreg ar0, nmreg gr0,  nmreg ar4, nmreg03 gr4, nmreg gr5, nmreg ar6, nmreg gr6)
     //!
     //------------------------------------------------------------------------
 
-global vec_AccMul1D1W32_AddVr:label;
-      <vec_AccMul1D1W32_AddVr>
+global core_AccMul1D1W32_AddVr:label;
+      <core_AccMul1D1W32_AddVr>
 .branch;
 	rep 32 wfifo=[ar4++],ftw,wtw;
 	with gr7=gr5-1;

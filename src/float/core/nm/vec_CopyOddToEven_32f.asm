@@ -1,7 +1,7 @@
 
 //******************************************************************************************//
 //* A.Brodyazhenko, 2019                                                                   *//
-//* Prototype: void vec_CopyOddToEven_32f(ar0 = src, ar6 = dst, gr5 = size);               *//
+//* Prototype: void core_CopyOddToEven_32f(ar0 = src, ar6 = dst, gr5 = size);               *//
 //* Contents: A Copying of a floating point array from odd src address to even dst address *//
 //* src - odd address only                                                                 *//
 //* dst - even address only                                                                *//
@@ -9,14 +9,14 @@
 //******************************************************************************************//
 
 // A.Brodyazhenko, 2019
-// void vec_CopyOddToEven_32f(ar0 = src, ar6 = dst, gr5 = size);
+// void core_CopyOddToEven_32f(ar0 = src, ar6 = dst, gr5 = size);
 // src - odd address only
 // dst - even address only
 // size - all size except zero (1, 2, 3, 4, ... )
 
-global vec_CopyOddToEven_32f: label;
+global core_CopyOddToEven_32f: label;
 begin ".text_nmplv"
-<vec_CopyOddToEven_32f>
+<core_CopyOddToEven_32f>
 	// ar5 = ar7 - 2;
 	push ar5, gr5;
 	push ar4, gr4;

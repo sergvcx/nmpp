@@ -2,16 +2,16 @@
 //
 //  $Workfile:: tnmint. $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.2 $      $Date: 2005/01/21 19:22:37 $
 //
 //! \if file_doc
 //!
 //! \file   tnmint.h
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Определение шаблона класса для целых чисел с заданным 
 //!         значением битов.
 //!

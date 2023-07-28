@@ -7,7 +7,7 @@
 //*           Вычисление косинуса числа с фиксированной запятой             */
 //*                                                                         */
 //*                                                                         */
-//*                1999 (c) RC Module Inc., Moscow, Russia                  */
+//*                1999 (c) RC Module, Moscow, Russia                  */
 //***************************************************************************/
 
 const FIXPOINT=16; //Положение двоичной точки в 32-х разрядном слове
@@ -26,7 +26,7 @@ begin ".text_nmplс"
 global _nmppcTblFixCos32:label;
 <_nmppcTblFixCos32>
 .branch;
-	ar5 = sp-2;
+	ar5 = ar7 - 2;
 	gr7 = [--ar5];
 	push ar1,gr1;
 	gr1 = PI2;

@@ -2,16 +2,16 @@
 //
 //  $Workfile:: DivTable_1_145_18.cp $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:13 $
 //
 //! \if file_doc
 //!
 //! \file   DivTable_1_145_18.cpp
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции деления для векторов.
 //!
 //! \endif

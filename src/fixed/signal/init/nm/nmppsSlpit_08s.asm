@@ -2,23 +2,23 @@
 //
 //  $Workfile:: Swap.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:08 $
 //
 //! \if file_doc
 //!
 //! \file   Split.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции инициализации и копирования.
 //!
 //! \endif
 //!
 //------------------------------------------------------------------------
 
-extern vec_Mul2D2W8_AddVr:label;
+extern core_Mul2D2W8_AddVr:label;
 
 data ".data_nmplv_L"
 	Weights:	long[17] = (
@@ -61,7 +61,7 @@ global _nmppsSplit_8s:label;
 
 .branch;
 
-	ar5 = sp-2		with gr7=false;
+	ar5 = ar7 - 2		with gr7=false;
 	push ar0,gr0	with gr7++;
 	push ar1,gr1	with gr7++;			// gr7 = 2
 	push ar2,gr2    with gr0=gr7<<1;	// gr0 = 4
@@ -79,13 +79,13 @@ global _nmppsSplit_8s:label;
 	sb  = 02020202h;
 	vr  = 0;
 	ar4 = Weights+2;
-	delayed call vec_Mul2D2W8_AddVr with gr5 = gr5>>4;
+	delayed call core_Mul2D2W8_AddVr with gr5 = gr5>>4;
 		ar0 = ar3;
 		ar1 = ar3+gr3;
 	
 	ar6 = ar2;
 	ar4 = Weights;
-	delayed call vec_Mul2D2W8_AddVr;
+	delayed call core_Mul2D2W8_AddVr;
 		ar0 = ar3;
 		ar1 = ar3+gr3;
 

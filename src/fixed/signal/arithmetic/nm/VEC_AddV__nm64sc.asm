@@ -1,4 +1,4 @@
-extern vec_Add:label;
+extern core_Add:label;
 import from macros.mlb;
 begin ".text_nmplv"
 //------------------------------------------------------------------------------------------------
@@ -13,7 +13,7 @@ global _nmppsAdd_64sc :label;
 
 
 .branch;
-	ar5 = sp - 2;
+	ar5 = ar7 - 2;
 	push ar0,gr0 with gr0=false;
 	push ar1,gr1 with gr0++;
 	push ar5,gr5 with gr0++;		// gr0=2 
@@ -24,7 +24,7 @@ global _nmppsAdd_64sc :label;
 	gr5 = [--ar5];	// nSize in 64-bit elements
 	
 	nb1 = 0 with gr5<<=1;		
-	delayed call vec_Add with gr1=gr0;
+	delayed call core_Add with gr1=gr0;
 		wtw;						
 		gr6=gr0;					// gr6=2
 	pop ar6,gr6;

@@ -2,16 +2,16 @@
 //
 //  $Workfile:: InitRandom.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:08 $
 //
 //! \if file_doc
 //!
 //! \file   InitRandom.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции инициализации и копирования для векторов
 //!
 //! \endif
@@ -20,7 +20,7 @@
 
 //#include "vMinMax.h"
 
-extern vec_ram:label;
+extern core_ram:label;
 import from macros.mlb;
 data ".data_nmplv_L"
 end ".data_nmplv_L";
@@ -55,7 +55,7 @@ global _nmppsRandUniform_64s:label;
 	ar5 = RandMul;
 	rep 1 wfifo=[ar5],ftw;
 
-	ar5 = sp - 2;
+	ar5 = ar7 - 2;
     push ar6,gr6;
 
     ar6 = [--ar5];			// Buffer

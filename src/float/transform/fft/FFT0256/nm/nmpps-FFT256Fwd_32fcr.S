@@ -1,12 +1,12 @@
 //***************************************************************************/
-//*                     RC Module Inc., Moscow, Russia                      */
+//*                     RC Module, Moscow, Russia                      */
 //*                     NeuroMatrix(r) NM640x Software                      */
 //*                                                                         */
 //*                                                                         */
 //*   File:             nmpps-FFT256Fwd_32fcr.s                             */
 //*   Contents:         Routine for forward and inverse FFT 256             */
 //*                     of complex array with 32 bit elements				*/
-//*	  Max Speed:		1812 ticks											*/
+//*	  Max ar7eed:		1812 ticks											*/
 //***************************************************************************/
 //extern _FFTFwd16x32Core: label;
 

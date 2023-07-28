@@ -2,16 +2,16 @@
 //
 //  $Workfile:: data_add_afifo.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:07 $
 //
 //! \if file_doc
 //!
 //! \file   data_add_afifo.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции векторного ядра.
 //!
 //! \endif
@@ -23,12 +23,12 @@ extern _nmppsTmpBuffer64_G_:long;
 begin ".text_nmvcore"
 
     //------------------------------------------------------------------------
-    //! \fn void vec_data_add_afifo(nmreg nb1, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6)
+    //! \fn void core_data_add_afifo(nmreg nb1, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6)
     //!
     //------------------------------------------------------------------------
 
-global vec_data_add_afifo:label;
-<vec_data_add_afifo>
+global core_data_add_afifo:label;
+<core_data_add_afifo>
 .branch;
 	push ar2,gr2 with gr2=gr5<<27 ;
 	push ar5,gr5 with gr5>>=5;	

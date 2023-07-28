@@ -2,9 +2,9 @@
 //
 //  $Workfile:: Filter32to32.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.2 $      $Date: 2005/01/26 13:23:47 $
 //
@@ -39,14 +39,14 @@ begin ".text_nmpls"
 	//!
 	// \perfinclude nmppsFIR_8s32s.html
     //--------------------------------------------------------------------
-extern vec_ClipMulNDNW8_AddVr:label;
-extern vec_Mul2D2W8_AddVr:label;
-extern vec_vsum_data_vr:label;
+extern core_ClipMulNDNW8_AddVr:label;
+extern core_Mul2D2W8_AddVr:label;
+extern core_vsum_data_vr:label;
 
 global _nmppsFIR_8s32s:label;
 <_nmppsFIR_8s32s>
 .branch;
-	ar5 = sp - 2;
+	ar5 = ar7 - 2;
 
 	push ar0,gr0;
 	push ar1,gr1;
@@ -91,7 +91,7 @@ global _nmppsFIR_8s32s:label;
 	gr0 = [ar1];
 	ar0+= gr0;
 	gr0 = 2;
-	delayed call vec_vsum_data_vr;
+	delayed call core_vsum_data_vr;
 		wtw;
 		nul;
 	delayed goto finish0;
@@ -103,7 +103,7 @@ global _nmppsFIR_8s32s:label;
 	nul;
 	ar0+= gr0;
 	gr0 = 2;
-	delayed call vec_Mul2D2W8_AddVr;
+	delayed call core_Mul2D2W8_AddVr;
 		ar1=ar0+gr0 with gr1=gr0;		
 		nul;
 
@@ -112,7 +112,7 @@ global _nmppsFIR_8s32s:label;
 		pop ar0,gr0;
 	
 	<mul0N>
-	delayed call vec_ClipMulNDNW8_AddVr;
+	delayed call core_ClipMulNDNW8_AddVr;
 		gr0=2;
 		
 	pop ar6,gr6;
@@ -140,7 +140,7 @@ global _nmppsFIR_8s32s:label;
 	nul;
 	ar0+= gr0;
 	gr0 = 2;
-	delayed call vec_vsum_data_vr;
+	delayed call core_vsum_data_vr;
 		wtw;//WTW_REG_DEPRICARTED(gr4);
 		nul;
 	delayed goto finish1;
@@ -152,7 +152,7 @@ global _nmppsFIR_8s32s:label;
 	nul;
 	ar0+= gr0;
 	gr0 = 2;
-	delayed call vec_Mul2D2W8_AddVr;
+	delayed call core_Mul2D2W8_AddVr;
 		ar1=ar0+gr0 with gr1=gr0;		
 		nul;
 
@@ -161,7 +161,7 @@ global _nmppsFIR_8s32s:label;
 		pop ar0,gr0;
 	
 	<mul1N>
-	delayed call vec_ClipMulNDNW8_AddVr;
+	delayed call core_ClipMulNDNW8_AddVr;
 		gr0=2;
 		
 	pop ar6,gr6;
@@ -189,7 +189,7 @@ global _nmppsFIR_8s32s:label;
 	nul;
 	ar0+= gr0;
 	gr0 = 2;
-	delayed call vec_vsum_data_vr;
+	delayed call core_vsum_data_vr;
 		wtw;//WTW_REG_DEPRICARTED(gr4);
 		nul;
 	delayed goto finish2;
@@ -201,7 +201,7 @@ global _nmppsFIR_8s32s:label;
 	nul;
 	ar0+= gr0;
 	gr0 = 2;
-	delayed call vec_Mul2D2W8_AddVr;
+	delayed call core_Mul2D2W8_AddVr;
 		ar1=ar0+gr0 with gr1=gr0;		
 		nul;
 
@@ -210,7 +210,7 @@ global _nmppsFIR_8s32s:label;
 		pop ar0,gr0;
 	
 	<mul2N>
-	delayed call vec_ClipMulNDNW8_AddVr;
+	delayed call core_ClipMulNDNW8_AddVr;
 		gr0=2;
 		
 	pop ar6,gr6;
@@ -237,7 +237,7 @@ global _nmppsFIR_8s32s:label;
 	gr0 = [ar1];
 	ar0+= gr0;
 	gr0 = 2;
-	delayed call vec_vsum_data_vr;
+	delayed call core_vsum_data_vr;
 		wtw;//WTW_REG_DEPRICARTED(gr4);
 		nul;
 	delayed goto finish3;
@@ -248,7 +248,7 @@ global _nmppsFIR_8s32s:label;
 	gr0 = [ar1];
 	ar0+= gr0;
 	gr0 = 2;
-	delayed call vec_Mul2D2W8_AddVr;
+	delayed call core_Mul2D2W8_AddVr;
 		ar1=ar0+gr0 with gr1=gr0;		
 		nul;
 
@@ -257,7 +257,7 @@ global _nmppsFIR_8s32s:label;
 		pop ar0,gr0;
 	
 	<mul3N>
-	delayed call vec_ClipMulNDNW8_AddVr;
+	delayed call core_ClipMulNDNW8_AddVr;
 		gr0=2;
 		
 	pop ar6,gr6;

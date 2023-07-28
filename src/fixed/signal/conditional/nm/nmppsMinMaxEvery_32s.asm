@@ -4,7 +4,7 @@
 //
 //  Vector-processing library
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:09 $
 //
@@ -20,7 +20,7 @@
 
 begin ".text_nmplv"
 
-extern vec_CompareMinMax:label;
+extern core_CompareMinMax:label;
 /////////////////////////////////////////////////////////////////////////////////////////
 
 CompareMinMax_rep0:label;
@@ -32,7 +32,7 @@ CompareMinMax_rep0:label;
 global _nmppsMinMaxEvery_32s:label;
 <_nmppsMinMaxEvery_32s>
 .branch;
-	ar5=sp-2;
+	ar5=ar7 - 2;
 	push ar0,gr0 with gr0=false;
 	push ar1,gr1 with gr0++;
     push ar2,gr2 with gr0++;
@@ -50,7 +50,7 @@ global _nmppsMinMaxEvery_32s:label;
 	
 	f1cr=80000000h;
 	nb1 =80000000h with gr7>>=1;
-	delayed call vec_CompareMinMax;
+	delayed call core_CompareMinMax;
 		wtw;			
 		ar5=gr6 with gr6=gr0;	
 		

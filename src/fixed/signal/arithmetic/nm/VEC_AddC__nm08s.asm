@@ -2,23 +2,23 @@
 //
 //  $Workfile:: AddVN.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:03 $
 //
 //! \if file_doc
 //!
 //! \file   AddVN.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции суммирования для векторов.
 //!
 //! \endif
 //!
 //------------------------------------------------------------------------
 
-extern vec_data_add_ram:label;
+extern core_data_add_ram:label;
 extern _nmppsTmpBuffer16_G_:long;
 
 begin ".text_nmplv"
@@ -31,7 +31,7 @@ begin ".text_nmplv"
 global _nmppsAddC_8s:label;
 <_nmppsAddC_8s>
 .branch;
-	ar5 = sp - 2;
+	ar5 = ar7 - 2;
 
 	
 	push ar0,gr0;
@@ -57,7 +57,7 @@ global _nmppsAddC_8s:label;
 	ar1 = gr1;
 	gr0 = 2;
 	gr6 = 2;
-	delayed call vec_data_add_ram;
+	delayed call core_data_add_ram;
 		[ar5]=ar1,gr1;
 		ar1 = ar5;
 	

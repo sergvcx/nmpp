@@ -2,16 +2,16 @@
 //
 //  $Workfile:: mtrMul_M08M64.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/01/12 14:05:15 $
 //
 //! \if file_doc
 //!
 //! \file   mtrMul_M08M64.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Умножение матрицы на матрицу.
 //!
 //! \endif
@@ -27,8 +27,6 @@
 //! \perfinclude nmppmMul_mm_2s64s.html
 //--------------------------------------------------------------------
 
-//extern mtrMul_mm_2sXs:label;
-//extern _nmppsTmpBuffer64_G_: long[64];
 
 #define  LongColumns _nmppsTmpBuffer64_G_
 
@@ -38,7 +36,7 @@ _nmppmMul_mm_2s64s:
 BRANCH
 
 
-	ar5 = sp-2;
+	ar5 = ar7 - 2;
 	push ar0,gr0;
 	push ar1,gr1;
 	push ar2,gr2;

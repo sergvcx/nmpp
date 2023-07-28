@@ -4,7 +4,7 @@
 //
 //  Р’РµРєС‚РѕСЂРЅРѕ-РјР°С‚СЂРёС‡РЅР°СЏ Р±РёР±Р»РёРѕС‚РµРєР°
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2019/11/22 13:50:15 $
 //

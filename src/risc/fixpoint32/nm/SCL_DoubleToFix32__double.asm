@@ -6,7 +6,7 @@
 //*                                                                         */
 //*             Перевод из числа типа double в fixed-point 32   и обратно   */
 //*                                                                         */
-//*                1999 (c) RC Module Inc., Moscow, Russia                  */
+//*                1999 (c) RC Module, Moscow, Russia                  */
 //***************************************************************************/
 
 
@@ -103,7 +103,7 @@ begin ".text_nmplс"
 global _nmppcDoubleToFix32 :label;
 <_nmppcDoubleToFix32>
 .branch;
-	ar5=sp-2;
+	ar5=ar7 - 2;
 	push ar0,gr0;
 	push ar1,gr1;
 	push ar2,gr2;

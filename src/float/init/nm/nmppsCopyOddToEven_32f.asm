@@ -8,7 +8,7 @@
 
 global _nmppsCopyOddToEven_32f: label;
 
-extern vec_CopyOddToEven_32f: label;
+extern core_CopyOddToEven_32f: label;
 
 begin ".text_nmplv"
 <_nmppsCopyOddToEven_32f>
@@ -21,7 +21,7 @@ begin ".text_nmplv"
 	ar6 = [--ar5];    	// output nm32f* pDstVec
 	gr5 = [--ar5];    	// nSize
 
-	call vec_CopyOddToEven_32f;
+	call core_CopyOddToEven_32f;
 
 	pop ar0, gr0;
 	pop ar5, gr5;

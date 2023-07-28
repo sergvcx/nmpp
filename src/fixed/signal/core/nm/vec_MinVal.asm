@@ -2,16 +2,16 @@
 //
 //  $Workfile:: activate_data.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:06 $
 //
 //! \if file_doc
 //!
 //! \file   activate_data.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции векторного ядра.
 //!
 //! \endif
@@ -21,13 +21,13 @@
 begin ".text_nmvcore"
     
     //------------------------------------------------------------------------
-    //! \fn void vec_MinVal( nmreg nb1, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg ar4, nmreg gr5, nmreg ar6)
+    //! \fn void core_MinVal( nmreg nb1, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg ar4, nmreg gr5, nmreg ar6)
     //!
     //------------------------------------------------------------------------
 
 .branch;
-global vec_MinVal:label;
-<vec_MinVal>
+global core_MinVal:label;
+<core_MinVal>
 	push ar5,gr5 with gr7 = gr5>>5;
 	with gr7--;
 	if <= delayed goto CompareLT64;

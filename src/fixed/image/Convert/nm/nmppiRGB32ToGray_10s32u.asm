@@ -4,7 +4,7 @@
 //
 //  <Название библиотеки>
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/02/10 12:36:38 $
 //
@@ -31,7 +31,7 @@ tbl_w_RGB2Gray: long[8]=(
 	 00004c8b_00000000hl,
 	 00000000_00000000hl);
 // 
-extern vec_vsum_data_vr:label;
+extern core_vsum_data_vr:label;
 
  
 //! \fn void nmppiRGB32ToGray(RGB32_nm10s* pRGB, nm32u* pDstGray, int nSize);
@@ -65,8 +65,8 @@ global _nmppiRGB32ToGray_10s32s:label;
 	gr5 = [--ar5];				//  nSize
 	
 	
-	//void vec_vsum_data_vr(nmreg nb1, nmreg sb, nmreg woper, nmreg vr, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6);
-	call vec_vsum_data_vr with gr5>>=1;
+	//void core_vsum_data_vr(nmreg nb1, nmreg sb, nmreg woper, nmreg vr, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6);
+	call core_vsum_data_vr with gr5>>=1;
 		
 			
 	pop ar5,gr5;

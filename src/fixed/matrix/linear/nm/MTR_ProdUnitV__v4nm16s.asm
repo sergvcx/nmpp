@@ -2,16 +2,16 @@
 //
 //  $Workfile:: mtrMulMV4.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/01/12 14:05:15 $
 //
 //! \if file_doc
 //!
 //! \file   mtrMulMV4.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Умножение матрицы на вектор.
 //!
 //! \endif
@@ -59,7 +59,7 @@ global _void._.8.8MTR_ProdUnitV.1class._v4nm16s._.0.9._short._.0.9._int.2 :label
 <_MTR_ProdUnitV__F7v4nm16sPPSsi>
 <_void._.8.8MTR_ProdUnitV.1class._v4nm16s._.0.9._short._.0.9._int.2>
 .branch;
-	ar5 = sp - 2;
+	ar5 = ar7 - 2;
 
 	
 	push ar0,gr0;

@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Add.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:03 $
 //
 //! \if file_doc
 //!
 //! \file   Add.Asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции суммирования для векторов.
 //!
 //! \endif
@@ -22,7 +22,7 @@
 
 
 
-extern vec_Add:label;
+extern core_Add:label;
 begin ".text_nmplv"
 
 
@@ -36,7 +36,7 @@ begin ".text_nmplv"
 global _nmppsAdd_32s:label;
 <_nmppsAdd_32s>
 .branch;
-	ar5 = sp - 2;
+	ar5 = ar7 - 2;
 	
 	push ar0,gr0 with gr0=false;
 	push ar1,gr1 with gr0++;
@@ -48,7 +48,7 @@ global _nmppsAdd_32s:label;
 	gr5 = [--ar5];	// nSize in 16-bit elements
 	
 	nb1 = 80000000h with gr5>>=1;	// nSize in 32-bit words
-	delayed call vec_Add with gr1=gr0;
+	delayed call core_Add with gr1=gr0;
 		wtw;						
 		gr6=gr0;					// gr6=2
 	pop ar6,gr6;

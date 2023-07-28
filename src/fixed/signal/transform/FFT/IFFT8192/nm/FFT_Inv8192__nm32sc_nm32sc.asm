@@ -1,5 +1,5 @@
 //***************************************************************************/
-//*                     RC Module Inc., Moscow, Russia                      */
+//*                     RC Module, Moscow, Russia                      */
 //*                     NeuroMatrix(r) NM6405 Software                      */
 //*                                                                         */
 //*   Fast Fourie Transform Library                                         */
@@ -58,7 +58,7 @@ begin ".text_fft"
 
 <_FFT_Inv8192>
 .branch;
-	ar5 = sp - 2 with gr7 = false;									// gr7=0
+	ar5 = ar7 - 2 with gr7 = false;									// gr7=0
 	push ar0,gr0 with gr7++;										// gr7=1
 	push ar1,gr1;
 	push ar2,gr2 with gr2 = gr7 << 1;								// gr2=2 (CONST)

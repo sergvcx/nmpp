@@ -2,23 +2,23 @@
 //
 //  $Workfile:: SubAbs.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:03 $
 //
 //! \if file_doc
 //!
 //! \file   SubAbs.Asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции вычитания для векторов
 //!
 //! \endif
 //!
 //------------------------------------------------------------------------
 
-extern vec_SubAbs:label;
+extern core_SubAbs:label;
 extern _VEC_TBL_Diagonal_FFFFh_G:long;
 extern _nmppsTmpBuffer16_G_:long;
 begin ".text_nmplv"
@@ -33,7 +33,7 @@ begin ".text_nmplv"
 global _nmppsAbsDiff_16s:label;
 <_nmppsAbsDiff_16s>
 .branch;
-	ar5 = sp - 2;
+	ar5 = ar7 - 2;
 
 	push ar4,gr4;
 
@@ -56,7 +56,7 @@ global _nmppsAbsDiff_16s:label;
 	gr6 = 2;
 	f1cr = 80008000h  with gr5>>=2;	// nSize in 64-bit longs
 	ar4 = _nmppsTmpBuffer16_G_;
-	delayed call vec_SubAbs;
+	delayed call core_SubAbs;
 		nul;
 		wtw;
 		

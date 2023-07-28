@@ -2,16 +2,16 @@
 //
 //  $Workfile:: GetMax.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:09 $
 //
 //! \if file_doc
 //!
 //! \file   GetMax.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Статистические функции.
 //!
 //! \endif
@@ -22,8 +22,8 @@
 import from macros.mlb;
 extern	_nmppsTmpBuffer64_G_: long;
 extern	_nmppsTmpBuffer16_G_: long;
-extern vec_MaxVal_v8nm8s:label;
-extern vec_MaxVal:label;
+extern core_MaxVal_v8nm8s:label;
+extern core_MaxVal:label;
 
 
 begin ".text_nmplv"
@@ -37,7 +37,7 @@ global _nmppsMax_8s7b:label;
 <_nmppsMax_8s7b>
 
 .branch;
-	ar5=sp-2;
+	ar5=ar7 - 2;
 	PUSH_REGS();
 	ar0 = [--ar5];									// pSrcVec
 	gr5 = [--ar5];									// nSize of pSrcVec
@@ -50,10 +50,10 @@ global _nmppsMax_8s7b:label;
 	wtw;
 	
 	ar4 = _nmppsTmpBuffer64_G_;
-	delayed call vec_MaxVal;
+	delayed call core_MaxVal;
 		ar6=_nmppsTmpBuffer16_G_;
 	
-	delayed call vec_MaxVal_v8nm8s;
+	delayed call core_MaxVal_v8nm8s;
 		ar0=ar6;
 		nul;
 

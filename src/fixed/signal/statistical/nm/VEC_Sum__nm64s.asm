@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Sum.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:11 $
 //
 //! \if file_doc
 //!
 //! \file   Sum.Asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Статистические функции для векторов.
 //!
 //! \endif
@@ -22,7 +22,7 @@
 extern _VEC_TBL_One_G:long;
 
 
-extern vec_data_add_afifo:label;
+extern core_data_add_afifo:label;
 begin ".text_nmplv"
 
 
@@ -37,7 +37,7 @@ global _nmppsSum_64s:label;
 
 <_nmppsSum_64s>
 .branch;
-	ar5 = sp - 2;
+	ar5 = ar7 - 2;
 	push ar0,gr0 with gr0=false;
 	nb1 = gr0;
 	ar0 = _VEC_TBL_One_G;
@@ -48,7 +48,7 @@ global _nmppsSum_64s:label;
 	gr5 = [--ar5];					// nSize in 32-bit elements
 	ar6 = [--ar5];	
 
-	delayed call vec_data_add_afifo;
+	delayed call core_data_add_afifo;
 		gr7=ar6;
 		wtw;						
 

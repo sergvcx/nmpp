@@ -2,9 +2,9 @@
 //
 //  $Workfile:: Not.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:05 $
 //
@@ -19,7 +19,7 @@
 //------------------------------------------------------------------------
 
 
-extern vec_not_data:label;
+extern core_not_data:label;
 begin ".text_nmplv"
 ///////////////////////////////////////////////////////////
 //! \fn void nmppsNot_4u(nm64u* pSrcVec, nm64u* pDstVec, int nSize);
@@ -35,7 +35,7 @@ global _nmppsNot_4u:label;
 
 	ar0 = [--ar5];		//	nm64*		pSrcVec,		// Input Buffer					:long Local[nSize]
 	ar6 = [--ar5];		//	nm64*		pDstVec,		// Output Buffer				:long Global[nSize
-	delayed call vec_not_data with gr6=gr0;
+	delayed call core_not_data with gr6=gr0;
 		gr5>>=4;
 		gr5 = [--ar5];	//	int			nSize		// Vector size in 64-bit words	:nSize=[0,1,2,..,n
 	

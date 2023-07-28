@@ -26,7 +26,7 @@ VC: long;
 end ".data_nmplv_G";
 begin ".text_nmplv"
 //  i=MulC_2s16s ( (short*)&psrc, C, (short*)&pdst, N2s, VC);
-extern vec_vsum_data_vr: label;
+extern core_vsum_data_vr: label;
 global _nmppsMulC_AddC_2s16s: label;
 <_nmppsMulC_AddC_2s16s>
 // аргументы пушнуты в обратном порядке
@@ -65,7 +65,7 @@ global _nmppsMulC_AddC_2s16s: label;
      ar6=gr3 with gr3=gr3+gr0;
      gr6=16;
      gr5=gr5>>5;
-     call vec_vsum_data_vr;
+     call core_vsum_data_vr;
 //-----------------------------------------------------1:
      sb=[ar2++];     // поля на входе X: 8,2,2,2,2,48
      gr2=7;
@@ -73,49 +73,49 @@ global _nmppsMulC_AddC_2s16s: label;
 <L0> rep 6 wfifo = [ar3++], ftw, wtw;
      ar0=ar1;
      ar6=gr3 with gr3=gr3+gr0;
-     call vec_vsum_data_vr;
+     call core_vsum_data_vr;
 //-----------------------------------------------------2:
      sb=[ar2++];     // поля на входе X: 8,2,2,2,2,48
      ar3=matr1;
      rep 6 wfifo = [ar3++], ftw, wtw;
      ar0=ar1;
      ar6=gr3 with gr3=gr3+gr0;
-     call vec_vsum_data_vr;
+     call core_vsum_data_vr;
 //-----------------------------------------------------3:
      sb=[ar2++];     // поля на входе X: 8,2,2,2,2,48
      ar3=matr1;
      rep 6 wfifo = [ar3++], ftw, wtw;
      ar0=ar1;
      ar6=gr3 with gr3=gr3+gr0;
-     call vec_vsum_data_vr;
+     call core_vsum_data_vr;
 //-----------------------------------------------------4:
      sb=[ar2++];     // поля на входе X: 8,2,2,2,2,48
      ar3=matr1;
      rep 6 wfifo = [ar3++], ftw, wtw;
      ar0=ar1;
      ar6=gr3 with gr3=gr3+gr0;
-     call vec_vsum_data_vr;
+     call core_vsum_data_vr;
 //-----------------------------------------------------5:
      sb=[ar2++];     // поля на входе X: 8,2,2,2,2,48
      ar3=matr1;
      rep 6 wfifo = [ar3++], ftw, wtw;
      ar0=ar1;
      ar6=gr3 with gr3=gr3+gr0;
-     call vec_vsum_data_vr;
+     call core_vsum_data_vr;
 //-----------------------------------------------------6:
      sb=[ar2++];     // поля на входе X: 8,2,2,2,2,48
      ar3=matr1;
      rep 6 wfifo = [ar3++], ftw, wtw;
      ar0=ar1;
      ar6=gr3 with gr3=gr3+gr0;
-     call vec_vsum_data_vr;
+     call core_vsum_data_vr;
 //-----------------------------------------------------7:
      sb=[ar2++];     // поля на входе X: 8,2,2,2,2,48
      ar3=matr1;
      rep 5 wfifo = [ar3++], ftw, wtw;
      ar0=ar1;
      ar6=gr3 with gr3=gr3+gr0;
-     call vec_vsum_data_vr;
+     call core_vsum_data_vr;
 //time  673  для  N2s= 1024= 400h
 //time  970  для  N2s= 2048= 8q0h
 //time 1514  для  N2s= 4096=1000h

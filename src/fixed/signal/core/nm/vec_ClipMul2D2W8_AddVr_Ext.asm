@@ -1,16 +1,16 @@
 //------------------------------------------------------------------------
 //
-//  $Workfile:: vec_ClipMul2D2W8_AddVr_Ext.asm   $
+//  $Workfile:: core_ClipMul2D2W8_AddVr_Ext.asm   $
 //
 //  Vector-processing library
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:05 $
 //
 //! \if file_doc
 //!
-//! \file   vec_ClipMul2D2W8_AddVr_Ext.asm
+//! \file   core_ClipMul2D2W8_AddVr_Ext.asm
 //! \author Sergey Landyshev
 //! \brief  \ru Функции векторного ядра.
 //!			\en Vector core function
@@ -19,7 +19,7 @@
 //------------------------------------------------------------------------
 begin ".text_nmvcore"
 //------------------------------------------------------------------------
-//! \fn vec_ClipMul2D2W8_AddVr_Ext
+//! \fn core_ClipMul2D2W8_AddVr_Ext
 //! \ingroup vCore
 //! \brief 
 //! 
@@ -79,8 +79,8 @@ macro MTR_MUL2D2W8_REP(N)
 end MTR_MUL2D2W8_REP;
 
 
-global vec_ClipMul2D2W8_AddVr_Ext:label;
-      <vec_ClipMul2D2W8_AddVr_Ext>
+global core_ClipMul2D2W8_AddVr_Ext:label;
+      <core_ClipMul2D2W8_AddVr_Ext>
 .branch;
 	Mul2D2W8_AddVr_rep0:label;
 	Next_Mul2D2W8_AddVr_rep32:label;

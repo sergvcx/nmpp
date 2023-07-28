@@ -10,7 +10,7 @@ begin ".text_nmplv"
 global _nmppsCmpNeV_8u:label;
 <_nmppsCmpNeV_8u>
 .branch;    
-    ar5 = sp - 2;
+    ar5 = ar7 - 2;
     push ar0, gr0 with gr0 = false;
     ar0 = gr0;
     vr = ar0, gr0;

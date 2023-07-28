@@ -2,16 +2,16 @@
 //
 //  $Workfile:: ClipExt.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:09 $
 //
 //! \if file_doc
 //!
 //! \file   ClipExt.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции насышения для различных типов.
 //!
 //! \endif
@@ -28,7 +28,7 @@ data ".data_nmplv_G"
 	TmpLong3:long[3];
 end ".data_nmplv_G";
 
-extern vec_ClipExt :label;
+extern core_ClipExt :label;
 
 begin ".text_nmplv"
 
@@ -47,7 +47,7 @@ global _nmppsClipCC_32s:label;
 .branch;
 
 
-	ar5 = sp-2;
+	ar5 = ar7 - 2;
 	push ar0,gr0;
 	push ar1,gr1;
 	push ar2,gr2;
@@ -79,7 +79,7 @@ global _nmppsClipCC_32s:label;
 	// [ar1]= 1^30+nNegThresh
 	// [ar2]= 1^31-1+nNegThresh-nPosThresh
 	// [ar3]= 1^30-1-nPosThresh
-	delayed call vec_ClipExt;
+	delayed call core_ClipExt;
 		ar1 = TmpLong3;
 		
 	pop ar6,gr6;

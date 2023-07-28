@@ -2,22 +2,22 @@
 //
 //  $Workfile:: Convert32to08.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:08 $
 //
 //! \if file_doc
 //!
 //! \file   Convert32to04.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции преобразования елементов вектора. 
 //!
 //! \endif
 //!
 //------------------------------------------------------------------------
-extern vec_ClipMul4D4W4_AddVr:label;
+extern core_ClipMul4D4W4_AddVr:label;
 extern _VEC_TBL_Diagonal_1h_G:long[16];
 extern _VEC_TBL_Diagonal_1h_L:long[16];
 
@@ -31,7 +31,7 @@ begin ".text_nmplv"
 global _nmppsConvert_16s4s:label;
 <_nmppsConvert_16s4s>
 .branch;
-    ar5 = sp - 2 with gr7 = false;
+    ar5 = ar7 - 2 with gr7 = false;
 	push ar0,gr0 with gr7++;
 	push ar1,gr1 with gr7++;		//gr7=2
 	push ar2,gr2 with gr0 = gr7;
@@ -58,7 +58,7 @@ global _nmppsConvert_16s4s:label;
 	<LoadLocalMatrix>
 	f1cr=gr7;
 	vr = gr7;
-	call vec_ClipMul4D4W4_AddVr with gr5>>=4;
+	call core_ClipMul4D4W4_AddVr with gr5>>=4;
 		
 		
 	pop ar6,gr6;

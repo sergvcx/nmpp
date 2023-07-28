@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Mask.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:05 $
 //
 //! \if file_doc
 //!
 //! \file   Mask.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Логические функции над векторами.
 //!
 //! \endif
@@ -27,7 +27,7 @@ data ".data_nmplv_G"
 end ".data_nmplv_G";
 //********** Text   ********************
 
-extern vec_Mask:label;
+extern core_Mask:label;
 
 begin ".text_nmplv"
 ///////////////////////////////////////////////////////////////////////////////
@@ -40,7 +40,7 @@ global _nmppsMaskV__FPUlPUlPUlPUli_ :label;
 global _nmppsMaskV_64u:label;
 <_nmppsMaskV_64u>
 .branch;
-	ar5=sp-2;
+	ar5=ar7 - 2;
 	push ar0,gr0	with gr0=false;
 	push ar1,gr1	with gr0++;
 	push ar2,gr2	with gr0++;
@@ -51,7 +51,7 @@ global _nmppsMaskV_64u:label;
 	ar1 = [--ar5];						// pSrcVec2
 	ar2 = [--ar5];						// SrcVec3 Mask
 	
-	delayed call vec_Mask; 
+	delayed call core_Mask; 
 		ar6 = [--ar5];						// pDstVec
 		gr5 = [--ar5];						// nSize 
 		

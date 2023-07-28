@@ -4,12 +4,12 @@ begin ".text_nmplv"
 	//!
 	//! \perfinclude _nmppsCmpNe0_8s.html
 
-extern vec_CmpNe0:label;
+extern core_CmpNe0:label;
 global _nmppsCmpNe0_8s:label;
 <_nmppsCmpNe0_8s>
  
 .branch;    
-    ar5 = sp - 2;
+    ar5 = ar7 - 2;
     push ar0, gr0 with gr0 = false;
     push ar1, gr1 with gr0++;
     push ar5, gr5 with gr0++;
@@ -21,7 +21,7 @@ global _nmppsCmpNe0_8s:label;
 	nb1  = 80808080h;wtw;
 	f1cr = 0FEFEFEFEh;
 	f2cr = 0FEFEFEFEh;  
-    call vec_CmpNe0 with gr5>>=3;
+    call core_CmpNe0 with gr5>>=3;
 		
     
     pop ar6, gr6;

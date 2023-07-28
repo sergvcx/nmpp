@@ -20,7 +20,7 @@ end ".data_nmplv_L";
 begin ".text_nmplv"
 
 .branch;
-extern vec_Mul2D2W4_AddVr: label;
+extern core_Mul2D2W4_AddVr: label;
 global _nmppsMerge_16s: label;
       <_nmppsMerge_16s>
 	nb1=80008000h;  // 4 по 16 на выходе
@@ -49,11 +49,11 @@ global _nmppsMerge_16s: label;
 	//=========================================== even dbl
 	ar4=matr1+2 with gr5>>=2;
 	ar5=ar6+2 with gr4=gr5;
-	delayed call vec_Mul2D2W4_AddVr;
+	delayed call core_Mul2D2W4_AddVr;
 		ar4=matr1+4;
 	//=========================================== odd dbl
 	ar0=ar3;ar1=gr3;ar6=ar5 with gr5=gr4;
-	delayed call vec_Mul2D2W4_AddVr;
+	delayed call core_Mul2D2W4_AddVr;
 		ar4=matr1;
 	<fin>// 1799
 	pop ar4,gr4;

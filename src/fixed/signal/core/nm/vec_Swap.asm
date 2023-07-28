@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Mem_Swap.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:07 $
 //
 //! \if file_doc
 //!
 //! \file   Mem_Swap.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции векторного ядра.
 //!
 //! \endif
@@ -34,12 +34,12 @@ macro VEC_SWAP_REP(N)
 end VEC_SWAP_REP;
 
     //------------------------------------------------------------------------
-    //! \fn void vec_Swap(nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6)
+    //! \fn void core_Swap(nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6)
     //!
     //------------------------------------------------------------------------
 
-<vec_Swap>
-global vec_Swap:label;
+<core_Swap>
+global core_Swap:label;
 .branch;
 	Swap_rep0:label;
 	push ar2,gr2 with gr2=gr5<<27;

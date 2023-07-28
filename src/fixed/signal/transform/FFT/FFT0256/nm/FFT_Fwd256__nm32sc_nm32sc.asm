@@ -1,5 +1,5 @@
 //***************************************************************************/
-//*                     RC Module Inc., Moscow, Russia                      */
+//*                     RC Module, Moscow, Russia                      */
 //*                     NeuroMatrix(r) NM6403 Software                      */
 //*                                                                         */
 //*   Fast Fourie Transform Library                                         */
@@ -88,7 +88,7 @@ begin ".text_fft"
 .branch;
 	//pswr set 30000h;
 	//t1=0;
-	ar5=sp-2	 with gr7=false;
+	ar5=ar7 - 2	 with gr7=false;
 	push ar0,gr0 with gr7++;			// gr7=1 (CONST)
 	push ar1,gr1 with gr1=gr7<<9;		// gr1=256*2;		
 	push ar2,gr2 with gr2=gr7<<1;		// gr2=2(CONST)

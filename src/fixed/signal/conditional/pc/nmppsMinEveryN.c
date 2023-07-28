@@ -3,16 +3,16 @@
 //
 //  $Workfile:: CompareMinV. $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2013/01/24 13:50:16 $
 //
 //! \if file_doc
 //!
 //! \file   nmppsMinNV.cpp
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции сравнения.
 //!
 //! \endif

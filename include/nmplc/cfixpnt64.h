@@ -3,7 +3,7 @@
 //*                    Neuroprocessor NM6403 SDK v.1.2                      */
 //*                                                                         */
 //*               Заголовочный файл fixpoint64  функций                     */
-//*                1999 (c) RC Module Inc., Moscow, Russia                  */
+//*                1999 (c) RC Module, Moscow, Russia                  */
 //*                                                                         */
 //*                                                                         */
 //*  Date:28.12.99                                                          */

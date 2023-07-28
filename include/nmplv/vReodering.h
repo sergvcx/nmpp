@@ -1,20 +1,14 @@
 //------------------------------------------------------------------------
 //
-//  $Workfile:: vTransform. $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
-//  $Revision: 1.1 $      $Date: 2004/11/22 13:50:02 $
-//
-//! \if file_doc
 //!
-//! \file   vTransform.h
-//! \author Сергей Мушкаев
-//! \brief  Определение функций перетаскивания по таблице.
+//! \author S.Mushkaev
+//! \brief  функции переупорядочивания данных 
 //!
-//! \endif
 //!
 //------------------------------------------------------------------------
 #ifndef _VTRANSFORM_H_INCLUDED_
@@ -241,19 +235,19 @@ void nmppsSplit_(v4nm16s* pSrcVec, nm16s** pDst4Vec, int nSize);
 	 *  \brief Расщепляет массив на два массива, группируя по четным и нечетным элементам
 	 *
 	 *  \param [in]  src  Входной массив
-	 *  \param [out] dst1 Выходной массив размера size/2
-	 *  \param [out] dst2 Выходной массив размера size/2
-	 *  \param [in]  size Размер исходного массива в элементах. Кратность параметра size должна соответствовать двум длинным 64-р. словам.
+	 *  \param [out] dst1 Выходной массив размера sizeSrc/2
+	 *  \param [out] dst2 Выходной массив размера sizeSrc/2
+	 *  \param [in]  sizeSrc Размер входного массива в элементах. Кратность параметра sizeSrc должна быть равна плотности элементов в 64-р. слове.
 	 *  \return
 	 *
 	 *  \details Details
 	 *  Максимальная производительность достигается при размещении входных, выходных массивов в разных банках памяти. Массивы dst1 и dst2 могут находится в одном банке.
-	 *  Макс  производительность  на 64-р. слово результата = 2.14 такта (при size=10240 байт) и 2.6 такта (при size=4096 байт)
+	 *  Макс  производительность  на 64-р. слово результата = 2.14 такта (при sizeSrc=10240 байт) и 2.6 такта (при sizeSrc=4096 байт)
 	 */
 	 //! \{
-	void nmppsSplit_8s (const nm8s* src,  nm8s*  dst1, nm8s*  dst2, int size);
-	void nmppsSplit_16s(const nm16s* src, nm16s* dst1, nm16s* dst2, int size);
-	void nmppsSplit_32s(const nm32s* src, nm32s* dst1, nm32s* dst2, int size);
+	void nmppsSplit_8s (const nm8s* src,  nm8s*  dst1, nm8s*  dst2, int sizeSrc);
+	void nmppsSplit_16s(const nm16s* src, nm16s* dst1, nm16s* dst2, int sizeSrc);
+	void nmppsSplit_32s(const nm32s* src, nm32s* dst1, nm32s* dst2, int sizeSrc);
 	 //! \}
    /**
 	    \defgroup nmppMerge nmppMerge
@@ -264,7 +258,7 @@ void nmppsSplit_(v4nm16s* pSrcVec, nm16s** pDst4Vec, int nSize);
 	 *  \param [in]  src0 Входной массив  размера sizeSrc
 	 *  \param [in]  src1 Входной массив  размера sizeSrc
 	 *  \param [out] dst  Выходной массив размера 2*sizeSrc
-	 *  \param [in]  sizeSrc Размер выходного массива в элементах. Кратность параметра sizeSrc должна соответствовать 64-р. слову.
+	 *  \param [in]  sizeSrc Размер входного массива в элементах. Должен быть кратен плотности элементов.
 	 *  \return
 	 *
 	 *  \details Details
@@ -274,6 +268,31 @@ void nmppsSplit_(v4nm16s* pSrcVec, nm16s** pDst4Vec, int nSize);
 	void nmppsMerge_16s(const nm16s* src0, const nm16s* src1, nm16s* dst, int sizeSrc);
 	void nmppsMerge_32s(const nm32s* src0, const nm32s* src1, nm32s* dst, int sizeSrc);
 	 //! \}
+	
+	/**
+	    \defgroup nmppMerge4to1 nmppMerge
+        \ingroup vTransform
+
+	 *  \brief Собирает массив из четырех массивов, чередуя элементы от каждого. Функция обратная nmppsSplit1to4
+	 *
+	 *  \param [in]  src0 Входной массив  размера sizeSrc
+	 *  \param [in]  src1 Входной массив  размера sizeSrc
+	 *  \param [in]  src2 Входной массив  размера sizeSrc
+	 *  \param [in]  src3 Входной массив  размера sizeSrc
+	 *  \param [out] dst  Выходной массив размера 4*sizeSrc
+	 *  \param [in]  sizeSrc Размер входного массива в элементах. Должен быть кратен плотности элементов.
+	 *  \return
+	 *
+	 *  \details Details
+	 */
+	 //! \{
+	//void nmppsMerge4_8s (const nm8s*  src0, const nm8s*  src1,const nm8s*  src2, const nm8s*  src3, nm8s*  dst, int sizeSrc);
+	void nmppsMerge4_16s(const nm16s* src0, const nm16s* src1, const nm16s* src2, const nm16s* src3, nm16s* dst, int sizeSrc);
+	//void nmppsMerge4_32s(const nm32s* src0, const nm32s* src1,const nm32s* src2, const nm32s* src3, nm32s* dst, int sizeSrc);
+	 //! \}
+	
+	
+	
 	/**
 	    \defgroup nmppSplit_32fcr nmppSplit_32fcr
         \ingroup vTransform

@@ -3,7 +3,7 @@
 //
 //  NMPP library 
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  12:24 05.02.2015
 //

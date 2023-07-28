@@ -2,9 +2,9 @@
 //
 //  $Workfile:: mtrCopyAtoU08.asm  $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/01/12 14:05:15 $
 //
@@ -25,7 +25,7 @@ extern mtr_CopyAtoU_Core:label;
 
 data ".data_nmplm_G"
 
-	vec_Zero:long = 00000000000000000hl;
+	core_Zero:long = 00000000000000000hl;
 	 nDstOffset:long = 00000000000000000hl;
 
 end ".data_nmplm_G";
@@ -45,7 +45,7 @@ global _nmppmCopyau_8u:label;
 <_nmppmCopyau_8u>
 .branch;
 
-	ar5 = sp-2;	
+	ar5 = ar7 - 2;	
 
 	push ar0,gr0;
 	push ar1,gr1;
@@ -70,7 +70,7 @@ global _nmppmCopyau_8u:label;
 	ar5 = ar6		with gr4 = gr4<<29;//Dst address modification
 	ar6 = ar5 + gr5	with gr4 = gr4>>28;
 
-	vr = [vec_Zero];
+	vr = [ core_Zero];
 	[nDstOffset] = gr4;
 
 	sb	= 02020202h;

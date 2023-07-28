@@ -1,15 +1,15 @@
 //******************************************************************************************//
-//* Prototype: void vec_CopyEvenToEven_32f(ar0 = src, ar6 = dst, gr5 = size);              *//
+//* Prototype: void core_CopyEvenToEven_32f(ar0 = src, ar6 = dst, gr5 = size);              *//
 //* Contents: A Copying of a floating point array from even src address to even dst address*//
 //* src - even address only                                                                *//
 //* dst - even address only                                                                *//
 //* size - all sizes (0, 1, 2, 3, 4, ... )                                                 *//
 //******************************************************************************************//
 
-global vec_CopyEvenToEven_32f: label;
+global core_CopyEvenToEven_32f: label;
 
 begin ".text_nmplv"
-<vec_CopyEvenToEven_32f>
+<core_CopyEvenToEven_32f>
 	push ar1, gr1;
 	push ar2, gr2;
 	push ar5, gr5;

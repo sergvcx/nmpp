@@ -4,14 +4,14 @@
 //
 //  <Название библиотеки>
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:03 $
 //
 //! \if file_doc
 //!
 //! \file Sub.Asm
-//! \author Сергей Мушкаев 
+//! \author S.Mushkaev 
 //! \brief Вычитание вектора и константы из вектора.
 //!
 //! \endif
@@ -19,7 +19,7 @@
 //------------------------------------------------------------------------
 
 
-extern vec_Sub:label;
+extern core_Sub:label;
 
 begin ".text_nmplv"
 
@@ -35,7 +35,7 @@ begin ".text_nmplv"
 global _nmppsSub_16s:label;
 <_nmppsSub_16s>
 .branch;
-	ar5 = sp - 2 with gr7=false;
+	ar5 = ar7 - 2 with gr7=false;
 	push ar0,gr0 with gr7++;
 	push ar1,gr1 with gr0=gr7+1;	// gr0=2
 	push ar5,gr5 with gr1=gr0;		// gr1=2 
@@ -46,7 +46,7 @@ global _nmppsSub_16s:label;
 	gr5 = [--ar5];	// nSize in 16-bit elements
 	
 	nb1 = 80008000h with gr5>>=2;	// nSize in 64-bit words
-	delayed call vec_Sub;
+	delayed call core_Sub;
 		nul;
 		wtw;						
 

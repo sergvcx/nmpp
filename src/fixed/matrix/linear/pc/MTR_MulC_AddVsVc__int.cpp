@@ -2,16 +2,16 @@
 //
 //  $Workfile:: mtrMulMN.cp $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/01/12 14:05:15 $
 //
 //! \if file_doc
 //!
 //! \file   mtrMulMN.cpp
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции умножения матрицы на матрицу.
 //!
 //! \endif

@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Copy.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:08 $
 //
 //! \if file_doc
 //!
 //! \file   Copy.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции инициализации и копирования.
 //!
 //! \endif
@@ -20,7 +20,7 @@
 
 //#include "vCopy.h"
 
-extern vec_data:label;
+extern core_data:label;
 
 
 begin ".text_nmplv"
@@ -33,12 +33,12 @@ begin ".text_nmplv"
 global _nmppsCopy_64s:label;
 <_nmppsCopy_64s>
 .branch;
-    ar5 = sp - 2	with gr7=gr5;
+    ar5 = ar7 - 2	with gr7=gr5;
     push ar0,gr0	with gr0=false;
 	push ar6,gr6	with gr0++;
     ar0 = [--ar5]	with gr0++;		// pSrcVec
 	ar6 = [--ar5];					// pDstVec
-	delayed call vec_data with gr6=gr0;
+	delayed call core_data with gr6=gr0;
 		gr5 = [--ar5];				// nSize
 		nul;
 	pop ar6,gr6;

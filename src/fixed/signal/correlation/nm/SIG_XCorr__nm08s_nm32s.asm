@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Convolution8to32.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/01/12 14:09:07 $
 //
 //! \if file_doc
 //!
 //! \file   Convolution8to32.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции свертки для векторов.
 //!
 //! \endif
@@ -28,7 +28,7 @@ begin ".text_nmpls"
 global _nmppsXCorr_8s:label;
 <_nmppsXCorr_8s>
 .branch;
-	ar5 = sp - 2;
+	ar5 = ar7 - 2;
 
     push ar0, gr0;
     push ar1, gr1;

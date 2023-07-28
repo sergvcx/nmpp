@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Clip.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2011/11/22 13:50:09 $
 //
 //! \if file_doc
 //!
 //! \file   Clip.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции насышения с ограниченным множеством возможных порогов
 //!         для различных типов.
 //!
@@ -20,7 +20,7 @@
 //------------------------------------------------------------------------
 //#include "vClip.h"
 
-extern vec_activate_data_add_0:label;
+extern core_activate_data_add_0:label;
 extern tbl_f1cr_nm64:long[64];
 
 begin ".text_nmplv"
@@ -46,7 +46,7 @@ global _nmppsClipPowC_64s:label;
 	gr6 = [--ar5];							//ClipIndex
 	ar6 = tbl_f1cr_nm64	with gr6<<=1;		
 	f1cr= [ar6+=gr6];
-	delayed call vec_activate_data_add_0;
+	delayed call core_activate_data_add_0;
 		ar6 = [--ar5] with gr6=gr7;			//Dst
 		gr5 = [--ar5];						//Size
 		

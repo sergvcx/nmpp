@@ -6,7 +6,7 @@
 //*                                                                         */
 //*             Перевод числа из типа double в fixed-point 64 b и обратно   */
 //*               двоичная точка находится между 31 и 32 битом              */
-//*                1999 (c) RC Module Inc., Moscow, Russia                  */
+//*                1999 (c) RC Module, Moscow, Russia                  */
 //***************************************************************************/
 
 import from rtmacro.mlb;
@@ -33,7 +33,7 @@ begin ".text_nmplс"
 <_nmppcFix64ToDouble>
 global _nmppcFix64ToDouble :label;
 .branch;
-	ar5=sp-2;
+	ar5=ar7 - 2;
     push ar1,gr1;
     push ar2,gr2;
     push ar3,gr3;

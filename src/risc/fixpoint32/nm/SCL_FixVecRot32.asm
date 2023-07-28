@@ -7,7 +7,7 @@
 //*       ПОВОРОТ ВЕКТОРА НА ПЛОСКОСТИ В ДЕКАРТОВЫХ КООРДИНАТАХ             */
 //*                                                                         */
 //*                                                                         */
-//*                1999 (c) RC Module Inc., Moscow, Russia                  */
+//*                1999 (c) RC Module, Moscow, Russia                  */
 //***************************************************************************/
 
 //!!!!!!!!!!!!!!!!!!! МЕНЯТЬ ЗДЕСЬ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -96,10 +96,10 @@ begin ".text_nmplс"
 		[Void]=gr7 with gr2=gr0;
 	delayed skip 6 with gr0-=gr1;
 		gr3=[ar1++] with gr4+=gr2;
-		ar5=sp with gr7-=gr3;
+		ar5=ar7 with gr7-=gr3;
 	//---------------------
 	nul;
-	ar5=sp with gr0+=gr1;
+	ar5=ar7 with gr0+=gr1;
 	gr3=[ar1++] with gr4-=gr2;
 	gr7+=gr3;
 
@@ -154,9 +154,9 @@ delayed return;
 		[Void]=gr7 with gr2=gr0;
 	delayed skip 6 with gr0-=gr1;
 		gr3=[ar1++] with gr4+=gr2;
-		ar5=sp with gr7-=gr3;
+		ar5=ar7 with gr7-=gr3;
 	nul;
-	ar5=sp with gr0+=gr1;
+	ar5=ar7 with gr0+=gr1;
 	gr3=[ar1++] with gr4-=gr2;
 	gr7+=gr3;
 	//---------------------

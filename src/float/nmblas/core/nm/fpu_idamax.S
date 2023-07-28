@@ -1,6 +1,6 @@
 ///////////
 // nmblas (neuro matrix Basic Linear Algebra Subroutines)
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 
 // Author : Alexandr Bolotnikov 
 // Originaly developed at reserch center "Module" Moscow 

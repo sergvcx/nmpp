@@ -7,7 +7,7 @@
 //*         Вычисление экспоненты в системе с фиксированной точкой(64/60)   */
 //*         при значениях аргумента от 0 до 1 включительно                  */
 //*                                                                         */
-//*                     (c) RC Module Inc., Moscow, Russia                  */
+//*                     (c) RC Module, Moscow, Russia                  */
 //* Version 1.0  (26.04.2000)                                               */
 //* Version 1.1  (13.09.2000)                                               */
 //***************************************************************************/
@@ -85,7 +85,7 @@ begin ".text_nmplс"
 global _nmppcFix64Exp01:label;
 <_nmppcFix64Exp01>
 .branch;
-	ar5=sp-2;
+	ar5=ar7 - 2;
 	push ar0,gr0;
 	push ar1,gr1;
 	push ar5,gr5;

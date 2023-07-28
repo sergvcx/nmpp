@@ -2,9 +2,9 @@
 //
 //  $Workfile:: mtrCpyCore_nm64u.asm $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/01/12 14:05:15 $
 //
@@ -18,7 +18,7 @@
 //!
 //------------------------------------------------------------------------
 
-extern vec_data:label;
+extern core_data:label;
 begin ".text_nmplm"
 /////////////////////////////////////////////////////////////////////////////////
 //mtr_CpyCore_nm64
@@ -49,7 +49,7 @@ global mtr_CpyCore_nm64:label;
 
 <RowCopyRep>
 
-	delayed call vec_data with gr5 = gr3;
+	delayed call core_data with gr5 = gr3;
 		ar1 += gr1;
 		ar4 += gr4;
 	
@@ -69,7 +69,7 @@ return;
 	
 <ColumnCopyRep>
 
-	delayed call vec_data with gr5 = gr2;
+	delayed call core_data with gr5 = gr2;
 		ar1 += gr1;
 		ar4 += gr4;
 	

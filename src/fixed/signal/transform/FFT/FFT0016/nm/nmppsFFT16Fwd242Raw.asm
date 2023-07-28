@@ -1,5 +1,5 @@
 //***************************************************************************/
-//*                     RC Module Inc., Moscow, Russia                      */
+//*                     RC Module, Moscow, Russia                      */
 //*                     NeuroMatrix(r) NM640X Software                      */
 //*                                                                         */
 //*   Fast Fourie Transform Library                                         */
@@ -33,14 +33,14 @@ macro STOP_TIMER()
 end STOP_TIMER;
 
 macro CRC32(adr,size)
-	//extern vec_crc32:label;
+	//extern core_crc32:label;
 	//ar0 = [adr];
 	//gr5 = size;
-	//call vec_crc32;
+	//call core_crc32;
 end CRC32;
 
 
-extern vec_RShift32s:label;
+extern core_RShift32s:label;
 
 data ".data_fft_L"
 	t: word;
@@ -324,7 +324,7 @@ return ;
 global _nmppsFFT16Fwd242Raw	:label;
       <_nmppsFFT16Fwd242Raw>
 
-	ar5=sp-2		with gr7 =false;
+	ar5=ar7 - 2		with gr7 =false;
 	push ar0,gr0	with gr7++;			
 	push ar1,gr1	with gr7<<=4;		// gr7=8*2
 	push ar2,gr2;
@@ -389,7 +389,7 @@ return;
 global _nmppsFFT16Fwd242	:label;
       <_nmppsFFT16Fwd242>
 .branch;
-	ar5=sp-2		with gr7 =false;
+	ar5=ar7 - 2		with gr7 =false;
 	push ar0,gr0	with gr7++;			
 	push ar1,gr1	with gr7<<=4;		// gr7=8*2
 	push ar2,gr2;
@@ -418,7 +418,7 @@ global _nmppsFFT16Fwd242	:label;
 	
 	ar0 = [dst0]  with gr0=gr7;
 	ar6 = [tmp10] with gr6=gr7;
-	delayed call vec_RShift32s	with gr5 = gr7<<4;// 16*2
+	delayed call core_RShift32s	with gr5 = gr7<<4;// 16*2
 		gr4 = [ar4++];	
 		nul;					
 		

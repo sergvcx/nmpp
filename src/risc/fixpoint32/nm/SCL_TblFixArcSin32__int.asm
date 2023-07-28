@@ -7,7 +7,7 @@
 //*             Вычисление арксинуса числа с фиксированной запятой          */
 //*                                                                         */
 //*                                                                         */
-//*                1999 (c) RC Module Inc., Moscow, Russia                  */
+//*                1999 (c) RC Module, Moscow, Russia                  */
 //***************************************************************************/
 //	Arg1 - Angle
 //--------------------------
@@ -37,7 +37,7 @@ begin ".text_nmplс"
 global _nmppcTblFixArcSin32:label;
 <_nmppcTblFixArcSin32>
 .branch;
-	ar5 = sp-2;
+	ar5 = ar7 - 2;
 	gr7 = [--ar5];
 	push ar1,gr1 with gr7;
 	//with gr7=Arg

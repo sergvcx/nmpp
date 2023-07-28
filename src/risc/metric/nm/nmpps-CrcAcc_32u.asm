@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Crc32.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:11 $
 //
 //! \if file_doc
 //!
 //! \file Crc32.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief Подсчет избыточного кода
 //! 
 //! \endif
@@ -171,8 +171,8 @@ global _nmppsCrcAcc_32u :label;
 	
 return;
 
-global   vec_crc32:label;
-		<vec_crc32>
+global   core_crc32:label;
+		<core_crc32>
 
 .branch;
 

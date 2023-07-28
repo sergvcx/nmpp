@@ -1,5 +1,5 @@
 //***************************************************************************/
-//*                     RC Module Inc., Moscow, Russia                      */
+//*                     RC Module, Moscow, Russia                      */
 //*                     NeuroMatrix(r) NM640X Software                      */
 //*                                                                         */
 //*   Fast Fourie Transform Library                                         */
@@ -30,7 +30,7 @@ data ".data_fft_L"
 		00000000FFFFFFFFhl);
 		
 
-	vec_tbl_sb_nb_w_int_RightShift7:long[8]=(
+	core_tbl_sb_nb_w_int_RightShift7:long[8]=(
 			1000000000000000000000001000001010000000000000000000000010000010bl,	// sb 7
 			1111111110000000000000000000000011111111100000000000000000000000bl,	// nb 7
 			
@@ -71,7 +71,7 @@ global _nmppsFFT128Fwd288:label;
 global _nmppsFFT128Fwd:label;
 <_nmppsFFT128Fwd>
 .branch;
-	ar5=sp-2	 with gr7=false;
+	ar5=ar7 - 2	 with gr7=false;
 	push ar0,gr0 with gr7++;			
 	push ar1,gr1 with gr7++;		
 	push ar2,gr2;		
@@ -150,7 +150,7 @@ global _nmppsFFT128Fwd:label;
 	
 	ar6 = gr7;
 	ar1 = gr1;
-	ar0 = vec_tbl_sb_nb_w_int_RightShift7;
+	ar0 = core_tbl_sb_nb_w_int_RightShift7;
 	sb  = [ar0++];
 	nb1 = [ar0++];	
 	rep 6  wfifo=[ar0++],ftw,wtw;

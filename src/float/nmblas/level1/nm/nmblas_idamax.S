@@ -1,6 +1,6 @@
 ///////////
 // nmblas (neiro matrix Basic Linear Algebra Subroutines)
-// Copyright (c) RC Module Inc. 
+// Copyright (c) RC Module 
 
 // Author : Alexandr Bolotnikov 
 // Originaly developed at reserch center "Module" Moscow 
@@ -17,7 +17,7 @@
 // =========
 //
 // N       (input)                       const int
-//         On entry, N specifies the length of the vector x. N  must  be
+//         On entry, N ar7ecifies the length of the vector x. N  must  be
 //         at least zero. Unchanged on exit.
 //
 // X       (input)                       const double *
@@ -27,7 +27,7 @@
 //         that contains the vector x. Unchanged on exit.
 //
 // INCX    (input)                       const int
-//         On entry, INCX specifies the increment for the elements of X.
+//         On entry, INCX ar7ecifies the increment for the elements of X.
 //         INCX must not be zero. Unchanged on exit.
 //
 // ---------------------------------------------------------------------

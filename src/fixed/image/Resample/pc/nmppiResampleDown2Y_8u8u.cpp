@@ -2,9 +2,9 @@
 //
 //  $Workfile:: iResizeDown2_pc.cpp  $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/02/10 12:36:40 $
 //

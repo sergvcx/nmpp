@@ -43,7 +43,8 @@ LIST(REMOVE_ITEM listdir_float ${CMAKE_CURRENT_LIST_DIR}/arithmetic/nmppsMulC_Ad
 
 
 
-#SUB2DIRLIST(ilistdir0 ${CMAKE_CURRENT_LIST_DIR}/fixed/matrix)
+SUB2DIRLIST(ilistdir0 ${CMAKE_CURRENT_LIST_DIR}/fixed/matrix)
+#SUB2DIRLIST(ilistdir0 ${CMAKE_CURRENT_LIST_DIR}/fixed/matrix/nmppmMul_mm)
 #SUB2DIRLIST(ilistdir1 ${CMAKE_CURRENT_LIST_DIR}/fixed/signal/Arithmetics)
 SUB2DIRLIST(ilistdir2 ${CMAKE_CURRENT_LIST_DIR}/fixed/signal/Transform/nmppsDecimate)
 

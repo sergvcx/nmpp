@@ -2,9 +2,9 @@
 //
 //  $Workfile:: RSH32.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:05 $
 //
@@ -18,7 +18,7 @@
 //!
 //------------------------------------------------------------------------
 //***************************************************************************/
-//*                     RC Module Inc., Moscow, Russia                      */
+//*                     RC Module, Moscow, Russia                      */
 //*                     NeuroMatrix(r) NM6403 Software                      */
 //*                                                                         */
 //*   Vector Processing  Library                                            */
@@ -39,11 +39,11 @@
 //#include "vShift.h"
 
 	import from macros.mlb;
-	extern vec_vsum_shift_data_0:label;
-	extern vec_vsum_data_0:label;
+	extern core_vsum_shift_data_0:label;
+	extern core_vsum_data_0:label;
 
 data ".data_nmplv_G"
-		vec_tbl_w_int_RSH:long[8]=(
+		core_tbl_w_int_RSH:long[8]=(
 			// wights for right shift=2,3,4-7
 			0hl,0000000000000001hl,	
 			0hl,0000000100000000hl,	
@@ -52,7 +52,7 @@ data ".data_nmplv_G"
 			00000000100000000hl,	00000000400000000hl
 			);
 
-		vec_tbl_nb_sb_int_RSH:word[64]=(
+		core_tbl_nb_sb_int_RSH:word[64]=(
 			80000002h,// nb sh0
 			0000000ah,// sb sh0
 				0c0000002h,// nb sh1
@@ -137,17 +137,17 @@ begin ".text_nmplv"
 global _nmppsRShiftC_32u:label;
 <_nmppsRShiftC_32u>
 .branch;
-	ar5 = sp - 4;
+	ar5 = ar7 - 4;
 	push ar0,gr0;
 	gr0 = [ar5];		//	int				Shift	 :[0, 1, 2, .., 31].
 	
-	ar0 = vec_tbl_nb_sb_int_RSH with gr0<<=1;
+	ar0 = core_tbl_nb_sb_int_RSH with gr0<<=1;
 	ar5-=2;
 	ar0+= gr0		with gr7 = gr0>>2;
 	ar0,gr0 = [ar0]	with gr7--;
 	sb  = gr0		with gr7 A>>=31;
 	nb1 = ar0		with gr0=gr7<< 3;
-	ar0 = vec_tbl_w_int_RSH with gr0=-gr0;
+	ar0 = core_tbl_w_int_RSH with gr0=-gr0;
 	ar0+= gr0;			// w table select 
 	rep 4 wfifo=[ar0++],ftw;
 
@@ -171,13 +171,13 @@ global _nmppsRShiftC_32u:label;
 		nul;
 
 	<Odd_RightShift>
-	delayed call vec_vsum_shift_data_0;
+	delayed call core_vsum_shift_data_0;
 		wtw;
 		nul;
 	goto End_RightShift;
 	
 	<Even_RightShift>
-	delayed call vec_vsum_data_0;
+	delayed call core_vsum_data_0;
 		wtw;
 		nul;
 

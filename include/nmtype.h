@@ -4,9 +4,9 @@
 //
 //  $Workfile:: nmtype.h              $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:02 $
 //
@@ -101,11 +101,8 @@ struct nmreg { int nVal; };
 		\~
 	\~	\f$[-1,0]\f$
 	*/
-	#ifdef __NM__
+
 typedef void nm1;
-#else
-	typedef int nm1;
-#endif
 //-----------------------------------------------------------------------------
     /**
 	\ingroup nmvectype

@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Mul_2V4toW8_shift.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:06 $
 //
 //! \if file_doc
 //!
 //! \file   Mul_2V4toW8_shift.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции векторного ядра.
 //!
 //! \endif
@@ -41,12 +41,12 @@ end   VEC_MUL_2V4toW8_SHIFT_REP;
 
 
     //------------------------------------------------------------------------
-    //! \fn void vec_MUL_2V4toW8_shift(nmreg nb1, nmreg sb, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar3, nmreg gr4, nmreg ar5, nmreg gr5, nmreg ar6, nmreg gr6)
+    //! \fn void core_MUL_2V4toW8_shift(nmreg nb1, nmreg sb, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar3, nmreg gr4, nmreg ar5, nmreg gr5, nmreg ar6, nmreg gr6)
     //!
     //------------------------------------------------------------------------
 
-global vec_MUL_2V4toW8_shift:label;
-<vec_MUL_2V4toW8_shift>
+global core_MUL_2V4toW8_shift:label;
+<core_MUL_2V4toW8_shift>
 .branch;
 MUL_2V4toW8_SHIFT_rep0:label;
 	push ar2,gr2	with gr2 = gr5<<27;

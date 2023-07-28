@@ -2,16 +2,16 @@
 //
 //  $Workfile:: vCopyUtoA08. $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:08 $
 //
 //! \if file_doc
 //!
 //! \file   GetVector.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции доступа для векторов.
 //!
 //! \endif
@@ -20,8 +20,8 @@
 
 //#include "vClip.h"
 
-extern vec_data:label;
-extern vec_Mul2D2W8_AddVr:label;
+extern core_data:label;
+extern core_Mul2D2W8_AddVr:label;
 
 import from macros.mlb;
 data ".data_nmplv_L"
@@ -313,7 +313,7 @@ global _nmppsCopyua_8s:label;
 <_nmppsCopyua_8s>
 
 .branch;
-	ar5 = sp-2		with gr7=false;	
+	ar5 = ar7 - 2		with gr7=false;	
 	push ar0,gr0;
 	push ar1,gr1;
 	push ar4,gr4;
@@ -341,7 +341,7 @@ global _nmppsCopyua_8s:label;
 	gr4 = 80808080h;
 	nb1 = gr4		with gr7 = false;
 	vr  = gr7;
-	delayed call vec_Mul2D2W8_AddVr;
+	delayed call core_Mul2D2W8_AddVr;
 		ar1+= 2;
 	
 	delayed goto Finish;
@@ -349,7 +349,7 @@ global _nmppsCopyua_8s:label;
 		pop ar5,gr5;
 	
 	<CopyVector>
-	call vec_data;
+	call core_data;
 	
 	pop ar6,gr6;
 	pop ar5,gr5;

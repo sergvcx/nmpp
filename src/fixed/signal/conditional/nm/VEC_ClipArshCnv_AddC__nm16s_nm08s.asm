@@ -2,16 +2,16 @@
 //
 //  $Workfile:: ClipRShiftConvertAdd_16s8s.asm    $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:08 $
 //
 //! \if file_doc
 //!
 //! \file  ClipRShiftConvertAdd_16s8s.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции преобразования елементов вектора.
 //!
 //! \endif
@@ -19,14 +19,14 @@
 //------------------------------------------------------------------------
 //#include "vConvert.h"
 
-extern vec_ClipMul2D2W8_AddVr:label;
+extern core_ClipMul2D2W8_AddVr:label;
 import from macros.mlb;
 extern tbl_f1cr_nm16:long;
 
 data ".data_nmplv_L"
 
 
-global	vec_tbl_sb_2x4rows:  long[8] = (
+global	core_tbl_sb_2x4rows:  long[8] = (
 			0002000200020002hl, //(0,16)x4 - 4 Rows ONLY !!!
 			000a000a000a000ahl, //(2,14)x4
 			0022002200220022hl, //(4,12)x4
@@ -93,7 +93,7 @@ begin ".text_nmplv"
 global _nmppsClipRShiftConvertAddC_16s8s:label;
 <_nmppsClipRShiftConvertAddC_16s8s>
 .branch;
-	ar5 = sp - 2	with gr7=false;
+	ar5 = ar7 - 2	with gr7=false;
 	push ar0,gr0	with gr7++;
 	push ar1,gr1	with gr7++;		// gr7=2
 	push ar4,gr4	with gr0=gr7;	// gr0=2
@@ -106,7 +106,7 @@ global _nmppsClipRShiftConvertAddC_16s8s:label;
 	ar0 = tbl_f1cr_nm16 with gr0<<=1;
 	f1cr= [ar0+=gr0];
 	gr0 = [--ar5];					// Shift
-	ar0 = vec_tbl_sb_2x4rows;
+	ar0 = core_tbl_sb_2x4rows;
 	sb  = [ar0+=gr0];
 	gr4 = 80808080h;
 	nb1 = gr4;
@@ -128,7 +128,7 @@ global _nmppsClipRShiftConvertAddC_16s8s:label;
 
 	ar6 = [--ar5];					// pDstVec
 	gr5 = [--ar5];					// nSize 
-	delayed call vec_ClipMul2D2W8_AddVr	with gr5>>=3;
+	delayed call core_ClipMul2D2W8_AddVr	with gr5>>=3;
 		gr0 = gr1 >> 1;
 		ar1 = ar0+gr0 with gr0 = gr1;// gr0=4	
 

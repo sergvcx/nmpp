@@ -4,7 +4,7 @@
 //
 //  <Название библиотеки>
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/02/10 12:36:38 $
 //
@@ -20,7 +20,7 @@
 
 
 import from macros.mlb;
-extern vec_Mul2D2W8_AddVr:label;
+extern core_Mul2D2W8_AddVr:label;
 
 data ".data_nmpli_L"
 		w_Zero16_L:long[16]=(0hl,0hl,0hl,0hl,0hl,0hl,0hl,0hl,0hl,0hl,0hl,0hl,0hl,0hl,0hl,0hl);
@@ -100,8 +100,8 @@ global _void._.8.8nmppiWAdd2I.1class._RGB32_nm10s._.0.9._int.9._class._RGB32_nm1
 	gr0 = 2;
 	gr1 = 2;
 	gr6 = 2;
-	// void vec_Mul2D2W8_AddVr (nmreg nb1, nmreg sb, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6)
-	delayed call vec_Mul2D2W8_AddVr with gr5>>=1;
+	// void core_Mul2D2W8_AddVr (nmreg nb1, nmreg sb, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6)
+	delayed call core_Mul2D2W8_AddVr with gr5>>=1;
 		nul;
 		nul;
 

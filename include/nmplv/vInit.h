@@ -1,14 +1,14 @@
 
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:02 $
 //
 //! \if file_doc
 //!
 //! \file   vInit.h
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Определение функций инициализации для векторов.
 //!
 //! \endif

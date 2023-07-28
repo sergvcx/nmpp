@@ -1,5 +1,5 @@
 //***************************************************************************/
-//*                     RC Module Inc., Moscow, Russia                      */
+//*                     RC Module, Moscow, Russia                      */
 //*                     NeuroMatrix(r) NM640X Software                      */
 //*                                                                         */
 //*   Fast Fourie Transform Library                                         */
@@ -34,12 +34,12 @@ end STOP_TIMER;
 macro CRC32(adr)
 //	ar0 = [adr];
 //	gr5 = 8192*2;
-//	call vec_crc32;
+//	call core_crc32;
 end CRC32;
 
 
-extern vec_RShift32s:label;
-extern vec_crc32:label;
+extern core_RShift32s:label;
+extern core_crc32:label;
 extern _tblBitRun32:long;
 
 data ".data_nmpps"
@@ -253,11 +253,11 @@ global nmppsFFT8192Fwd28888Core	:label;
 	
 	//ar0 = [pGRe];
 	//gr5 = 8192*2;
-	//call vec_crc32;
+	//call core_crc32;
 	
 	//ar0 = [pGIm];
 	//gr5 = 8192*2;
-	//call vec_crc32;
+	//call core_crc32;
 	//return;
 
 	//----------------- 1.1 -----------------	
@@ -333,7 +333,7 @@ global nmppsFFT8192Fwd28888Core	:label;
 	//START_TIMER();
 	ar0 = [pGRaw]	with gr6=-gr6;	// gr6=2
 	ar6 = [pG]		with gr0=gr6;	// gr0=2
-	delayed call vec_RShift32s;
+	delayed call core_RShift32s;
 		gr4 = [shift1] with gr5=gr0<<13; //	gr5 = 8192*2; /
 
 	//STOP_TIMER();	// Best time=8262; 8262/8192/2=0.504272 ; Best route = 0005ef0
@@ -474,7 +474,7 @@ global nmppsFFT8192Fwd28888Core	:label;
 	START_TIMER();
 	ar0 = [pHRaw]	with gr6 = -gr6; 				// gr6 = 2;
 	ar6 = [pH]		with gr0 = gr6;					// gr0 = 2;
-	delayed call vec_RShift32s with gr5 = gr0<<13;	// gr5 = 8192*2;
+	delayed call core_RShift32s with gr5 = gr0<<13;	// gr5 = 8192*2;
 		gr4 = [shift2];
 	
 	STOP_TIMER(); // Best time=8262; 8262/8192/2=0.504272 ; Best route = 0000007
@@ -585,7 +585,7 @@ global nmppsFFT8192Fwd28888Core	:label;
 	//START_TIMER();
 	ar0 = [pJRaw]	with gr6 = -gr6; 				// gr6 = 2;
 	ar6 = [pJ]		with gr0 = gr6;					// gr0 = 2;
-	delayed call vec_RShift32s with gr5 = gr0<<13;	// gr5 = 8192*2;
+	delayed call core_RShift32s with gr5 = gr0<<13;	// gr5 = 8192*2;
 		gr4 = [shift2];
 	
 	//STOP_TIMER(); // Best time=8262; 8262/8192/2=0.504272 ; Best route = 0000007
@@ -673,7 +673,7 @@ global _nmppsFFT8192Fwd28888Raw	:label;
       <_nmppsFFT8192Fwd28888Raw>
       <_nmppsFFT8192Inv28888Raw>
 	  
-	ar5=sp-2	;
+	ar5=ar7 - 2	;
 	push ar0,gr0;			
 	push ar1,gr1;		
 	push ar2,gr2;
@@ -748,7 +748,7 @@ global _nmppsFFT8192Fwd28888	:label;
       <_nmppsFFT8192Fwd28888>
 	  <_nmppsFFT8192Inv28888>
 .branch;
-	ar5=sp-2	;
+	ar5=ar7 - 2	;
 	push ar0,gr0;			
 	push ar1,gr1;		
 	push ar2,gr2;
@@ -817,7 +817,7 @@ global _nmppsFFT8192Fwd28888	:label;
 	ar6 = [pY]		with gr0++;
 	gr5 = 8192*2 	with gr0++;	// gr0=2
 	//START_TIMER();
-	delayed call vec_RShift32s with gr6=gr0;
+	delayed call core_RShift32s with gr6=gr0;
 		gr4 = [shift4] with gr1=gr7;
 	
 	

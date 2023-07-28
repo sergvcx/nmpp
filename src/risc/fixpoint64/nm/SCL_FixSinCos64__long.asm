@@ -6,7 +6,7 @@
 //*                                                                         */
 //*             Вычисление синуса,косинуса и арктангенса в Fixed-Point 64   */
 //*                                                                         */
-//*                1999 (c) RC Module Inc., Moscow, Russia                  */
+//*                1999 (c) RC Module, Moscow, Russia                  */
 //***************************************************************************/
 //**********  Local ********************
 data ".data_nmplc_L"
@@ -168,7 +168,7 @@ begin ".text_nmplс"
 global _nmppcFixSinCos64 :label; 
 <_nmppcFixSinCos64>
 .branch;
-	ar5=sp-2;
+	ar5=ar7 - 2;
 
 	push ar0,gr0;
     push ar1,gr1 with gr0-=gr0;

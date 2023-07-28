@@ -2,9 +2,9 @@
 //
 //  $Workfile:: ClipPowCRShiftConvertAddC.asm    $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:09 $
 //
@@ -38,7 +38,7 @@ begin ".text_nmplv"
 extern  tbl_f1cr_nm32 : long;
 
 extern tbl_sb_nm32_EvenARSH: long;
-extern vec_ClipMul4D4W4_AddVr:label;     // core:from file Math_Mul4D4W4.asm 
+extern core_ClipMul4D4W4_AddVr:label;     // core:from file Math_Mul4D4W4.asm 
 
 //! \fn void nmppsClipRShiftConvert_AddC_32s(nm32s* pSrcVec, int nClipFactor,int nShift, int8b nAddValue,nm8s* pDstVec, int nSize);
 //! 
@@ -80,7 +80,7 @@ global _nmppsClipRShiftConvertAddC_32s8s:label;
 	ar1=gr7 with gr7+=gr6; // ar1=src+2
 	ar6=[--ar5];     //  DstVec
 	gr5=[--ar5];     //  Size
-	delayed call vec_ClipMul4D4W4_AddVr with gr5>>=3;
+	delayed call core_ClipMul4D4W4_AddVr with gr5>>=3;
 		ar2=gr7 with gr7+=gr6; // ar2=src+2
 		ar3=gr7 with gr7+=gr6; // ar3=src+2
 	//===================================

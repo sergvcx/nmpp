@@ -2,16 +2,16 @@
 //
 //  $Workfile:: activate_data.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:06 $
 //
 //! \if file_doc
 //!
 //! \file   activate_data.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции векторного ядра.
 //!
 //! \endif
@@ -22,13 +22,13 @@ begin ".text_nmvcore"
     
     
     //------------------------------------------------------------------------
-    //! \fn void vec_MinVal_v4nm16s(nmreg ar0, nmreg gr0, nmreg gr5, nmreg gr7)
+    //! \fn void core_MinVal_v4nm16s(nmreg ar0, nmreg gr0, nmreg gr5, nmreg gr7)
     //!
     //------------------------------------------------------------------------
 
 .branch;
-global vec_MinVal_v4nm16s:label;
-<vec_MinVal_v4nm16s>
+global core_MinVal_v4nm16s:label;
+<core_MinVal_v4nm16s>
 	// ------------------ Поиск максимума среди 4-х 16р. элементов пузырька ----------------------------
 	ar5,gr5 =[ar0];
 	gr7 = 0FFFF0000h;							//  маска для выделения старшего элемента

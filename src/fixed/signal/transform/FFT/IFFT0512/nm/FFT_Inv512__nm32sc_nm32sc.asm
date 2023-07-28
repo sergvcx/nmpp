@@ -1,5 +1,5 @@
 //***************************************************************************/
-//*                     RC Module Inc., Moscow, Russia                      */
+//*                     RC Module, Moscow, Russia                      */
 //*                     NeuroMatrix(r) NM6403 Software                      */
 //*                                                                         */
 //*   Fast Fourie Transform Library                                         */
@@ -91,7 +91,7 @@ begin ".text_fft"
 //////////////////////////////////////////////////////////////////////////////
 //<_FFT_Inv512Set>
 //.branch;
-//	ar5=sp-2;
+//	ar5=ar7 - 2;
 //	gr7=[--ar5];	//gr7=1 for using 7bit accuracy, otherwise FFT_Inv512 will be switched to 6bit accuracy 
 //	with gr7--;
 //	if =0 delayed goto Set7Bit;
@@ -125,7 +125,7 @@ begin ".text_fft"
 .branch;
 //pswr set 30000h;
 //t1=0;
-	ar5=sp-2 with gr7=false;
+	ar5=ar7 - 2 with gr7=false;
 	push ar0,gr0;
 	push ar1,gr1;
 	push ar2,gr2; 

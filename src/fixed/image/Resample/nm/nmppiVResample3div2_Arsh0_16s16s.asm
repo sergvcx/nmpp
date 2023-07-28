@@ -4,14 +4,14 @@
 //
 //  Библиотека обработки сигналов
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/02/10 12:36:40 $
 //
 //! \if file_doc
 //!
 //! \file   
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции передескритизации изображения по вертикали в 3/2 раза
 //!
 //! \endif
@@ -54,7 +54,7 @@ VResample3div2Banks_Data:  long[1*12]=(
 
 end ".data_nmpli_G";
 
-extern vec_Mul2D2W8_AddVr:label;
+extern core_Mul2D2W8_AddVr:label;
 begin ".text_nmpli"
 
 
@@ -67,7 +67,7 @@ begin ".text_nmpli"
 global _nmppiVResample3div2_RShift0_16s16s:label;
 <_nmppiVResample3div2_RShift0_16s16s>
 .branch;
-	ar5 = sp - 2;
+	ar5 = ar7 - 2;
 	
 	push ar0,gr0;
 	push ar1,gr1;

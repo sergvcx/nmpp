@@ -7,7 +7,7 @@
 //*             ВЫЧИСЛЕНИЕ ЭКСПОНЕНТЫ ДЛЯ ЧИСЕЛ С ФИКСИРОВАННОЙ ЗАПЯТОЙ     */
 //*                                                                         */
 //*                                                                         */
-//*     16.01.2000      (c) RC Module Inc., Moscow, Russia                  */
+//*     16.01.2000      (c) RC Module, Moscow, Russia                  */
 //***************************************************************************/
 //!!!!!!!!!!!!!!!!!!! МЕНЯТЬ ЗДЕСЬ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 const FIXPOINT=16; //Положение двоичной точки в 32-х разрядном слове
@@ -66,7 +66,7 @@ end LOG_STEP;
 global _nmppcFixExp32 :label;
 <_nmppcFixExp32>
 .branch;
-	ar5=sp-2 with gr7=false;
+	ar5=ar7 - 2 with gr7=false;
 	push ar0,gr0 with gr7=gr7+1;
 	push ar1,gr1 with gr7<<=FIXPOINT;
 	push ar2,gr2 ;

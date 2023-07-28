@@ -1,5 +1,5 @@
 //***************************************************************************/
-//*                     RC Module Inc., Moscow, Russia                      */
+//*                     RC Module, Moscow, Russia                      */
 //*                     NeuroMatrix(r) NM640X Software                      */
 //*                                                                         */
 //*   Fast Fourie Transform Library                                         */
@@ -62,7 +62,7 @@ begin ".text_fft"
 global _nmppsFFT32FwdRaw	:label;
 <_nmppsFFT32FwdRaw>
 .branch;
-	ar5=sp-2	 with gr7=false;
+	ar5=ar7 - 2	 with gr7=false;
 	push ar0,gr0 with gr7++;			
 	push ar1,gr1 with gr7++;		
 	push ar2,gr2;		

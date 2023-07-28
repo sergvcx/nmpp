@@ -4,7 +4,7 @@
 //
 //  Vector-processing library
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:08 $
 //
@@ -18,7 +18,7 @@
 //! \endif
 //!
 //------------------------------------------------------------------------
-extern vec_ClipMul2D2W8_AddVr_Ext:label; 
+extern core_ClipMul2D2W8_AddVr_Ext:label; 
 //------------------------------------------------------------------------
 data ".data_nmplv_L"
     ClipTable: word[16] = (
@@ -254,7 +254,7 @@ return;
 
 <LoadLocalMatrix>
 
-	delayed call vec_ClipMul2D2W8_AddVr_Ext	with gr5;
+	delayed call core_ClipMul2D2W8_AddVr_Ext	with gr5;
 		ar1 = ar0 + 2;	
 
 	

@@ -84,7 +84,7 @@ begin ".text"
 <_FloodFill8>
 
 .branch;
-ar5=sp-2;
+ar5=ar7 - 2;
 PUSH_REGS();
 
 // Засечь начальное время

@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Math_ClipMul2D2W8.asm   $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:05 $
 //
 //! \if file_doc
 //!
 //! \file   Math_Mul2D2W8.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции векторного ядра.
 //!
 //! \endif
@@ -39,12 +39,12 @@ macro MUL1D1W_ADD_REP(N)
 end MUL1D1W_ADD_REP;
 
     //------------------------------------------------------------------------
-    //! \fn void vec_ClipMul2D2W8_AddVr(nmreg f1cr,nmreg f2cr, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg gr5, nmreg ar6, nmreg gr6)
+    //! \fn void core_ClipMul2D2W8_AddVr(nmreg f1cr,nmreg f2cr, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg gr5, nmreg ar6, nmreg gr6)
     //!
     //------------------------------------------------------------------------
 
-global vec_ClipMul1D1W_AddClipD:label;
-      <vec_ClipMul1D1W_AddClipD>
+global core_ClipMul1D1W_AddClipD:label;
+      <core_ClipMul1D1W_AddClipD>
 .branch;
 	Next_Mul1D1W8_AddClipD_rep0:label;
 	Next_Mul1D1W8_AddClipD_rep32:label;

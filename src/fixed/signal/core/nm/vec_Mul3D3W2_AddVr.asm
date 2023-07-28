@@ -2,9 +2,9 @@
 //
 //  $Workfile:: Math_Mul3D3W2.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:06 $
 //
@@ -43,12 +43,12 @@ macro MTR_MUL3D3W2_REP(N)
 end MTR_MUL3D3W2_REP;
 
     //------------------------------------------------------------------------
-    //! \fn void vec_Mul3D3W2_AddVr(nmreg nb1, nmreg sb, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar2, nmreg gr2, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6)
+    //! \fn void core_Mul3D3W2_AddVr(nmreg nb1, nmreg sb, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar2, nmreg gr2, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6)
     //!
     //------------------------------------------------------------------------
 
-global vec_Mul3D3W2_AddVr:label;
-      <vec_Mul3D3W2_AddVr>
+global core_Mul3D3W2_AddVr:label;
+      <core_Mul3D3W2_AddVr>
 .branch;
 	Mul3D3W2_AddVr_rep0:label;
 	push ar5,gr5		with gr7=gr5>>5;

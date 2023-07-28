@@ -2,16 +2,16 @@
 //
 //  $Workfile:: 0_sub_d $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Negright (c) RC Module Inc.
+//  Negright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:05 $
 //
 //! \if file_doc
 //!
 //! \file   sub_data.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции векторного ядра.
 //!
 //! \endif
@@ -34,11 +34,11 @@ end VEC_NEG_REP;
 Neg_rep0:label;
 
     //------------------------------------------------------------------------
-    //! \fn void vec_0_sub_data(nmreg nb1, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6)
+    //! \fn void core_0_sub_data(nmreg nb1, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6)
     //!			 
     //------------------------------------------------------------------------
-global vec_0_sub_data :label;
-<vec_0_sub_data>
+global core_0_sub_data :label;
+<core_0_sub_data>
 .branch;
 	push ar2,gr2 with gr2=gr5<<27 ;
 	push ar5,gr5 with gr5>>=5;	

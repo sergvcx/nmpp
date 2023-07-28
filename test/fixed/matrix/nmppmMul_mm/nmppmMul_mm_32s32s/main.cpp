@@ -25,7 +25,7 @@ int main()
 	int w1=0;
 	for(int h0=1; h0<=maxH0; h0+=1){
 		for(int w0=2; w0<=maxW0; w0+=2){
-			printf("h0=%d w0=%d w1=%d %x\n",h0,w0,w1,crc);
+			//printf("h0=%d w0=%d w1=%d %x\n",h0,w0,w1,crc);
 			for(int w1=2; w1<=maxW1; w1+=2){
 				nmppmMul_mm_32s32s  (src0,h0,w0,src1, dst, w1);				
 				nmppsCrcAcc_32s (dst, w1*(h0+1),&crc);

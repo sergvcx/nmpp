@@ -20,7 +20,7 @@
 //==============================================================================
 
 global _nmppiDeinterlaceSplit: label;
-extern vec_data: label;
+extern core_data: label;
 
 begin ".textDeinterlacer"
 .branch;
@@ -41,10 +41,10 @@ begin ".textDeinterlacer"
 
 	ar6 = ar1;
 	<Loop>
-	call vec_data; 		// copy from pSrcImg to pDstEven
+	call core_data; 		// copy from pSrcImg to pDstEven
 	ar1 = ar6;
 	ar6 = ar2;
-    call vec_data ;		// copy from pSrcImg to pDstOdd
+    call core_data ;		// copy from pSrcImg to pDstOdd
 	ar2 = ar6 with gr1--;
 	if <>0 delayed goto Loop;
 		ar6 = ar1;

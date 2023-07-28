@@ -2,9 +2,9 @@
 //
 //  $Workfile:: vSupport. $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.2 $      $Date: 2004/12/21 14:36:01 $
 //

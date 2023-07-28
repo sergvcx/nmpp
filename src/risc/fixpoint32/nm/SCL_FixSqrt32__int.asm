@@ -7,7 +7,7 @@
 //*             Вычисление квадратного корня числа с фиксированной запятой  */
 //*                                                                         */
 //*                                                                         */
-//*                1999 (c) RC Module Inc., Moscow, Russia                  */
+//*                1999 (c) RC Module, Moscow, Russia                  */
 //***************************************************************************/
 //	Arg1 - Angle
 //--------------------------
@@ -60,7 +60,7 @@ begin ".text_nmplс"
 global _nmppcFixSqrt32 :label;
 <_nmppcFixSqrt32>
 .branch;
-	ar5=sp-2;
+	ar5=ar7 - 2;
 	push ar0,gr0;
 	push ar1,gr1;
 	push ar4,gr4;

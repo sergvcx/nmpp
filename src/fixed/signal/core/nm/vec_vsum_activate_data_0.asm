@@ -2,16 +2,16 @@
 //
 //  $Workfile:: vsum_activate_data_0.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:07 $
 //
 //! \if file_doc
 //!
 //! \file   vsum_activate_data_0.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции векторного ядра.
 //!
 //! \endif
@@ -33,12 +33,12 @@ end VEC_MUL_ACTIVATE_DATA_0_REP;
 
 
     //------------------------------------------------------------------------
-    //! \fn void vec_vsum_activate_data_0(nmreg nb1, nmreg sb, nmreg f1cr, nmreg woper, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg gr5, nmreg ar6, nmreg gr6)
+    //! \fn void core_vsum_activate_data_0(nmreg nb1, nmreg sb, nmreg f1cr, nmreg woper, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg gr5, nmreg ar6, nmreg gr6)
     //!
     //------------------------------------------------------------------------
 
-<vec_vsum_activate_data_0>
-global vec_vsum_activate_data_0:label;
+<core_vsum_activate_data_0>
+global core_vsum_activate_data_0:label;
 .branch;
 	MulActivateData_rep0:label;
 	push ar2,gr2 with gr2=gr5<<27;

@@ -2,9 +2,9 @@
 //
 //  $Workfile:: CompareMinMax.asm  $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:05 $
 //
@@ -38,12 +38,12 @@ end   VEC_COMPARE_MINMAX_REP;
 CompareMinMax_rep0:label;
 
     //------------------------------------------------------------------------
-    //! \fn void vec_CompareMinMaxV(nmreg nb1, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar3, nmreg gr3, nmreg gr5, nmreg ar6, nmreg gr6);
+    //! \fn void core_CompareMinMaxV(nmreg nb1, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar3, nmreg gr3, nmreg gr5, nmreg ar6, nmreg gr6);
     //!
     //------------------------------------------------------------------------
 
-global vec_CompareMinMax :label;
-<vec_CompareMinMax>
+global core_CompareMinMax :label;
+<core_CompareMinMax>
 .branch;
        ar3,gr3 = ar1,gr1; 
 push ar2,gr2 with gr2=gr7<<27 ;

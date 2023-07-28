@@ -2,9 +2,9 @@
 //
 //  $Workfile:: mMatrixVecDev.h                       $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.2 $      $Date: 2005/06/23 15:15:15 $
 //

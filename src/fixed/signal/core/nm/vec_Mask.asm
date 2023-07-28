@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Log_Mask.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:06 $
 //
 //! \if file_doc
 //!
 //! \file   Log_Mask.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции векторного ядра.
 //!
 //! \endif
@@ -40,12 +40,12 @@ end   VEC_MASK_REP;
 Mask_rep0:label;
 
     //------------------------------------------------------------------------
-    //! \fn void vec_Mask(nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar2, nmreg gr2, nmreg gr5, nmreg ar6, nmreg gr6)
+    //! \fn void core_Mask(nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar2, nmreg gr2, nmreg gr5, nmreg ar6, nmreg gr6)
     //!
     //------------------------------------------------------------------------
 
-global vec_Mask :label;
-<vec_Mask>
+global core_Mask :label;
+<core_Mask>
 .branch;
 	push ar4,gr4 with gr4=gr5<<27 ;
 	push ar5,gr5 with gr5>>=5;	

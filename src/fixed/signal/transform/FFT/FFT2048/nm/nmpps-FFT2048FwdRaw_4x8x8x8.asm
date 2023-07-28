@@ -1,5 +1,5 @@
 //***************************************************************************/
-//*                     RC Module Inc., Moscow, Russia                      */
+//*                     RC Module, Moscow, Russia                      */
 //*                     NeuroMatrix(r) NM640X Software                      */
 //*                                                                         */
 //*   Fast Fourie Transform Library                                         */
@@ -35,14 +35,14 @@ end STOP_TIMER;
 macro CRC32(adr,size)
 	//ar0 = [adr];
 	//gr5 = size;
-	//call vec_crc32;
+	//call core_crc32;
 end CRC32;
 
 
 // TIME=35590 clocks . 17.377 clocks
 
-extern vec_RShift32s:label;
-extern vec_crc32:label;
+extern core_RShift32s:label;
+extern core_crc32:label;
 extern _tblBitRun32: word;
 data ".data_fft_L"
 	t:word;
@@ -315,7 +315,7 @@ global nmppsFFT2048Fwd4888PreRaw	:label;
 	START_TIMER();
 	ar0 = [pJRaw]	with gr6=-gr6;	// gr6=2
 	ar6 = [pJ]		with gr0=gr6;	// gr0=2
-	delayed call vec_RShift32s;
+	delayed call core_RShift32s;
 		gr4 = [shift1] with gr5=gr0<<11; //	gr5 = 2048*2; /
 
 	STOP_TIMER();	// Best time_=2106; 2106/2048/2=0.514160 ; Best route = 0113020
@@ -433,7 +433,7 @@ global nmppsFFT2048Fwd4888PreRaw	:label;
 	// 2.1 ===> gr6=-2
 	ar0 = [pIRaw]	with gr6 = -gr6; 				// gr6 = 2;
 	ar6 = [pI]		with gr0 = gr6;					// gr0 = 2;
-	delayed call vec_RShift32s with gr5 = gr0<<11;	// gr5 = 2048*2;
+	delayed call core_RShift32s with gr5 = gr0<<11;	// gr5 = 2048*2;
 		gr4 = [shift2];
 	
 	CRC32(pI,2048*2);
@@ -523,7 +523,7 @@ global _nmppsFFT2048FwdRaw	:label;
 global _nmppsFFT2048Fwd4888Raw	:label;
       <_nmppsFFT2048Fwd4888Raw>
 
-	ar5=sp-2	;
+	ar5=ar7 - 2	;
 	push ar0,gr0;			
 	push ar1,gr1;		
 	push ar2,gr2;
@@ -581,7 +581,7 @@ global _nmppsFFT2048Fwd	:label;
 global _nmppsFFT2048Fwd4888	:label;
       <_nmppsFFT2048Fwd4888>
 .branch;
-	ar5=sp-2	;
+	ar5=ar7 - 2	;
 	push ar0,gr0;			
 	push ar1,gr1;		
 	push ar2,gr2;
@@ -638,7 +638,7 @@ global _nmppsFFT2048Fwd4888	:label;
 	ar0 = [pYRaw] 	with gr0=false;
 	ar6 = [pY]		with gr0++;
 	gr5 = 2048*2 	with gr0++;
-	delayed call vec_RShift32s	with gr6=gr0;
+	delayed call core_RShift32s	with gr6=gr0;
 		gr4 = [shift3] with gr1=gr7;
 		
 	pop ar6,gr6 with gr7=gr1;

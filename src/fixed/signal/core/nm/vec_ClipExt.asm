@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Math_ClipExt.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:05 $
 //
 //! \if file_doc
 //!
 //! \file   Math_ClipExt.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции векторного ядра.
 //!
 //! \endif
@@ -45,12 +45,12 @@ macro VEC_CLIP_EXT_REP(N)
 end VEC_CLIP_EXT_REP;
 
     //------------------------------------------------------------------------
-    //! \fn void vec_ClipExt(nmreg nb1, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg ar2, nmreg ar3, nmreg gr5, nmreg ar6, nmreg gr6)
+    //! \fn void core_ClipExt(nmreg nb1, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg ar2, nmreg ar3, nmreg gr5, nmreg ar6, nmreg gr6)
     //!
     //------------------------------------------------------------------------
 
-global vec_ClipExt:label;
-<vec_ClipExt>	
+global core_ClipExt:label;
+<core_ClipExt>	
 .branch;
 	ClipExt_rep0:label;
 	push ar4,gr4 with gr4=gr5<<27;

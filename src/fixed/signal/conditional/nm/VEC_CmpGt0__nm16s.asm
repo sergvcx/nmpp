@@ -2,9 +2,9 @@
 //
 //  $Workfile:: Activate.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:09 $
 //
@@ -19,7 +19,7 @@
 //------------------------------------------------------------------------
     
 
-extern vec_CmpGtC:label;
+extern core_CmpGtC:label;
 begin ".text_nmplv"
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -48,7 +48,7 @@ global _nmppsCmpGt0_16s:label;
 	push ar1,gr1;
 	ar1 = ar5;
 	
-	call vec_CmpGtC	with gr5>>=2;
+	call core_CmpGtC	with gr5>>=2;
 	
 	pop ar1,gr1;	
 	pop ar6,gr6;

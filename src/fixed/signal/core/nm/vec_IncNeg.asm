@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Math_IncNeg.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:06 $
 //
 //! \if file_doc
 //!
 //! \file   Math_IncNeg.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции векторного ядра.
 //!
 //! \endif
@@ -33,12 +33,12 @@ macro VEC_INC_NEG_REP(N)
 end VEC_INC_NEG_REP;
 
     //------------------------------------------------------------------------
-    //! \fn void vec_IncNeg(nmreg nb1, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6)
+    //! \fn void core_IncNeg(nmreg nb1, nmreg f1cr, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6)
     //!
     //------------------------------------------------------------------------
 
-global vec_IncNeg :label;
-<vec_IncNeg>
+global core_IncNeg :label;
+<core_IncNeg>
 .branch;
 	IncNeg_rep0: label;
 	push ar2,gr2 with gr2=gr5<<27;

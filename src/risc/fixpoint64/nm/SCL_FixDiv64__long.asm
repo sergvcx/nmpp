@@ -6,7 +6,7 @@
 //*      Функция деления на векторном сопроцессоре                          */
 //*                                                                         */
 //*                                                                         */
-//* Date:08.01.2000     (c) RC Module Inc., Moscow, Russia                  */
+//* Date:08.01.2000     (c) RC Module, Moscow, Russia                  */
 //***************************************************************************/
 
 //import from macros;
@@ -148,7 +148,7 @@ global _nmppcFixDiv64:label;
 .branch;
 EndVecDiv:label;
 EndMakeQuotient:label;
-	ar5=sp-2;
+	ar5=ar7 - 2;
 
 	push ar0,gr0;
 	push ar1,gr1 with gr7= false;

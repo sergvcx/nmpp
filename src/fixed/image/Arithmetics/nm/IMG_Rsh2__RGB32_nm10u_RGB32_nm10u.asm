@@ -4,7 +4,7 @@
 //
 //  <Название библиотеки>
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/02/10 12:36:38 $
 //
@@ -24,7 +24,7 @@
 //
 //  Библиотека обработки изображений
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/02/10 12:36:38 $
 //
@@ -38,7 +38,7 @@
 //! \endif
 //!
 //------------------------------------------------------------------------
-extern vec_vsum_data_0: label;
+extern core_vsum_data_0: label;
 
     //--------------------------------------------------------------------
 begin ".text_nmpli"
@@ -67,7 +67,7 @@ global _nmppiRsh2__F13RGB32_nm10uP13RGB32_nm10uPi: label;
 global _void._.8.8nmppiRsh2.1class._RGB32_nm10u._.0.9._class._RGB32_nm10u._.0.9._int.2 :label;
 <_nmppiRsh2__F13RGB32_nm10uP13RGB32_nm10uPi>
 <_void._.8.8nmppiRsh2.1class._RGB32_nm10u._.0.9._class._RGB32_nm10u._.0.9._int.2>
-    ar5 = sp - 2;
+    ar5 = ar7 - 2;
     push ar0, gr0 with gr0 = false;
     push ar5, gr5 with gr0++;
     push ar6, gr6 with gr0++;
@@ -81,7 +81,7 @@ global _void._.8.8nmppiRsh2.1class._RGB32_nm10u._.0.9._class._RGB32_nm10u._.0.9.
 	ar5 = Weights;
 	rep 14 wfifo = [ar5++], ftw, wtw;
 
-    call vec_vsum_data_0 with gr5 >>= 1;
+    call core_vsum_data_0 with gr5 >>= 1;
     
     pop ar6, gr6;
     pop ar5, gr5;

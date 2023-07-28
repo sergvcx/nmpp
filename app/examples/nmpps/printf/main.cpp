@@ -1,7 +1,7 @@
 //------------------------------------------------------------------------
 //
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //
 //! \if file_doc

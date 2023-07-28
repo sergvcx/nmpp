@@ -2,16 +2,16 @@
 //
 //  $Workfile:: mtrMulCore_Acc8MulMV4.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/01/12 14:05:15 $
 //
 //! \if file_doc
 //!
 //! \file   mtrMulCore_Acc8MulMV4.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции ядра для матриц.
 //!
 //! \endif
@@ -20,14 +20,14 @@
 
 import from macros.mlb;
 data ".data_nmplm_G"
-global	vec_ar0gr0:long;
-global	vec_ar1gr1:long;
-global	vec_ar2gr2:long;
-global	vec_ar3gr3:long;
-global	vec_ar4gr4:long;
-global	vec_ar5gr5:long;
-global	vec_ar6gr6:long;
-global	vec_ar7gr7:long;
+global	core_ar0gr0:long;
+global	core_ar1gr1:long;
+global	core_ar2gr2:long;
+global	core_ar3gr3:long;
+global	core_ar4gr4:long;
+global	core_ar5gr5:long;
+global	core_ar6gr6:long;
+global	core_ar7gr7:long;
 end ".data_nmplm_G";
 
 begin ".text_nmplm"
@@ -75,10 +75,10 @@ begin ".text_nmplm"
 // STATUS: Tested, optimized
 //
 macro MTR_ACC8MUL_MV4_REP(nVal)
-		ar0,gr0 = [vec_ar0gr0];
-		ar1,gr1 = [vec_ar1gr1];
-		ar2,gr2 = [vec_ar2gr2];
-		ar3,gr3 = [vec_ar3gr3];
+		ar0,gr0 = [ core_ar0gr0];
+		ar1,gr1 = [ core_ar1gr1];
+		ar2,gr2 = [ core_ar2gr2];
+		ar3,gr3 = [ core_ar3gr3];
 
 		rep nVal data =[ar0++gr0],ftw with vsum ,data,0;
 		WTW_REG_DEPRICATED(gr4);
@@ -88,15 +88,15 @@ macro MTR_ACC8MUL_MV4_REP(nVal)
 		WTW_REG_DEPRICATED(gr4);
 		rep nVal data =[ar3++gr3],ftw	with vsum ,data,afifo;
 
-		[vec_ar0gr0] = ar0,gr0;
-		[vec_ar1gr1] = ar1,gr1;
-		[vec_ar2gr2] = ar2,gr2;
-		[vec_ar3gr3] = ar3,gr3;
+		[ core_ar0gr0] = ar0,gr0;
+		[ core_ar1gr1] = ar1,gr1;
+		[ core_ar2gr2] = ar2,gr2;
+		[ core_ar3gr3] = ar3,gr3;
 		
-		ar0,gr0 = [vec_ar4gr4];
-		ar1,gr1 = [vec_ar5gr5];
-		ar2,gr2 = [vec_ar6gr6];
-		ar3,gr3 = [vec_ar7gr7];
+		ar0,gr0 = [ core_ar4gr4];
+		ar1,gr1 = [ core_ar5gr5];
+		ar2,gr2 = [ core_ar6gr6];
+		ar3,gr3 = [ core_ar7gr7];
 		WTW_REG_DEPRICATED(gr4);
 		rep nVal data =[ar0++gr0],ftw with vsum ,data,afifo;
 		WTW_REG_DEPRICATED(gr4);
@@ -107,12 +107,12 @@ macro MTR_ACC8MUL_MV4_REP(nVal)
 		rep nVal data =[ar3++gr3]		with vsum ,data,afifo;
 		rep nVal [ar6++gr6]=afifo;	
 		nul;
-		[vec_ar4gr4] = ar0,gr0;
-		[vec_ar5gr5] = ar1,gr1;
-		[vec_ar6gr6] = ar2,gr2;
+		[ core_ar4gr4] = ar0,gr0;
+		[ core_ar5gr5] = ar1,gr1;
+		[ core_ar6gr6] = ar2,gr2;
 		delayed return; 
 			nul;
-			[vec_ar7gr7] = ar3,gr3;
+			[ core_ar7gr7] = ar3,gr3;
 		nul;nul;nul;nul;nul;nul;
 		
 end MTR_ACC8MUL_MV4_REP;
@@ -131,10 +131,10 @@ global mtr_Acc8MulMV4:label;
 	if =0 delayed goto Acc8MulMV4_repN with gr5>>=21;
 		 ar5 = Acc8MulMV4_rep0 with gr7--;
 	<Next_Acc8MulMV4_rep32>
-		ar0,gr0 = [vec_ar0gr0];
-		ar1,gr1 = [vec_ar1gr1];
-		ar2,gr2 = [vec_ar2gr2];
-		ar3,gr3 = [vec_ar3gr3];
+		ar0,gr0 = [ core_ar0gr0];
+		ar1,gr1 = [ core_ar1gr1];
+		ar2,gr2 = [ core_ar2gr2];
+		ar3,gr3 = [ core_ar3gr3];
 		
 		rep 32 data =[ar0++gr0],ftw with vsum ,data,0;
 		//WTW_REG_DEPRICATED(gr4);
@@ -147,15 +147,15 @@ global mtr_Acc8MulMV4:label;
 		wtw;
 		rep 32 data =[ar3++gr3],ftw	with vsum ,data,afifo;
 
-		[vec_ar0gr0] = ar0,gr0;
-		[vec_ar1gr1] = ar1,gr1;
-		[vec_ar2gr2] = ar2,gr2;
-		[vec_ar3gr3] = ar3,gr3;
+		[ core_ar0gr0] = ar0,gr0;
+		[ core_ar1gr1] = ar1,gr1;
+		[ core_ar2gr2] = ar2,gr2;
+		[ core_ar3gr3] = ar3,gr3;
 		
-		ar0,gr0 = [vec_ar4gr4];
-		ar1,gr1 = [vec_ar5gr5];
-		ar2,gr2 = [vec_ar6gr6];
-		ar3,gr3 = [vec_ar7gr7];
+		ar0,gr0 = [ core_ar4gr4];
+		ar1,gr1 = [ core_ar5gr5];
+		ar2,gr2 = [ core_ar6gr6];
+		ar3,gr3 = [ core_ar7gr7];
 		//WTW_REG_DEPRICATED(gr4);
 		wtw;
 		rep 32 data =[ar0++gr0],ftw with vsum ,data,afifo;
@@ -169,10 +169,10 @@ global mtr_Acc8MulMV4:label;
 		wtw;
 		rep 32 data =[ar3++gr3]		with vsum ,data,afifo;
 		rep 32 wfifo=[ar4++],ftw;
-		[vec_ar4gr4] = ar0,gr0;
-		[vec_ar5gr5] = ar1,gr1;
-		[vec_ar6gr6] = ar2,gr2;
-		[vec_ar7gr7] = ar3,gr3;
+		[ core_ar4gr4] = ar0,gr0;
+		[ core_ar5gr5] = ar1,gr1;
+		[ core_ar6gr6] = ar2,gr2;
+		[ core_ar7gr7] = ar3,gr3;
 		ar4-=64;
 		//WTW_REG_DEPRICATED(gr4);
 		wtw;

@@ -2,16 +2,16 @@
 //
 //  $Workfile:: PushBits.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:05 $
 //
 //! \if file_doc
 //!
 //! \file   PushBits.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции сдвига для векторов.
 //!
 //! \endif
@@ -105,7 +105,7 @@ extern _nmppsFwdShiftBitstream_Odd:label;	//for odd nBits
 
 <_nmppsFwdShiftBitstream>
 .branch;
-	ar5 = sp - 2;
+	ar5 = ar7 - 2;
 
 	PUSH_REGS();
 	

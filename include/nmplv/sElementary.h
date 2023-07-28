@@ -2,9 +2,9 @@
 //
 //  $Workfile:: sElementary.h             $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //
 //! \if file_doc

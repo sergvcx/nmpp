@@ -2,16 +2,16 @@
 //
 //  $Workfile:: tnmcvec. $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.2 $      $Date: 2005/05/03 13:22:40 $
 //
 //! \if file_doc
 //!
 //! \file   tnmcvec.h
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Определяет шаблон для класса вектор.
 //!
 //! \endif

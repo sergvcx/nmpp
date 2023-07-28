@@ -3,7 +3,7 @@
 //*                    Neuroprocessor NM3203 SDK v.1.2                      */
 //*                                                                         */
 //*               Заголовочный файл fixpoint32  функций                     */
-//*                1999 (c) RC Module Inc., Moscow, Russia                  */
+//*                1999 (c) RC Module, Moscow, Russia                  */
 //*                                                                         */
 //*                                                                         */
 //*  Date:28.12.99                                                          */

@@ -2,16 +2,16 @@
 //
 //  $Workfile:: sResampl $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/01/12 14:09:07 $
 //
 //! \if file_doc
 //!
 //! \file   vResize.h
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Определение функций изменения размера для векторов.
 //!
 //! \endif

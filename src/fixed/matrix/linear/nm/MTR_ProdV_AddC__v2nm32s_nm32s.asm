@@ -4,7 +4,7 @@
 //
 //  <Название библиотеки>
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/01/12 14:05:15 $
 //
@@ -19,7 +19,7 @@
 //------------------------------------------------------------------------
 
 begin ".text_nmplm"
-extern vec_Mul2D2W2_AddVr:label;
+extern core_Mul2D2W2_AddVr:label;
 extern _nmppsTmpBuffer64_G_:long;
 extern _nmppsTmpBuffer64_L_:long;
 
@@ -75,7 +75,7 @@ global _void._.8.8nmppmMul_mv__AddC.1class._v2nm32s._.0.9._class._v2nm32s._.0.9.
     gr0 = 4;
     
 	sb=2;    // 2x32 
-    delayed call vec_Mul2D2W2_AddVr;
+    delayed call core_Mul2D2W2_AddVr;
 		gr1 = gr0;
 		gr6 = gr0>>1;
        

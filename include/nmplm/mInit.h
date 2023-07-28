@@ -2,16 +2,16 @@
 //
 //  $Workfile:: mInit.h  $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/01/12 14:03:24 $
 //
 //! \if file_doc
 //!
 //! \file   mtrInit.h
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Определение функций для инициализации и копирования.
 //!
 //! \endif

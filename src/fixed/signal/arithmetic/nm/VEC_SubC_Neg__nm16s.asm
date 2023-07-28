@@ -2,23 +2,23 @@
 //
 //  $Workfile:: SubNV.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:03 $
 //
 //! \if file_doc
 //!
 //! \file   SubNV.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции вычитания для векторов.
 //!
 //! \endif
 //!
 //------------------------------------------------------------------------
 
-extern vec_ram_sub_data:label;
+extern core_ram_sub_data:label;
 extern  _nmppsTmpBuffer16_G_:long;
 
 begin ".text_nmplv"
@@ -32,7 +32,7 @@ begin ".text_nmplv"
 global _nmppsSubCRev_16s:label;
 <_nmppsSubCRev_16s>
 .branch;
-	ar5 = sp - 2	with gr7=false;
+	ar5 = ar7 - 2	with gr7=false;
 	push ar0,gr0	with gr7++;
 	push ar1,gr1	with gr7++;
 	push ar5,gr5	with gr0=gr7;
@@ -45,7 +45,7 @@ global _nmppsSubCRev_16s:label;
 	ar1 = _nmppsTmpBuffer16_G_+2	with gr1 = gr1 or gr7;
 	nb1 = 80008000h;
 	wtw;
-	delayed call vec_ram_sub_data 	with gr5>>=2;		// nSize in 64-bit longs
+	delayed call core_ram_sub_data 	with gr5>>=2;		// nSize in 64-bit longs
 		[--ar1]=gr1;	
 		[--ar1]=gr1;
 	

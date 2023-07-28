@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Or.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:05 $
 //
 //! \if file_doc
 //!
 //! \file   Or.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Логические функции над векторами.
 //!
 //! \endif
@@ -19,7 +19,7 @@
 //------------------------------------------------------------------------
    
 
-extern vec_data_or_ram:label;
+extern core_data_or_ram:label;
 begin ".text_nmplv"
 
 /////////////////////////////////////////////////////////////////////////////
@@ -41,7 +41,7 @@ global _nmppsOrC_64u:label;
 	//ar1 = [--ar5];		//	nm64*		SrcN,		// Input Buffer					:long Local[1]
 	ar1 = ar5-3;
 	ar5 = ar1;
-	delayed call vec_data_or_ram;
+	delayed call core_data_or_ram;
 		ar6 = [--ar5];	//	nm64*		pDstVec,		// Output Buffer				:long Global[nSize
 		gr5 = [--ar5];	//	int			nSize		// Vector size in 64-bit words	:nSize=[0,1,2,..,n
 

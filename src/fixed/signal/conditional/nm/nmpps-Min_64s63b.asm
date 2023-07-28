@@ -2,16 +2,16 @@
 //
 //  $Workfile:: GetMin.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/07/13 14:19:56 $
 //
 //! \if file_doc
 //!
 //! \file   
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Статистические функции.
 //!
 //! \endif
@@ -22,7 +22,7 @@
 //import from macros.mlb;
 extern	_nmppsTmpBuffer64_G_: long;
 extern	_nmppsTmpBuffer16_G_: long;
-extern vec_MinVal:label;
+extern core_MinVal:label;
 
 
 begin ".text_nmplv"
@@ -38,7 +38,7 @@ begin ".text_nmplv"
 global _nmppsMin_64s63b:label;
 <_nmppsMin_64s63b>
 .branch;
-	ar5=sp-2;
+	ar5=ar7 - 2;
 	push ar0,gr0;
 	push ar4,gr4;
 	push ar5,gr5;
@@ -55,7 +55,7 @@ global _nmppsMin_64s63b:label;
 	f1crl= 00000000h;
 	wtw;
 	
-	delayed call vec_MinVal;
+	delayed call core_MinVal;
 		ar4= _nmppsTmpBuffer64_G_;
 
 	pop ar6,gr6;

@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Convert16to08.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:08 $
 //
 //! \if file_doc
 //!
 //! \file   Convert16to08.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции преобразования елементов вектора.
 //!
 //! \endif 
@@ -22,7 +22,7 @@
 
 extern _VEC_TBL_Diagonal_1h_G:long[16];
 extern _VEC_TBL_Diagonal_1h_L:long[16];
-extern vec_Mul2D2W8_AddVr:label;
+extern core_Mul2D2W8_AddVr:label;
 
 begin ".text_nmplv"
 
@@ -36,7 +36,7 @@ begin ".text_nmplv"
 global _nmppsConvert_8s4s:label;
 <_nmppsConvert_8s4s>
 .branch;
-	ar5 = sp - 2	with gr7=false;
+	ar5 = ar7 - 2	with gr7=false;
 	push ar0,gr0	with gr7++;
 	push ar1,gr1	with gr7++;		// gr7=2
 	push ar4,gr4	with gr0=gr7;	// gr0=2
@@ -59,7 +59,7 @@ global _nmppsConvert_8s4s:label;
 	gr5 = [--ar5];					// nSize 
 	ar1 = ar0+gr0	with gr7 = false;
 	vr  = gr7		with gr0 = gr1;// gr0=4	
-	call vec_Mul2D2W8_AddVr	with gr5>>=4;
+	call core_Mul2D2W8_AddVr	with gr5>>=4;
 		
 	
 	pop ar6,gr6;

@@ -2,16 +2,16 @@
 //
 //  $Workfile:: mProdM.cpp  $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/01/12 14:05:15 $
 //
 //! \if file_doc
 //!
 //! \file   mProdM.cpp
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции умножения матрицы на матрицу.
 //!
 //! \endif
@@ -23,29 +23,87 @@
 extern "C"{
 	
 
-void nmppmMul_mm_2s64s( nm2s* srcMtrA, int heightA, int widthA,  nm64s* srcMtrB, nm64s* dstMtr, int widthB)
+void nmppmMul_mm_2s64s(nm2s* srcMtrA, int heightA, int widthA,  nm64s* srcMtrB, nm64s* dstMtr, int widthB)
 {
-	int i;
-	int j;
-	int k;
-	long long sum;
+	nm64s  sum;
 	nm64s* colB;
-	nm2s* rowA  =srcMtrA;
+	nm2s*  rowA  =srcMtrA;
 	nm64s* rowDst=dstMtr;
 
-	for(i=0; i<heightA; i++, rowDst+=widthB){
-		for(j=0; j<widthB; j++){
+	for(int i=0; i<heightA; i++, rowDst+=widthB){
+		for(int j=0; j<widthB; j++){
 			colB=srcMtrB+j;
 			sum=0;
-			for(k=0; k<widthA; k++){
+			for(int k=0; k<widthA; k++){
 				sum+=nmppsGet_2s(rowA,k)*colB[k*widthB];
 			}
 			rowDst[j]=sum;
 		}
-
 		rowA=nmppsAddr_2s(rowA,widthA);
 	}
 }
+
+void nmppmMul_mm_2s32s(nm2s* srcMtrA, int heightA, int widthA,  nm32s* srcMtrB, nm32s* dstMtr, int widthB)
+{
+	nm32s  sum;
+	nm32s* colB;
+	nm2s*  rowA  =srcMtrA;
+	nm32s* rowDst=dstMtr;
+
+	for(int i=0; i<heightA; i++, rowDst+=widthB){
+		for(int j=0; j<widthB; j++){
+			colB=srcMtrB+j;
+			sum=0;
+			for(int k=0; k<widthA; k++){
+				sum+=nmppsGet_2s(rowA,k)*colB[k*widthB];
+			}
+			rowDst[j]=sum;
+		}
+		rowA=nmppsAddr_2s(rowA,widthA);
+	}
+}
+
+void nmppmMul_mm_2s16s(nm2s* srcMtrA, int heightA, int widthA,  nm16s* srcMtrB, nm16s* dstMtr, int widthB)
+{
+	nm16s sum;
+	nm16s* colB;
+	nm2s* rowA  =srcMtrA;
+	nm16s* rowDst=dstMtr;
+
+	for(int i=0; i<heightA; i++, rowDst+=widthB){
+		for(int j=0; j<widthB; j++){
+			colB=srcMtrB+j;
+			sum=0;
+			for(int k=0; k<widthA; k++){
+				sum+=nmppsGet_2s(rowA,k)*colB[k*widthB];
+			}
+			rowDst[j]=sum;
+		}
+		rowA=nmppsAddr_2s(rowA,widthA);
+	}
+}
+
+void nmppmMul_mm_2s8s(nm2s* srcMtrA, int heightA, int widthA,  nm8s* srcMtrB, nm8s* dstMtr, int widthB)
+{
+	nm8s  sum;
+	nm8s* colB;
+	nm2s* rowA  =srcMtrA;
+	nm8s* rowDst=dstMtr;
+
+	for(int i=0; i<heightA; i++, rowDst+=widthB){
+		for(int j=0; j<widthB; j++){
+			colB=srcMtrB+j;
+			sum=0;
+			for(int k=0; k<widthA; k++){
+				sum+=nmppsGet_2s(rowA,k)*colB[k*widthB];
+			}
+			rowDst[j]=sum;
+		}
+		rowA=nmppsAddr_2s(rowA,widthA);
+	}
+}
+
+
 
 void nmppmMul_mm_4s64s( nm8s* srcMtrA, int heightA, int widthA,  nm64s* srcMtrB, nm64s* dstMtr, int widthB)
 {

@@ -27,7 +27,7 @@ int main()
 				crc=1;
 				nmppmMul_mm_4s64s(src0,h0,w0,src1, dst, w1);				
 				nmppsCrcAcc_64s (dst, w1*(h0+1),&crc);
-				printf("h0=%d w0=%d w1=%d %x\n",h0,w0,w1,crc);
+				//printf("h0=%d w0=%d w1=%d %x\n",h0,w0,w1,crc);
 			}
 		}
 	}

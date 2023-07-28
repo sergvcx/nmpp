@@ -2,9 +2,9 @@
 //
 //  $Workfile:: ARSH64.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:04 $
 //
@@ -20,11 +20,11 @@
 //#include "vShift.h"
 
 	import from macros.mlb;
-	extern vec_vsum_shift_data_0:label;
-	extern vec_vsum_data_0:label;
+	extern core_vsum_shift_data_0:label;
+	extern core_vsum_data_0:label;
 
 data ".data_nmplv_G"
-		vec_tbl_w_long_ARSH:long[3*64]=(
+		core_tbl_w_long_ARSH:long[3*64]=(
 
 				//ArShr 0
 				00000000000000001hl,
@@ -349,7 +349,7 @@ data ".data_nmplv_G"
 				);
 
 
-		vec_tbl_nb_sb_long_ARSH:long[64*2]=(
+		core_tbl_nb_sb_long_ARSH:long[64*2]=(
 
 				02000000000000002hl,	//nb shr 0
 				08000000000000008hl,	//sb shr 0
@@ -558,16 +558,16 @@ begin ".text_nmplv"
 global _nmppsRShiftC_64s:label;
 <_nmppsRShiftC_64s>
 .branch;
-	ar5 = sp - 4;
+	ar5 = ar7 - 4;
 	push ar0,gr0;
 	gr0 = [ar5];		//	int				Shift	 :[0, 1, 2, .., 31].
 	
-	ar0 = vec_tbl_nb_sb_long_ARSH set with gr0<<=2;
+	ar0 = core_tbl_nb_sb_long_ARSH set with gr0<<=2;
 	ar5-=2;
 	ar0+= gr0 with gr0>>=1;//gr0 = Shift*2
 	nb1 = [ar0++] with gr7 = gr0<<1;//gr7 = Shift*8*2
 	sb  = [ar0];
-	ar0 = vec_tbl_w_long_ARSH set with gr0 += gr7;//gr0 = Shift*2*2 + Shift*2
+	ar0 = core_tbl_w_long_ARSH set with gr0 += gr7;//gr0 = Shift*2*2 + Shift*2
 	ar0+= gr0;			// w table select 
 	rep 3 wfifo=[ar0++],ftw;
 
@@ -590,13 +590,13 @@ global _nmppsRShiftC_64s:label;
 		nul;
 
 	<Odd_RightShift>
-	delayed call vec_vsum_shift_data_0;
+	delayed call core_vsum_shift_data_0;
 		wtw;
 		nul;
 	goto End_RightShift;
 	
 	<Even_RightShift>
-	delayed call vec_vsum_data_0;
+	delayed call core_vsum_data_0;
 		wtw;
 		nul;
 

@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Sum.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:11 $
 //
 //! \if file_doc
 //!
 //! \file   Sum.Asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Статистические функции для векторов.
 //!
 //! \endif
@@ -36,10 +36,10 @@ const GTmpLong2=_nmppsTmpBuffer16_G_+2;
 const pSrcVec  =_nmppsTmpBuffer16_G_+6;
 const pTmpBuf  =_nmppsTmpBuffer16_G_+8;
 
-extern vec_vsum_data_afifo:label;
-extern vec_vsum_shift_data_afifo:label;
-extern vec_data_add_afifo:label;
-extern vec_data_and_ram:label;
+extern core_vsum_data_afifo:label;
+extern core_vsum_shift_data_afifo:label;
+extern core_data_add_afifo:label;
+extern core_data_and_ram:label;
 begin ".text_nmplv"
 
 
@@ -52,7 +52,7 @@ begin ".text_nmplv"
 global _nmppsSum_1:label;
 <_nmppsSum_1>
 .branch;
-	ar5 = sp - 2;
+	ar5 = ar7 - 2;
 	push ar0,gr0 with gr0=false;
 	nb1 = gr0;
 	sb  = 0aaaaaaaah;
@@ -72,20 +72,20 @@ global _nmppsSum_1:label;
 	[pTmpBuf]=ar6;
 
 	wtw;
-	delayed call vec_data_and_ram;
+	delayed call core_data_and_ram;
 		ar1 = GData_55;
 	
 	ar0 = [pTmpBuf];
-	delayed call vec_vsum_data_afifo;
+	delayed call core_vsum_data_afifo;
 		ar6 = GTmpLong2;
 	
 	ar0 = [pSrcVec];
 	ar6 = [pTmpBuf];
-	delayed call vec_data_and_ram;
+	delayed call core_data_and_ram;
 		ar1 = GData_AA;
 	
 	ar0 = [pTmpBuf];
-	delayed call vec_vsum_shift_data_afifo;
+	delayed call core_vsum_shift_data_afifo;
 		ar6 = GTmpLong2+2;
 	
 

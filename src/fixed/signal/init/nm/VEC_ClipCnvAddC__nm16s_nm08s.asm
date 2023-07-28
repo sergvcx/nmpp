@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Convert16to08.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:08 $
 //
 //! \if file_doc
 //!
 //! \file   Convert16to08.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции преобразования елементов вектора.
 //!
 //! \endif 
@@ -20,7 +20,7 @@
 //#include "vConvert.h"
 
 
-extern vec_Mul2D2W4_AddVr:label;
+extern core_Mul2D2W4_AddVr:label;
 extern tbl_f1cr_nm16:long[8];
 
 //data ".data_nmplv_L"
@@ -62,7 +62,7 @@ begin ".text_nmplv"
 global _nmppsClipConvertAddC_16s8s:label;
 <      _nmppsClipConvertAddC_16s8s>
 .branch;
-	ar5 = sp - 2	with gr7=false;
+	ar5 = ar7 - 2	with gr7=false;
 	f1cr = gr7;
 	push ar0,gr0	with gr7++;
 	push ar1,gr1	with gr7++;		// gr7=2
@@ -88,7 +88,7 @@ global _nmppsClipConvertAddC_16s8s:label;
 	
 	ar6 = [--ar5];					// [pDstVec]
 	gr5 = [--ar5]	with gr6 = gr0;	// [nSize] gr6 = 2
-	delayed call vec_Mul2D2W4_AddVr	with gr5>>=3;
+	delayed call core_Mul2D2W4_AddVr	with gr5>>=3;
 		ar1 = ar0+gr0 	with gr0 = gr1;	// gr0=4	
 		ar4 = [--ar5] ;				// [weights] (LWConvert16to8)
 		

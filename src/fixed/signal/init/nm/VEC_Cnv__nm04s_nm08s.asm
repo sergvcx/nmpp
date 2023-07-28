@@ -1,5 +1,5 @@
 global _nmppsConvert_4s8s: label;// объ¤вление глобальной метки
-extern vec_vsum_data_0:label;
+extern core_vsum_data_0:label;
 data ".MyData"
 	local matr1: long[32]=(0000000000000001hl,
 						   0000000000000100hl,
@@ -43,7 +43,7 @@ begin ".text_nmplv"
 	rep 32 wfifo = [ar4++],ftw;
 	gr2 = ar0;
 	gr4 = ar6;
-	delayed call vec_vsum_data_0;
+	delayed call core_vsum_data_0;
 		wtw;
 		ftw;
 		
@@ -51,7 +51,7 @@ begin ".text_nmplv"
 	ar0 = gr2;
 	ar6 = gr4;
 	ar6+=2;
-	delayed call vec_vsum_data_0;
+	delayed call core_vsum_data_0;
 		wtw;
 		nul;
 		

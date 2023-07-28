@@ -2,9 +2,9 @@
 //
 //  $Workfile:: mtrCopyAtoU_Common $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/01/12 14:05:15 $
 //
@@ -18,11 +18,11 @@
 //!
 //------------------------------------------------------------------------
 
-extern vec_Mul2D2W8_AddVr:label;
+extern core_Mul2D2W8_AddVr:label;
 
 data ".data_nmplm_G"
 //tables 8*2*2*8 = 256long
-	vec_Wt_Dsp00:long[32]=(
+	core_Wt_Dsp00:long[32]=(
 
 		00000000000000000hl,
 		00000000000000000hl,
@@ -61,7 +61,7 @@ data ".data_nmplm_G"
 		00000000000000000hl
 
 		);
-	vec_Wt_Dsp01:long[32]=(
+	core_Wt_Dsp01:long[32]=(
 
 		00000000000000000hl,
 		00000000000000000hl,
@@ -99,7 +99,7 @@ data ".data_nmplm_G"
 		00000000000000000hl,
 		00000000000000000hl
 		);
-	vec_Wt_Dsp02:long[32]=(
+	core_Wt_Dsp02:long[32]=(
 
 
 		00000000000000000hl,
@@ -138,7 +138,7 @@ data ".data_nmplm_G"
 		00000000000000000hl,
 		00000000000000000hl
 		);
-	vec_Wt_Dsp03:long[32]=(
+	core_Wt_Dsp03:long[32]=(
 
 
 		00000000000000000hl,
@@ -177,7 +177,7 @@ data ".data_nmplm_G"
 		00000000000000000hl,
 		00000000000000000hl
 		);
-	vec_Wt_Dsp04:long[32]=(
+	core_Wt_Dsp04:long[32]=(
 
 
 		00000000000000000hl,
@@ -216,7 +216,7 @@ data ".data_nmplm_G"
 		00000000000000000hl,
 		00000000000000000hl
 		);
-	vec_Wt_Dsp05:long[32]=(
+	core_Wt_Dsp05:long[32]=(
 
 
 		00000000000000000hl,
@@ -255,7 +255,7 @@ data ".data_nmplm_G"
 		00000000000000000hl,
 		00000000000000000hl
 		);
-	vec_Wt_Dsp06:long[32]=(
+	core_Wt_Dsp06:long[32]=(
 
 
 		00000000000000000hl,
@@ -294,7 +294,7 @@ data ".data_nmplm_G"
 		00000000000000000hl,
 		00000000000000000hl
 		);
-	vec_Wt_Dsp07:long[32]=(
+	core_Wt_Dsp07:long[32]=(
 
 
 		00000000000000000hl,
@@ -354,7 +354,7 @@ begin ".text_nmplm"
 global mtr_CopyAtoU_Core:label;
 <mtr_CopyAtoU_Core>
 
-	ar4 = vec_Wt_Dsp00 with gr4 = gr4<<5;//Mul 32
+	ar4 = core_Wt_Dsp00 with gr4 = gr4<<5;//Mul 32
 	ar4 +=gr4;
 	
 	gr4 = gr7;
@@ -382,7 +382,7 @@ global mtr_CopyAtoU_Core:label;
 	gr5 = ar6;
 	ar1 = gr5 with gr1 = gr6;
 
-	delayed call vec_Mul2D2W8_AddVr with gr5 = gr2;//reg0,reg1,reg6 changed
+	delayed call core_Mul2D2W8_AddVr with gr5 = gr2;//reg0,reg1,reg6 changed
 		nul;
 		nul;
 
@@ -393,7 +393,7 @@ global mtr_CopyAtoU_Core:label;
 
 	ar4 += 2*16;
 
-	delayed call vec_Mul2D2W8_AddVr with gr5 = gr2;//reg0,reg1,reg6 changed
+	delayed call core_Mul2D2W8_AddVr with gr5 = gr2;//reg0,reg1,reg6 changed
 		nul;
 		nul;
 

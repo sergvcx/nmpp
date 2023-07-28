@@ -1,5 +1,5 @@
 //***************************************************************************/
-//*                     RC Module Inc., Moscow, Russia                      */
+//*                     RC Module, Moscow, Russia                      */
 //*                     NeuroMatrix(r) NM6403 Software                      */
 //*                                                                         */
 //*   Fast Fourie Transform Library                                         */
@@ -36,7 +36,7 @@ begin ".text_fft"
 global _FFT_Fwd1024Set7bit:label;
 <_FFT_Fwd1024Set7bit>
 .branch;
-	ar5=sp-2;
+	ar5=ar7 - 2;
 				gr7=W1_1024_7bit;
 	[W1_1024]=	gr7;
 				gr7=W2_1024_7bit;

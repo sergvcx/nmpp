@@ -2,16 +2,16 @@
 //
 //  $Workfile:: cInit. $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/01/12 14:01:21 $
 //
 //! \if file_doc
 //!
 //! \file   cInit.h
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Определение функций инициализации для скаляров.
 //!
 //! \endif

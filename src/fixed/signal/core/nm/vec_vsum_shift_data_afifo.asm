@@ -2,16 +2,16 @@
 //
 //  $Workfile:: vsum_shift_data_afifo.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:07 $
 //
 //! \if file_doc
 //!
 //! \file   vsum_shift_data_afifo.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции векторного ядра.
 //!
 //! \endif
@@ -20,7 +20,7 @@
 
 
 extern	_nmppsTmpBuffer64_G_:long;
-extern vec_data_add_afifo:label;
+extern core_data_add_afifo:label;
 
 begin ".text_nmvcore"
 
@@ -35,12 +35,12 @@ end   VEC_ACCMUL_REP;
 
 
     //------------------------------------------------------------------------
-    //! \fn void vec_vsum_shift_data_afifo(nmreg nb1, nmreg f1cr, nmreg woper, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6)
+    //! \fn void core_vsum_shift_data_afifo(nmreg nb1, nmreg f1cr, nmreg woper, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6)
     //!
     //------------------------------------------------------------------------
 
-global vec_vsum_shift_data_afifo:label;
-<vec_vsum_shift_data_afifo>
+global core_vsum_shift_data_afifo:label;
+<core_vsum_shift_data_afifo>
 .branch;
 	AccMul_rep0:label;
 	push ar2,gr2 with gr2=gr5<<27;
@@ -107,7 +107,7 @@ global vec_vsum_shift_data_afifo:label;
 	<end_AccMul_repN>
 	pop  ar4,gr4;
 	push ar0,gr0;
-	delayed call vec_data_add_afifo with gr0=gr2+1;
+	delayed call core_data_add_afifo with gr0=gr2+1;
 		ar0=_nmppsTmpBuffer64_G_;
 	pop ar0,gr0;
 	pop ar5,gr5;

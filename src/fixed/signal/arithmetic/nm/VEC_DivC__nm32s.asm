@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Div32.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:03 $
 //
 //! \if file_doc
 //!
 //! \file   Div32.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции деления для векторов.
 //!
 //! \endif
@@ -19,8 +19,8 @@
 //------------------------------------------------------------------------
 
 extern DivS4095byU145:long;
-extern vec_vsum_data_0:label;
-extern vec_IncNeg:label;
+extern core_vsum_data_0:label;
+extern core_IncNeg:label;
 import from macros.mlb;
 
 
@@ -74,7 +74,7 @@ global _nmppsDivC_32s:label;
 	// 1/x multiplication	
 	// [pSrcVec] => [pTmpBuf1]
 
-	delayed call vec_vsum_data_0	with gr5>>=1;
+	delayed call core_vsum_data_0	with gr5>>=1;
 		wtw;
 		ar6 = ar1;
 
@@ -106,7 +106,7 @@ global _nmppsDivC_32s:label;
 	ar0 = gr1		with gr7=true;
 	pop ar6,gr6		with gr7<<=31;
 	nb1 = gr7;
-	delayed call vec_IncNeg with gr5>>=1;
+	delayed call core_IncNeg with gr5>>=1;
 		wtw;
 		nul;
 		
@@ -237,7 +237,7 @@ global _nmppsDiv_By2Int_32s:label;
 	push ar5,gr5;	//  pTmpBuf1
 	push ar6,gr6;
 	
-	delayed call vec_vsum_data_0;
+	delayed call core_vsum_data_0;
 	
 	pop ar6,gr6;
 	pop ar5,gr5;	// pTmpBuf1

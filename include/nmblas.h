@@ -5,7 +5,7 @@
  *  \version   1.0
  *  \date      2017-05-23T15:13:13
  *  \warning   
- *  \copyright (c) RC Module Inc.
+ *  \copyright (c) RC Module
  *  \file nmblas.h
  */
  

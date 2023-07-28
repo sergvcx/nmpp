@@ -4,7 +4,7 @@
 //
 //  <Название библиотеки>
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.3 $      $Date: 2005/01/21 19:22:37 $
 //
@@ -76,12 +76,12 @@ end FilterN;
 #define GR_1 gr3
 
     //------------------------------------------------------------------------
-    //! \fn void vec_ClipMulNDNW8_AddVr(nmreg nb1, nmreg sb, nmreg f1cr, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6);
+    //! \fn void core_ClipMulNDNW8_AddVr(nmreg nb1, nmreg sb, nmreg f1cr, nmreg vr, nmreg ar0, nmreg gr0, nmreg ar1, nmreg gr1, nmreg ar4, nmreg gr4, nmreg gr5, nmreg ar6, nmreg gr6);
     //!			 
     //------------------------------------------------------------------------
 
-global vec_ClipMulNDNW8_AddVr:label;
-<vec_ClipMulNDNW8_AddVr>
+global core_ClipMulNDNW8_AddVr:label;
+<core_ClipMulNDNW8_AddVr>
 .branch;
 
 	push ar5,gr5;

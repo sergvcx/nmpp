@@ -4,7 +4,7 @@
 //
 //  <nmplv>
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:04 $
 //
@@ -18,7 +18,7 @@
 //!
 //------------------------------------------------------------------------
 begin ".text_nmplv"
-extern vec_Mul2D2W2_AddVr:label;
+extern core_Mul2D2W2_AddVr:label;
 
 // void nmppsWeightedSum_Exe_32s64s(nm32s* pSrcVec1,nm32s* pSrcVec2, S_nmppsWeightedSum* kerW, nm64s* pDstVec, int nSize);
 global _nmppsWeightedSum_Exe_32s64s:label;
@@ -36,11 +36,11 @@ global _nmppsWeightedSum_Exe_32s64s:label;
   nb1=gr4;  // 1x64 on Y Vport
   ar5=ar6;ar2=ar0;gr2=ar1;
   sb=2;    // 2x32 on X Vport
-delayed call vec_Mul2D2W2_AddVr;
+delayed call core_Mul2D2W2_AddVr;
   ar4=ar4+2;
   
   ar0=ar2;ar1=gr2;ar6=ar5+2;
-delayed call vec_Mul2D2W2_AddVr;
+delayed call core_Mul2D2W2_AddVr;
   ar4=ar4-2;
   pop ar5,gr5;
   pop ar6,gr6; pop ar4,gr4; 

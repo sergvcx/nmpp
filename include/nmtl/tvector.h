@@ -2,16 +2,16 @@
 //
 //  $Workfile:: tVector. $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.7 $      $Date: 2005/06/29 14:14:06 $
 //
 //! \if file_doc
 //!
 //! \file   tvector.h
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Определяет шаблон для класса вектор.
 //!
 //! \endif

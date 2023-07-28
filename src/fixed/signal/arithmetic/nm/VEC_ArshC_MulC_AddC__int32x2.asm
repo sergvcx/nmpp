@@ -1,5 +1,5 @@
 
-extern vec_vsum_data_vr:label;
+extern core_vsum_data_vr:label;
 extern tbl_sb_nm32_EvenARSH:long;
 begin ".text_nmplv"
 
@@ -42,7 +42,7 @@ global "_nmppsRShiftC_MulC_AddC_2x32s" : label;
 	ar6 = [--ar5]; // [out] dataSparseDst 
 	gr5 = [--ar5]; // [in] size (in long)
 	gr0 = [--ar5]; // [in] stepSparseSrc  =1 
-	delayed call vec_vsum_data_vr;					
+	delayed call core_vsum_data_vr;					
 		gr6 = [--ar5]	with gr0<<=1; // [in] stepSparseDst =1
 		vr=[ar1] 		with gr6<<=1;
 

@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Convert32to16.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:08 $
 //
 //! \if file_doc
 //!
 //! \file   Convert32to16.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции преобразования елементов вектора.
 //!
 //! \endif
@@ -19,7 +19,7 @@
 //------------------------------------------------------------------------
 //#include "vConvert.h"
 //
-extern vec_Mul2D2W2_AddVr:label;
+extern core_Mul2D2W2_AddVr:label;
 
 data ".data_nmplv_L"
 	LWConvert32to16: long[4] =(0000000000000001hl,
@@ -49,7 +49,7 @@ begin ".text_nmplv"
 global _nmppsConvert_32s16s:label;
 <_nmppsConvert_32s16s>
 .branch;
-	ar5 = sp - 2	with gr7=false;
+	ar5 = ar7 - 2	with gr7=false;
 	push ar0,gr0	with gr7++;
 	push ar1,gr1	with gr7++;		// gr7=2
 	push ar4,gr4	with gr0=gr7;	// gr0=2
@@ -72,7 +72,7 @@ global _nmppsConvert_32s16s:label;
 	gr5 = [--ar5];					// nSize 
 	ar1 = ar0+gr0	with gr7 = false;
 	vr  = gr7		with gr0 = gr1;// gr0=4	
-	call vec_Mul2D2W2_AddVr	with gr5>>=2;
+	call core_Mul2D2W2_AddVr	with gr5>>=2;
 		
 	
 	pop ar6,gr6;

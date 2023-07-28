@@ -2,16 +2,16 @@
 //
 //  $Workfile:: Swap.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:08 $
 //
 //! \if file_doc
 //!
 //! \file   Swap.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции инициализации и копирования.
 //!
 //! \endif
@@ -20,7 +20,7 @@
 
 begin ".text_nmplv"
 
-extern vec_Swap:label;
+extern core_Swap:label;
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -34,7 +34,7 @@ global _nmppsSwap_64s:label;
 
 .branch;
 
-	ar5 = sp-2		with gr7=false;
+	ar5 = ar7 - 2		with gr7=false;
 	push ar0,gr0	with gr7++;
 	push ar1,gr1	with gr7++;
 	push ar4,gr4	with gr0=gr7;
@@ -45,7 +45,7 @@ global _nmppsSwap_64s:label;
 	ar1=[--ar5];	//	nm64s*		pSrcVec2,	// output buffer	:long Long[nSize]	
 	gr5=[--ar5];	//		int			nSize	// buffer size in 8-bit elemetns	:[0,8,16,24...]
 	
-	delayed call vec_Swap;
+	delayed call core_Swap;
 		ar4=ar1	with gr4=gr1;
 		ar6=ar0 with gr6=gr0;
 

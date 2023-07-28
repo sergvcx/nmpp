@@ -2,9 +2,9 @@
 //
 //  $Workfile:: mtrCopyDspCommon.a $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2005/01/12 14:05:15 $
 //
@@ -18,11 +18,11 @@
 //!
 //------------------------------------------------------------------------
 
-extern vec_Mul2D2W8_AddVr:label;
+extern core_Mul2D2W8_AddVr:label;
 
 data ".data_nmplm_G"
 
-	vec_Wt_Zero:long[8]=(
+	core_Wt_Zero:long[8]=(
 
 		00000000000000000hl,
 		00000000000000000hl,
@@ -34,7 +34,7 @@ data ".data_nmplm_G"
 		00000000000000000hl
 		);
 
-	vec_Wt_Dsp08:long[16]=(
+	core_Wt_Dsp08:long[16]=(
 
 		00000000000000001hl,
 		00000000000000100hl,
@@ -77,7 +77,7 @@ begin ".text_nmplm"
 global mtr_CopyDspCore:label;
 <mtr_CopyDspCore>
 
-	ar4 = vec_Wt_Dsp08 with gr4 = -gr4;
+	ar4 = core_Wt_Dsp08 with gr4 = -gr4;
 	ar4 +=gr4;
 
 	gr4 = gr7;
@@ -93,7 +93,7 @@ global mtr_CopyDspCore:label;
 	
 <RowCopyRep>
 	
-	delayed call vec_Mul2D2W8_AddVr with gr5 = gr3;
+	delayed call core_Mul2D2W8_AddVr with gr5 = gr3;
 		with gr0 = gr1;
 		ar1 = ar0 + gr0;
 	
@@ -125,7 +125,7 @@ return;
 	
 <ColumnCopyRep>
 
-	delayed call vec_Mul2D2W8_AddVr with gr5 = gr2;
+	delayed call core_Mul2D2W8_AddVr with gr5 = gr2;
 		ar1 = ar0 + 2 with gr1 = gr0;
 	
 	ar0 = ar3 + 2;

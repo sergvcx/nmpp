@@ -2,9 +2,9 @@
 //
 //  $Workfile:: Swap.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:08 $
 //
@@ -27,7 +27,7 @@ matr1: word [10]=(0,0,
  );
 end ".data_nmplv_L";
 begin ".text_nmplv"
-extern vec_Mul2D2W2_AddVr: label;
+extern core_Mul2D2W2_AddVr: label;
 
 /////////////////////////////////////////////////////////////////////////////////////////
 //! \fn void nmppsSplit_32s(const nm32s* src, nm32s* dst1, nm32s* dst2, int size);
@@ -56,13 +56,13 @@ global _nmppsSplit_32s: label;
 	gr5 = [--ar5]; // src size (bytes)
 	ar1=gr4 with gr5>>=2;
 
-	delayed call vec_Mul2D2W2_AddVr;
+	delayed call core_Mul2D2W2_AddVr;
 		ar4=matr1+2;
 
 	//========================================= odd
 	ar6=ar3; ar0=gr3; ar1=gr4;
 
-	delayed call vec_Mul2D2W2_AddVr;
+	delayed call core_Mul2D2W2_AddVr;
 		ar4=matr1;
 	//=========================================
 	<fin>

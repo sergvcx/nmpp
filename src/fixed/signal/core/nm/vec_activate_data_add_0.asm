@@ -2,16 +2,16 @@
 //
 //  $Workfile:: activate_data_add_0.as $
 //
-//  Векторно-матричная библиотека
+//  Neuro Matrix Performance Primitives
 //
-//  Copyright (c) RC Module Inc.
+//  Copyright (c) RC Module
 //
 //  $Revision: 1.1 $      $Date: 2004/11/22 13:50:07 $
 //
 //! \if file_doc
 //!
 //! \file   activate_data_add_0.asm
-//! \author Сергей Мушкаев
+//! \author S.Mushkaev
 //! \brief  Функции векторного ядра.
 //!
 //! \endif
@@ -36,12 +36,12 @@ end   VEC_ACTIVATE_REP;
 Activate_rep0:label;
 
     //------------------------------------------------------------------------
-    //! \fn void vec_activate_data_add_0(nmreg f1cr, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6)
+    //! \fn void core_activate_data_add_0(nmreg f1cr, nmreg ar0, nmreg gr0, nmreg gr5, nmreg ar6, nmreg gr6)
     //!
     //------------------------------------------------------------------------
 
-global vec_activate_data_add_0 :label;
-<vec_activate_data_add_0>
+global core_activate_data_add_0 :label;
+<core_activate_data_add_0>
 .branch;
 	push ar2,gr2 with gr2=gr5<<27 ;
 	push ar5,gr5 with gr5>>=5;	
