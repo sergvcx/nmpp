@@ -77,26 +77,39 @@ nm6406pack: x64 nm6406
 	cmake -D PACK_SUFFIX=nm6406 build/build_x64
 	cpack -G 7Z --config cmake/MultiCPackConfig.cmake -C "Debug;Release" 
 
-nm6407pack: x64 nm6407
-	cmake -D PACK_SUFFIX=nm6407 build/build_x64
-	cpack -G 7Z --config cmake/MultiCPackConfig.cmake -C "Debug;Release"  
+#nm6407pack: x64 nm6407
+#	cmake -D PACK_SUFFIX=nm6407 build/build_x64
+#	cpack -G 7Z --config cmake/MultiCPackConfig.cmake -C "Debug;Release"  
 
-nm6408pack: x64 nm6408
+
+
+#x64 nm6407
+
+#nm6407all: 
+#	cmake --preset nm6407-release
+#	cmake --preset nm6407-debug
+#	cmake --preset x64-msvc
+#	cmake --preset x64-gcc
+#	cmake --build build-nm6407-release
+#	cmake --build build-nm6407-debug
+#	cmake --build build-x64-msvc
+#	cmake --build build-x64-gcc
+#	cmake -B build-cpack . -DUSE_CPACK=ON -DPACK_SUFFIX=nm6407
+#	cd build-cpack && cpack -G 7Z -C Release;Debug -DPACK_SUFFIX=nm6407
+
+nm6407pack:
+	rd /Q /S build-cpack
+	cmake -B build-cpack . -DUSE_CPACK=ON -DPACK_SUFFIX=nm6407
+	cd build-cpack && cpack -G 7Z -C Release;Debug -DPACK_SUFFIX=nm6407
+
+nm6408pack: 
+	rd /Q /S build-cpack
 	cmake -D PACK_SUFFIX=nm6408 build/build_x64
 	cpack -G 7Z --config cmake/MultiCPackConfig.cmake -C "Debug;Release"  
 
 
-nm6407pack: x64 nm6407
-	cmake --preset nm6407-release
-	cmake --preset nm6407-debug
-	cmake --preset x64-msvc
-	cmake --preset x64-gcc
-	cmake --build build-nm6407-release
-	cmake --build build-nm6407-debug
-	cmake --build build-x64-msvc
-	cmake --build build-x64-gcc
-	cpack -G 7Z --config cmake/MultiCPackConfig.cmake -C "Debug;Release"  
-	
+#	cpack -G 7Z --config cmake/MultiCPackConfig.cmake -C "Debug;Release"  
+#	rd /S /Y build-cpack
 
 nm6476ipack: x64 nm6476i 
 	cmake -D PACK_SUFFIX:STRING=nm6476i build/build_x64
@@ -114,13 +127,12 @@ nm6476fpack: x64 nm6476f
 #	cmake -D PACK_SUFFIX:STRING=nm6408 build/build_x64
 #	cpack -G 7Z --config cmake/MultiCPackConfig.cmake -C "Debug;Release"  
 
-nm6407pack2:
-	cmake -B build-cpack . -DUSE_CPACK=ON -DPACK_SUFFIX=nm6407
-	cd build-cpack && cpack -G 7Z -C Release;Debug -DPACK_SUFFIX=nm6407
-
-nm6408pack2 :
-	cmake -B build-cpack . -DUSE_CPACK=ON -DPACK_SUFFIX=nm6408
-	cd build-cpack && cpack -G 7Z -C Release;Debug -DPACK_SUFFIX=nm6408
+#	rm build-cpack
+#
+#nm6408pack:
+#	rm build-cpack
+#	cmake -B build-cpack . -DUSE_CPACK=ON -DPACK_SUFFIX=nm6408
+#	cd build-cpack && cpack -G 7Z -C Release;Debug -DPACK_SUFFIX=nm6408
 
 
 #nm6408pack_mc12705: 

@@ -13,7 +13,7 @@ chm:
 	doxygen
 	taskkill /FI "windowtitle eq HTML help"
 	copy html\*.chm .
-	copy html\*.chm ../doc
+	copy html\*.chm ..\..\doc /Y
 
 #	utf2win.bat
 #	taskkill /FI "windowtitle eq nmpp"
@@ -26,7 +26,7 @@ pdf:
 	doxygen
 	cd latex &&	call make.bat
 	copy .\latex\refman.pdf .\nmpp.pdf
-	copy .\latex\refman.pdf ..\doc\nmpp.pdf
+	copy .\latex\refman.pdf ..\..\doc\nmpp.pdf /Y
 
 clean:
 	-rm -f -r -v html xml latex nmpp.chm nmpp.pdf 
