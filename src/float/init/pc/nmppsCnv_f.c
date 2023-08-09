@@ -32,6 +32,25 @@ void nmppsConvert_32f32fcr(const nm32f* pSrcVec, nm32fcr* pDstVec, int nSize)
 	}
 }
 
+void nmppsConvert_32fc32fcr(const nm32fc* pSrcVec, nm32fcr* pDstVec, int nSize)
+{
+	int i;
+	for(i = 0; i < nSize; i++) {
+		pDstVec[i].re = pSrcVec[i].re;
+		pDstVec[i].im = pSrcVec[i].im;
+	}
+}
+
+void nmppsConvert_32fcr32fc(const nm32fcr* pSrcVec, nm32fc* pDstVec, int nSize)
+{
+	int i;
+	for(i = 0; i < nSize; i++) {
+		pDstVec[i].re = pSrcVec[i].re;
+		pDstVec[i].im = pSrcVec[i].im;
+	}
+}
+
+
 void nmppsConvert_32sc32fcr(const nm32sc *pSrcVec, nm32fcr *pDstVec, int nSize)
 {
 	int i;

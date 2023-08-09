@@ -27,8 +27,35 @@ typedef struct
     nm32fcr* Buffers[NUMBUFF1]; // partitioned Buffs
 	nm32fcr* Buffs[NUMBUFF2];   // allocated buffers
     int order;
+	int dstStep;
 } NmppsFFTSpec_32fcr;
 
+
+typedef struct
+{
+    nm32fcr* Buffers0; 			// [8*8] if x64 // partitioned Buffs
+	//nm32fcr* Buffs[NUMBUFF2];   // allocated buffers
+    //int order;
+} NmppsFFT8Spec_32fcr;
+
+typedef struct
+{
+    nm32fcr* Buffers0; 	//= [8*8] if x64 // partitioned Buffs
+    nm32fcr* buff8 	;	//= (nm32fcr*)malloc(8 * sizeof(nm32fcr));
+    nm32fcr* buff8xW;	//= (nm32fcr*)malloc(8 * sizeof(nm32fcr));
+    NmppsFFT8Spec_32fcr * parentSpec; 
+	int stepOut;
+} NmppsFFT16Spec_32fcr;
+
+typedef struct
+{
+    nm32fcr* Buffers0; 	//= [8*8] if x64 // partitioned Buffs
+    nm32fcr* buff8 	;	//= (nm32fcr*)malloc(8 * sizeof(nm32fcr));
+    nm32fcr* buff8xW;	//= (nm32fcr*)malloc(8 * sizeof(nm32fcr));
+    NmppsFFT8Spec_32fcr * parentSpec; 
+	int dstStep;
+} NmppsFFT32Spec_32fcr;
+/**/
 // sFFT_32fcr
 
 
@@ -52,6 +79,17 @@ void nmppsFFT512FwdInit_32fcr(NmppsFFTSpec_32fcr* addr);
 void nmppsFFT1024FwdInit_32fcr(NmppsFFTSpec_32fcr* addr);
 void nmppsFFT2048FwdInit_32fcr(NmppsFFTSpec_32fcr* addr);
 void nmppsFFT4096FwdInit_32fcr(NmppsFFTSpec_32fcr* addr);
+
+void nmppsFFT16InvInit_32fcr(NmppsFFTSpec_32fcr* addr);
+void nmppsFFT32InvInit_32fcr(NmppsFFTSpec_32fcr* addr);
+void nmppsFFT64InvInit_32fcr(NmppsFFTSpec_32fcr* addr);
+void nmppsFFT128InvInit_32fcr(NmppsFFTSpec_32fcr* addr);
+void nmppsFFT256InvInit_32fcr(NmppsFFTSpec_32fcr* addr);
+void nmppsFFT512InvInit_32fcr(NmppsFFTSpec_32fcr* addr);
+void nmppsFFT1024InvInit_32fcr(NmppsFFTSpec_32fcr* addr);
+void nmppsFFT2048InvInit_32fcr(NmppsFFTSpec_32fcr* addr);
+void nmppsFFT4096InvInit_32fcr(NmppsFFTSpec_32fcr* addr);
+
 //! \}
 
 
@@ -208,7 +246,7 @@ void nmppsFFT64Fwd_32fcr(const nm32fcr* pSrcVec, nm32fcr* pDstVec, NmppsFFTSpec_
     \endxmlonly
 */
 //! \{
-void nmppsFFT128Fwd_32fcr(const nm32fcr* pSrcVec, nm32fcr* pDstVec, NmppsFFTSpec_32fcr* spec);
+void nmppsFFT128Fwd_32fcr(const nm32fcr* pSrcVec, int srcStep, nm32fcr* pDstVec, int dstStep, NmppsFFTSpec_32fcr* spec);
 //! \}
 
 /*!
@@ -509,7 +547,7 @@ void nmppsFFT64Inv_32fcr(const nm32fcr* pSrcVec, nm32fcr* pDstVec, NmppsFFTSpec_
  *
  */
 //! \{
-void nmppsFFT128Inv_32fcr(const nm32fcr* pSrcVec, nm32fcr* pDstVec, NmppsFFTSpec_32fcr* spec);
+void nmppsFFT128Inv_32fcr(const nm32fcr* pSrcVec, int srcStep, nm32fcr* pDstVec, int dstStep, NmppsFFTSpec_32fcr* spec);
 //! \}
 
 	/**

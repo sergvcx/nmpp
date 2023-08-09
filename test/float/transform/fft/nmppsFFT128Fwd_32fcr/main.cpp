@@ -31,9 +31,9 @@ int main()
 		return st;
 	}
 	t1 = clock();
-	nmppsFFT128Fwd_32fcr(src, dst, rat);
+	nmppsFFT128Fwd_32fcr(src, 1, dst, 1, rat);
 	t2 = clock();
-	nmppsFFT128Inv_32fcr(dst, dst, irat);
+	nmppsFFT128Inv_32fcr(dst, 1, dst, 1, irat);
 	st = nmppsFFTFree_32fcr(rat);
 	if(st) {
 		return st;

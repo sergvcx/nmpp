@@ -8,29 +8,29 @@
 //*   Contents:         Routine for forward FFT 128                         */
 //*                     of complex array with 32 bit elements               */
 //***************************************************************************/
+.global _nmppsFFT128Fwd_32fcr
+.global _nmppsFFT128Inv_32fcr
+.section .data.nmpp.fft
+AddrForDFT8_128: .long  0, 16, 8, 24, 4, 20, 12, 28, \
+						2, 18, 10, 26, 6, 22, 14, 30
 
-global _nmppsFFT128Fwd_32fcr: label;
-global _nmppsFFT128Inv_32fcr: label;
-data ".data.nmpp.fft"
-AddrForDFT8_128: word[16] = (
-						0, 16, 8, 24, 4, 20, 12, 28,
-						 2, 18, 10, 26, 6, 22, 14, 30
-						);
-end ".data.nmpp.fft";
 
-begin ".text.nmpp.fft"
-<_nmppsFFT128Fwd_32fcr>
-<_nmppsFFT128Inv_32fcr>
+.section .text.nmpp.fft
+_nmppsFFT128Fwd_32fcr:
+_nmppsFFT128Inv_32fcr:
 	ar5 = ar7 - 2;
 	push ar6, gr6;
+	push ar5, gr5;
 	push ar4, gr4;
 	push ar3, gr3;
 	push ar2, gr2;
 	push ar1, gr1;
 	push ar0, gr0;
 	ar3 = [--ar5]; // input x
+	gr5 = [--ar5]; // srcStep
 	gr6 = [--ar5]; // output X
-	ar5 = [--ar5];
+	gr5 = [--ar5]; // dstStep
+	ar5 = [--ar5] with gr5<<=1;
 	gr1 = 32; // offset for reading x
 	ar4 = [ar5++];
 	ar2 = [ar5++];
@@ -62,7 +62,7 @@ begin ".text.nmpp.fft"
 	gr4 = ar6;
 	ar4 = AddrForDFT8_128;
 	gr3 = [ar4++];
-<COMP_16_8_128>
+COMP_16_8_128:
 	ar1 = ar3 + gr3;
 	fpu 0 rep 4 vreg0 = [ar1++gr1];
     fpu 1 rep 4 vreg0 = [ar1++gr1];
@@ -111,7 +111,7 @@ begin ".text.nmpp.fft"
 	fpu 2 vreg0 = fpu 0 vreg0;
 	fpu 3 vreg0 = fpu 1 vreg0;
 
-<COMP_4_16_128>
+COMP_4_16_128:
 	fpu 0 rep 8 vreg1 = [ar0++];
 	fpu 1 rep 8 vreg1 = [ar6++]; // xW
 	fpu 0 vreg2 = fpu 1 vreg1;   // xW
@@ -150,7 +150,7 @@ begin ".text.nmpp.fft"
 	fpu 2 vreg0 = fpu 0 vreg0;
 	fpu 3 vreg0 = fpu 1 vreg0;
 
-<COMP_2_32_128>
+COMP_2_32_128:
 	fpu 0 rep 16 vreg1 = [ar0++];
 	fpu 1 rep 16 vreg1 = [ar6++]; // xW
 	fpu 0 vreg2 = fpu 1 vreg1;    // xW
@@ -224,18 +224,18 @@ begin ".text.nmpp.fft"
 	fpu 1 .complex vreg5 = vreg0 * vreg4 + vreg3;
 	fpu 3 .complex vreg5 = -vreg0 * vreg3 + vreg4;
 // END FFT128
-
-	fpu 0 rep 32 [ar2++] = vreg5;
-	fpu 1 rep 32 [ar2++] = vreg5;
-	fpu 2 rep 32 [ar2++] = vreg5;
-	fpu 3 rep 32 [ar2++] = vreg5;
+	gr2 = gr5;
+	fpu 0 rep 32 [ar2++gr2] = vreg5;
+	fpu 1 rep 32 [ar2++gr2] = vreg5;
+	fpu 2 rep 32 [ar2++gr2] = vreg5;
+	fpu 3 rep 32 [ar2++gr2] = vreg5;
 	
-<exit_fft128>
+exit_fft128:
 	pop ar0, gr0;
 	pop ar1, gr1;
 	pop ar2, gr2;
 	pop ar3, gr3;
 	pop ar4, gr4;
+	pop ar5, gr5;
 	pop ar6, gr6;	
 	return;
-end ".text.nmpp.fft";

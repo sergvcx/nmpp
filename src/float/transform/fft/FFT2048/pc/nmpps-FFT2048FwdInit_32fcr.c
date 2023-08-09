@@ -80,6 +80,7 @@ void nmppsFFT2048FwdInit_32fcr(NmppsFFTSpec_32fcr* spec_32fcr)
         spec_32fcr->Buffers[7][i].re = spec_32fcr->Buffers[8][gr1].re;
         gr1 += 2;
     }
+	spec_32fcr->dstStep=2;
     return 0;
 }
 

@@ -13,5 +13,5 @@
 
 void nmppsFFT128Inv_32fcr(const nm32fcr* pSrcVec, nm32fcr* pDstVec, NmppsFFTSpec_32fcr* spec)
 {
-	nmppsFFT128Fwd_32fcr(pSrcVec, pDstVec, spec);
+	nmppsFFT128Fwd_32fcr(pSrcVec, 1, pDstVec, 1, spec);
 }

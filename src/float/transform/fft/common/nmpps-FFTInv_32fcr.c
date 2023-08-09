@@ -18,7 +18,7 @@ int nmppsFFTInv_32fcr(const nm32fcr* pSrcVec, nm32fcr* pDstVec, NmppsFFTSpec_32f
 	} else if(spec->order == 6) {
 		nmppsFFT64Inv_32fcr(pSrcVec, pDstVec, spec);
 	} else if(spec->order == 7) {
-		nmppsFFT128Inv_32fcr(pSrcVec, pDstVec, spec);
+		nmppsFFT128Inv_32fcr(pSrcVec, 1, pDstVec, 1,spec);
 	} else if(spec->order == 8) {
 		nmppsFFT256Inv_32fcr(pSrcVec, pDstVec, spec);
 	} else if(spec->order == 9) {

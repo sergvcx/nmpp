@@ -14,8 +14,8 @@
 #include <math.h>
 void nmppsFFT1024FwdInit_32fcr(NmppsFFTSpec_32fcr* spec_32fcr){
 	
-	for(int i = 7; i < NUMBUFF1; i++) 
-		spec_32fcr->Buffers[i] = 0;
+	//for(int i = 7; i < NUMBUFF1; i++) 
+	//	spec_32fcr->Buffers[i] = 0;
     
 	int i, j, k;
     int gr1;
@@ -73,6 +73,7 @@ void nmppsFFT1024FwdInit_32fcr(NmppsFFTSpec_32fcr* spec_32fcr){
         spec_32fcr->Buffers[6][i].re = spec_32fcr->Buffers[7][gr1].re;
         gr1 += 2;
     }
+	spec_32fcr->dstStep = 2;
     return 0;
 }
 int nmppsFFT1024FwdInitAlloc_32fcr(NmppsFFTSpec_32fcr** spec_32fcr_)

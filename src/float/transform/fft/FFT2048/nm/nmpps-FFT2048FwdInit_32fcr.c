@@ -80,6 +80,7 @@ void nmppsFFT2048FwdInit_32fcr(NmppsFFTSpec_32fcr* spec_32fcr)
         spec_32fcr->Buffers[10][i].im = -sinf(alpha);
         spec_32fcr->Buffers[10][i].re = cosf(alpha);
     }
+	spec_32fcr->dstStep=2;
 }
 
 int nmppsFFT2048FwdInitAlloc_32fcr(NmppsFFTSpec_32fcr** spec_32fcr_)

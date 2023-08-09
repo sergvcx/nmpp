@@ -75,5 +75,6 @@ int nmppsFFT256FwdInitAlloc_32fcr(NmppsFFTSpec_32fcr** addr)
         spec_32fcr->Buffers[4][i].re = spec_32fcr->Buffers[5][gr1].re;
         gr1 += 2;
     }
+	spec_32fcr->dstStep=2;
     return 0;
 }

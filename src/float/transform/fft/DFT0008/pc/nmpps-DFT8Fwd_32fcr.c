@@ -5,8 +5,8 @@ void nmppsDFT8Fwd_32fcr(const nm32fcr* pSrcVec, nm32fcr* pDstVec, NmppsFFTSpec_3
    int i, j;
    nm32fcr columns[8][8];
    for(i = 0; i < 8; i++) {
-       columns[0][i].im = spec->Buffers[0][i].re * pSrcVec[0].im + spec->Buffers[0][i].im * pSrcVec[0].re;
-       columns[0][i].re = spec->Buffers[0][i].re * pSrcVec[0].re - spec->Buffers[0][i].im * pSrcVec[0].im;
+       columns[0][i].im = spec->Buffers[0][i + 0].re * pSrcVec[0].im + spec->Buffers[0][i + 0].im * pSrcVec[0].re;
+       columns[0][i].re = spec->Buffers[0][i + 0].re * pSrcVec[0].re - spec->Buffers[0][i + 0].im * pSrcVec[0].im;
 
        columns[1][i].im = spec->Buffers[0][i + 8].re * pSrcVec[1].im + spec->Buffers[0][i + 8].im * pSrcVec[1].re;
        columns[1][i].re = spec->Buffers[0][i + 8].re * pSrcVec[1].re - spec->Buffers[0][i + 8].im * pSrcVec[1].im;
@@ -40,3 +40,5 @@ void nmppsDFT8Fwd_32fcr(const nm32fcr* pSrcVec, nm32fcr* pDstVec, NmppsFFTSpec_3
        }
    }
 }
+
+

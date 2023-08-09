@@ -481,6 +481,11 @@ void nmppsConvert_32sc32fcr(const nm32sc* pSrcVec, nm32fcr* pDstVec, int nSize);
 void nmppsConvert_32s32f(const nm32s* pSrcVec, nm32f* pDstVec, int nSize);
 void nmppsConvert_32f64f(const nm32f* pSrcVec, nm64f* pDstVec, int nSize);
 void nmppsConvert_64f32f(const nm64f* pSrcVec, nm32f* pDstVec, int nSize);
+
+void nmppsConvert_32fc32fcr(const nm32fc* pSrcVec, nm32fcr* pDstVec, int nSize);
+void nmppsConvert_32fcr32fc(const nm32fcr* pSrcVec, nm32fc* pDstVec, int nSize);
+
+
 //! \}
 
 /** \defgroup nmppsConvert_f_rounding nmppsConvert_rounding

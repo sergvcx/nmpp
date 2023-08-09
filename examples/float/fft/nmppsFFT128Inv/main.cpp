@@ -47,7 +47,7 @@ int main()
   // computing forward fft128 from a generated sin func
   // вычисление прямого БПФ128 от сгенерированной функции синуса
   clock_t t0=clock();
-  nmppsFFT128Inv_32fcr(src, dst, spec);
+  nmppsFFT128Inv_32fcr(src, 1, dst, 1, spec);
   clock_t t1=clock();
   
   // a printing of first 10 dst elements

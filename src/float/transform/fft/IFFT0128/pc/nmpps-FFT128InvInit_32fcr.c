@@ -75,5 +75,6 @@ int nmppsFFT128InvInitAlloc_32fcr(NmppsFFTSpec_32fcr** addr)
         spec_32fcr->Buffers[3][i].re = spec_32fcr->Buffers[4][gr1].re;
         gr1 += 2;
     }
+    spec_32fcr->dstStep=2;
     return 0;
 }

@@ -66,6 +66,7 @@ void nmppsFFT1024FwdInit_32fcr(NmppsFFTSpec_32fcr* spec_32fcr){
         spec_32fcr->Buffers[11][i].im = -sinf(alpha);
         spec_32fcr->Buffers[11][i].re = cosf(alpha);
     }
+    spec_32fcr->dstStep=2;
 }
 
 int nmppsFFT1024FwdInitAlloc_32fcr(NmppsFFTSpec_32fcr** spec_32fcr_)
@@ -102,5 +103,7 @@ int nmppsFFT1024FwdInitAlloc_32fcr(NmppsFFTSpec_32fcr** spec_32fcr_)
         return 0x1024F3;
 
 	nmppsFFT1024FwdInit_32fcr(spec_32fcr);
+
+    
     return 0;
 }
