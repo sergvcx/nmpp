@@ -14,12 +14,12 @@
 
 	
 __attribute__ ((section (".data.imu0"))) nm32fcr fwdBuffer0 [120];
-__attribute__ ((section (".data.imu1"))) nm32fcr fwdBuffer1 [120];
+__attribute__ ((section (".data.imu1"))) nm32fcr fwdBuffer1 [88];
 __attribute__ ((section (".data.imu2"))) nm32fcr fwdBuffer2 [96];
 __attribute__ ((section (".data.imu3"))) nm32fcr fwdBuffer3 [64];
 
 __attribute__ ((section (".data.imu0"))) nm32fcr invBuffer0 [120];
-__attribute__ ((section (".data.imu1"))) nm32fcr invBuffer1 [120];
+__attribute__ ((section (".data.imu1"))) nm32fcr invBuffer1 [88];
 __attribute__ ((section (".data.imu2"))) nm32fcr invBuffer2 [96];
 __attribute__ ((section (".data.imu3"))) nm32fcr invBuffer3 [64];
 

@@ -269,6 +269,22 @@ void nmppsFFT128Fwd_32fcr(const nm32fcr* pSrcVec, int srcStep, nm32fcr* pDstVec,
     		 <size> 256 </size>
         </testperf>
     \endxmlonly
+
+	\code
+	NmppsFFTSpec_32fcr spec;
+	nmc_malloc_set_heap(0);	spec.Buffs[0] = (nm32fcr *) malloc(120 * sizeof(nm32fcr));
+	nmc_malloc_set_heap(1);	spec.Buffs[1] = (nm32fcr *) malloc(88  * sizeof(nm32fcr));
+	nmc_malloc_set_heap(2);	spec.Buffs[2] = (nm32fcr *) malloc(96  * sizeof(nm32fcr));
+	nmc_malloc_set_heap(3);	spec.Buffs[3] = (nm32fcr *) malloc(64  * sizeof(nm32fcr));
+	nmppsFFT128FwdInit_32fcr(&spec);
+
+	nmc_malloc_set_heap(1);    nm32fcr* src= malloc(128 * sizeof(nm32fcr));
+	nmc_malloc_set_heap(5);    nm32fcr* dst= malloc(128 * sizeof(nm32fcr));
+	nmppsFFT128Fwd_32fcr(src,dst,&spec);
+	\endcode
+
+
+
 */
 //! \{
 void nmppsFFT256Fwd_32fcr(const nm32fcr* pSrcVec, nm32fcr* pDstVec, NmppsFFTSpec_32fcr* spec);
@@ -314,10 +330,10 @@ void nmppsFFT512Fwd_32fcr(const nm32fcr* pSrcVec, nm32fcr* pDstVec, NmppsFFTSpec
 	
 	\code
 	NmppsFFTSpec_32fcr spec;
-	nmc_malloc_set_heap(0);    spec.Buffs[0] = (nm32fcr *) malloc((512 + 1) * sizeof(nm32fcr));
-	nmc_malloc_set_heap(1);    spec.Buffs[1] = (nm32fcr *) malloc((512) * sizeof(nm32fcr));
+	nmc_malloc_set_heap(0);    spec.Buffs[0] = (nm32fcr *) malloc(513 * sizeof(nm32fcr));
+	nmc_malloc_set_heap(1);    spec.Buffs[1] = (nm32fcr *) malloc(512 * sizeof(nm32fcr));
 	nmc_malloc_set_heap(2);    spec.Buffs[2] = (nm32fcr *) malloc(512 * sizeof(nm32fcr));
-	nmc_malloc_set_heap(3);    spec.Buffs[3] = (nm32fcr *) malloc((7 + 512) * sizeof(nm32fcr));
+	nmc_malloc_set_heap(3);    spec.Buffs[3] = (nm32fcr *) malloc(519 * sizeof(nm32fcr));
 	nmppsFFT1024FwdInit_32fcr(&spec);
 	
 	nmc_malloc_set_heap(5);    nm32fcr* src= malloc(1024 * sizeof(nm32fcr));

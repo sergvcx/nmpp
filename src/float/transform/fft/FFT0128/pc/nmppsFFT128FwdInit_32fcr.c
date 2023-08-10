@@ -8,6 +8,14 @@ void nmppsFFT128FwdInit_32fcr(NmppsFFTSpec_32fcr* spec_32fcr)
     int gr1;
     const float pi = 3.141592653;
     float alpha;
+	
+	//spec_32fcr->Buffs[0] = (nm32fcr *) malloc((8 + 16 + 32 + 64) * sizeof(nm32fcr));
+    //spec_32fcr->Buffs[1] = (nm32fcr *) malloc((32 + 8 + 16 + 32) * sizeof(nm32fcr));
+    //spec_32fcr->Buffs[2] = (nm32fcr *) malloc((32 + 64) * sizeof(nm32fcr));
+    //spec_32fcr->Buffs[3] = (nm32fcr *) malloc((64) * sizeof(nm32fcr));
+    
+
+
     //NmppsFFTSpec_32fcr *spec_32fcr = (NmppsFFTSpec_32fcr *) malloc(sizeof(NmppsFFTSpec_32fcr));
     //if(!spec_32fcr) {
     //   return 0x128F;
@@ -18,16 +26,21 @@ void nmppsFFT128FwdInit_32fcr(NmppsFFTSpec_32fcr* spec_32fcr)
     //spec_32fcr->Buffers[0] = (nm32fcr *) malloc(64 * sizeof(nm32fcr)); // SinCos0
     //if (!spec_32fcr->Buffers[0])
     //    return 0x128F0;
+	spec_32fcr->Buffers[0] = spec_32fcr->Buffs[3];
     //spec_32fcr->Buffers[1] = (nm32fcr *) malloc(8 * sizeof(nm32fcr)); // W8
     //if (!spec_32fcr->Buffers[1])
+	spec_32fcr->Buffers[1] = spec_32fcr->Buffs[0];
     //    return 0x128F1;
     //spec_32fcr->Buffers[2] = (nm32fcr *) malloc(16 * sizeof(nm32fcr)); // W16
+	spec_32fcr->Buffers[2] = spec_32fcr->Buffers[1]+8;
     //if (!spec_32fcr->Buffers[2])
     //    return 0x128F2;
     //spec_32fcr->Buffers[3] = (nm32fcr *) malloc(32 * sizeof(nm32fcr)); // W32
+	spec_32fcr->Buffers[3] = spec_32fcr->Buffers[2]+16;
     //if (!spec_32fcr->Buffers[3])
     //    return 0x128F3;
     //spec_32fcr->Buffers[4] = (nm32fcr *) malloc(64 * sizeof(nm32fcr)); // W64
+	spec_32fcr->Buffers[4] = spec_32fcr->Buffers[3]+32;
     //if (!spec_32fcr->Buffers[4])
     //    return 0x128F4;
     //*addr = spec_32fcr;

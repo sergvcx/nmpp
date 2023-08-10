@@ -108,6 +108,7 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/lib)
 #return()
 
 set(X64_DIRS
+	src/risc/dump 
 	src/risc/init/pc 
 	src/risc/init/common 
 	src/risc/linear/common 
@@ -183,7 +184,9 @@ set(X64_DIRS
 	src/float/transform/fft/FFT0064/pc
 	src/float/transform/fft/IFFT0064/pc
 	src/float/transform/fft/FFT0128/pc
+	src/float/transform/fft/FFT0128/common
 	src/float/transform/fft/IFFT0128/pc
+	src/float/transform/fft/IFFT0128/common
 	src/float/transform/fft/FFT0256/pc
 	src/float/transform/fft/IFFT0256/pc
 	src/float/transform/fft/FFT0512/pc
@@ -205,6 +208,7 @@ set(X64_DIRS
 set(NMC4R_DIRS
 	#src/risc/fixpoint32/nm
 	#src/risc/fixpoint64/nm 
+	src/risc/dump 
 	src/risc/init/nm 
 	src/risc/init/common 
 	src/risc/linear/common 
@@ -317,7 +321,9 @@ set(NMC4F_DIRS
 	src/float/transform/fft/FFT0064/nm
 	src/float/transform/fft/IFFT0064/nm
 	src/float/transform/fft/FFT0128/nm
+	src/float/transform/fft/FFT0128/common
 	src/float/transform/fft/IFFT0128/nm
+	src/float/transform/fft/IFFT0128/common
 	src/float/transform/fft/FFT0256/nm
 	src/float/transform/fft/IFFT0256/nm
 	src/float/transform/fft/FFT0512/nm

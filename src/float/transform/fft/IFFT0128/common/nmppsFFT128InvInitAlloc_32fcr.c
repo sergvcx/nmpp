@@ -58,7 +58,7 @@ int nmppsFFT128InvInitAlloc_32fcr(NmppsFFTSpec_32fcr** spec_32fcr_)
     //spec_32fcr->Buffers[2] = spec_32fcr->Buffs[2] + 32;   // buff_fft
 
 	nmc_malloc_set_heap(3);
-    spec_32fcr->Buffs[3] = (nm32fcr *) malloc3((64) * sizeof(nm32fcr));
+    spec_32fcr->Buffs[3] = (nm32fcr *) malloc((64) * sizeof(nm32fcr));
     if(!spec_32fcr->Buffs[3])
         return 0x128B3;
 

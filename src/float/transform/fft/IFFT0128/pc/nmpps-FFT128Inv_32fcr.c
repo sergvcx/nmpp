@@ -11,7 +11,7 @@
 
 #include "fft_32fcr.h"
 
-void nmppsFFT128Inv_32fcr(const nm32fcr* pSrcVec, nm32fcr* pDstVec, NmppsFFTSpec_32fcr* spec)
+void nmppsFFT128Inv_32fcr(const nm32fcr* pSrcVec, int srcStep,  nm32fcr* pDstVec, int dstStep, NmppsFFTSpec_32fcr* spec)
 {
-	nmppsFFT128Fwd_32fcr(pSrcVec, 1, pDstVec, 1, spec);
+	nmppsFFT128Fwd_32fcr(pSrcVec, srcStep, pDstVec, dstStep, spec);
 }
