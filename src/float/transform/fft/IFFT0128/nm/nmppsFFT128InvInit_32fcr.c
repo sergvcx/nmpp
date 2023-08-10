@@ -35,7 +35,7 @@ void nmppsFFT128InvInit_32fcr(NmppsFFTSpec_32fcr* spec_32fcr)
     spec_32fcr->Buffers[4] = spec_32fcr->Buffs[0];            // W8_0
     spec_32fcr->Buffers[6] = spec_32fcr->Buffs[0] + 8;       // W16_0
     spec_32fcr->Buffers[8] = spec_32fcr->Buffs[0] + 24;    // W32_0
-    spec_32fcr->Buffers[10] = spec_32fcr->Buffs[0] + 56;   // W64_0
+    spec_32fcr->Buffers[10]= spec_32fcr->Buffs[0] + 56;   // W64_0
 
     //spec_32fcr->Buffs[1] = (nm32fcr *) malloc1((32 + 8 + 16 + 32) * sizeof(nm32fcr));
     //if(!spec_32fcr->Buffs[0])

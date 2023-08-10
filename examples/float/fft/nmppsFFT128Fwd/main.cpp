@@ -20,7 +20,7 @@ int main()
   // a generating a sin func
   // генерация функции синуса
   for(int i = 0; i < SIZE; i++) {
-  	src[i].re = sinf(i);
+  	src[i].re = sinf(i*3.1415926535 / 16);
 	src[i].im = 0;
   }
   

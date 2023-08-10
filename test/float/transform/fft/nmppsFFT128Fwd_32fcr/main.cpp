@@ -9,6 +9,8 @@
 
 int main()
 {
+	printf("fft 128 test\n");
+	
 	int i, st;
 	clock_t t1, t2;
 	nm32fcr *src, *dst;
@@ -26,24 +28,31 @@ int main()
 	if(st) {
 		return st;
 	}
+	printf("alloc fwd passed\n");
 	st = nmppsFFT128InvInitAlloc_32fcr(&irat);
 	if(st) {
 		return st;
 	}
+	printf("alloc inv passed\n");
 	t1 = clock();
 	nmppsFFT128Fwd_32fcr(src, 1, dst, 1, rat);
 	t2 = clock();
+	printf("fwd passed\n");
 	nmppsFFT128Inv_32fcr(dst, 1, dst, 1, irat);
+	printf("inv passed\n");
 	st = nmppsFFTFree_32fcr(rat);
 	if(st) {
 		return st;
 	}
+	printf("free fwd passed\n");
 	st = nmppsFFTFree_32fcr(irat);
 	if(st) {
 		return st;
 	}
+	printf("free inv passed\n");
 	float norm;
 	nmppsNormDiff_L2_32fcr(src, dst, SIZE, &norm);
+	printf("norm  passed\n");
 	printf("%.7f\n", norm);
 
 	// for(i = 0; i < SIZE; i++){

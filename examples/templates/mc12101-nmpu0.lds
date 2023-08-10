@@ -1,43 +1,40 @@
 MEMORY
 {
-  C0_IMU0 : ORIGIN = 0x00000200<<2, LENGTH = 0x00007e00<<2
-  C0_IMU1 : ORIGIN = 0x00008000<<2, LENGTH = 0x00008000<<2
-  C0_IMU2 : ORIGIN = 0x00010000<<2, LENGTH = 0x00008000<<2
-  C0_IMU3 : ORIGIN = 0x00018000<<2, LENGTH = 0x00008000<<2
-  C0_IMU4 : ORIGIN = 0x00020000<<2, LENGTH = 0x00008000<<2
-  C0_IMU5 : ORIGIN = 0x00028000<<2, LENGTH = 0x00008000<<2
-  C0_IMU6 : ORIGIN = 0x00030000<<2, LENGTH = 0x00008000<<2
-  C0_IMU7 : ORIGIN = 0x00038000<<2, LENGTH = 0x00008000<<2
+  C0_IMU0 : ORIGIN = 0x00000200<<2, LENGTH = 0x00007e00<<2 /* 126 kB */
+  C0_IMU1 : ORIGIN = 0x00008000<<2, LENGTH = 0x00008000<<2 /* 128 kB */
+  C0_IMU2 : ORIGIN = 0x00010000<<2, LENGTH = 0x00008000<<2 /* 128 kB */
+  C0_IMU3 : ORIGIN = 0x00018000<<2, LENGTH = 0x00008000<<2 /* 128 kB */
+  C0_IMU4 : ORIGIN = 0x00020000<<2, LENGTH = 0x00008000<<2 /* 128 kB */
+  C0_IMU5 : ORIGIN = 0x00028000<<2, LENGTH = 0x00008000<<2 /* 128 kB */
+  C0_IMU6 : ORIGIN = 0x00030000<<2, LENGTH = 0x00008000<<2 /* 128 kB */
+  C0_IMU7 : ORIGIN = 0x00038000<<2, LENGTH = 0x00008000<<2 /* 128 kB */
+
 /*SHMEM0 : ORIGIN  = 0x000A0000<<2, LENGTH = 0x00008000<<2 bytes reserved for by system loader */
-  SHMEM0 : ORIGIN  = 0x000A8000<<2, LENGTH = 0x00008000<<2
-  SHMEM1 : ORIGIN  = 0x000B0000<<2, LENGTH = 0x00010000<<2
-  EMI    : ORIGIN  = 0x20000000<<2, LENGTH = 0x08000000<<2
+  SHMEM0 : ORIGIN  = 0x000A8000<<2, LENGTH = 0x00008000<<2 /* 128 kB */
+  SHMEM1 : ORIGIN  = 0x000B0000<<2, LENGTH = 0x00010000<<2 /* 256 kB */
+  EMI    : ORIGIN  = 0x20000000<<2, LENGTH = 0x08000000<<2 /* 512 MB */
 }
 
 SECTIONS
 {
 
-.stub : ALIGN(0x8)
+  .stub : ALIGN(0x8)
   {
-    *libmc12101_stub_nmc4_float.a:*(.text)
-	*libmc12101_stub_nmc4_float.a:*(.data)
+    *(.gdb*)
+    
 	*(.stub.*)
 	*(.stub_text)
   } > EMI
   
-  .load : ALIGN(0x8)
-  {
-    *libnm6407load_nmc.a:*(.text*);
-  } > EMI
-  
   .text : ALIGN(0x8)
   {
-    *(.text.AAA);
     *(.text);
   } > EMI
   
   .systext : ALIGN(0x8)
   {
+    *libnm6407_io_nmc.a:*(.text*)
+    *libnm6407load_nmc.a:*(.text*)
 	*(.text.*)
   } > EMI
   
@@ -45,13 +42,14 @@ SECTIONS
   
   .text : ALIGN(0x8)
   {
-    *(text);
+    *(.text.nmpp*);
+    *libnm6407int.a:*(.text.*)
   } > C0_IMU0
  
   .data : ALIGN(0x8)
   {
-    *(.text.*);
-  } > EMI
+    *(.data.*);
+  } > C0_IMU0
   
   .init : ALIGN(0x8)
   {
