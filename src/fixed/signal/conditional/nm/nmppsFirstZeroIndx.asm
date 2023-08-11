@@ -18,7 +18,7 @@
 //!
 //------------------------------------------------------------------------
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 //! \fn int nmppsFirstZeroIndx_32s(int* pSrcVec, int nSize)
 //!
@@ -51,4 +51,4 @@ global _nmppsFirstZeroIndx_32s:label;
   	pop ar1,gr1 	with gr0 A>>= 31;
   	pop ar0,gr0 	with gr7 = gr7 or not gr0;
 return;
-end ".text_nmplv";
+end ".text.nmpp";

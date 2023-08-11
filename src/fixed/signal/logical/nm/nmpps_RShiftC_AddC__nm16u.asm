@@ -28,7 +28,7 @@ extern _VEC_TBL_SB_Split_nm16s:	long;
 extern _VEC_TBL_NB_Split_nm16s:	long;
 
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 
@@ -107,7 +107,7 @@ global _nmppsRShiftC_AddC_16u:label;
 	pop ar0,gr0;
 	return;
 .wait; 
-end ".text_nmplv";
+end ".text.nmpp";
 
 
 

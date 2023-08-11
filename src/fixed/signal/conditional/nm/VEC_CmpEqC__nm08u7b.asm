@@ -11,7 +11,7 @@ data ".data_nmplv_G"
 end ".data_nmplv_G";
 
     //--------------------------------------------------------------------
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 	//! \fn void nmppsCmpEqC_8u7b(nm8u7b* pSrcVec,  uint7b chCmpVal,  nm8s* pDstVec, int nSize, int8b chTrueFlag);
 	//!
@@ -57,4 +57,4 @@ global _nmppsCmpEqC_8u7b:label;
 .wait;
 
     //--------------------------------------------------------------------
-end ".text_nmplv";
+end ".text.nmpp";

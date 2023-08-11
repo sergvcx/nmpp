@@ -32,7 +32,7 @@ end  ".data_nmplv_G";
 
 
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -71,4 +71,4 @@ global _nmppsRemap_32u:label;
 .wait;
 
 
-end ".text_nmplv";
+end ".text.nmpp";

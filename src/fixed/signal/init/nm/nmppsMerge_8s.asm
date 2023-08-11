@@ -34,7 +34,7 @@ matr1: word [40]=(
  0,0,0,0,0,0,0,0
 );
 end ".data_nmplv_L";
-begin ".text_nmplv"
+begin ".text.nmpp"
 //  i=Merge_8s (int*psrc0, int* psrc1, int* pdst, int size);
 .branch;
 extern core_Mul2D2W8_AddVr: label;
@@ -79,6 +79,6 @@ global  _nmppsMerge_8s: label;
    pop ar5,gr5;
    pop ar6,gr6;
    return;
-end ".text_nmplv";
+end ".text.nmpp";
 /*size  time  ticks per int для pdst=4000h, psrc0,1=80000000h,80001000h
 */

@@ -20,7 +20,7 @@
 
 //#include "vConvert.h"
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 /////////////////////////////////////////////////////////////////////////////////
 
 //! \fn void nmppsPut_8s(nm8s *pVec, int nIndex, int8b Val) 
@@ -89,4 +89,4 @@ global _nmppsPut_8s:label;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

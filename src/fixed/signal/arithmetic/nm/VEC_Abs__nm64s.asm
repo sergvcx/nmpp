@@ -22,7 +22,7 @@
 extern _VEC_TBL_MinusOne_G:long;
 extern core_Abs:label;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 
@@ -61,4 +61,4 @@ global _nmppsAbs_64s:label;
 	return;
 .wait;
 
-end ".text_nmplv";
+end ".text.nmpp";

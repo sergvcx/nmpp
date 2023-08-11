@@ -25,7 +25,7 @@ extern core_vsum_data_0:label;
 data ".data_nmplv"
     WConvert16to32: long[8] =   ( 1l, 100000000hl, 0l dup 4, 1l, 100000000hl);
 end ".data_nmplv";
-begin ".text_nmplv"
+begin ".text.nmpp"
 /////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -81,4 +81,4 @@ global _nmppsConvert_16u32u:label;
 	pop ar0,gr0;
 	return;
 .wait;
-end ".text_nmplv";
+end ".text.nmpp";

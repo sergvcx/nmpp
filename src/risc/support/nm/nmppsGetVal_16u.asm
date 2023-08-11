@@ -23,7 +23,7 @@
 //! \fn void nmppsGetVal_16u(nm16u* pVec, int nIndex, uint16b &nVal)
 //!
 //! \perfinclude _nmppsGetVal_16u.html
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 global _nmppsGetVal_16u:label;
 <_nmppsGetVal_16u>
@@ -56,4 +56,4 @@ global _nmppsGetVal_16u:label;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

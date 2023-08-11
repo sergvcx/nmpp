@@ -58,7 +58,7 @@ macro convert_1u4u_tail_step(N)
 	nul;	
 end convert_1u4u_tail_step;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 <_nmppsConvert_1u4u>
 .branch;
@@ -224,4 +224,4 @@ begin ".text_nmplv"
 	pop ar0,gr0;
 .wait;
 	return;
-end ".text_nmplv";   
+end ".text.nmpp";   

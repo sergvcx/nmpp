@@ -22,7 +22,7 @@
 import from macros.mlb;
 
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 .branch;
 
 //! \fn void nmppsDotProd_32s64s (nm32s *pSrcVec1, nm64s *pSrcVec2, int nSize, int64b *pnRes) 
@@ -61,4 +61,4 @@ global _nmppsDotProd_32s64s:label;
 
 return;
 .wait;
-end ".text_nmplv"; 
+end ".text.nmpp"; 

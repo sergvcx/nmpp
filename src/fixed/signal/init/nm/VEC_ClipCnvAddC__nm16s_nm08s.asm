@@ -50,7 +50,7 @@ extern tbl_f1cr_nm16:long[8];
 //						0100000000000000hl);
 //
 //end ".data_nmplv_G";
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 /////////////////////////////////////////////////////////////////////////////////////
 
@@ -103,4 +103,4 @@ global _nmppsClipConvertAddC_16s8s:label;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

@@ -21,7 +21,7 @@
 extern core_SubAbs1:label;
 extern _VEC_TBL_Diagonal_FFh_G:long;
 extern _nmppsTmpBuffer16_G_:long;
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 //! \fn void nmppsAbsDiff1 (nm8s *pSrcVec1, nm8s *pSrcVec2, nm8s *pDstVec, int nSize) 
@@ -66,4 +66,4 @@ global _nmppsAbsDiff1_8s:label;
 	return;
 .wait;
 
-end ".text_nmplv";
+end ".text.nmpp";

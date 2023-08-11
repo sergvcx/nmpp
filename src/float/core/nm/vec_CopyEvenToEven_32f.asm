@@ -8,7 +8,7 @@
 
 global core_CopyEvenToEven_32f: label;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 <core_CopyEvenToEven_32f>
 	push ar1, gr1;
 	push ar2, gr2;
@@ -50,4 +50,4 @@ begin ".text_nmplv"
 	pop ar2, gr2;
 	pop ar1, gr1;
 	return;
-end ".text_nmplv";
+end ".text.nmpp";

@@ -29,7 +29,7 @@ data ".data_nmplv"
 								 0hl dup 3,	1hl				// Extract 4-rd byte
 								 );
 end ".data_nmplv";
-begin ".text_nmplv"
+begin ".text.nmpp"
 /////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -101,4 +101,4 @@ global _nmppsConvert_16u64u:label;
 	pop ar0,gr0;
 	return;
 .wait;
-end ".text_nmplv";
+end ".text.nmpp";

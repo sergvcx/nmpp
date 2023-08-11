@@ -18,7 +18,7 @@
 //!
 //------------------------------------------------------------------------
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 extern core_CmpLtV:label;
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -55,4 +55,4 @@ global _nmppsCmpLt_32s31b:label;
 return;
 .wait;
 
-end ".text_nmplv";
+end ".text.nmpp";

@@ -22,7 +22,7 @@
 extern core_CompareMinMax:label;
 
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 //! \fn void  _nmppsMinMaxEvery_8s(nm8s *pSrcVec1, nm8s *pSrcVec2, nm8s *pDstMin, nm8s *pDstMax, int nSize)
 //!
@@ -62,4 +62,4 @@ global _nmppsMinMaxEvery_8s:label;
 	pop ar0,gr0;
 return;
 .wait;
-end ".text_nmplv";
+end ".text.nmpp";

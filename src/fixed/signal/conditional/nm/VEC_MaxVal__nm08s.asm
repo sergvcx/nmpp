@@ -26,7 +26,7 @@ extern core_MaxVal_v8nm8s:label;
 extern core_MaxVal:label;
 
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 /////////////////////////////////////////////////////////////////////////////////////////
 //! \fn void nmppsMax_8s7b(nm8s *pSrcVec, int nSize, int8b &nMaxValue) 
 //!
@@ -65,4 +65,4 @@ return;
 
 	
 
-end ".text_nmplv";
+end ".text.nmpp";

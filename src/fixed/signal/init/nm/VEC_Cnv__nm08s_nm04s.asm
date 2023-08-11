@@ -24,7 +24,7 @@ extern _VEC_TBL_Diagonal_1h_G:long[16];
 extern _VEC_TBL_Diagonal_1h_L:long[16];
 extern core_Mul2D2W8_AddVr:label;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 /////////////////////////////////////////////////////////////////////////////////////
 
@@ -72,4 +72,4 @@ global _nmppsConvert_8s4s:label;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

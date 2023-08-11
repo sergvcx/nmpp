@@ -22,7 +22,7 @@
 
 extern core_0_sub_data:label;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -55,4 +55,4 @@ global _nmppsNeg_64s:label;
 	return;
 .wait;
 
-end ".text_nmplv";
+end ".text.nmpp";

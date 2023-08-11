@@ -24,7 +24,7 @@ extern core_IncNeg:label;
 import from macros.mlb;
 
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -299,4 +299,4 @@ global _nmppsDiv_By2Int_32s:label;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

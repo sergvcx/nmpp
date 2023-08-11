@@ -1,4 +1,4 @@
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 	//! \fn void nmppsCmpNe0_64s(nm64s* pSrcVec, nm64s* pDstVec, int nSize);
 	//!
@@ -33,4 +33,4 @@ global _nmppsCmpNe0_64s:label;
     return;
 .wait;
 
-end ".text_nmplv";
+end ".text.nmpp";

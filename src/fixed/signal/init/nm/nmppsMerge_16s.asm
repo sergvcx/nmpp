@@ -17,7 +17,7 @@ matr1: word [20]=(0,0,0,0,
  0000h,0000h      // 7
 );
 end ".data_nmplv_L";
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 .branch;
 extern core_Mul2D2W4_AddVr: label;
@@ -65,6 +65,6 @@ global _nmppsMerge_16s: label;
 	pop ar6,gr6;
 	return;
 .wait;	
-end ".text_nmplv";
+end ".text.nmpp";
 /*size  time  ticks per int для pdst=4000h, psrc0,1=80000000h,80001000h
 */

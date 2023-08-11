@@ -15,7 +15,7 @@ global _nmppsAbsDiff_32f: label;
 // x2 - pSrcVec2
 // f - pDstVec
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 <_nmppsAbsDiff_32f>
 	ar5 = ar7 - 2;
 	push ar2, gr2;
@@ -60,4 +60,4 @@ begin ".text_nmplv"
 	pop ar1, gr1;
 	pop ar2, gr2;
 	return;
-end ".text_nmplv";
+end ".text.nmpp";

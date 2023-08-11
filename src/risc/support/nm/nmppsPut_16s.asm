@@ -20,7 +20,7 @@
 
 //#include "vConvert.h"
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 /////////////////////////////////////////////////////////////////////////////////
 
 //! \fn void nmppsPut_16s(nm16s *pVec, int nIndex, int16b Val) 
@@ -69,4 +69,4 @@ global _nmppsPut_16s:label;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

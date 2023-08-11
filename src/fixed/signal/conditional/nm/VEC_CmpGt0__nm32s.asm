@@ -19,7 +19,7 @@
 //------------------------------------------------------------------------
 
 extern core_CmpGtC:label;
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 ///////////////////////////////////////////////////////////////////////////////
 //! \fn void nmppsCmpGt0_32s(nm32s* pSrcVec, nm32s* pDstVec, int nSize);
@@ -58,4 +58,4 @@ return;
 .wait;
 
 
-end ".text_nmplv";
+end ".text.nmpp";

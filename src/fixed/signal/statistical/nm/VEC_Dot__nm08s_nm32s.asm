@@ -30,7 +30,7 @@ data ".data_nmplv_G"
 								
 end ".data_nmplv_G";
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 .branch;
 
 //! \fn void nmppsDotProd_8s32s (nm8s *pSrcVec1, nm32s *pSrcVec2, int nSize, int64b *pnRes, void* pTmpBuff) 
@@ -108,4 +108,4 @@ global _nmppsDotProd_8s32s:label;
 return;
 //***************************************************************************/
 .wait;
-end ".text_nmplv"; 
+end ".text.nmpp"; 

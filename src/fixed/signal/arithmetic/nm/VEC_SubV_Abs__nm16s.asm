@@ -21,7 +21,7 @@
 extern core_SubAbs:label;
 extern _VEC_TBL_Diagonal_FFFFh_G:long;
 extern _nmppsTmpBuffer16_G_:long;
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 
@@ -70,4 +70,4 @@ global _nmppsAbsDiff_16s:label;
 .wait;
 
 
-end ".text_nmplv";
+end ".text.nmpp";

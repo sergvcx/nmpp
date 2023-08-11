@@ -21,7 +21,7 @@
 extern core_data_add_ram:label;
 extern _nmppsTmpBuffer16_G_:long;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 /////////////////////////////////////////////////////////////////////////////////////////
 //! \fn void nmppsAddC (nm32s *pSrcVec, int32b nVal, nm32s *pDstVec, int nSize) 
@@ -64,4 +64,4 @@ return with gr7=false;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

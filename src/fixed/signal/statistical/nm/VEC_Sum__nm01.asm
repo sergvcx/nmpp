@@ -40,7 +40,7 @@ extern core_vsum_data_afifo:label;
 extern core_vsum_shift_data_afifo:label;
 extern core_data_add_afifo:label;
 extern core_data_and_ram:label;
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -109,4 +109,4 @@ global _nmppsSum_1:label;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

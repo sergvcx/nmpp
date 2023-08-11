@@ -21,7 +21,7 @@ extern core_ClipMul4D4W4_AddVr:label;
 extern _VEC_TBL_Diagonal_1h_G:long[16];
 extern _VEC_TBL_Diagonal_1h_L:long[16];
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 //! \fn void nmppsConvert_16s4s(nm16s* pSrcVec, nm4s* pDstVec, int nSize);
 //!
@@ -71,4 +71,4 @@ global _nmppsConvert_16s4s:label;
 	
 	return;
 .wait;
-end ".text_nmplv";
+end ".text.nmpp";

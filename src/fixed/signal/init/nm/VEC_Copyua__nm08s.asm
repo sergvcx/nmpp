@@ -303,7 +303,7 @@ data ".data_nmplv_G"
 
 end ".data_nmplv_G";
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
     //! \fn void nmppsCopyua_8s(nm8s *pSrcVec, int nOffset, nm8s *pDstVec, int nSize) 
     //!
@@ -363,5 +363,5 @@ return;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";
 

@@ -58,7 +58,7 @@ extern Table_sb_nb_woper_even:long[6*16];
 extern Table_sb_nb_woper_odd:long[8*16];
    
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 	//------------------------------------------------------------------------
@@ -109,4 +109,4 @@ global core_RShift32s:label;
 	return;
 .wait;
 
-end ".text_nmplv";
+end ".text.nmpp";

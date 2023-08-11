@@ -18,7 +18,7 @@
 //!
 //------------------------------------------------------------------------
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 extern core_CompareMin:label;
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -58,4 +58,4 @@ global _nmppsMinEvery_32s:label;
 return;
 .wait;
 
-end ".text_nmplv";
+end ".text.nmpp";

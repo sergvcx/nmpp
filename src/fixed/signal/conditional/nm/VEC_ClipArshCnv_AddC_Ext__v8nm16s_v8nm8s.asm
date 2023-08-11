@@ -64,7 +64,7 @@ macro SUBST_SHIFT()
     gr2 = gr1 or gr2;
 end SUBST_SHIFT;
 //------------------------------------------------------------------------
-begin ".text_nmplv"
+begin ".text.nmpp"
 pnShift: word;
 pnC: word;
 Params: long[21];
@@ -269,4 +269,4 @@ return;
 return;
 .wait;
 
-end ".text_nmplv";
+end ".text.nmpp";

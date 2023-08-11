@@ -26,7 +26,7 @@ matr1: word [10]=(0,0,
  0000h,0000h             // 3
  );
 end ".data_nmplv_L";
-begin ".text_nmplv"
+begin ".text.nmpp"
 extern core_Mul2D2W2_AddVr: label;
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -75,7 +75,7 @@ global _nmppsSplit_32s: label;
 	pop ar6,gr6;
 	return;
 .wait;   
-end ".text_nmplv";
+end ".text.nmpp";
 /*
 size     ticks   for 1 dbl
 400      559     2.184

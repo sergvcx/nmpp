@@ -580,7 +580,7 @@ end ".data_nmplv_G";
 
 import from macros.mlb;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 
@@ -650,4 +650,4 @@ global _nmppsRShiftC_32s:label;
 	return;
 .wait;
 
-end ".text_nmplv";
+end ".text.nmpp";

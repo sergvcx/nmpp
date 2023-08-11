@@ -27,7 +27,7 @@ end ".data_nmplv_G";
 import from macros.mlb;
 
 extern core_Add4V:label;
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 
@@ -57,7 +57,7 @@ global _nmppsAdd4V_16s:label;
 	POP_REGS();
 	return ;
 .wait;
-end ".text_nmplv";
+end ".text.nmpp";
  
 
 

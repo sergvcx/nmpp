@@ -39,7 +39,7 @@ data ".data_nmplv_G"
                        0001000000000000hl, 0100000000000000hl);
 
 end ".data_nmplv_G";
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 /////////////////////////////////////////////////////////////////////////////////////
 
@@ -88,4 +88,4 @@ global _nmppsConvert_16s8s:label;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

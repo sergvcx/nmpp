@@ -10,7 +10,7 @@ global _nmppsCopyOddToEven_32f: label;
 
 extern core_CopyOddToEven_32f: label;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 <_nmppsCopyOddToEven_32f>
 	ar5 = ar7 - 2;
 	push ar6, gr6;
@@ -27,4 +27,4 @@ begin ".text_nmplv"
 	pop ar5, gr5;
 	pop ar6, gr6;
 	return;
-end ".text_nmplv";
+end ".text.nmpp";

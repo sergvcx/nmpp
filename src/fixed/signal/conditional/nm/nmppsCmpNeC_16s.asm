@@ -21,7 +21,7 @@
 extern core_CmpNeC:label;
 extern _VEC_TBL_Diagonal_FFFFh_G:long;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 /////////////////////////////////////////////////////////////////////////////////////////
 //! \fn void nmppsCmpNeC_16s (nm16s *pSrcVec, int16b nVal, nm16s *pDstVec, int nSize) 
@@ -70,4 +70,4 @@ return with gr7=false;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

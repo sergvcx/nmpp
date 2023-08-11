@@ -23,7 +23,7 @@
 extern core_data:label;
 
 
-begin ".text_nmplv"
+begin ".text.nmpp"
   
 
 //! \fn void nmppsCopy_16s(nm16s* pSrcVec, nm16s* pDstVec, int nSize);
@@ -49,4 +49,4 @@ global _nmppsCopy_16s:label;
 	
 
 
-end ".text_nmplv";
+end ".text.nmpp";

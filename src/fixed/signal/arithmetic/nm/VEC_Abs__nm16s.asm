@@ -22,7 +22,7 @@
 extern _VEC_TBL_Diagonal_FFFFh_G:long;
 extern core_Abs:label;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 //! \fn void nmppsAbs_16s(nm16s *pSrcVec, nm16s *pDstVec, int nSize) 
@@ -56,4 +56,4 @@ global _nmppsAbs_16s:label;
 .wait;
 
 
-end ".text_nmplv";
+end ".text.nmpp";

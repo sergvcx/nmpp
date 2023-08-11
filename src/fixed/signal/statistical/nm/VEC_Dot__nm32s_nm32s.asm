@@ -31,7 +31,7 @@ data ".data_nmplv_G"
 								
 end ".data_nmplv_G";
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 .branch;
 //***************************************************************************/
 
@@ -109,4 +109,4 @@ global _nmppsDotProd_32s32s:label;
 return;
 
 .wait;
-end ".text_nmplv"; 
+end ".text.nmpp"; 

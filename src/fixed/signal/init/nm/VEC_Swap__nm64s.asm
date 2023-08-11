@@ -18,7 +18,7 @@
 //!
 //------------------------------------------------------------------------
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 extern core_Swap:label;
 
@@ -59,4 +59,4 @@ return;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

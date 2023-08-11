@@ -21,7 +21,7 @@
 
 extern core_activate_data_xor_data:label;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 //! \fn void nmppsAbs1 (nm4s *pSrcVec, nm4s *pDstVec, int nSize) 
@@ -47,4 +47,4 @@ global _nmppsAbs1_4s:label;
 .wait;
 
 
-end ".text_nmplv";
+end ".text.nmpp";

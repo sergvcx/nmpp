@@ -9,7 +9,7 @@
 //***************************************************************************/
 
 global _nmppsConvertRisc_8u32u: label;
-begin ".text_nmplv"
+begin ".text.nmpp"
 <_nmppsConvertRisc_8u32u>
 	ar5 = ar7 - 2;
 	push ar6, gr6;
@@ -64,4 +64,4 @@ begin ".text_nmplv"
 	pop ar5, gr5;
 	pop ar6, gr6;
 	return;
-end ".text_nmplv";
+end ".text.nmpp";

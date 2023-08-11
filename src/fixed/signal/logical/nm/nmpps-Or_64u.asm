@@ -21,7 +21,7 @@
 
 extern core_Or:label;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 ///////////////////////////////////////////////////////////
 //! \fn void nmppsOr_64u(nm64u* pSrcVec1, nm64u* pSrcVec2, nm64u* pDstVec, int nSize);
 //!
@@ -48,4 +48,4 @@ global _nmppsOr_64u:label;
 return;
 .wait;
 
-end ".text_nmplv";
+end ".text.nmpp";

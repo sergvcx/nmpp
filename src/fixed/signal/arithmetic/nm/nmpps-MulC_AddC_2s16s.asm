@@ -24,7 +24,7 @@ sb_6: long=2aa000000000000hl; // 48,2,2,2,2,8
 sb_7: long=0aa00000000000000hl; // 56,2,2,2,2
 VC: long;
 end ".data_nmplv_G";
-begin ".text_nmplv"
+begin ".text.nmpp"
 //  i=MulC_2s16s ( (short*)&psrc, C, (short*)&pdst, N2s, VC);
 extern core_vsum_data_vr: label;
 global _nmppsMulC_AddC_2s16s: label;
@@ -137,5 +137,5 @@ global _nmppsMulC_AddC_2s16s: label;
    pop ar0,gr0;
    pop ar6,gr6;
    return;
-end ".text_nmplv";
+end ".text.nmpp";
 

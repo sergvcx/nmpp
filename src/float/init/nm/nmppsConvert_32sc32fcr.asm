@@ -16,7 +16,7 @@ data "data"
 	swapping_matr: word[4] = (float(0), float(1), float(1), float(0));
 end "data";
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 <_nmppsConvert_32sc32fcr>
 	ar5 = ar7 - 2;
 	push ar2, gr2;
@@ -57,4 +57,4 @@ begin ".text_nmplv"
 	pop ar1, gr1;
 	pop ar2, gr2;
 	return;
-end ".text_nmplv";
+end ".text.nmpp";

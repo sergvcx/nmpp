@@ -33,7 +33,7 @@ data ".data_nmplv_G"
      0l, 100000000hl,    0l,    10000000000hl,
     0l, 1000000000000hl, 0l,100000000000000hl );
 end ".data_nmplv_G";
-begin ".text_nmplv"
+begin ".text.nmpp"
 //extern F1CR_Tbl_32bit: long;	//Modified by S.Mushkaev	
 extern  tbl_f1cr_nm32 : long;
 
@@ -92,4 +92,4 @@ global _nmppsClipRShiftConvertAddC_32s8s:label;
 	pop ar0,gr0;
 	pop ar6,gr6;
 	return;
-end ".text_nmplv";
+end ".text.nmpp";

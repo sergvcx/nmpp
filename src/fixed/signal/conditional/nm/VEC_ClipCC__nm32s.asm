@@ -30,7 +30,7 @@ end ".data_nmplv_G";
 
 extern core_ClipExt :label;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 
@@ -92,5 +92,5 @@ return;
 .wait;
 
 
-end ".text_nmplv";
+end ".text.nmpp";
 

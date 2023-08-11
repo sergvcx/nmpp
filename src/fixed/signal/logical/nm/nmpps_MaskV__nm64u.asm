@@ -29,7 +29,7 @@ end ".data_nmplv_G";
 
 extern core_Mask:label;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 ///////////////////////////////////////////////////////////////////////////////
 
 //! \fn void nmppsMaskV_64u(nm64u* pSrcVec1, nm64u* pSrcVec2, nm64u* pSrcVec3, nm64u* pDstVec, int nSize);
@@ -65,4 +65,4 @@ return;
 .wait;
 
 
-end ".text_nmplv";
+end ".text.nmpp";

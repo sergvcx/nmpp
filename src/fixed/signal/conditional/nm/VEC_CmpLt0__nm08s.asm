@@ -23,7 +23,7 @@ data ".data_nmplv_L"
 end ".data_nmplv_L";
 
 extern core_activate_data:label;
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 ///////////////////////////////////////////////////////////////////////////////
 
@@ -49,4 +49,4 @@ global _nmppsCmpLt0_8s:	label;
 return;
 .wait;
 
-end ".text_nmplv";
+end ".text.nmpp";

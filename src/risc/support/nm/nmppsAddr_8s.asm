@@ -22,7 +22,7 @@
 
 
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
     //--------------------------------------------------------------------
     //! \fn nm8s * nmppsAddr_8s(nm8s *pVec, int nIndex) 
@@ -44,5 +44,5 @@ delayed return;
 
   
 
-end ".text_nmplv";
+end ".text.nmpp";
 

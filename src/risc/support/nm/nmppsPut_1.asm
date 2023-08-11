@@ -20,7 +20,7 @@
 
 //#include "vConvert.h"
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 macro SETVAL0()
 	gr6 = not(01h);
@@ -110,4 +110,4 @@ global _nmppsPut_1:	label;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

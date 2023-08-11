@@ -22,7 +22,7 @@
 
 
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
   
     //--------------------------------------------------------------------
@@ -44,5 +44,5 @@ return;
 .wait;
 
 
-end ".text_nmplv";
+end ".text.nmpp";
 

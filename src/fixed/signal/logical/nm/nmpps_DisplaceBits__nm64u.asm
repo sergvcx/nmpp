@@ -35,7 +35,7 @@ data ".data_nmplv_G"
 end ".data_nmplv_G";
 
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 
@@ -215,4 +215,4 @@ extern _nmppsFwdShiftBitstream_Odd:label;	//for odd nBits
 POP_REGS();
 	return;
 .wait;
-end ".text_nmplv"; 
+end ".text.nmpp"; 

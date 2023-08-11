@@ -28,7 +28,7 @@ extern _mask_table:			word;
 //////////////////////////////////////////////////////////////////////
 //import from macros.mlb;
 //////////////////////////////////////////////////////////////////////
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 //! \fn void nmppsCmpEq0_16u15b(nm16u15b* pSrcVec, nm1* pDstVec, int nSize, int nTrueFlag);
 //!
@@ -156,7 +156,7 @@ global _nmppsCmpEq0_16u15b:label;
 	return;
 .wait;
 //////////////////////////////////////////////////////////////////////
-end ".text_nmplv";
+end ".text.nmpp";
 //********************************************************************/
 //		END OF FILE BoolConvert16to1.asm                                 */
 //********************************************************************/

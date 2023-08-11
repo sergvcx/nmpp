@@ -20,7 +20,7 @@
 
 extern core_ram_sub_data:label;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 /////////////////////////////////////////////////////////////////////////////////////////
 //! \fn void nmppsSubCRev (nm64s *pSrcVec, int64b *pnVal, nm64s *pDstVec, int nSize) 
@@ -57,4 +57,4 @@ return;
 .wait;
 
 
-end ".text_nmplv";
+end ".text.nmpp";

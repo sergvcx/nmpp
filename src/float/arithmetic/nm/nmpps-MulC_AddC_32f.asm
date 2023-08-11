@@ -22,7 +22,7 @@ end ".data_nmplv";
 
 More_64f:label;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 <_nmppsMulC_AddC_32f>
 	ar5 = ar7 - 2;
 	push ar0, gr0;
@@ -69,4 +69,4 @@ begin ".text_nmplv"
 	pop ar5, gr5;
 	pop ar0, gr0;
 	return;
-end ".text_nmplv";
+end ".text.nmpp";

@@ -21,7 +21,7 @@
 //import from macros.mlb;
 
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 //.if .nm64revision == 5;
 
@@ -73,5 +73,5 @@ return;
 .wait;
 
 //.endif;
-end ".text_nmplv";
+end ".text.nmpp";
 

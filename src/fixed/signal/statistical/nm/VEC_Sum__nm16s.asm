@@ -24,7 +24,7 @@ extern _VEC_TBL_One_G:long;
 
 extern core_vsum_data_afifo:label;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -65,4 +65,4 @@ global _nmppsSum_16s:label;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

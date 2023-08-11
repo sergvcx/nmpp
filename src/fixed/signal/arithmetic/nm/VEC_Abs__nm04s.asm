@@ -22,7 +22,7 @@
 extern _VEC_TBL_Diagonal_Fh_G:long;
 extern core_Abs:label;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 //! \fn void nmppsAbs_4s(nm4s *pSrcVec, nm4s *pDstVec, int nSize) 
@@ -54,4 +54,4 @@ global _nmppsAbs_4s:label;
 	pop ar0,gr0		with gr5=gr7;
 	return;
 .wait;
-end ".text_nmplv";
+end ".text.nmpp";

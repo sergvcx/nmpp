@@ -24,7 +24,7 @@ data ".data_nmplv_G"
 end ".data_nmplv_G";
 
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 /////////////////////////////////////////////////////////////////////////////////////////
 
 //! \fn void nmppsMulC_32s64s (nm32s *pSrcVec, int64b nVal, nm64s *pDstVec, int nSize) 
@@ -78,4 +78,4 @@ return;
 
 
 
-end ".text_nmplv"; 
+end ".text.nmpp"; 

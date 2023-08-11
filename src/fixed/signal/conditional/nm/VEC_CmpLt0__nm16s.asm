@@ -23,7 +23,7 @@ data ".data_nmplv_L"
 end ".data_nmplv_L";
 
 extern core_activate_data:label;
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 
@@ -54,4 +54,4 @@ return;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

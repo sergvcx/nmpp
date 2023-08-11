@@ -16,7 +16,7 @@
 // f - pDstVec3
 
 global _nmppsMul_Mul_Add_64f: label;
-begin ".text_nmplv"
+begin ".text.nmpp"
 <_nmppsMul_Mul_Add_64f>
 	ar5 = ar7 - 2;
 	push ar4, gr4;
@@ -78,4 +78,4 @@ begin ".text_nmplv"
 	pop ar3, gr3;
 	pop ar4, gr4;
 	return;
-end ".text_nmplv";
+end ".text.nmpp";

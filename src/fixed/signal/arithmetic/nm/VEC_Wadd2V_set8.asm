@@ -18,7 +18,7 @@
 //!
 //------------------------------------------------------------------------
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 global _nmppsWeightedSum_Set8 :label;
 <_nmppsWeightedSum_Set8>
@@ -49,4 +49,4 @@ global _nmppsWeightedSum_Set8 :label;
   pop ar6,gr6; pop ar2,gr2;pop ar1,gr1; pop ar0,gr0;
   return;
 
-end ".text_nmplv";
+end ".text.nmpp";

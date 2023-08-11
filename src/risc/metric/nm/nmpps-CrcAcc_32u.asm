@@ -98,7 +98,7 @@ extern  _CRC32_Table: word;
 //);
 //end  ".data_nmplv_G";
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -237,4 +237,4 @@ global   core_crc32:label;
 return;	
 
 
-end ".text_nmplv";
+end ".text.nmpp";

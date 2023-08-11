@@ -24,7 +24,7 @@ extern core_ram:label;
 
 extern _nmppsTmpBuffer16_G_:long;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
    //--------------------------------------------------------------------
     //! \fn void nmppsSet_32s( int32b nVal, nm32s *pVec,int nSize) 
@@ -55,4 +55,4 @@ global _nmppsSet_32s:label;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

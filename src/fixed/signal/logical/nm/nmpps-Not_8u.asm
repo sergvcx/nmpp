@@ -20,7 +20,7 @@
 
 
 extern core_not_data:label;
-begin ".text_nmplv"
+begin ".text.nmpp"
 ///////////////////////////////////////////////////////////
 //! \fn void nmppsNot_8u(nm64u* pSrcVec, nm64u* pDstVec, int nSize);
 //!
@@ -44,4 +44,4 @@ global _nmppsNot_8u:label;
 	pop ar0,gr0;
 return;
 .wait;
-end ".text_nmplv";
+end ".text.nmpp";

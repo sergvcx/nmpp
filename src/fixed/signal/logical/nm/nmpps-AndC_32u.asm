@@ -21,7 +21,7 @@
 
 
 extern core_data_and_ram:label;
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 /////////////////////////////////////////////////////////////////////////////
 
@@ -55,4 +55,4 @@ global _nmppsAndC_32u:label;
 	pop ar0,gr0;
 return;
 .wait;
-end ".text_nmplv";
+end ".text.nmpp";

@@ -20,7 +20,7 @@ begin ".data_nmplv"
 	zero_one : word[2] = (float(0),float(1));
 end ".data_nmplv";
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 <_nmppsMerge_32f>
 //void nmppsMerge_32f(const nm32f* pSrcVec1, const nm32f* pSrcVec2, nm32f* pDstVec, int nSize);	
 	ar5 = ar7 - 2;
@@ -77,4 +77,4 @@ begin ".text_nmplv"
 	pop ar1,gr1;
 	pop ar0,gr0;
 	return;
-end ".text_nmplv";
+end ".text.nmpp";

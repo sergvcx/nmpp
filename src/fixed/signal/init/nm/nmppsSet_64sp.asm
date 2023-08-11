@@ -23,7 +23,7 @@
 extern core_ram:label;
 
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
     //--------------------------------------------------------------------
     //! \fn void nmppsSet_64sp(int64b *nVal,nm64s *pVec, int nSize) 
@@ -50,4 +50,4 @@ global _nmppsSet_64sp:label;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

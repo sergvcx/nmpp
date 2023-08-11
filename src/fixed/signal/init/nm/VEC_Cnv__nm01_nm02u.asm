@@ -53,7 +53,7 @@ macro tail(N)
 		rep N with vsum, shift ram, afifo;
 		rep N [ar2++gr2] = afifo; 
 end tail;
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 //! \fn void nmppsConvert_1u2u*(nm1* pSrcVec, nm2u* pDstVec, int nSize)
 //!
@@ -154,7 +154,7 @@ global _nmppsConvert_1u2u:label;
 	return;
 .wait;
 //////////////////////////////////////////////////////////////////////
-end ".text_nmplv";
+end ".text.nmpp";
 //********************************************************************/
 //		END OF FILE vConvert1to2.asm                                     */
 //********************************************************************/

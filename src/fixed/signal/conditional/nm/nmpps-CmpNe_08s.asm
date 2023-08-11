@@ -18,7 +18,7 @@
 //!
 //------------------------------------------------------------------------
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 extern core_CmpNeV:label;
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -57,4 +57,4 @@ global _nmppsCmpNe_8s:label;
 return;
 .wait;
 
-end ".text_nmplv";
+end ".text.nmpp";

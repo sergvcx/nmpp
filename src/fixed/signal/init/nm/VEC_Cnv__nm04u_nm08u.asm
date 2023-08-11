@@ -20,7 +20,7 @@ data ".MyData"
 						   0100000000000000hl);
 end ".MyData";
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 <_nmppsConvert_4u8u>
 .branch;
 	ar5 = ar7 -2;
@@ -65,4 +65,4 @@ begin ".text_nmplv"
 	pop ar0,gr0;
 .wait;
 	return;
-end ".text_nmplv";   
+end ".text.nmpp";   

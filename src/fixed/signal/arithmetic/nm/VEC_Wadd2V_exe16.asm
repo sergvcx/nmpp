@@ -18,7 +18,7 @@
 //!
 //------------------------------------------------------------------------
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 extern core_Mul2D2W4_AddVr:label;
 // void nmppsWeightedSum_Exe_16s32s(nm16s* pSrcVec1,nm16s* pSrcVec2, S_nmppsWeightedSum* kerW, nm32s* pDstVec, int nSize);
@@ -62,4 +62,4 @@ global _nmppsWeightedSum_Exe_16s32s:label;
 
 ///==========================================
 
-end ".text_nmplv";
+end ".text.nmpp";

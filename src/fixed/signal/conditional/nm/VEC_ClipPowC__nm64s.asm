@@ -23,7 +23,7 @@
 extern core_activate_data_add_0:label;
 extern tbl_f1cr_nm64:long[64];
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -60,5 +60,5 @@ global _nmppsClipPowC_64s:label;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";
 

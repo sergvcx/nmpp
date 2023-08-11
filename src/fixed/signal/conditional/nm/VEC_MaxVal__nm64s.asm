@@ -25,7 +25,7 @@ extern	_nmppsTmpBuffer16_G_: long;
 extern core_MaxVal:label;
 
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -73,4 +73,4 @@ return;
 
 	
 
-end ".text_nmplv";
+end ".text.nmpp";

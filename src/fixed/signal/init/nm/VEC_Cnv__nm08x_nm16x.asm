@@ -26,7 +26,7 @@ data ".data_nmplv"
 								 1l, 10000hl, 100000000hl, 1000000000000hl);
 end ".data_nmplv";
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 /////////////////////////////////////////////////////////////////////////////////
 
 
@@ -84,4 +84,4 @@ global _nmppsConvert_8u16u:label;
 	pop ar0,gr0;
 	return;
 .wait;
-end ".text_nmplv";
+end ".text.nmpp";

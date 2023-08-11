@@ -37,7 +37,7 @@ data ".data_nmplv_L"
                          1000000000000hl, 100000000000000hl);
 end ".data_nmplv_L";
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 //! \fn void nmppsConvert_32s8s(nm32s* pSrcVec, nm8s* pDstVec, int nSize);
 //!
@@ -87,4 +87,4 @@ global _nmppsConvert_32s8s:label;
 	
 	return;
 .wait;
-end ".text_nmplv";
+end ".text.nmpp";

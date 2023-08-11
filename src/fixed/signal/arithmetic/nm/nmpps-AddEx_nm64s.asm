@@ -23,7 +23,7 @@
 
 
 extern core_Add:label;
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 
@@ -68,4 +68,4 @@ return with gr7=false;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

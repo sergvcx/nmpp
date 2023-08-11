@@ -17,7 +17,7 @@ import from rtmacro.mlb;
 import from macros.mlb;
 
 global _nmppsFwdShiftBitstream_Odd:label;
-begin ".text_nmplv"
+begin ".text.nmpp"
 <_nmppsFwdShiftBitstream_Odd>
 .branch;
 /*	ar5 = ar7 - 2;	
@@ -151,4 +151,4 @@ begin ".text_nmplv"
 	pop ar0,gr0;
 	return;
 .wait;
-end ".text_nmplv"; 
+end ".text.nmpp"; 

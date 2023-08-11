@@ -15,7 +15,7 @@ global _nmppsMul_32f: label;
 // x2 - pSrcVec2
 // y  - pDstVec[i] = pSrcVec1[i] * pSrcVec2[i]
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 <_nmppsMul_32f>
 	ar5 = ar7 - 2;
 	push ar2, gr2;
@@ -56,4 +56,4 @@ begin ".text_nmplv"
 	pop ar1, gr1;
 	pop ar2, gr2;
 	return;
-end ".text_nmplv";
+end ".text.nmpp";

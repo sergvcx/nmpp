@@ -28,7 +28,7 @@ extern core_MinVal:label;
 
 
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 /////////////////////////////////////////////////////////////////////////////////////////
 //! \fn void nmppsMin_8s7b(nm8s *pSrcVec, int nSize, int8b &nMinValue) 
 //!
@@ -68,4 +68,4 @@ return;
 
 	
 
-end ".text_nmplv";
+end ".text.nmpp";

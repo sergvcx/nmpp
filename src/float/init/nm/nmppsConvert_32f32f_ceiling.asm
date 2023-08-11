@@ -19,7 +19,7 @@ global _nmppsConvert_32f32f_ceiling: label;
 
 extern core_nmppsConvert_32f32f_ceiling: label;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 <_nmppsConvert_32f32f_ceiling>
 	ar5 = ar7 - 2;
 	push ar2, gr2;
@@ -37,4 +37,4 @@ begin ".text_nmplv"
 	pop ar1, gr1;
 	pop ar2, gr2;
 	return;
-end ".text_nmplv";
+end ".text.nmpp";

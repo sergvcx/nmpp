@@ -28,7 +28,7 @@ end ".data_nmplv_G";
 //import from macros.mlb;
 extern core_MulVN_AddVN:label;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -75,4 +75,4 @@ return with gr7=false;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

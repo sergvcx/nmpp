@@ -26,7 +26,7 @@ macro convert_4s2s_tail (N)
 		rep N [ar6++gr6]=afifo;
 end convert_4s2s_tail;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 <_nmppsConvert_4s2s>
 .branch;
 	ar5 = ar7 -2;
@@ -120,4 +120,4 @@ begin ".text_nmplv"
 	pop ar0,gr0;
 .wait;
 	return;
-end ".text_nmplv";   
+end ".text.nmpp";   

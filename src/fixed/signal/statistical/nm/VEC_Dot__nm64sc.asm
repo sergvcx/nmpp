@@ -1,5 +1,5 @@
 import from macros.mlb;
-begin ".text_nmplv"
+begin ".text.nmpp"
 //------------------------------------------------------------------------------------------------
 //  Скалярное умножение комплексных векторов сопр.V1*V2
 //  time=70 тактов на комрлексное число.
@@ -68,4 +68,4 @@ tmp: word[16];
  POP_REGS(); 
  delayed return;
  gr7=[tmp];nul;
-end ".text_nmplv";
+end ".text.nmpp";

@@ -21,7 +21,7 @@
 extern core_SubAbs:label;
 extern _VEC_TBL_MinusOne_G:long;
 extern _nmppsTmpBuffer16_G_:long;
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 //! \fn void nmppsAbsDiff (nm64s *pSrcVec1, nm64s *pSrcVec2, nm64s *pDstVec, int nSize) 
@@ -71,4 +71,4 @@ global _nmppsAbsDiff_64s:label;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

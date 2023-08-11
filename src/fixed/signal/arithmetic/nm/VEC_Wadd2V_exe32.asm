@@ -17,7 +17,7 @@
 //! \endif
 //!
 //------------------------------------------------------------------------
-begin ".text_nmplv"
+begin ".text.nmpp"
 extern core_Mul2D2W2_AddVr:label;
 
 // void nmppsWeightedSum_Exe_32s64s(nm32s* pSrcVec1,nm32s* pSrcVec2, S_nmppsWeightedSum* kerW, nm64s* pDstVec, int nSize);
@@ -47,4 +47,4 @@ delayed call core_Mul2D2W2_AddVr;
   pop ar2,gr2;
   pop ar1,gr1; pop ar0,gr0;
   return;
-end ".text_nmplv";
+end ".text.nmpp";

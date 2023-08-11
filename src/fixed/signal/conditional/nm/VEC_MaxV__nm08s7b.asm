@@ -18,7 +18,7 @@
 //!
 //------------------------------------------------------------------------
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 extern core_CompareMax:label;
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -60,4 +60,4 @@ global _nmppsMaxEvery_8s:label;
 return;
 .wait;
 
-end ".text_nmplv";
+end ".text.nmpp";

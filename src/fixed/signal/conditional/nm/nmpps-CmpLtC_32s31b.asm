@@ -21,7 +21,7 @@
 extern core_CmpLtC:label;
 
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 /////////////////////////////////////////////////////////////////////////////////////////
 //! \fn void nmppsCmpLtC_32s31b (nm32s *pSrcVec, int32b nVal, nm32s *pDstVec, int nSize) 
@@ -67,4 +67,4 @@ return with gr7=false;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

@@ -24,7 +24,7 @@ extern core_ClipMul4D4W1_AddVr:label;
 extern _VEC_TBL_Diagonal_0001h_G:long[16];
 extern _VEC_TBL_Diagonal_0001h_L:long[16];
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 /////////////////////////////////////////////////////////////////////////////////////
 
@@ -80,4 +80,4 @@ global _nmppsConvert_64s16s:label;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

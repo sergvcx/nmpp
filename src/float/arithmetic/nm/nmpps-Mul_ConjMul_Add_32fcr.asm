@@ -20,7 +20,7 @@ data ".data_nmplv"
 end ".data_nmplv";
 
 global _nmppsMul_ConjMul_Add_32fcr: label;
-begin ".text_nmplv"
+begin ".text.nmpp"
 <_nmppsMul_ConjMul_Add_32fcr>
 	ar5 = ar7 - 2;
 	push ar4, gr4;
@@ -94,4 +94,4 @@ begin ".text_nmplv"
 	pop ar3, gr3;
 	pop ar4, gr4;
 	return;
-end ".text_nmplv";
+end ".text.nmpp";

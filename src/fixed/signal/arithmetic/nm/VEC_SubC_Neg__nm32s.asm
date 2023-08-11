@@ -21,7 +21,7 @@
 extern core_ram_sub_data:label;
 extern  _nmppsTmpBuffer16_G_:long;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 	
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -60,4 +60,4 @@ return;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

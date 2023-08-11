@@ -20,7 +20,7 @@
 //#include "vProd.h"
 
 import from macros.mlb;
-begin ".text_nmplv"
+begin ".text.nmpp"
 .branch;
 
 //! \fn void nmppsDotProd_16s64s (nm16s *pSrcVec1, nm64s *pSrcVec2, int nSize, int64b *pnRes) 
@@ -59,4 +59,4 @@ global _nmppsDotProd_16s64s:label;
 return;
 
 .wait;
-end ".text_nmplv"; 
+end ".text.nmpp"; 

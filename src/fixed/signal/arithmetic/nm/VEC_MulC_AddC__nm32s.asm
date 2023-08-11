@@ -24,7 +24,7 @@ extern core_vsum_data_vr	:label;
 extern core_MulVN_AddVN	:label;
 extern _nmppsTmpBuffer16_G_:long[16];
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 
@@ -81,4 +81,4 @@ return;
 
 .wait;
 
-end ".text_nmplv";
+end ".text.nmpp";

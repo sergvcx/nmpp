@@ -21,7 +21,7 @@
 
 extern core_activate_data_xor_data:label;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -52,4 +52,4 @@ global _nmppsAbs1_64s:label;
 	return;
 .wait;
 
-end ".text_nmplv";
+end ".text.nmpp";

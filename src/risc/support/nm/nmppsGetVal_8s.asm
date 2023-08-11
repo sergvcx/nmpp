@@ -24,7 +24,7 @@
 //!
 //! \perfinclude _nmppsGetVal_8s.html
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 global _nmppsGetVal_8s:label;
 <_nmppsGetVal_8s>
@@ -65,4 +65,4 @@ global _nmppsGetVal_8s:label;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

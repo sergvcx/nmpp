@@ -258,7 +258,7 @@ end ".data_nmplv_G";
 
 import from macros.mlb;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 ///////////////////////////////////////////////////////////////////////////////////////
 //
@@ -322,4 +322,4 @@ global _nmppsRShiftC_8s:label;
 	pop ar0,gr0;
 	return;
 .wait;
-end ".text_nmplv";
+end ".text.nmpp";

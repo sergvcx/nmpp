@@ -1,4 +1,4 @@
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 //--------------------------------------------------------------------
 //! \fn int nmppsMinIndxV16_(int* pSrcVec,int nStride,int& nPos);
@@ -57,4 +57,4 @@ global _nmppsMinIndxV16_32s:label;
 	return;
 .wait;
 
-end ".text_nmplv";
+end ".text.nmpp";

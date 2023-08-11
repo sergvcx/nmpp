@@ -18,7 +18,7 @@
 //!
 //------------------------------------------------------------------------
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 extern core_CompareMinNV:label;
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -54,7 +54,7 @@ global _nmppsMinNV_16s :label;
 return;
 .wait;
 
-end ".text_nmplv";
+end ".text.nmpp";
 
 
 

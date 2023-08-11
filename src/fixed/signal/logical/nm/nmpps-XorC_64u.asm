@@ -20,7 +20,7 @@
    
 
 extern core_data_xor_ram:label;
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 /////////////////////////////////////////////////////////////////////////////
 
@@ -51,4 +51,4 @@ global _nmppsXorC_64u:label;
 	pop ar0,gr0;
 return;
 .wait;
-end ".text_nmplv";
+end ".text.nmpp";

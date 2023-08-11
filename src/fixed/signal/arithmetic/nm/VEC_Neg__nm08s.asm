@@ -22,7 +22,7 @@
 
 extern core_0_sub_data:label;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 //! \fn void nmppsNeg (nm8s *pSrcVec, nm8s *pDstVec, int nSize) 
 //!
@@ -51,4 +51,4 @@ global _nmppsNeg_8s:label;
 
 .wait;
 
-end ".text_nmplv";
+end ".text.nmpp";

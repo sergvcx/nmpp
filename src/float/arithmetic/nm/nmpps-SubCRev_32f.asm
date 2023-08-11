@@ -15,7 +15,7 @@ global _nmppsSubCRev_32f: label;
 // Const - C
 // f - pDstVec
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 <_nmppsSubCRev_32f>
 	ar5 = ar7 - 2;
 	push ar3, gr3;
@@ -71,4 +71,4 @@ begin ".text_nmplv"
 	pop ar2, gr2;
 	pop ar3, gr3;
 	return;
-end ".text_nmplv";
+end ".text.nmpp";

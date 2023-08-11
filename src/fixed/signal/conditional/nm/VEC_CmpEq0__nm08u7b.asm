@@ -130,7 +130,7 @@ end ".data_nmplv_G";
 //import from macros.mlb;
 //////////////////////////////////////////////////////////////////////
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 
@@ -261,4 +261,4 @@ global _nmppsCmpEq0_8u7b:label;
 	pop ar0, gr0;
 	return;
 .wait;
-end ".text_nmplv";
+end ".text.nmpp";

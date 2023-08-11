@@ -22,7 +22,7 @@ data ".data_nmplv_G"
 end ".data_nmplv_G";
 
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 extern core_vsum_data_0:label;
 /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -68,4 +68,4 @@ return;
 
 
 
-end ".text_nmplv"; 
+end ".text.nmpp"; 

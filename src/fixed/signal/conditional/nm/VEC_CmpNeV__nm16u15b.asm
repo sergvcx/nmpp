@@ -3,7 +3,7 @@ extern nmppsBuildDiagWeights16_: label;
 extern nmppsDataXorRamV_ActivateAfifoVr_: label;
 extern _nmppsTmpBuffer64_L_: word;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 	//! \fn void nmppsCmpNeV_16u(nm16u15b* pSrcVec1, nm16u15b* pSrcVec2, nm16s* pDstVec, int nSize, int16b shTrueFlag);
 	//!
 	//! \perfinclude _nmppsCmpNeV_16u.html
@@ -45,4 +45,4 @@ global _nmppsCmpNeV_16u:label;
     return;
 .wait;
     //--------------------------------------------------------------------
-end ".text_nmplv";
+end ".text.nmpp";

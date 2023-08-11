@@ -20,7 +20,7 @@
 
 //#include "vConvert.h"
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 //! \fn void nmppsGetVal_2u(nm2u *pVec, int nIndex, uint2b& nVal) 
 //!
@@ -75,4 +75,4 @@ global _nmppsGetVal_2u:	label;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

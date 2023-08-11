@@ -82,7 +82,7 @@ data ".data_nmplv_G"
 						0100000000000000hl);
 
 end ".data_nmplv_G";
-begin ".text_nmplv"
+begin ".text.nmpp"
     
     //--------------------------------------------------------------------
     //! \fn void nmppsClipRShiftConvertAddC_16s(nm16s* pSrcVec, int nClipFactor,int nShift, int8b nAddValue,nm8s* pDstVec, int nSize);
@@ -143,4 +143,4 @@ global _nmppsClipRShiftConvertAddC_16s8s:label;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

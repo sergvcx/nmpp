@@ -18,7 +18,7 @@
 //!
 //------------------------------------------------------------------------
 
-begin ".text_nmplv"
+begin ".text.nmpp"
  
 //! \fn int nmppsFirstNonZeroIndx_32s(int* pSrcVec, int nSize)
 //!
@@ -55,4 +55,4 @@ Loop:label;
   	pop ar1,gr1 	with gr0 A>>= 31;	// gr0=FFFFFFFF если gr0=0
   	pop ar0,gr0 	with gr7 = gr7 or gr0;
 return;
-end ".text_nmplv";
+end ".text.nmpp";

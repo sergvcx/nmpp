@@ -32,7 +32,7 @@ end ".data_nmplv_G";
 
 import from macros.mlb;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 
@@ -90,7 +90,7 @@ global _nmppsSumN_16s:label;
 	POP_REGS();
 	return ;
 .wait;
-end ".text_nmplv";
+end ".text.nmpp";
  
 
 

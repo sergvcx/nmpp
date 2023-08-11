@@ -20,7 +20,7 @@
 
 //#include "vConvert.h"
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 //! \fn uint8u nmppsGet_8u(nm8u *pVec, int nIndex) 
 //!
@@ -64,4 +64,4 @@ global _nmppsGet_8u:	label;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

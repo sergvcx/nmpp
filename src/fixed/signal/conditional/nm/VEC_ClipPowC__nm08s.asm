@@ -24,7 +24,7 @@ import from macros.mlb;
 extern core_activate_data_add_0:label;
 extern tbl_f1cr_nm8:long[8];
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 
@@ -58,5 +58,5 @@ global _nmppsClipPowC_8s:label;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";
 

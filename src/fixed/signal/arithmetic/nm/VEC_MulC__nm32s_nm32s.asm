@@ -22,7 +22,7 @@
 extern core_vsum_data_0	:label;
 extern _nmppsTmpBuffer16_G_:long[16];
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 /////////////////////////////////////////////////////////////////////////////////////////
 
 //! \fn void nmppsMulC (nm32s *pSrcVec, int32b nVal, nm32s *pDstVec, int nSize)
@@ -69,4 +69,4 @@ return;
 .wait;
 
 
-end ".text_nmplv";
+end ".text.nmpp";

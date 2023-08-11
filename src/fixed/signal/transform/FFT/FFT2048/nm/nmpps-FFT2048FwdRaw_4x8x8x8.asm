@@ -78,7 +78,7 @@ end ".data_fft_L";
 
 
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 	
 global   nmppsFinalizeCmplxMul:label;
 		<nmppsFinalizeCmplxMul>
@@ -651,4 +651,4 @@ global _nmppsFFT2048Fwd4888	:label;
 return ;
 .wait;
 
-end ".text_nmplv";
+end ".text.nmpp";

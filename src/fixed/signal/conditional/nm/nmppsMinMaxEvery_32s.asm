@@ -18,7 +18,7 @@
 //!
 //------------------------------------------------------------------------
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 extern core_CompareMinMax:label;
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -63,4 +63,4 @@ global _nmppsMinMaxEvery_32s:label;
 	pop ar0,gr0;
 return;
 .wait;
-end ".text_nmplv";
+end ".text.nmpp";

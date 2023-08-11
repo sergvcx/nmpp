@@ -19,7 +19,7 @@
 
 extern	_nmppsTmpBuffer64_G_:long;
 extern _VEC_TBL_One_G:long;
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 
@@ -72,5 +72,5 @@ global _nmppsSadV16_8s:label;
 .wait;
 
 
-end ".text_nmplv";
+end ".text.nmpp";
 

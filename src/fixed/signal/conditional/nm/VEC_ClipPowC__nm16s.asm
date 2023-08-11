@@ -23,7 +23,7 @@
 extern core_activate_data_add_0:label;
 extern tbl_f1cr_nm16:long[16];
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 
@@ -57,5 +57,5 @@ global _nmppsClipPowC_16s:label;
 	return;
 .wait;
 
-end ".text_nmplv";
+end ".text.nmpp";
 

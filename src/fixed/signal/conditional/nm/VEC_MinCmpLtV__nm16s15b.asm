@@ -26,7 +26,7 @@ end ".data_nmplv_G";
 //********** Text   ********************
 
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -129,4 +129,4 @@ global core_reg_MinMask:label;
 	pop ar3,gr3;
 return;
 
-end ".text_nmplv";
+end ".text.nmpp";

@@ -21,7 +21,7 @@
 
 extern core_Sub:label;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 
@@ -59,4 +59,4 @@ return;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

@@ -13,7 +13,7 @@ matr1: word [10]=(
  0000h,0000h    // 3
 );
 end ".data_nmplv_L";
-begin ".text_nmplv"
+begin ".text.nmpp"
 //  i=Merge_8s (int*psrc, int* pdst0, int* pdst1, int size);
 .branch;
 extern core_Mul2D2W2_AddVr: label;
@@ -62,6 +62,6 @@ global _nmppsMerge_32s: label;
 	return;
 .wait;	
 	
-end ".text_nmplv";
+end ".text.nmpp";
 /*size  time  ticks per int для pdst=4000h, psrc0,1=80000000h,80001000h
 */

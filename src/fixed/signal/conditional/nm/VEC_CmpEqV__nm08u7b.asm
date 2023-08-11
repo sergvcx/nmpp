@@ -4,7 +4,7 @@ extern nmppsBuildDiagWeights8_: label;
 extern nmppsDataXorRamV_ActivateAfifoVr_: label;
 extern _nmppsTmpBuffer64_L_: word;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
     //--------------------------------------------------------------------
 	//! \fn void nmppsCmpEqV_8u7b(nm8u7b* pSrcVec1, nm8u7b* pSrcVec2, nm8s* pDstVec, int nSize, int8b chTrueFlag);
 	//!
@@ -50,4 +50,4 @@ global _nmppsCmpEqV_8u7b:label;
 .wait;
 
     //--------------------------------------------------------------------
-end ".text_nmplv";
+end ".text.nmpp";

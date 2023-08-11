@@ -21,7 +21,7 @@
 extern core_data_sub_ram:label;
 extern _nmppsTmpBuffer16_G_:long;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 /////////////////////////////////////////////////////////////////////////////////////////
 //! \fn void nmppsSubC (nm4s *pSrcVec, int4b nVal, nm4s *pDstVec, int nSize) 
 //!
@@ -62,4 +62,4 @@ return;
 .wait;
 
 
-end ".text_nmplv";
+end ".text.nmpp";

@@ -1,7 +1,7 @@
 
 extern core_vsum_data_vr:label;
 extern tbl_sb_nm32_EvenARSH:long;
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 // void nmppsRShiftC_MulC_AddC_2x32s(int32x2* dataSparseSrc,  int32x2* preshiftArg, int32x2* mulArg, int32x2* addArg, int32x2 *dataSparseDst,  int size, int stepSparseSrc, int stepSparseDst);
 global "_nmppsRShiftC_MulC_AddC_2x32s" : label;
@@ -54,4 +54,4 @@ global "_nmppsRShiftC_MulC_AddC_2x32s" : label;
 	return;
 .wait;
 
-end ".text_nmplv";
+end ".text.nmpp";

@@ -124,7 +124,7 @@ data ".data_nmplv_G"
 
 end ".data_nmplv_G";
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 
@@ -189,7 +189,7 @@ global _nmppsRShiftC_32u:label;
 	pop ar0,gr0;
 	return;
 .wait;
-end ".text_nmplv"; 
+end ".text.nmpp"; 
 
 
 

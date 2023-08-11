@@ -24,7 +24,7 @@ extern core_ram:label;
 
 extern _nmppsTmpBuffer16_G_:long;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 	
 
@@ -62,4 +62,4 @@ global _nmppsSet_16s:label;
 		
 
 
-end ".text_nmplv";
+end ".text.nmpp";

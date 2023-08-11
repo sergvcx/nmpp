@@ -23,7 +23,7 @@ data ".data_nmplv_L"
 end ".data_nmplv_L";
 
 extern core_activate_data:label;
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 ///////////////////////////////////////////////////////////////////////////////
 //! \fn void nmppsCmpLt0_32s(nm32s* pSrcVec, nm32s* pDstVec, int nSize);
@@ -50,4 +50,4 @@ return;
 .wait;
 
 
-end ".text_nmplv";
+end ".text.nmpp";

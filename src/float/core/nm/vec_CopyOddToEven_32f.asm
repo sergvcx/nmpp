@@ -15,7 +15,7 @@
 // size - all size except zero (1, 2, 3, 4, ... )
 
 global core_CopyOddToEven_32f: label;
-begin ".text_nmplv"
+begin ".text.nmpp"
 <core_CopyOddToEven_32f>
 	// ar5 = ar7 - 2;
 	push ar5, gr5;
@@ -69,4 +69,4 @@ begin ".text_nmplv"
 	pop ar4, gr4;
 	pop ar5, gr5;
 	return;
-end ".text_nmplv";
+end ".text.nmpp";

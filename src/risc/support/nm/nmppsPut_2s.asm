@@ -20,7 +20,7 @@
 
 //#include "vConvert.h"
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -90,4 +90,4 @@ global _nmppsPut_2s:label;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

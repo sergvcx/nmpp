@@ -61,7 +61,7 @@ end ".data_fft_L";
 
 
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 	
 
 //////////////////////////////////////////////////////////////////////////////
@@ -443,4 +443,4 @@ global _nmppsFFT16Fwd242	:label;
 return ;
 .wait;
 
-end ".text_nmplv";
+end ".text.nmpp";

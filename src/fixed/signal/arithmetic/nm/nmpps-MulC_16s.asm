@@ -18,7 +18,7 @@
 //!
 //------------------------------------------------------------------------
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 extern core_vsum_data_0:label;
 
@@ -63,4 +63,4 @@ return;
 .wait;
 
 
-end ".text_nmplv";
+end ".text.nmpp";

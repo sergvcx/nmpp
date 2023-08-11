@@ -21,7 +21,7 @@
 
 extern core_And4V:label;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 ///////////////////////////////////////////////////////////
 //! \fn void nmppsAnd4V_64u(nm64u* pSrcVec1, nm64u* pSrcVec2, nm64u* pSrcVec3, nm64u* pSrcVec4, nm64u* pDstVec, int nSize);
 //!
@@ -56,4 +56,4 @@ global _nmppsAnd4V_64u:label;
 return;
 .wait;
 
-end ".text_nmplv";
+end ".text.nmpp";

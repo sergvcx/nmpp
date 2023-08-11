@@ -21,7 +21,7 @@
 extern core_CmpLtC:label;
 extern _VEC_TBL_MinusOne_G:long;
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 /////////////////////////////////////////////////////////////////////////////////////////
 //! \fn void nmppsCmpLtC_64s63b (nm64s *pSrcVec, int64b nVal, nm64s *pDstVec, int nSize) 
@@ -69,4 +69,4 @@ return with gr7=false;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

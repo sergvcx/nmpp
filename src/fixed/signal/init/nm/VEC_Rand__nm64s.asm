@@ -33,7 +33,7 @@ data ".data_nmplv_G"
 end ".data_nmplv_G";
 
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 
@@ -87,4 +87,4 @@ global _nmppsRandUniform_64s:label;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";

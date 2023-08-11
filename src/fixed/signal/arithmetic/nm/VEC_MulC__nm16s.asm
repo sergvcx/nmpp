@@ -27,7 +27,7 @@ end ".data_nmplv_G";
 extern core_vsum_data_0:label;
 
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 //! \fn void nmppsMulC (nm16s *pSrcVec, int32b nVal, nm32s *pDstVec, int nSize) 
@@ -91,4 +91,4 @@ return;
 .wait;
 
 
-end ".text_nmplv"; 
+end ".text.nmpp"; 

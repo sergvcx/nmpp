@@ -1,6 +1,6 @@
 extern core_Add:label;
 import from macros.mlb;
-begin ".text_nmplv"
+begin ".text.nmpp"
 //------------------------------------------------------------------------------------------------
 //! \fn void _nmppsAdd_64sc(nm64sc *pSrcVec1, nm64sc *pSrcVec2, nm64sc *pDstVec, int nSize);
 //! 
@@ -33,4 +33,4 @@ global _nmppsAdd_64sc :label;
 	pop ar0,gr0;
 return with gr7=false;
 .wait;
-end ".text_nmplv";
+end ".text.nmpp";

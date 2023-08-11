@@ -1,6 +1,6 @@
 
 extern core_vsum_data_vr:label;
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 // void nmppsMulC_AddC_2x32s(int32x2* dataSparseSrc,  int32x2* mulArg, int32x2* addArg, int32x2* dataSparseDst,  int size, int stepSparseSrc, int stepSparseDst);
 global "_nmppsMulC_AddC_2x32s" : label;
@@ -43,4 +43,4 @@ global "_nmppsMulC_AddC_2x32s" : label;
 	return;
 .wait;
 
-end ".text_nmplv";
+end ".text.nmpp";

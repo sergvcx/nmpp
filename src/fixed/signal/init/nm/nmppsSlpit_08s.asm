@@ -44,7 +44,7 @@ data ".data_nmplv_L"
 end ".data_nmplv_L";
 
 
-begin ".text_nmplv"
+begin ".text.nmpp"
 
 
 
@@ -102,4 +102,4 @@ return;
 
 
 
-end ".text_nmplv";
+end ".text.nmpp";
