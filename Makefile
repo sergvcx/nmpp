@@ -14,6 +14,9 @@ endif
 
 all: nm6406 nm6407i nm6407f nm6408 nm6476i nm6476f x64
 
+setenv:
+	setx NMPP "%CD%"
+	
 nm6406:
 	cmake -B 		build/build_$@_release . -G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6406  -D MC5103_BUILD=ON -D QEMU_BUILD=ON	 -D TESTS=ON -D EXAMPLES=OFF
 	cmake -B 		build/build_$@_debug .   -G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6406   

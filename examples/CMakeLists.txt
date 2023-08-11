@@ -57,14 +57,14 @@ if (CMAKE_HOST_WIN32 AND CMAKE_GENERATOR MATCHES "Ninja")
 endif()
 
 
-if (CMAKE_HOST_WIN32)
-	STRING(REPLACE " " "\\ " NMC_GCC_TOOLPATH_SPACED $ENV{NMC_GCC_TOOLPATH})
-	set( SHELL "SHELL=cmd" )
-	set( INCLUDE_MK "-include ${NMC_GCC_TOOLPATH_SPACED}\\nmc4-ide\\include\\nmc4vars_win.mk")
-	set( OS_RM "del")
-else()
- 	set( OS_RM " rm -f -r")
-endif()
+#if (CMAKE_HOST_WIN32)
+#	STRING(REPLACE " " "\\ " NMC_GCC_TOOLPATH_SPACED $ENV{NMC_GCC_TOOLPATH})
+#	set( SHELL "SHELL=cmd" )
+#	set( INCLUDE_MK "-include ${NMC_GCC_TOOLPATH_SPACED}\\nmc4-ide\\include\\nmc4vars_win.mk")
+#	set( OS_RM "del")
+#else()
+# 	set( OS_RM " rm -f -r")
+#endif()
 	
 
 #include(../cmake-variables.cmake)
