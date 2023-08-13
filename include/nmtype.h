@@ -21,6 +21,24 @@
 #ifndef _NMTYPE_H_INCLUDED2_
 #define _NMTYPE_H_INCLUDED2_
 
+struct NmppRect{
+    int x;
+    int y;
+    int width;
+    int height;
+} ;
+
+typedef struct   {
+	int x;
+	int y;
+} NmppPoint;
+
+struct NmppSize{
+    int width;
+    int height;
+} ;
+
+
 #define MEM_LOCAL  0
 #define MEM_GLOBAL 1
 #define HEAP0 0
@@ -54,22 +72,6 @@
 #endif
 
 
-typedef struct {
-    int x;
-    int y;
-    int width;
-    int height;
-} NmppRect;
-
-typedef struct {
-    int x;
-    int y;
-} NmppPoint;
-
-typedef struct {
-    int width;
-    int height;
-} NmppSize;
 
 
 

@@ -92,7 +92,7 @@ int dump_xs(char* format,void* m, int height, int width, int stride, int mode, i
 	// search for longest string
 	int* row=(int*)m;
 	if (sizeOf==1)
-		stride>>2;
+		stride>>=2;
 	else if (sizeOf==2)
 		stride>>=1;
 	else if (sizeOf==4)
@@ -118,7 +118,7 @@ int dump_xs(char* format,void* m, int height, int width, int stride, int mode, i
 		else if (mode==2)
 			printf("%4d: ",i);
 		for(int j=0; j<width; j++){
-			int val=getval_xs(m,j,sizeOf);
+			int val=getval_xs(row,j,sizeOf);
 			printf(max_format,val);
 		}
 		printf("\n");
@@ -135,7 +135,7 @@ int dump_xu(char* format,void* m, int height, int width, int stride, int mode, i
 	// search for longest string
 	unsigned* row=(unsigned*)m;
 	if (sizeOf==1)
-		stride>>2;
+		stride>>=2;
 	else if (sizeOf==2)
 		stride>>=1;
 	else if (sizeOf==4)
@@ -162,7 +162,7 @@ int dump_xu(char* format,void* m, int height, int width, int stride, int mode, i
 		else if (mode==2)
 			printf("%4d: ",i);
 		for(int j=0; j<width; j++){
-			unsigned val=getval_xu(m,i*stride+j,sizeOf);
+			unsigned val=getval_xu(row,j,sizeOf);
 			printf(max_format,val);
 		}
 		printf("\n");
@@ -187,10 +187,10 @@ int dump_16s(char* format,void* m, int height, int width, int stride, int mode){
 }
 
 int dump_32s(char* format, void* m, int height, int width, int stride, int mode){
-	return dump_xu(format, m, height, width, stride,  mode, 4);
+	return dump_xs(format, m, height, width, stride,  mode, 4);
 }
 int dump_32u(char* format, void* m, int height, int width, int stride, int mode){
-	return dump_xs(format, m, height, width, stride,  mode, 4);
+	return dump_xu(format, m, height, width, stride,  mode, 4);
 }
 
 int dump_64u(char* format,void* m, int height, int width, int stride, int mode){
