@@ -54,6 +54,24 @@
 #endif
 
 
+typedef struct {
+    int x;
+    int y;
+    int width;
+    int height;
+} NmppRect;
+
+typedef struct {
+    int x;
+    int y;
+} NmppPoint;
+
+typedef struct {
+    int width;
+    int height;
+} NmppSize;
+
+
 
 //-----------------------------------------------------------------------------
 	/**
