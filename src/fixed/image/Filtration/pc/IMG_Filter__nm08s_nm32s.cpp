@@ -22,7 +22,7 @@
 #include "nmtl.h"
 
 
-void nmppiFilter( nm8s * pSrcImg, nm32s* pDstImg, int nWidth, int nHeight, nm64s* pKernel)
+void nmppiFilter_8s32s( nm8s * pSrcImg, nm32s* pDstImg, int nWidth, int nHeight, nm64s* pKernel)
 {
 	S_nmppiFilterKernel* psKernel=(S_nmppiFilterKernel*) pKernel;
 	int nKerWidth =psKernel->nKerWidth;

@@ -21,12 +21,13 @@
 #include "nmpls.h"
 #include "nmpli.h"
 
-
-void nmppiFilter( nm8s * pSrcImg, nm32s* pDstImg, int nWidth, int nHeight, nm64s* pKernel)
+extern "C"{
+	
+void nmppiFilter_8s32s( nm8s * pSrcImg, nm32s* pDstImg, int nWidth, int nHeight, nm64s* pKernel)
 {
 	//SIG_Filter(pSrcImg, pDstImg, nWidth*nHeight, pKernel);
 	nmppsFIR_8s32s(pSrcImg, pDstImg, nWidth*nHeight, pKernel);
 	
 }
 
-
+};
