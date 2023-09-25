@@ -24,9 +24,9 @@ nm6406:
 	cmake --build 	build/build_$@_debug 
 						  
 nm6407:                   
-	cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407 -D TESTS=ON -D EXAMPLES=ON -D MC12101_BUILD=ON -D QEMU_BUILD=ON -DMC12101_RUNNER=mc12101run  -DCMAKE_TOOLCHAIN_FILE="../cmake-nmc-gcc-toolchain/nmc-gcc-toolchain.cmake"
+	cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407 -D TESTS=ON -D EXAMPLES=ON -D MC12101_BUILD=ON -D QEMU_BUILD=ON -DMC12101_RUNNER=mc12101run  -DCMAKE_TOOLCHAIN_FILE="./cmake/nmc-gcc-toolchain.cmake"
 	cmake --build 	build/build_$@_release 
-	cmake -B 		build/build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6407   -DCMAKE_TOOLCHAIN_FILE="../cmake-nmc-gcc-toolchain/nmc-gcc-toolchain.cmake"
+	cmake -B 		build/build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6407   -DCMAKE_TOOLCHAIN_FILE="./cmake/nmc-gcc-toolchain.cmake"
 	cmake --build 	build/build_$@_debug 
 						  
 nm6407i:                  
@@ -37,17 +37,17 @@ nm6407i:
 						  
 						  
 nm6407f:                  
-	cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407f  -D TESTS=ON -D EXAMPLES=ON -D MC12101_BUILD=ON -D QEMU_BUILD=ON  -DMC12101_RUNNER=mc12101run -DCMAKE_TOOLCHAIN_FILE="../cmake-nmc-gcc-toolchain/nmc-gcc-toolchain.cmake"
+	cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6407f  -D TESTS=ON -D EXAMPLES=ON -D MC12101_BUILD=ON -D QEMU_BUILD=ON  -DMC12101_RUNNER=mc12101run -DCMAKE_TOOLCHAIN_FILE="./cmake/nmc-gcc-toolchain.cmake"
 	cmake --build 	build/build_$@_release
-	cmake -B 		build/build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6407f  -DCMAKE_TOOLCHAIN_FILE="../cmake-nmc-gcc-toolchain/nmc-gcc-toolchain.cmake"
+	cmake -B 		build/build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6407f  -DCMAKE_TOOLCHAIN_FILE="./cmake/nmc-gcc-toolchain.cmake"
 	cmake --build 	build/build_$@_debug 
 	
 #cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6408  -D NM_CARD_BUILD=ON -D QEMU_BUILD=ON		
 	
 nm6408:                   
-	cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6408  -D TESTS=ON -D EXAMPLES=ON -D MC12705_BUILD=ON -D QEMU_BUILD=ON -DCMAKE_TOOLCHAIN_FILE="../cmake-nmc-gcc-toolchain/nmc-gcc-toolchain.cmake"
+	cmake -B 		build/build_$@_release . 	-G Ninja -DCMAKE_BUILD_TYPE=Release	-D ARCH=nm6408  -D TESTS=ON -D EXAMPLES=ON -D MC12705_BUILD=ON -D QEMU_BUILD=ON -DCMAKE_TOOLCHAIN_FILE="./cmake/nmc-gcc-toolchain.cmake"
 	cmake --build 	build/build_$@_release
-	cmake -B 		build/build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6408  -DCMAKE_TOOLCHAIN_FILE="../cmake-nmc-gcc-toolchain/nmc-gcc-toolchain.cmake"
+	cmake -B 		build/build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6408  -DCMAKE_TOOLCHAIN_FILE="./cmake/nmc-gcc-toolchain.cmake"
 	cmake --build 	build/build_$@_debug 
 						  
 nm6476i:                  
@@ -105,7 +105,7 @@ nm6407pack:
 	cmake -B build-cpack . -DUSE_CPACK=ON -DPACK_SUFFIX=nm6407
 	cd build-cpack && cpack -G 7Z -C Release;Debug -DPACK_SUFFIX=nm6407
 
-nm6408pack: 
+хотя: 
 	rd /Q /S build-cpack
 	cmake -D PACK_SUFFIX=nm6408 build/build_x64
 	cpack -G 7Z --config cmake/MultiCPackConfig.cmake -C "Debug;Release"  
