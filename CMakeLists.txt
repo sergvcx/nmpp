@@ -397,6 +397,7 @@ if (ARCH STREQUAL "nm6406")
 										)
 										
 	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C,CXX>:-mnmc3;-O2>)	
+	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C>:-std=c99>)	
 	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:ASM>:-mnmc3;-Werror>)	
 	
 	target_include_directories(${PROJECT}-${ARCH} 
@@ -418,6 +419,7 @@ if ( ARCH STREQUAL "nm6407i" OR ARCH STREQUAL "nm6476i" )
 										)
 	
 	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C,CXX>:-mnmc4-fixed;-O2>)	
+	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C>:-std=c99>)	
 	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:ASM>:-mnmc4-fixed;-Werror>)	
 	
 	target_include_directories(${PROJECT}-${ARCH} 
@@ -440,6 +442,7 @@ if ( ARCH STREQUAL "nm6407f" OR ARCH STREQUAL "nm6408" OR ARCH STREQUAL "nm6476f
 										)
 	
 	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C,CXX>:-mnmc4-float;-O2>)	
+	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C>:-std=c99>)	
 	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:ASM>:-mnmc4-float;-Werror>)	
 	
 	target_include_directories(${PROJECT}-${ARCH} 
@@ -464,8 +467,9 @@ if ( ARCH STREQUAL "nm6407" )
 										    ${nmc4r_cpp_files} ${nmc4r_c_files} ${nmc4r_asm_files} ${nmc4r_s_files}
 										)
 	
-	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C,CXX>:-mnmc4-fixed;-O2>)	
-	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:ASM>:-mnmc4-fixed;-Werror>)	
+	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C,CXX>:-mnmc4-fixed;-O2;>)	
+	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C>:-std=c99>)	
+	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:ASM>:-mnmc4-fixed;-Werror;>)	
 	
 	target_include_directories(${PROJECT}-${ARCH}
 		PUBLIC 
@@ -485,6 +489,7 @@ if ( ARCH STREQUAL "nm6407" )
 										)
 	
 	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C,CXX>:-mnmc4-float;-O2>)	
+	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C>:-std=c99>)	
 	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:ASM>:-mnmc4-float;-Werror>)	
 	
 	target_include_directories(${PROJECT}-${ARCH}

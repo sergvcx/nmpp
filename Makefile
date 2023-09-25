@@ -63,18 +63,23 @@ nm6476f:
 	cmake -B 		build/build_$@_debug . 	-G Ninja -DCMAKE_BUILD_TYPE=Debug 	-D ARCH=nm6476f  
 	cmake --build 	build/build_$@_debug 
 						 
-						 
-x64:          
-	cmake -B 		build/build_$@ . -A x64 -D ARCH=x64 -D X64_BUILD=ON  -D TESTS=ON -D EXAMPLES=ON 
+	
+
+
+ifeq ($(OS),Windows_NT)
+x64:     
+	cmake -B 		build/build_$@ . -A x64 -D ARCH=x64 -D X64_BUILD=ON  -D TESTS=ON -D EXAMPLES=ON 					 
 	cmake --build 	build/build_$@ --config Release 
 	cmake --build 	build/build_$@ --config Debug 
 	cmake -B 		build/build_$@_mingw . -D ARCH=x64 -D X64_BUILD=ON  -D TESTS=ON -D EXAMPLES=ON -G "MinGW Makefiles"	
 	cmake --build 	build/build_$@_mingw 
+else 
+x64:     	
+	cmake -B 		build/build_$@ . -D ARCH=x64 -D X64_BUILD=ON  -D TESTS=ON -D EXAMPLES=ON -D CMAKE_BUILD_TYPE=Release 
+	cmake --build 	build/build_$@ 
+endif
+
 	
-#	cmake -B 		build/build_$@ .  -D ARCH=x64 -D X64_BUILD=ON  -D TESTS=ON -D EXAMPLES=ON -G "MinGW Makefiles"
-#	cmake -B 		build/build_$@ .  -D ARCH=x64 -D X64_BUILD=ON  -D TESTS=ON -D EXAMPLES=ON -G "MSYS Makefiles"
-
-
 	
 nm6406pack: x64 nm6406
 	cmake -D PACK_SUFFIX=nm6406 build/build_x64
