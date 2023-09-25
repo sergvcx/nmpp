@@ -1,6 +1,0 @@
-{   
-    "include_dirs": ["nmpps"],
-    "targets"  : ["x86","emu6405","mc12101_nmpu0-gcc-ld"]
-    
-    
-}
