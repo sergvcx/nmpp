@@ -1,3 +1,24 @@
+
+//------------------------------------------------------------------------
+//
+//  $Workfile:: Convert4to8.as $
+//
+//  Neuro Matrix Performance Primitives
+//
+//  Copyright (c) RC Module
+//
+//! \if file_doc
+//!
+//! \file   Convert4to8.asm
+//! \author I.Zhilenkov 
+//! \brief  Функции преобразования елементов вектора.
+//!
+//! \endif
+//!
+//------------------------------------------------------------------------
+//#include "vConvert.h"
+//-----------------------------------------------------------------------------
+
 global _nmppsConvert_4s8s: label;// объ¤вление глобальной метки
 extern core_vsum_data_0:label;
 data ".MyData"

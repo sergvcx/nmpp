@@ -1,3 +1,23 @@
+//------------------------------------------------------------------------
+//
+//  $Workfile:: Convert4to1.as $
+//
+//  Neuro Matrix Performance Primitives
+//
+//  Copyright (c) RC Module
+//
+//! \if file_doc
+//!
+//! \file   Convert4to1.asm
+//! \author I.Zhilenkov 
+//! \brief  Функции преобразования елементов вектора.
+//!
+//! \endif
+//!
+//------------------------------------------------------------------------
+//#include "vConvert.h"
+//-----------------------------------------------------------------------------
+
 global _nmppsConvert_4s1s: label;// объ¤вление глобальной метки
 
 data ".data_matr_4s2s"

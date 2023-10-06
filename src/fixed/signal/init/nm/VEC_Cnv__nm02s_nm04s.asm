@@ -1,3 +1,24 @@
+
+//------------------------------------------------------------------------
+//
+//  $Workfile:: Convert2to4.as $
+//
+//  Neuro Matrix Performance Primitives
+//
+//  Copyright (c) RC Module
+//
+//! \if file_doc
+//!
+//! \file   Convert2to4.asm
+//! \author I.Zhilenkov 
+//! \brief  Функции преобразования елементов вектора.
+//!
+//! \endif
+//!
+//------------------------------------------------------------------------
+//#include "vConvert.h"
+//-----------------------------------------------------------------------------
+
 global _nmppsConvert_2s4s: label;// объ¤вление глобальной метки
 extern core_vsum_data_0:label;
 data ".MyData"

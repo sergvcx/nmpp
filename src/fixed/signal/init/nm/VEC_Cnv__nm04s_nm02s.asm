@@ -1,3 +1,24 @@
+
+//------------------------------------------------------------------------
+//
+//  $Workfile:: Convert4to2.as $
+//
+//  Neuro Matrix Performance Primitives
+//
+//  Copyright (c) RC Module
+//
+//! \if file_doc
+//!
+//! \file   Convert4to2.asm
+//! \author I.Zhilenkov 
+//! \brief  Функции преобразования елементов вектора.
+//!
+//! \endif
+//!
+//------------------------------------------------------------------------
+//#include "vConvert.h"
+//-----------------------------------------------------------------------------
+
 global _nmppsConvert_4s2s: label;// объ¤вление глобальной метки
 data ".data_matr_4s2s"
 	local matr1: long[32]=(0000000100000000hl,0000000400000000hl,
