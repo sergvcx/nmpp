@@ -506,7 +506,7 @@ if ( ARCH STREQUAL "nm6407" )
 endif()
 #-----------
 	
-	
+
 string(SUBSTRING ${ARCH} 2 4 NMC_CORE_VERSION )			 
 
 set_source_files_properties( ${nmc4f_asm_files} ${nmc4i_asm_files} ${nmc4r_asm_files}
@@ -568,8 +568,8 @@ else()
 		)
 endif()	
 	install(DIRECTORY include    DESTINATION .)		
-	install(DIRECTORY doc        DESTINATION .)		
-	install(FILES README.md      DESTINATION .)		
+	install(DIRECTORY doc_        DESTINATION .)		
+	install(FILES README.asciidoc      DESTINATION .)		
 	install(FILES nmpp2env.bat   DESTINATION .)		
 	
 	if (MC12101_BUILD)

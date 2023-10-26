@@ -27,7 +27,26 @@ if (PACK_SUFFIX STREQUAL nm6407)
 			)
 endif()
 
+if (PACK_SUFFIX STREQUAL nm6476i)
+		list(APPEND CPACK_INSTALL_CMAKE_PROJECTS 
+			"c:/git/nmpp/build/build_nm6476i_debug;nmpp-nm6476i;ALL;/"
+			"c:/git/nmpp/build/build_nm6476i_release;nmpp-nm6476i;ALL;/"
+			"c:/git/nmpp/build/build_x64;nmpp-x64;ALL;/"
+			"c:/git/nmpp/build/build_x64_mingw;nmpp-x64;ALL;/"
+			)
+endif()
+
+if (PACK_SUFFIX STREQUAL nm6476f)
+		list(APPEND CPACK_INSTALL_CMAKE_PROJECTS 
+			"c:/git/nmpp/build/build_nm6476f_debug;nmpp-nm6476f;ALL;/"
+			"c:/git/nmpp/build/build_nm6476f_release;nmpp-nm6476f;ALL;/"
+			"c:/git/nmpp/build/build_x64;nmpp-x64;ALL;/"
+			"c:/git/nmpp/build/build_x64_mingw;nmpp-x64;ALL;/"
+			)
+endif()
+
 if (PACK_SUFFIX STREQUAL nm6408)
+		#message("NM6408 PCK")
 		list(APPEND CPACK_INSTALL_CMAKE_PROJECTS 
 			"c:/git/nmpp/build/build_nm6408_debug;nmpp-nm6408;ALL;/"
 			"c:/git/nmpp/build/build_nm6408_release;nmpp-nm6408;ALL;/"
