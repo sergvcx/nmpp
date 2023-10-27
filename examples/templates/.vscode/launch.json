@@ -1,0 +1,212 @@
+{
+    "version": "0.2.0",
+    "inputs":[
+        {
+            "id": "nmGdbPort",
+            "type": "promptString",
+            "description": "monitor port number",
+            "default": "5555"
+        },
+        {
+            "id": "nmQemuGdbPort",
+            "type": "promptString",
+            "description": "qemu dbg port number",
+            "default": "10000"
+        }
+    ],
+    "configurations": [
+        
+
+        {
+            "name": "nm_card run ",
+            "cwd": "${workspaceFolder}/nm_card",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "make",
+            "args": [ "run"],
+            "stopAtEntry": false,
+            "environment": [],
+            "console": "integratedTerminal",
+        },
+
+        {
+            "name": "mc12101f run ",
+            "cwd": "${workspaceFolder}/mc12101f",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "make",
+            "args": [ "run"],
+            "stopAtEntry": false,
+            "environment": [],
+            "console": "integratedTerminal",
+        },
+
+        {
+            "name": "mc12101i run ",
+            "cwd": "${workspaceFolder}/mc12101i",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "make",
+            "args": [ "run"],
+            "stopAtEntry": false,
+            "environment": [],
+            "console": "integratedTerminal",
+        },
+
+        {
+            "name": "mc12101f dbg",
+            "cwd": "${workspaceFolder}/mc12101f",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "testd.abs",
+            "args": [],
+            "stopAtEntry": true,
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "nmc-gdb",
+            "miDebuggerServerAddress": "localhost:5555",
+            "preLaunchTask": "debug mc12101f"
+        },
+        {
+            "name": "mc12101i dbg",
+            "cwd": "${workspaceFolder}/mc12101i",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "testd.abs",
+            "args": [],
+            "stopAtEntry": true,
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "nmc-gdb",
+            "miDebuggerServerAddress": "localhost:5556",
+            "preLaunchTask": "debug mc12101i"
+        },
+
+        {
+            "name": "qemu-6407f run",
+            "cwd": "${workspaceFolder}/qemu-nm6407f",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "make",
+            "args": [ "run" ],
+            "stopAtEntry": false,
+            "environment": [],
+            "console": "integratedTerminal"
+        },
+
+        {
+            "name": "qemu-6407i run",
+            "cwd": "${workspaceFolder}/qemu-nm6407i",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "make",
+            "args": [ "run" ],
+            "stopAtEntry": false,
+            "environment": [],
+            "console": "integratedTerminal"
+        },
+
+        {
+            "name": "qemu-6407f dbg",
+            "cwd": "${workspaceFolder}/qemu-nm6407f",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "testd.abs",
+            "args": [ "" ],
+            "stopAtEntry": true,
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "nmc-gdb",
+			"miDebuggerArgs": "-iex \"set tcp connect-timeout 30\"",
+            "miDebuggerServerAddress": "localhost:10000",
+            "preLaunchTask": "debug qemu-nm6407f"
+        },
+
+        {
+            "name": "qemu-6407i dbg",
+            "cwd": "${workspaceFolder}/qemu-nm6407i",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "testd.abs",
+            "args": [ "" ],
+            "stopAtEntry": true,
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "nmc-gdb",
+			"miDebuggerArgs": "-iex \"set tcp connect-timeout 30\"",
+            "miDebuggerServerAddress": "localhost:10000",
+            "preLaunchTask": "debug qemu-nm6407i"
+        },
+
+		{
+            "name": "qemu-6408 run",
+            "cwd": "${workspaceFolder}/qemu-nm6408",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "make",
+            "args": [ "run"],
+            "stopAtEntry": false,
+            "environment": [],
+            "console": "integratedTerminal"
+        },
+        
+        {
+            "name": "qemu-6408 dbg",
+            "cwd": "${workspaceFolder}",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "./qemu-nm6408/testd.abs",
+            "args": [],
+            "stopAtEntry": true,
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "nmc-gdb",
+			"miDebuggerArgs": "-iex \"set tcp connect-timeout 30\"",
+            "miDebuggerServerAddress": "localhost:${input:nmQemuGdbPort}",
+            "preLaunchTask": "debug qemu-nm6408"
+        },
+        {
+            "name": "x64-gcc",
+            "cwd": "${workspaceFolder}",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/x64-gcc/test.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "build x64-gcc"
+        },
+        {
+            "name": "x64-cl",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/x64-cl/test.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "console": "integratedTerminal",
+            "preLaunchTask": "build x64-cl"
+        }
+    ]
+}

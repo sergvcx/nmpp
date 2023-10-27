@@ -1,0 +1,6 @@
+all:
+	cl ../main.cpp nmpp-x64d.lib -I ..\..\include -I "$(NMPP)\include" /Zi  /MDd /EHsc /link  /LIBPATH:"$(NMPP)\lib" /machine:X64 /OUT:test.exe
+	
+	 
+run:
+	test

@@ -1,0 +1,128 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+   
+    "version": "2.0.0",
+    "inputs": [
+        {
+            "id": "nmGdbPort",
+            "type": "promptString",
+            "description": "monitor port number",
+            "default": "5555"
+        },
+    ],
+    "tasks": [
+        {
+			"label": "gcc run",
+			"command": "g++",
+			"args": [ "-g","-Wall","main.cpp","-o","./x86/test","-I","c:/git/NMPP/include","-L","c:/git/NMPP/lib","-lnmpp-x64"],
+			"type": "shell",
+            "group": {
+                "kind": "build"
+            },
+		}, 
+
+        {
+            "label": "build mc12101f",
+            "type": "shell",
+            "command": "make -C mc12101f",
+            "group": "build",
+            "args": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "build mc12101i",
+            "type": "shell",
+            "command": "make -C mc12101i",
+            "group": "build",
+            "args": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "build nm_card",
+            "type": "shell",
+            "command": "make -C nm_card",
+            "group": "build",
+            "args": [],
+            "problemMatcher": []
+        },
+        {
+            "label": "build qemu-nm6407f",
+            "type": "shell",
+            "command": "make -C qemu-nm6407f",
+            "group": "build",
+            "args": []
+        },
+        {
+            "label": "build qemu-nm6407i",
+            "type": "shell",
+            "command": "make -C qemu-nm6407i",
+            "group": "build",
+            "args": []
+        },
+        {
+            "label": "build x64-gcc",
+            "command": "make -C x64-gcc",
+            "args": [ ],
+            "type": "shell",
+            "group": "build"
+        },
+        {
+            "label": "build x64-cl",
+            "command": "make -C x64-cl",
+            "args": [ ],
+            "type": "shell",
+            "group": "build"
+        },
+        {
+            "label": "run mc12101f",
+            "command": "make -C mc12101f run",
+            "type": "shell",
+            "group": "build"
+        },
+        {
+            "label": "run mc12101i",
+            "command": "make -C mc12101i run",
+            "type": "shell",
+            "group": "build"
+        },
+        {
+            "label": "run qemu-nm6407f",
+            "command": "make -C qemu-nm6407f run", 
+            "type": "shell",
+            "group": "build"
+        },
+        {
+            "label": "run qemu-nm6407i",
+            "command": "make -C qemu-nm6407i run ",
+            "type": "shell",
+            "group": "build"
+        },
+        {
+            "label": "debug mc12101f",
+            "command": "Start-Process",
+            "args": ["make ","-C mc12101f rund" ],
+            "type": "shell"
+        },
+        {
+            "label": "debug mc12101i",
+            "command": "Start-Process",
+            "args": ["make ","-C mc12101i rund" ],
+            "type": "shell"
+        },
+        {
+            "label": "debug qemu-nm6407f",
+            "command": "Start-Process",
+            "args": ["make","-C qemu-nm6407f rund" ],
+            "type": "shell"
+        },
+        {
+            "label": "debug qemu-nm6407i",
+            "command": "Start-Process",
+            "args": ["make","-C qemu-nm6407i rund" ],
+            "type": "shell"
+        },
+    ],
+    
+
+}
