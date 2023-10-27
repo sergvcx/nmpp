@@ -54,6 +54,24 @@ if (PACK_SUFFIX STREQUAL nm6408)
 			"c:/git/nmpp/build/build_x64_mingw;nmpp-x64;ALL;/"
 			)
 endif()
+
+if (PACK_SUFFIX STREQUAL nmc4)
+		#message("NM6408 PCK")
+		list(APPEND CPACK_INSTALL_CMAKE_PROJECTS 
+			"c:/git/nmpp/build/build_nm6407f_debug;nmpp-nm6407f;ALL;/"
+			"c:/git/nmpp/build/build_nm6407f_release;nmpp-nm6407f;ALL;/"
+			"c:/git/nmpp/build/build_nm6407i_debug;nmpp-nm6407i;ALL;/"
+			"c:/git/nmpp/build/build_nm6407i_release;nmpp-nm6407i;ALL;/"
+			"c:/git/nmpp/build/build_nm6408_debug;nmpp-nm6408;ALL;/"
+			"c:/git/nmpp/build/build_nm6408_release;nmpp-nm6408;ALL;/"
+			"c:/git/nmpp/build/build_nm6476i_debug;nmpp-nm6476i;ALL;/"
+			"c:/git/nmpp/build/build_nm6476i_release;nmpp-nm6476i;ALL;/"
+			"c:/git/nmpp/build/build_nm6476f_debug;nmpp-nm6476f;ALL;/"
+			"c:/git/nmpp/build/build_nm6476f_release;nmpp-nm6476f;ALL;/"
+			"c:/git/nmpp/build/build_x64;nmpp-x64;ALL;/"
+			"c:/git/nmpp/build/build_x64_mingw;nmpp-x64;ALL;/"
+			)
+endif()
 	
 #endforeach()
 message("${CPACK_INSTALL_CMAKE_PROJECTS}")

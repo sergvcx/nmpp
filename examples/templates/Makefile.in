@@ -8,8 +8,6 @@ else
 OS_RM    = rm -f -r
 endif
  
-P?=5555
-
 .SUFFIXES:
 
 ifndef @BSP@
@@ -37,28 +35,24 @@ SOURCES  = @SRC_FILES@
 all: $(TARGET) $(TARGETD)
 
 $(TARGET): $(SOURCES) Makefile 
-	@echo ----------------------
+	@echo -------- Release build --------------
 	$(CC)  -o$(TARGET)  $(SOURCES) $(CXXFLAGS) $(LDFLAGS)  $(INC_DIRS) $(LIB_DIRS) $(LIBS)
+	nmc-objdump -D $(TARGET) > dasm.txt
 
 $(TARGETD): $(SOURCES) Makefile 
-	@echo ----------------------
+	@echo -------- Debug build --------------
 	$(CC)  -o$(TARGETD) $(SOURCES) $(CXXFLAGSD) $(LDFLAGSD) $(INC_DIRS) $(LIB_DIRS) $(LIBSD) 
+	nmc-objdump -D $(TARGET) > dasmd.txt
 	
-run: $(TARGET)
-	@RUNNER@ @RUNOPT@ $(TARGET)
+@RUN@
 
-rund: $(TARGETD) 
-	@RUNNER@ @RUNOPTD@ $(TARGETD)
+@RUND@
 
-# set path to MinGW/bin    For example:  SET PATH=%PATH%;d:\SDK\msys64\mingw64\bin\
-
-monitor:
-	@MONITOR@
+@MONITOR@
 	
-gdb :	
-	nmc-gdb  -ex "target remote :$(P)"  $(TARGETD)
+@GDB@
 
 clean: 
-	-$(OS_RM) *.abs *.elf *.map 
+	-$(OS_RM) $(TARGET) $(TARGETD) *.elf *.map dasm.txt dasms.txt
 	
 

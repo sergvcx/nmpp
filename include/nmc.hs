@@ -10,12 +10,12 @@
 
 .macro BRANCH 
 #if __NM4__== 0
-	.branch	
+	.branch;	
 #endif
 .endm
 
 .macro WAIT 
 #if __NM4__== 0
-	.wait	
+	.wait;
 #endif
 .endm
