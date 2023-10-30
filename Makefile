@@ -87,32 +87,32 @@ endif
 
 	
 nmc4pack: x64 nm6407 nm6408 nm6476
-	-rd /Q /S build-cpack
-	cmake -B  build-cpack . -DUSE_CPACK=ON -DPACK_SUFFIX=nmc4
+	cmake -E remove_directory build-cpack
+	cmake -B build-cpack . -DUSE_CPACK=ON -DPACK_SUFFIX=nmc4
 	cd build-cpack && cpack -G 7Z -C Release;Debug -DPACK_SUFFIX=nmc4
 	
 nm6407pack: x64 nm6407
-	-rd /Q /S build-cpack
-	cmake -B  build-cpack . -DUSE_CPACK=ON -DPACK_SUFFIX=nm6407
+	cmake -E remove_directory build-cpack
+	cmake -B build-cpack . -DUSE_CPACK=ON -DPACK_SUFFIX=nm6407
 	cd build-cpack && cpack -G 7Z -C Release;Debug -DPACK_SUFFIX=nm6407
 
 nm6408pack: x64 nm6408
-	-rd /Q /S build-cpack
-	cmake -B  build-cpack . -DUSE_CPACK=ON -DPACK_SUFFIX=nm6408
+	cmake -E remove_directory build-cpack
+	cmake -B build-cpack . -DUSE_CPACK=ON -DPACK_SUFFIX=nm6408
 	cd build-cpack && cpack -G 7Z -C Release;Debug -DPACK_SUFFIX=nm6408
 
 nm6476ipack: x64 nm6476i
-	-rd /Q /S build-cpack
-	cmake -B  build-cpack . -DUSE_CPACK=ON -DPACK_SUFFIX=nm6476i
+	cmake -E remove_directory build-cpack
+	cmake -B build-cpack . -DUSE_CPACK=ON -DPACK_SUFFIX=nm6476i
 	cd build-cpack && cpack -G 7Z -C Release;Debug -DPACK_SUFFIX=nm6476i
 
 nm6476fpack: x64 nm6476f
-	-rd /Q /S build-cpack
-	cmake -B  build-cpack . -DUSE_CPACK=ON -DPACK_SUFFIX=nm6476f
+	cmake -E remove_directory build-cpack
+	cmake -B build-cpack . -DUSE_CPACK=ON -DPACK_SUFFIX=nm6476f
 	cd build-cpack && cpack -G 7Z -C Release;Debug -DPACK_SUFFIX=nm6476f
 
 nm6408pack_old: 
-	-rd /Q /S build-cpack
+	cmake -E remove_directory build-cpack
 	cmake -D PACK_SUFFIX:STRING=nm6408 build/build_x64
 	cpack -G 7Z --config cmake/MultiCPackConfig.cmake -C "Debug;Release"  
 

@@ -106,6 +106,8 @@ function(GENERATE_TESTS_MC12101 dir_list  test_prefix ld_script board_core test_
 
   
 		add_executable(${TEST_NAME} ${dir}/main.cpp)
+
+
         target_link_directories(${TEST_NAME} PUBLIC
             ${CMAKE_CURRENT_LIST_DIR}/../lib
             ${MC12101}/lib)
@@ -119,6 +121,9 @@ function(GENERATE_TESTS_MC12101 dir_list  test_prefix ld_script board_core test_
             -T${ld_script}
             -Wl,--whole-archive -lmc12101load_nm -lnm6407_io_nmc -Wl,--no-whole-archive)
         add_test(NAME ${TEST_NAME} COMMAND mc12101run $<TARGET_FILE:${TEST_NAME}> -a${board_core} -p -v)
+        # MESSAGE( "test_lib= ${test_lib}")
+        #add_dependencies(${TEST_NAME} ${test_lib})
+       
     endforeach()
 endfunction()
 

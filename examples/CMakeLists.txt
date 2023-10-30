@@ -177,11 +177,11 @@ function(CONFIGURE_EXAMPLE IN_TEST_DIR BOARD CORE )
 endfunction()
 
 function(CONFIGURE_TEST_NMC IN_TEST_DIR BOARD CORE )	
-	#set(ARCH NM6407)
 	if (NMC_TOOLCHAIN)
+
 		get_filename_component(STEP_NAME ${IN_TEST_DIR} NAME)
 		
-		set(TEST_NAME test-${BOARD}${CORE}-${STEP_NAME})
+		set(TEST_NAME cexamples-${BOARD}${CORE}-${STEP_NAME})
 		file(GLOB 	s_files   RELATIVE ${CMAKE_CURRENT_LIST_DIR} ${IN_TEST_DIR}/*.S)
 		file(GLOB 	cpp_files RELATIVE ${CMAKE_CURRENT_LIST_DIR} ${IN_TEST_DIR}/*.cpp)
 		file(GLOB 	c_files   RELATIVE ${CMAKE_CURRENT_LIST_DIR} ${IN_TEST_DIR}/*.c)
@@ -202,7 +202,7 @@ function(CONFIGURE_TEST_NMC IN_TEST_DIR BOARD CORE )
 		#string(TOUPPER ${BOARD} BSP)
 		
 		add_executable(${TEST_NAME}  ${SRC_LIST})
-		#add_dependencies(${TEST_NAME} ${test_lib})
+		add_dependencies(${TEST_NAME} ${PROJECT}-${ARCH})
 		string(REPLACE " " ";" LIBS_LIST ${LIBS})
 		target_link_directories   (${TEST_NAME} PUBLIC	$ENV{${BSP}}/lib ../lib)
 		target_link_libraries     (${TEST_NAME} ${LIBS_LIST})
