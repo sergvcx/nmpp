@@ -460,50 +460,50 @@ endif()
 
 
 #-----------
-if ( ARCH STREQUAL "nm6407" )
-	set(ARCH nm6407i)
-	MESSAGE("######## ARCH ${ARCH} ############")
-	add_library(${PROJECT}-${ARCH} STATIC  ${nmc4i_cpp_files} ${nmc4i_c_files} ${nmc4i_asm_files} ${nmc4i_s_files}
-										    ${nmc4r_cpp_files} ${nmc4r_c_files} ${nmc4r_asm_files} ${nmc4r_s_files}
-										)
-	
-	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C,CXX>:-mnmc4-fixed;-O2;>)	
-	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C>:-std=c99>)	
-	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:ASM>:-mnmc4-fixed;-Werror;>)	
-	
-	target_include_directories(${PROJECT}-${ARCH}
-		PUBLIC 
-			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
-			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/nmpps>"
-			"$<INSTALL_INTERFACE:include>" 
-			"$<INSTALL_INTERFACE:include/nmpps>" 
-			)
-	export(TARGETS ${PROJECT}-${ARCH}
-		FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT}-${ARCH}-targets.cmake
-		NAMESPACE nmpp::)
-
-	set(ARCH nm6407f)
-	MESSAGE("######## ARCH ${ARCH} ############")
-	add_library(${PROJECT}-${ARCH} STATIC ${nmc4f_cpp_files} ${nmc4f_c_files} ${nmc4f_asm_files} ${nmc4f_s_files}
-										  ${nmc4r_cpp_files} ${nmc4r_c_files} ${nmc4r_asm_files} ${nmc4r_s_files}
-										)
-	
-	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C,CXX>:-mnmc4-float;-O2>)	
-	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C>:-std=c99>)	
-	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:ASM>:-mnmc4-float;-Werror>)	
-	
-	target_include_directories(${PROJECT}-${ARCH}
-		PUBLIC 
-			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
-			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/nmpps>"
-			"$<INSTALL_INTERFACE:include>" 
-			"$<INSTALL_INTERFACE:include/nmpps>" 
-			)
-	export(TARGETS ${PROJECT}-${ARCH}
-		FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT}-${ARCH}-targets.cmake
-		NAMESPACE nmpp::)
-	set(ARCH nm6407)
-endif()
+#if ( ARCH STREQUAL "nm6407" )
+#	set(ARCH nm6407i)
+#	MESSAGE("######## ARCH ${ARCH} ############")
+#	add_library(${PROJECT}-${ARCH} STATIC  ${nmc4i_cpp_files} ${nmc4i_c_files} ${nmc4i_asm_files} ${nmc4i_s_files}
+#										    ${nmc4r_cpp_files} ${nmc4r_c_files} ${nmc4r_asm_files} ${nmc4r_s_files}
+#										)
+#	
+#	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C,CXX>:-mnmc4-fixed;-O2;>)	
+#	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C>:-std=c99>)	
+#	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:ASM>:-mnmc4-fixed;-Werror;>)	
+#	
+#	target_include_directories(${PROJECT}-${ARCH}
+#		PUBLIC 
+#			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
+#			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/nmpps>"
+#			"$<INSTALL_INTERFACE:include>" 
+#			"$<INSTALL_INTERFACE:include/nmpps>" 
+#			)
+#	export(TARGETS ${PROJECT}-${ARCH}
+#		FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT}-${ARCH}-targets.cmake
+#		NAMESPACE nmpp::)
+#
+#	set(ARCH nm6407f)
+#	MESSAGE("######## ARCH ${ARCH} ############")
+#	add_library(${PROJECT}-${ARCH} STATIC ${nmc4f_cpp_files} ${nmc4f_c_files} ${nmc4f_asm_files} ${nmc4f_s_files}
+#										  ${nmc4r_cpp_files} ${nmc4r_c_files} ${nmc4r_asm_files} ${nmc4r_s_files}
+#										)
+#	
+#	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C,CXX>:-mnmc4-float;-O2>)	
+#	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C>:-std=c99>)	
+#	target_compile_options(${PROJECT}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:ASM>:-mnmc4-float;-Werror>)	
+#	
+#	target_include_directories(${PROJECT}-${ARCH}
+#		PUBLIC 
+#			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
+#			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/nmpps>"
+#			"$<INSTALL_INTERFACE:include>" 
+#			"$<INSTALL_INTERFACE:include/nmpps>" 
+#			)
+#	export(TARGETS ${PROJECT}-${ARCH}
+#		FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT}-${ARCH}-targets.cmake
+#		NAMESPACE nmpp::)
+#	set(ARCH nm6407)
+#endif()
 #-----------
 	
 
@@ -545,17 +545,17 @@ if (ARCH STREQUAL "x64")
 		
 endif()
 
-if(ARCH STREQUAL nm6407) 
-	install(TARGETS ${PROJECT}-${ARCH}i ${PROJECT}-${ARCH}f
-		RUNTIME
-			DESTINATION bin
-		ARCHIVE 
-			DESTINATION lib
-		PUBLIC_HEADER 
-			DESTINATION include
-		COMPONENT ${PROJECT}_${ARCH}
-		)
-else()
+#if(ARCH STREQUAL nm6407) 
+#	install(TARGETS ${PROJECT}-${ARCH}i ${PROJECT}-${ARCH}f
+#		RUNTIME
+#			DESTINATION bin
+#		ARCHIVE 
+#			DESTINATION lib
+#		PUBLIC_HEADER 
+#			DESTINATION include
+#		COMPONENT ${PROJECT}_${ARCH}
+#		)
+#else()
 
 	install(TARGETS ${PROJECT}-${ARCH}
 		RUNTIME
@@ -566,13 +566,15 @@ else()
 			DESTINATION include
 		COMPONENT ${PROJECT}_${ARCH}
 		)
-endif()	
+#endif()	
+
 	install(DIRECTORY include    DESTINATION .)		
-	#install(DIRECTORY doc_        DESTINATION .)		
+	install(DIRECTORY doc_        DESTINATION .)		
 	install(FILES README.asciidoc      DESTINATION .)		
-	#install(FILES nmpp2env.bat   DESTINATION .)		
+	install(FILES nmpp2env.bat   DESTINATION .)		
 	if (EXAMPLES)
 		install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples DESTINATION .) 
+		add_subdirectory(examples)
 	endif()
 	
 #	if (ALL_BUILD)
@@ -616,9 +618,6 @@ endif()
 
 
 #add_subdirectory(examples examples-${ARCH})
-if (EXAMPLES)
-	add_subdirectory(examples)
-endif()
 
 include(cmake/Packing.cmake)
 

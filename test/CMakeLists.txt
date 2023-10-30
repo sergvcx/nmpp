@@ -67,9 +67,14 @@ MESSAGE("## listdir_fixed 1 =${listdir_fixed} ")
 #set(BOARD MC12101)
 #set(BOARD NM_CARD)
 
+
 if(MC12101_BUILD)
-	#GENERATE_TESTS_MC12101("${listdir_fixed}" mc12101i ${CMAKE_CURRENT_LIST_DIR}/lds/mc12101-nmpu1.lds 1 nmpp-nm6407i )
-	GENERATE_TESTS_MC12101("${listdir_float}" mc12101f ${CMAKE_CURRENT_LIST_DIR}/lds/mc12101-nmpu0.lds 0 nmpp-nm6407f )
+	if (ARCH STREQUAL nm6407f)
+		GENERATE_TESTS_MC12101("${listdir_float}" mc12101f ${CMAKE_CURRENT_LIST_DIR}/lds/mc12101f.lds 0 nmpp-nm6407f )
+	endif()
+	if (ARCH STREQUAL nm6407i)
+		GENERATE_TESTS_MC12101("${listdir_fixed}" mc12101i ${CMAKE_CURRENT_LIST_DIR}/lds/mc12101i.lds 1 nmpp-nm6407i )
+	endif()
 endif()
 
 if(MC11101_BUILD)
@@ -90,7 +95,7 @@ endif()
 
 if(X64_BUILD)
 	GENERATE_TESTS_X64("${listdir_float}" x64 nmpp-x64)
-	#GENERATE_TESTS_X64("${listdir_fixed}" x64 nmpp-x64)
+	GENERATE_TESTS_X64("${listdir_fixed}" x64 nmpp-x64)
 endif()
 
 #${listdir_float}

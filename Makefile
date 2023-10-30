@@ -33,7 +33,13 @@ nm6407_:
 	cmake --build 	build/build_$@_release 
 	cmake --build 	build/build_$@_debug 
 						  
-nm6407: nm6407i nm6407f
+nm6407: nm6407f nm6407i 
+
+nm6407f:                  
+	cmake -B 		build/build_$@_release . -G Ninja -DCMAKE_BUILD_TYPE=Release -D ARCH=$@ $(NMC_TOOLCHAIN) -D TESTS=ON -D EXAMPLES=ON -D MC12101_BUILD=ON -D QEMU_BUILD=ON  -DMC12101_RUNNER=mc12101run
+	cmake -B 		build/build_$@_debug   . -G Ninja -DCMAKE_BUILD_TYPE=Debug 	 -D ARCH=$@ $(NMC_TOOLCHAIN)  
+	cmake --build 	build/build_$@_release                                                                  
+	cmake --build 	build/build_$@_debug                                                                    
 						  
 nm6407i:                  
 	cmake -B 		build/build_$@_release . -G Ninja -DCMAKE_BUILD_TYPE=Release -D ARCH=$@ $(NMC_TOOLCHAIN) -D TESTS=ON -D EXAMPLES=ON -D MC12101_BUILD=ON -D QEMU_BUILD=ON -DMC12101_RUNNER="hal-run --server_ip=proton --server_port=5557" 
@@ -41,11 +47,6 @@ nm6407i:
 	cmake --build 	build/build_$@_release                                                        
 	cmake --build 	build/build_$@_debug 
 						  
-nm6407f:                  
-	cmake -B 		build/build_$@_release . -G Ninja -DCMAKE_BUILD_TYPE=Release -D ARCH=$@ $(NMC_TOOLCHAIN) -D TESTS=ON -D EXAMPLES=ON -D MC12101_BUILD=ON -D QEMU_BUILD=ON  -DMC12101_RUNNER=mc12101run
-	cmake -B 		build/build_$@_debug   . -G Ninja -DCMAKE_BUILD_TYPE=Debug 	 -D ARCH=$@ $(NMC_TOOLCHAIN)  
-	cmake --build 	build/build_$@_release                                                                  
-	cmake --build 	build/build_$@_debug                                                                    
 																											
 nm6408:                                                                                                     
 	cmake -B 		build/build_$@_release . -G Ninja -DCMAKE_BUILD_TYPE=Release -D ARCH=$@ $(NMC_TOOLCHAIN) -D TESTS=ON -D EXAMPLES=ON -D MC12705_BUILD=ON -D NM_CARD_BUILD=ON -D QEMU_BUILD=ON 
@@ -62,13 +63,13 @@ nm6476i:
 	cmake --build 	build/build_$@_debug 
 						 
 nm6476f:                 
-	echo "============= config nm6476f release"
+	echo "============= config nm6476f release ======================================="
 	cmake -B 		build/build_$@_release . -G Ninja -DCMAKE_BUILD_TYPE=Release -D ARCH=$@ $(NMC_TOOLCHAIN) -D MC11101_BUILD=ON -D QEMU_BUILD=ON -D EXAMPLES=ON
-	echo "============= config nm6476f debug"
+	echo "============= config nm6476f debug =========================================="
 	cmake -B 		build/build_$@_debug   . -G Ninja -DCMAKE_BUILD_TYPE=Debug 	 -D ARCH=$@ $(NMC_TOOLCHAIN)
-	echo "============= build  nm6476f release"
+	echo "============= build  nm6476f release ========================================="
 	cmake --build 	build/build_$@_release
-	echo "============= build  nm6476f debug "
+	echo "============= build  nm6476f debug============================================"
 	cmake --build 	build/build_$@_debug 
 						 
 

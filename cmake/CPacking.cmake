@@ -18,40 +18,46 @@ set(CPACK_PACKAGE_INSTALL_DIRECTORY ${CPACK_PACKAGE_NAME})
 #set(boards "mc12101;mc7601;mc5103;mb7707")
 #foreach(board ${boards})
 #	string(TOUPPER ${board} BOARD)
+if (CMAKE_HOST_WIN32)
+		list(APPEND CPACK_INSTALL_CMAKE_PROJECTS 
+		"${CMAKE_SOURCE_DIR}/build/build_x64_mingw;nmpp-x64;ALL;/"
+		)
+endif()
+		
 if (PACK_SUFFIX STREQUAL nm6407)
 		list(APPEND CPACK_INSTALL_CMAKE_PROJECTS 
-			"c:/git/nmpp/build/build_nm6407_debug;nmpp-nm6407;ALL;/"
-			"c:/git/nmpp/build/build_nm6407_release;nmpp-nm6407;ALL;/"
-			"c:/git/nmpp/build/build_x64;nmpp-x64;ALL;/"
-			"c:/git/nmpp/build/build_x64_mingw;nmpp-x64;ALL;/"
+			"${CMAKE_SOURCE_DIR}/build/build_nm6407_debug;nmpp-nm6407;ALL;/"
+			"${CMAKE_SOURCE_DIR}/build/build_nm6407_release;nmpp-nm6407;ALL;/"
+			"${CMAKE_SOURCE_DIR}/build/build_x64;nmpp-x64;ALL;/"
+			"${CMAKE_SOURCE_DIR}/build/build_x64_mingw;nmpp-x64;ALL;/"
 			)
 endif()
 
 if (PACK_SUFFIX STREQUAL nm6476i)
 		list(APPEND CPACK_INSTALL_CMAKE_PROJECTS 
-			"./build/build_nm6476i_debug;nmpp-nm6476i;ALL;/"
-			"./build/build_nm6476i_release;nmpp-nm6476i;ALL;/"
-			"./build/build_x64;nmpp-x64;ALL;/"
-			"./build/build_x64_mingw;nmpp-x64;ALL;/"
+			"${CMAKE_SOURCE_DIR}/build/build_nm6476i_debug;nmpp-nm6476i;ALL;/"
+			"${CMAKE_SOURCE_DIR}/build/build_nm6476i_release;nmpp-nm6476i;ALL;/"
+			"${CMAKE_SOURCE_DIR}/build/build_x64;nmpp-x64;ALL;/"
+			"${CMAKE_SOURCE_DIR}/build/build_x64_mingw;nmpp-x64;ALL;/"
 			)
 endif()
 
 if (PACK_SUFFIX STREQUAL nm6476f)
 		list(APPEND CPACK_INSTALL_CMAKE_PROJECTS 
-			"./build/build_nm6476f_debug;nmpp-nm6476f;ALL;/"
-			"./build/build_nm6476f_release;nmpp-nm6476f;ALL;/"
-			"./build/build_x64;nmpp-x64;ALL;/"
-			"./build/build_x64_mingw;nmpp-x64;ALL;/"
+			"${CMAKE_SOURCE_DIR}/build/build_nm6476f_debug;nmpp-nm6476f;ALL;/"
+			"${CMAKE_SOURCE_DIR}/build/build_nm6476f_release;nmpp-nm6476f;ALL;/"
+			"${CMAKE_SOURCE_DIR}/build/build_x64;nmpp-x64;ALL;/"
+			"{CMAKE_SOURCE_DIR}./build/build_x64_mingw;nmpp-x64;ALL;/"
 			)
 endif()
 
 if (PACK_SUFFIX STREQUAL nm6408)
 		#message("NM6408 PCK")
 		list(APPEND CPACK_INSTALL_CMAKE_PROJECTS 
-			"c:/git/nmpp/build/build_nm6408_debug;nmpp-nm6408;ALL;/"
-			"c:/git/nmpp/build/build_nm6408_release;nmpp-nm6408;ALL;/"
-			"c:/git/nmpp/build/build_x64;nmpp-x64;ALL;/"
-			"c:/git/nmpp/build/build_x64_mingw;nmpp-x64;ALL;/"
+			"${CMAKE_SOURCE_DIR}/build/build_nm6408_debug;nmpp-nm6408;ALL;/"
+			"${CMAKE_SOURCE_DIR}/build/build_nm6408_release;nmpp-nm6408;ALL;/"
+			"${CMAKE_SOURCE_DIR}/build/build_x64;nmpp-x64;ALL;/"
+			"${CMAKE_SOURCE_DIR}/build/build_x64_mingw;nmpp-x64;ALL;/"
 			)
 endif()
 
@@ -69,10 +75,12 @@ if (PACK_SUFFIX STREQUAL nmc4)
 			"${CMAKE_SOURCE_DIR}/build/build_nm6476f_debug;nmpp-nm6476f;ALL;/"
 			"${CMAKE_SOURCE_DIR}/build/build_nm6476f_release;nmpp-nm6476f;ALL;/"
 			"${CMAKE_SOURCE_DIR}/build/build_x64;nmpp-x64;ALL;/"
-			)
+		)
+
+	
 endif()
 
-#"${CMAKE_SOURCE_DIR}/build/build_x64_mingw;nmpp-x64;ALL;/"
+
 
 #endforeach()
 message("${CPACK_INSTALL_CMAKE_PROJECTS}")
