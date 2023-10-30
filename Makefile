@@ -62,9 +62,13 @@ nm6476i:
 	cmake --build 	build/build_$@_debug 
 						 
 nm6476f:                 
+	echo "============= config nm6476f release"
 	cmake -B 		build/build_$@_release . -G Ninja -DCMAKE_BUILD_TYPE=Release -D ARCH=$@ $(NMC_TOOLCHAIN) -D MC11101_BUILD=ON -D QEMU_BUILD=ON -D EXAMPLES=ON
+	echo "============= config nm6476f debug"
 	cmake -B 		build/build_$@_debug   . -G Ninja -DCMAKE_BUILD_TYPE=Debug 	 -D ARCH=$@ $(NMC_TOOLCHAIN)
+	echo "============= build  nm6476f release"
 	cmake --build 	build/build_$@_release
+	echo "============= build  nm6476f debug "
 	cmake --build 	build/build_$@_debug 
 						 
 
