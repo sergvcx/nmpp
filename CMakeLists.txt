@@ -557,16 +557,16 @@ endif()
 #		)
 #else()
 
-	install(TARGETS ${PROJECT}-${ARCH}
-		RUNTIME
-			DESTINATION bin
-		ARCHIVE 
-			DESTINATION lib
-		PUBLIC_HEADER 
-			DESTINATION include
-		COMPONENT ${PROJECT}_${ARCH}
-		)
-#endif()	
+install(TARGETS ${PROJECT}-${ARCH}
+	RUNTIME
+		DESTINATION bin
+	ARCHIVE 
+		DESTINATION lib
+	PUBLIC_HEADER 
+		DESTINATION include
+	COMPONENT ${PROJECT}_${ARCH}
+	)
+
 
 	install(DIRECTORY include    DESTINATION .)		
 	install(DIRECTORY doc_        DESTINATION .)		

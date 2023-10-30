@@ -90,22 +90,23 @@ endif
 nmc4pack: x64 nm6407 nm6408 nm6476
 	cmake -E remove_directory build-cpack
 	cmake -B build-cpack . -DUSE_CPACK=ON -DPACK_SUFFIX=nmc4
-	cd build-cpack && cpack -G 7Z -C Release;Debug -DPACK_SUFFIX=nmc4
+	cd build-cpack && cpack -G 7Z -C "Release;Debug" -DPACK_SUFFIX=nmc4
 	
 nm6407pack: x64 nm6407
 	cmake -E remove_directory build-cpack
 	cmake -B build-cpack . -DUSE_CPACK=ON -DPACK_SUFFIX=nm6407
-	cd build-cpack && cpack -G 7Z -C Release;Debug -DPACK_SUFFIX=nm6407
+	cd build-cpack && cpack -G 7Z -C "Release;Debug" -DPACK_SUFFIX=nm6407
 
 nm6408pack: x64 nm6408
 	cmake -E remove_directory build-cpack
 	cmake -B build-cpack . -DUSE_CPACK=ON -DPACK_SUFFIX=nm6408
-	cd build-cpack && cpack -G 7Z -C Release;Debug -DPACK_SUFFIX=nm6408
+	cd build-cpack && cpack -G 7Z -C "Release;Debug" -DPACK_SUFFIX=nm6408
+
 
 nm6476ipack: x64 nm6476i
 	cmake -E remove_directory build-cpack
 	cmake -B build-cpack . -DUSE_CPACK=ON -DPACK_SUFFIX=nm6476i
-	cd build-cpack && cpack -G 7Z -C Release;Debug -DPACK_SUFFIX=nm6476i
+	cd build-cpack && cpack -G 7Z -C "Release;Debug" -DPACK_SUFFIX=nm6476i
 
 nm6476fpack: x64 nm6476f
 	cmake -E remove_directory build-cpack
