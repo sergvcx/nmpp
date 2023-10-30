@@ -136,6 +136,12 @@ function(CONFIGURE_EXAMPLE IN_TEST_DIR BOARD CORE )
 	#set(OUT_TEST_DIR ${BOARD}${CORE}/${IN_TEST_DIR})
 	#set(OUT_TEST_DIR examples-${BOARD}${CORE}/${IN_TEST_DIR})
 	set(OUT_TEST_DIR examples/${IN_TEST_DIR})
+	
+	get_filename_component(ABS_IN_TEST_DIR ${IN_TEST_DIR}  REALPATH BASE_DIR "${CMAKE_CURRENT_LIST_DIR}")
+	file(RELATIVE_PATH NMPP "${ABS_IN_TEST_DIR}/${BOARD}" "${CMAKE_SOURCE_DIR}")
+	set(ENVS "NMPP ?= ${NMPP}")
+	
+	
 	file(COPY ${IN_TEST_DIR} DESTINATION ${OUT_TEST_DIR}/..) # copy main.cpp & co
 	
 	MESSAGE("### CONFIGURE_EXAMPLE :${OUT_TEST_DIR} ")
@@ -162,8 +168,8 @@ function(CONFIGURE_EXAMPLE IN_TEST_DIR BOARD CORE )
 		#	configure_file ("./templates/run.sh.in"   			"${OUT_TEST_DIR}/run.sh" )
 		#endif()
 	else()
-		configure_file ("./templates/x64-gcc/Makefile"  		"${OUT_TEST_DIR}/x64-gcc/Makefile" )
-		configure_file ("./templates/x64-cl/Makefile"  			"${OUT_TEST_DIR}/x64-cl/Makefile" )
+		configure_file ("./templates/x64-gcc/Makefile.in"  		"${OUT_TEST_DIR}/x64-gcc/Makefile" )
+		configure_file ("./templates/x64-cl/Makefile.in"  		"${OUT_TEST_DIR}/x64-cl/Makefile" )
 	endif()
 	
 endfunction()
