@@ -52,14 +52,15 @@ int main()
 		return st;
 	}
 	float norm;
+	
 	nmppsNormDiff_L2_32fcr(src, dst, SIZE, &norm);
-	printf("%.7f\n", norm);
+	printf("norm=%.7f\n", (double)norm);
 	// for(i = 0; i < SIZE; i++){
 	// 	printf("%.2f %.2f\n", dst[i].re, dst[i].im);
 	// }
 	if (norm<0.02)
 		return 0;
-	return *(int*)&norm ;
+	return 123 ;
 	
 	
 	//return t2 - t1;

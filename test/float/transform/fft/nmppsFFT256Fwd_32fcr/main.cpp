@@ -50,6 +50,8 @@ int main()
 		dst[i].im = 0;
 		dst[i].re = 0;
 	}
+	
+	
 	NmppsFFTSpec_32fcr *rat, *irat;
 	st = nmppsFFT256FwdInitAlloc_32fcr(&rat);
 	if(st) {
@@ -65,6 +67,11 @@ int main()
 	nmppsFFT256Fwd_32fcr(src, dst, rat);
 	t2 = clock();
 	}
+	printf("fft:\n");
+	for(i = 0; i < SIZE; i++){
+	 	printf("%.5f %.5f\n", dst[i].re, dst[i].im);
+	}
+	
 	nmppsFFT256Inv_32fcr(dst, dst, irat);
 	st = nmppsFFTFree_32fcr(rat);
 	if(st) {
@@ -77,9 +84,10 @@ int main()
 	float norm;
 	nmppsNormDiff_L2_32fcr(src, dst, SIZE, &norm);
 	printf("%.7f\n", norm);
-	// for(i = 0; i < SIZE; i++){
-	// 	printf("%.5f %.5f\n", dst[i].re, dst[i].im);
-	// }
+	printf("ifft:\n");
+	for(i = 0; i < SIZE; i++){
+	 	printf("%.5f %.5f\n", dst[i].re, dst[i].im);
+	}
 	if (norm<0.02)
 		return 0;
 	return *(int*)&norm ;

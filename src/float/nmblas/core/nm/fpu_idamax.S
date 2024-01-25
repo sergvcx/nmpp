@@ -71,7 +71,7 @@ _fpu_idamax:
 		fpu 1 .double vreg1 = /vreg1/; 					// fpu1 vreg1[32] = |src|...
 		//fpu 0 .double vreg1 = vreg1 + .retrive(vreg7);	// fpu0 vreg1[32] = 33,34,45... index inceremnt on +32
 		fpu 1 .double vreg1-vreg0,set mask if >;		// fpu1 <->?
-		/////hardware bug in 6407 the last element of mask does not work propraetry
+		/////hardware bug in 6407 the last element of mask does not work properly
 		fp1_lmask = fp1_lmask;
 		/////  
 		fpu 1 .double vreg0 = mask ? vreg1:vreg0; 		// fpu1 vreg0[32]= max ... . Сборка максимумов
@@ -106,7 +106,7 @@ _fpu_idamax:
 	//fpu 0 .double vreg1 = vreg1 + .retrive(vreg7);	// 	fpu0 vreg1[32]=32,33,34....
 	fpu 1 .double vreg1-vreg0,set mask if >;		//	mask = [src]-
 
-	/////hardware bug in 6407 the last element of mask does not work propraetry
+	/////hardware bug in 6407 the last element of mask does not work properly
 	fp1_lmask = fp1_lmask;
 	/////  
 	fpu 1 .double vreg0 = mask ? vreg1:vreg0; 		// fpu1 vreg0[32]= max ...
@@ -126,7 +126,7 @@ _fpu_idamax:
 	fpu 0 rep 16 vreg2 = .packer;
 
 	fpu 1 .double vreg2-vreg1,set mask if >;
-	/////hardware bug in 6407 the last element of mask does not work propraetry
+	/////hardware bug in 6407 the last element of mask does not work properly
 	fp1_lmask = fp1_lmask;
 	/////  
 	fpu 1 .double vreg1 = mask ? vreg2:vreg1;
@@ -143,7 +143,7 @@ _fpu_idamax:
 	fpu 0 rep 8 vreg2 = .packer;
 
 	fpu 1 .double vreg2-vreg1,set mask if >;
-	/////hardware bug in 6407 the last element of mask does not work propraetry
+	/////hardware bug in 6407 the last element of mask does not work properly
 	fp1_lmask = fp1_lmask;
 	/////  
 	fpu 1 .double vreg1 = mask ? vreg2:vreg1;
@@ -159,7 +159,7 @@ _fpu_idamax:
 	fpu 0 rep 4 vreg2 = .packer;
 
 	fpu 1 .double vreg2-vreg1,set mask if >;
-	/////hardware bug in 6407 the last element of mask does not work propraetry
+	/////hardware bug in 6407 the last element of mask does not work properly
 	fp1_lmask = fp1_lmask;
 	/////  
 	fpu 1 .double vreg1 = mask ? vreg2:vreg1;
@@ -174,7 +174,7 @@ _fpu_idamax:
 	fpu 0 rep 2 vreg1 = .packer;
 	fpu 0 rep 2 vreg2 = .packer;
 	fpu 1 .double vreg2-vreg1,set mask if >;
-	/////hardware bug in 6407 the last element of mask does not work propraetry
+	/////hardware bug in 6407 the last element of mask does not work properly
 	fp1_lmask = fp1_lmask;
 	/////  
 	fpu 1 .double vreg1 = mask ? vreg2:vreg1;
@@ -190,7 +190,7 @@ _fpu_idamax:
 	fpu 0 rep 1 vreg2 = .packer;
 
 	fpu 1 .double vreg2-vreg1,set mask if >;
-	/////hardware bug in 6407 the last element of mask does not work propraetry
+	/////hardware bug in 6407 the last element of mask does not work properly
 	fp1_lmask = fp1_lmask;
 	/////  
 	fpu 1 .double vreg1 = mask ? vreg2:vreg1;
@@ -242,7 +242,7 @@ _fpu_idamax:
 ////	
 ////	fpu 0 .double vreg2 = vreg0;					// fpu0 vreg2[32] = 0,1,2,3...
 ////	fpu 1 .double vreg1-vreg0,set mask if >;		// fpu1 mask[32] = |src|- (-inf)
-/////////hardware bug in 6407 the last element of mask does not work propraetry
+/////////hardware bug in 6407 the last element of mask does not work properly
 ////	fp1_lmask = fp1_lmask;
 ////////
 ////	fpu 1 .double vreg0 = mask ? vreg1:vreg0; 		// fpu1 vreg0[32] = max

@@ -19,11 +19,9 @@ void nmppsFFT1024FwdInit_32fcr(NmppsFFTSpec_32fcr* spec_32fcr){
 	//	spec_32fcr->Buffs[i] = 0;
     
 	
-    spec_32fcr->Buffers[1]  = spec_32fcr->Buffs[0];         // buff_fft1024
-    spec_32fcr->Buffers[0]  = spec_32fcr->Buffs[0] + 512;  // 1.0 or 1/1024
-
-    spec_32fcr->Buffers[11] = spec_32fcr->Buffs[1];      // W1024
-    spec_32fcr->Buffers[2]  = spec_32fcr->Buffs[2]; // buff_fft1024mulW
+    spec_32fcr->Buffers[0]  = spec_32fcr->Buffs[0] + 512;// 1.0 or 1/1024	nm32fcr[1]
+    spec_32fcr->Buffers[1]  = spec_32fcr->Buffs[0];      // buff_fft1024  nm32fcr[512] 
+    spec_32fcr->Buffers[2]  = spec_32fcr->Buffs[2]; 	 // buff_fft1024mulW nm32fcr[512] 
 
     spec_32fcr->Buffers[3]  = spec_32fcr->Buffs[3];          // W4_16
     spec_32fcr->Buffers[4]  = spec_32fcr->Buffs[3] + 1;      // W2_16
@@ -34,6 +32,7 @@ void nmppsFFT1024FwdInit_32fcr(NmppsFFTSpec_32fcr* spec_32fcr){
     spec_32fcr->Buffers[9]  = spec_32fcr->Buffs[3] + 6;      // W7_16
     spec_32fcr->Buffers[10] = spec_32fcr->Buffs[3] + 7;      // buff_fftxW
 
+    spec_32fcr->Buffers[11] = spec_32fcr->Buffs[1];      // W1024
 
 /**********************************Fields Fuliling**********************************/
     spec_32fcr->Buffers[0]->im = 0;

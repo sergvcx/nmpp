@@ -26,8 +26,10 @@ endif()
 		
 if (PACK_SUFFIX STREQUAL nm6407)
 		list(APPEND CPACK_INSTALL_CMAKE_PROJECTS 
-			"${CMAKE_SOURCE_DIR}/build/build_nm6407_debug;nmpp-nm6407;ALL;/"
-			"${CMAKE_SOURCE_DIR}/build/build_nm6407_release;nmpp-nm6407;ALL;/"
+			"${CMAKE_SOURCE_DIR}/build/build_nm6407f_debug;nmpp-nm6407f;ALL;/"
+			"${CMAKE_SOURCE_DIR}/build/build_nm6407i_debug;nmpp-nm6407i;ALL;/"
+			"${CMAKE_SOURCE_DIR}/build/build_nm6407f_release;nmpp-nm6407f;ALL;/"
+			"${CMAKE_SOURCE_DIR}/build/build_nm6407i_release;nmpp-nm6407i;ALL;/"
 			"${CMAKE_SOURCE_DIR}/build/build_x64;nmpp-x64;ALL;/"
 			"${CMAKE_SOURCE_DIR}/build/build_x64_mingw;nmpp-x64;ALL;/"
 			)

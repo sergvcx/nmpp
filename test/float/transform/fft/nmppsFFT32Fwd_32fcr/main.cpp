@@ -13,6 +13,7 @@ int main()
 	clock_t t1, t2;
 	nm32fcr *src, *dst;
 	// best config (ticks = 333)
+	printf("********\n");
 	src = (nm32fcr *) malloc(SIZE * sizeof(nm32fcr));
 	dst = (nm32fcr *) malloc(SIZE * sizeof(nm32fcr));
 	for(i = 0; i < SIZE; i++) {
@@ -23,28 +24,32 @@ int main()
 	}
 	NmppsFFTSpec_32fcr *rat, *irat;
 	st = nmppsFFT32FwdInitAlloc_32fcr(&rat);
+	if(st) return 1;
+	printf("********\n");
 	st = nmppsFFT32InvInitAlloc_32fcr(&irat);
-	if(st) {
-		return st;
-	}
+	if(st) return 2;
+	printf("********\n");
+	
 	t1 = clock();
 	nmppsFFT32Fwd_32fcr(src, dst, rat);
+	printf("********\n");
 	t2 = clock();
 	nmppsFFT32Inv_32fcr(dst, dst, irat);
+	printf("********\n");
 	st = nmppsFFTFree_32fcr(rat);
-	if(st) {
-		return st;
-	}
+	printf("********\n");
+	if(st) return 3;
+	
+	printf("********\n");
 	st = nmppsFFTFree_32fcr(irat);
-	if(st) {
-		return st;
-	}
+	if(st) 	return 4;
+	
 	float norm;
 	nmppsNormDiff_L2_32fcr(src, dst, SIZE, &norm);
 	printf("%.7f\n", norm);
-	// for(i = 0; i < SIZE; i++) {
-	// 	printf("%.5f %.5f\n", dst[i].re, dst[i].im);
-	//}
+	for(i = 0; i < SIZE; i++) {
+	 	printf("%.5f %.5f\n", dst[i].re, dst[i].im);
+	}
 	if (norm<0.02)
 		return 0;
 	return *(int*)&norm ;

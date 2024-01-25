@@ -15,9 +15,9 @@
 //* 					You have to initialize register vlen(it have to be equal N-1)																	*/
 //*******************************************************************************************************************************************************/
 
-global _FFTFwd16x32Core: label;
-begin ".text.nmpp.fft"
-<_FFTFwd16x32Core>
+.global _FFTFwd16x32Core
+.section .text.nmpp.fft
+_FFTFwd16x32Core:
 ////////////////////////////////Stage1////////////////////////////////
 	ar1 = ar3;
 	fpu 0 rep vlen vreg0 = [ar1++gr1]; // x0
@@ -42,7 +42,7 @@ begin ".text.nmpp.fft"
 	ar1 = ar3 + 28;
 	fpu 3 rep vlen vreg1 = [ar1++gr1]; // x14
 
-	ar4 = [ar5++]; // W4_16
+	ar4 = [ar5++]; // W4_16							Buffer[3]
 	gr2 = ar0;
 
 	fpu 0 .float vreg2 = vreg0 + vreg1; // y0
@@ -65,8 +65,8 @@ begin ".text.nmpp.fft"
 	fpu 3 vreg4 = fpu 2 vreg3; // y5
 	fpu 3 vreg5 = fpu 1 vreg5;
 
-	ar0 = [ar5++]; // W2_16
-	ar6 = [ar5++]; // W6_16
+	ar0 = [ar5++]; // W2_16						Buffer[4]
+	ar6 = [ar5++]; // W6_16						Buffer[5]
 
 	fpu 0 .float vreg5 = vreg2 + vreg4; // Y0
 	fpu 1 .complex vreg6 = vreg3 * .retrive(vreg5) + vreg4; // Y1
@@ -166,11 +166,11 @@ begin ".text.nmpp.fft"
 	fpu 2 vreg5 = fpu 0 vreg1; // Y2
 	fpu 3 vreg5 = fpu 1 vreg1; // Y3
 
-	ar0 = [ar5++]; // W1_16
+	ar0 = [ar5++]; // W1_16							Buffer[6]
 	ar1 = gr6;
-	ar2 = [ar5++]; // W3_16
-	ar4 = [ar5++]; // W5_16
-	ar6 = [ar5++]; // W7_16
+	ar2 = [ar5++]; // W3_16							Buffer[7]
+	ar4 = [ar5++]; // W5_16							Buffer[8]
+	ar6 = [ar5++]; // W7_16							Buffer[9]
 	fpu 0 .float vreg6 = vreg0 + vreg5; 					// X8
 	fpu 1 .complex vreg6 = vreg5 * .retrive(vreg4) + vreg0; // X9
 	fpu 2 .complex vreg6 = vreg1 * .retrive(vreg4) + vreg5; // X10
@@ -261,4 +261,4 @@ begin ".text.nmpp.fft"
 	ar1 = ar4;
 	fpu 3 rep vlen [ar1++gr1] = vreg3;
 	return;
-end ".text.nmpp.fft";
+

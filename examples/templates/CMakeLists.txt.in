@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.16.0 FATAL_ERROR)
 
 project(nmpp-examples-x64 VERSION 0.1.0 LANGUAGES CXX C ASM)
 
-
+set(NMPP ..)
 if (CMAKE_HOST_WIN32 AND CMAKE_GENERATOR MATCHES "Ninja")
     file(
         WRITE "${CMAKE_BINARY_DIR}/GNUMakeRulesOverwrite.cmake" 
@@ -50,9 +50,9 @@ function(CONFIGURE_EXAMPLE IN_TEST_DIR)
 	
 #	string(REPLACE " " ";" LIBS_LIST ${LIBS})
 	add_executable			 	(${TEST_NAME}  ${SRC_LIST})
-	target_link_directories   	(${TEST_NAME} PUBLIC	@ROOT@/lib)
+	target_link_directories   	(${TEST_NAME} PUBLIC	${NMPP}/lib)
 	target_link_libraries     	(${TEST_NAME} $<$<CONFIG:DEBUG>:${LIBSD}> $<$<CONFIG:RELEASE>:${LIBS}>  )
-	target_include_directories	(${TEST_NAME} PUBLIC @ROOT@/include)
+	target_include_directories	(${TEST_NAME} PUBLIC ${NMPP}/include)
 	set_target_properties     	(${TEST_NAME} PROPERTIES LINKER_LANGUAGE CXX)
 	
 endfunction()

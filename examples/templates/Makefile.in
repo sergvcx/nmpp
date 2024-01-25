@@ -27,25 +27,26 @@ LIBS     = @LIBS@
 LIBSD    = @LIBSD@ 
 LDFLAGS  = -Wl,-Map=@TARGET@.map  -Wl,-T@LDS@
 LDFLAGSD = -Wl,-Map=@TARGET@d.map -Wl,-T@LDS@ 
-INC_DIRS = -I"$(@BSP@)/include" -I$(NMPP)/include
-LIB_DIRS = -L"$(@BSP@)/lib" -L$(NMPP)/lib
+INC_DIRS = @INC_DIRS@
+LIB_DIRS = @LIB_DIRS@
 SOURCES  = @SRC_FILES@
 
 .DEFAULT_GOAL := all
 
 all: $(TARGET) $(TARGETD)
 
-$(TARGET): $(SOURCES) Makefile 
+$(TARGET): $(SOURCES) Makefile @LDS@ 
 	@echo -------- Release build --------------
-	$(CC)  -o$(TARGET)  $(SOURCES) $(CXXFLAGS) $(LDFLAGS)  $(INC_DIRS) $(LIB_DIRS) $(LIBS)
+	$(CC)  -o$(TARGET) $(SOURCES) $(CXXFLAGS) $(LDFLAGS)  $(INC_DIRS) $(LIB_DIRS) $(LIBS) $(ERRECHO)
 	nmc-objdump -D $(TARGET) > dasm.txt
 
-$(TARGETD): $(SOURCES) Makefile 
+$(TARGETD): $(SOURCES) Makefile @LDS@
 	@echo -------- Debug build --------------
-	$(CC)  -o$(TARGETD) $(SOURCES) $(CXXFLAGSD) $(LDFLAGSD) $(INC_DIRS) $(LIB_DIRS) $(LIBSD) 
-	nmc-objdump -D $(TARGET) > dasmd.txt
-	
-@RUN@
+	$(CC)  -o$(TARGETD) $(SOURCES) $(CXXFLAGSD) $(LDFLAGSD) $(INC_DIRS) $(LIB_DIRS)  $(LIBSD) $(ERRECHO)
+	nmc-objdump -D $(TARGETD) > dasmd.txt
+
+
+@RUN@ 
 
 @RUND@
 

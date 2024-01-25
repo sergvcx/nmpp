@@ -42,9 +42,9 @@ begin ".text.nmpp.fft"
 
 // SORT 64 VECTORS FOR FFT16
 	ar4 = AddrForFFT16;
-	ar2 = [ar5++]; 					// 1.0 or 1/1024
-	ar0 = [ar5++]; 					// buff_fft1024
-	ar6 = [ar5++]; 					// buff_fft1024_mulW
+	ar2 = [ar5++]; 					// 1.0 or 1/1024 		Buffer[0]
+	ar0 = [ar5++]; 					// buff_fft1024  		Buffer[1]
+	ar6 = [ar5++]; 					// buff_fft1024_mulW	Buffer[2]
 	fpu 0 rep 1 vreg1 = [ar2]; 		// 1.0 or 1/1024
 	fpu 1 vreg1 = fpu 0 vreg1;
 	gr4 = ar0 with gr0 = gr1 >> 2;  // cycles number;
@@ -70,12 +70,18 @@ begin ".text.nmpp.fft"
 	delayed call _FFTFwd16x32Core;
 		ar3 = gr4 with gr1 >>= 2; // step for FFT16 = 32 for input // addr for input buff_fft1024
 		gr6 = gr5; 				  // addr for output buff_fft1024
-
-	ar5 = ar5 - 7;
-
+	// ar5 now points to Buffer[10]
+//	ar5 = ar5 - 7; 
+//
+//	delayed call _FFTFwd16x32Core;
+//		gr6 = [ar5]; 			 // buff_fft1024xW
+//		ar3 = gr7;
+	
+	gr6 = [ar5]; 			 // buff_fft1024xW Buffer[10]
+	ar3 = gr7;
 	delayed call _FFTFwd16x32Core;
-		gr6 = [ar5]; 			 // buff_fft1024xW
-		ar3 = gr7;
+		ar5 = ar5 - 7; 
+
 // END FFT16
 
 // COMPUTE 32 OF FFT32

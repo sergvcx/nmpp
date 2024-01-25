@@ -1,5 +1,5 @@
 #include "time.h"
-#include "fft_32fcr.h"
+//#include "fft_32fcr.h"
 #include "nmpp.h"
 #include <nmtype.h>
 #include <malloc.h>
@@ -31,6 +31,7 @@ int main()
 		dst[i].re = 0;
 	}
 
+//for(int i=0; i<1; i++){
 	NmppsFFTSpec_32fcr *rat, *irat;
 	st = nmppsFFT1024FwdInitAlloc_32fcr(&rat);
 
@@ -46,6 +47,8 @@ int main()
 
 	t1 = clock();
 	nmppsFFT1024Fwd_32fcr(src, dst, rat);
+	//nmppsFFT1024Fwd_32fcr(src, dst, rat);
+	//nmppsFFT1024Fwd_32fcr(src, dst, rat);
 	t2 = clock();
 	nmppsFFT1024Inv_32fcr(dst, dst, irat);
 	st = nmppsFFTFree_32fcr(rat);
@@ -62,11 +65,13 @@ int main()
 	} norm;
 
 	nmppsNormDiff_L2_32fcr(src, dst, SIZE, &norm.f);
-	printf("%.7f\n", norm.f);
-	// for(i = 0; i < SIZE; i++){
-	// 	printf("%.2f %.2f\n", dst[i].re, dst[i].im);
-	// }
-	if (norm.f<0.02)
-		return 0;
-	return norm.h ;
+	printf("norm=%f\n", norm.f);
+	 for(i = 0; i < SIZE; i++){
+	 	printf("%.2f %.2f\n", dst[i].re, dst[i].im);
+	 }
+	if (norm.f>0.02)
+		return 100*norm.f;
+//}
+	return 0 ;
+	
 }

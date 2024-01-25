@@ -12,7 +12,7 @@
 //!
 //! \file  ClipRShiftConvertAdd_16s8s.asm
 //! \author S.Mushkaev
-//! \brief  Функции преобразования елементов вектора.
+//! \brief  Функции преобразования элементов вектора.
 //!
 //! \endif
 //!

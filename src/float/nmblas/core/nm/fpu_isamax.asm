@@ -52,7 +52,7 @@ begin "text"
   fpu 1 .float vreg1 = /vreg1/; 
   fpu 0 .float vreg1 = vreg1 + .retrive(vreg7);
   fpu 1 .float vreg1-vreg0,set mask if >;
-/////hardware bug in 6407 the last element of mask does not work propraetry
+/////hardware bug in 6407 the last element of mask does not work properly
   fp1_lmask = fp1_lmask;
 /////
   fpu 1 .float vreg0 = mask ? vreg1:vreg0; 
@@ -98,7 +98,7 @@ begin "text"
 
   fpu 0 .float vreg1 = vreg1 + .retrive(vreg7);
   fpu 1 .float vreg1-vreg0,set mask if >;
-/////hardware bug in 6407 the last element of mask does not work propraetry
+/////hardware bug in 6407 the last element of mask does not work properly
   fp1_lmask = fp1_lmask;
 /////  
   fpu 1 .float vreg0 = mask ? vreg1:vreg0; 
@@ -115,7 +115,7 @@ begin "text"
   fpu 0 rep 16 vreg1 = .packer;
   fpu 0 rep 16 vreg2 = .packer;
   fpu 1 .float vreg2-vreg1,set mask if >;
-/////hardware bug in 6407 the last element of mask does not work propraetry
+/////hardware bug in 6407 the last element of mask does not work properly
   fp1_lmask  = fp1_lmask;
 /////  
   fpu 1 .float vreg1 = mask ? vreg2:vreg1;
@@ -131,7 +131,7 @@ begin "text"
   fpu 0 rep 8 vreg2 = .packer;
 
   fpu 1 .float vreg2-vreg1,set mask if >;
-/////hardware bug in 6407 the last element of mask does not work propraetry
+/////hardware bug in 6407 the last element of mask does not work properly
   fp1_lmask = fp1_lmask;
 /////  
   fpu 1 .float vreg1 = mask ? vreg2:vreg1;
@@ -146,7 +146,7 @@ begin "text"
   fpu 0 rep 4 vreg1 = .packer;
   fpu 0 rep 4 vreg2 = .packer;
   fpu 1 .float vreg2-vreg1,set mask if >;
-/////hardware bug in 6407 the last element of mask does not work propraetry
+/////hardware bug in 6407 the last element of mask does not work properly
   fp1_lmask = fp1_lmask;
 /////  
   fpu 1 .float vreg1 = mask ? vreg2:vreg1;
@@ -161,7 +161,7 @@ begin "text"
   fpu 0 rep 2 vreg1 = .packer;
   fpu 0 rep 2 vreg2 = .packer;
   fpu 1 .float vreg2-vreg1,set mask if >;
-/////hardware bug in 6407 the last element of mask does not work propraetry
+/////hardware bug in 6407 the last element of mask does not work properly
   fp1_lmask = fp1_lmask;
 /////  
   fpu 1 .float vreg1 = mask ? vreg2:vreg1;
@@ -234,7 +234,7 @@ begin "text"
 
   fpu 0 .float vreg2 = vreg0;
   fpu 1 .float vreg1-vreg0,set mask if >;
-/////hardware bug in 6407 the last element of mask does not work propraetry
+/////hardware bug in 6407 the last element of mask does not work properly
   fp1_lmask = fp1_lmask;
 ///// 
   fpu 1 .float vreg0 = mask ? vreg1:vreg0; 

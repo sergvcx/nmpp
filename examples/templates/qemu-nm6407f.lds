@@ -1,12 +1,17 @@
 MEMORY
 {
-  C0_IMU0 : ORIGIN = 0x00000800, LENGTH = 0x0001F800
-  C0_IMU1 : ORIGIN = 0x00020000, LENGTH = 0x00020000
-  C0_IMU2 : ORIGIN = 0x00040000, LENGTH = 0x00020000
-  C0_IMU3 : ORIGIN = 0x00060000, LENGTH = 0x00020000
-
-  SHMEM : ORIGIN = 0x00280000, LENGTH = 0x00080000
-  EMI : ORIGIN = 0x80000000, LENGTH = 0x20000000
+  C0_IMU0 : ORIGIN = 0x00000200<<2, LENGTH = 0x00007e00<<2
+  C0_IMU1 : ORIGIN = 0x00008000<<2, LENGTH = 0x00008000<<2
+  C0_IMU2 : ORIGIN = 0x00010000<<2, LENGTH = 0x00008000<<2
+  C0_IMU3 : ORIGIN = 0x00018000<<2, LENGTH = 0x00008000<<2
+  C0_IMU4 : ORIGIN = 0x00020000<<2, LENGTH = 0x00008000<<2
+  C0_IMU5 : ORIGIN = 0x00028000<<2, LENGTH = 0x00008000<<2
+  C0_IMU6 : ORIGIN = 0x00030000<<2, LENGTH = 0x00008000<<2
+  C0_IMU7 : ORIGIN = 0x00038000<<2, LENGTH = 0x00008000<<2
+/*SHMEM0 : ORIGIN  = 0x000A0000<<2, LENGTH = 0x00008000<<2 bytes reserved for by system loader */
+  SHMEM0 : ORIGIN  = 0x000A8000<<2, LENGTH = 0x00008000<<2
+  SHMEM1 : ORIGIN  = 0x000B0000<<2, LENGTH = 0x00010000<<2
+  EMI    : ORIGIN  = 0x20000000<<2, LENGTH = 0x08000000<<2
 }
 
 SECTIONS
@@ -64,6 +69,29 @@ SECTIONS
     *(.data.imu3.bss);
   } > C0_IMU3
   
+  .data.imu4 : ALIGN(0x8)
+  {
+    *(.data.imu4);
+    *(.data.imu4.bss);
+  } > C0_IMU4
+  
+  .data.imu5 : ALIGN(0x8)
+  {
+    *(.data.imu5);
+    *(.data.imu5.bss);
+  } > C0_IMU5
+  
+  .data.imu6 : ALIGN(0x8)
+  {
+    *(.data.imu6);
+    *(.data.imu6.bss);
+  } > C0_IMU6
+  
+  .data.imu7 : ALIGN(0x8)
+  {
+    *(.data.imu7);
+    *(.data.imu7.bss);
+  } > C0_IMU7
 
   .text.emi : ALIGN(0x8)
   {
