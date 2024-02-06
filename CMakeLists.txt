@@ -579,24 +579,26 @@ endif()
 
 install(TARGETS ${PROJECT_NAME}-${ARCH}
 	RUNTIME
-		DESTINATION bin
+		DESTINATION bin/${FOLDER} COMPONENT nmpp_dev
 	ARCHIVE 
-		DESTINATION lib
-	PUBLIC_HEADER 
-		DESTINATION include
+		DESTINATION lib/${FOLDER} COMPONENT nmpp_dev
+	#PUBLIC_HEADER 
+	#	DESTINATION include
+	
 	)
 #	COMPONENT ${PROJECT_NAME}_${ARCH}
-install(FILES Makefile        DESTINATION .)		
-install(FILES CMakeLists.txt  DESTINATION .)		
-install(DIRECTORY src         DESTINATION .)		
-install(DIRECTORY cmake       DESTINATION .)		
-install(DIRECTORY libs        DESTINATION .)		
-install(DIRECTORY include     DESTINATION .)		
-install(DIRECTORY doc_        DESTINATION .)		
-install(FILES README.asciidoc DESTINATION .)		
-install(FILES nmpp2env.bat    DESTINATION .)		
+install(FILES Makefile        DESTINATION . COMPONENT nmpp_src)		
+install(FILES CMakeLists.txt  DESTINATION . COMPONENT nmpp_src)		
+install(DIRECTORY src         DESTINATION . COMPONENT nmpp_src)		
+install(DIRECTORY cmake       DESTINATION . COMPONENT nmpp_src)		
+
+install(DIRECTORY libs        DESTINATION . COMPONENT nmpp_libs)		
+install(DIRECTORY include     DESTINATION . COMPONENT nmpp_dev)		
+install(FILES nmpp2env.bat    DESTINATION . COMPONENT nmpp_dev)		
+install(DIRECTORY doc_        DESTINATION . COMPONENT nmpp_doc)		
+install(FILES README.asciidoc DESTINATION . COMPONENT nmpp_doc)		
 if (EXAMPLES)
-	install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples DESTINATION .) 
+	install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples DESTINATION . COMPONENT nmpp_examples) 
 	add_subdirectory(examples)
 endif()
 	
