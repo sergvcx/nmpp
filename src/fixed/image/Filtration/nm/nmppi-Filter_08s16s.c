@@ -18,11 +18,11 @@
 //!
 //------------------------------------------------------------------------
 
-//#include "nmpls.h"
-//#include "nmpli.h"
+//#include "nmpp/nmpls.h"
+//#include "nmpp/nmpli.h"
 #include "nmtype.h"
-#include "nmpli/iFilter.h"
-#include "nmpls/sfir.h"
+#include "nmpp/iFilter.h"
+#include "nmpp/sfir.h"
 void nmppiFilter_8s16s( nm8s * pSrcImg, nm16s* pDstImg, int nWidth, int nHeight, NmppiFilterState* pKernel)
 {
 	nmppsFIR_8s16s(pSrcImg, pDstImg, nWidth*nHeight, (NmppsFIRState*)pKernel);

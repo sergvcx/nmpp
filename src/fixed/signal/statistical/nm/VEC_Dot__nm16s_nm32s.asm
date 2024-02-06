@@ -19,7 +19,7 @@
 //***************************************************************************/
 //#include "vProd.h"
 
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 extern core_vsum_data_0:label;
 
 data ".data_nmplv_G"

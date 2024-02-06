@@ -1,6 +1,6 @@
-#include <malloc32.h>
+#include "nmpp/malloc32.h"
 #include <math.h>
-#include "fft_32fcr.h"
+#include "nmpp/fft_32fcr.h"
 
 int nmppsFFT64FwdInitAlloc_32fcr(NmppsFFTSpec_32fcr** addr)
 {

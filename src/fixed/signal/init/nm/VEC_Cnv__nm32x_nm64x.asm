@@ -20,7 +20,7 @@
 
 //#include "vConvert.h"
 
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 extern core_vsum_data_0:label;
 data ".data_nmplv"
     WConvert32to64: long[2*2] =  (1hl,	0hl,	// Extract 1-st byte

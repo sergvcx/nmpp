@@ -25,7 +25,7 @@ data ".data_nmplv_G"
 
 end ".data_nmplv_G";
 
-//import from macros.mlb;
+//import from "nmpp/macros.mlb";
 extern core_MulVN_AddVN:label;
 
 begin ".text.nmpp"

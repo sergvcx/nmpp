@@ -18,10 +18,10 @@
 //!
 //------------------------------------------------------------------------
 
-#include "nmpls.h"
+#include "nmpp/nmpls.h"
 //#include "nmpp.h"
-#include "nmplv/vInit.h"
-#include "nmpls/sResample.h"
+#include "nmpp/vInit.h"
+#include "nmpp/sResample.h"
 /////////////////////////////////////////////////////////////////////////////////////////
 
 //!

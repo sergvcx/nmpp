@@ -17,7 +17,7 @@
 //! \endif
 //!
 //------------------------------------------------------------------------
-#include "nmpli/iDef.h"
+#include "nmpp/iDef.h"
 #include "nmtype.h"
 extern "C"{
 	

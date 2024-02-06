@@ -14,7 +14,7 @@ const FIXPOINT=16; //Положение двоичной точки в 32-х р�
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 extern LogBigTable:word;
-import from rtmacro;
+import from "nmpp/rtmacro.mlb";
 
 
 begin ".text_nmplс"

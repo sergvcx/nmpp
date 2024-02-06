@@ -9,7 +9,7 @@
 //*                     of complex array with 32 bit elements				*/
 //***************************************************************************/
 
-#include "fft_32fcr.h"
+#include "nmpp/fft_32fcr.h"
 
 void nmppsFFT128Inv_32fcr(const nm32fcr* pSrcVec, int srcStep,  nm32fcr* pDstVec, int dstStep, NmppsFFTSpec_32fcr* spec)
 {

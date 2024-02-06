@@ -17,7 +17,7 @@
 extern Fix64LogTable:long;
 
 
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 
 
 macro EXP_STEP(Shift)

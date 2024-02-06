@@ -26,7 +26,7 @@ extern _buf_BoolConvert_L:		long;
 extern _buf_BoolConvert_G:		long;
 extern _mask_table:			word;
 
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 begin ".text.nmpp"
 
 //! \fn void  nmppsCmpEq0_32u(nm32u31b *pSrcVec, nm1 *pDstVec, int nSize, int nTrueFlag);

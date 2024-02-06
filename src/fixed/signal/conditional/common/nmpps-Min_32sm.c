@@ -1,6 +1,6 @@
 #include "time.h"
-#include "nmplv.h"
-#include "malloc32.h"
+#include "nmpp/nmplv.h"
+#include "nmpp/malloc32.h"
 
 int nmppsMin_32sm (const nm32s* pSrcVec,  int size, int32b* pMinValue, nm64s* tmp)
 {

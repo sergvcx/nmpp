@@ -22,7 +22,7 @@
 
 begin ".text_nmvcore"
          
-import from minrep.mlb;
+import from "nmpp/minrep.mlb";
 DEF_MIN_REP();
 
 macro VEC_MUL_2V4toW8_SHIFT_REP(N)

@@ -19,7 +19,7 @@
 //------------------------------------------------------------------------
 global _nmppiSubConvertRShiftI__FPSsiPiiiii: label;
 global _void._.8.8nmppiSubConvertRShiftI.1short._.0.9._int.9._int._.0.9._int.9._int.9._int.9._int.2 :label;
- import from macros.mlb;
+ import from "nmpp/macros.mlb";
 fin_add: label;
 
 begin ".text_nmpli"

@@ -13,8 +13,8 @@ macro ShiftBitstreamOdd_tail(N)
 end ShiftBitstreamOdd_tail;
 
 
-import from rtmacro.mlb;
-import from macros.mlb;
+import from "nmpp/rtmacro.mlb";
+import from "nmpp/macros.mlb";
 
 global _nmppsFwdShiftBitstream_Odd:label;
 begin ".text.nmpp"

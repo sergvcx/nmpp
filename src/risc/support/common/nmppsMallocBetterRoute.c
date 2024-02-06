@@ -1,8 +1,8 @@
 #include <malloc.h>
-#include "malloc32.h"
-#include "nmplv/vSupport.h"
-#include "nmplv/vInit.h"
-#include "nmplv/vBitwise.h"
+#include "nmpp/malloc32.h"
+#include "nmpp/vSupport.h"
+#include "nmpp/vInit.h"
+#include "nmpp/vBitwise.h"
 
 
 int nmppsMallocBetterRoute()

@@ -19,7 +19,7 @@
 //***************************************************************************/
 //#include "vProd.h"
 
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 begin ".text.nmpp"
 .branch;
 

@@ -18,7 +18,7 @@
 //*                                                                         */
 //*                                                                         */
 //***************************************************************************/
-import from macros;
+import from "nmpp/macros.mlb";
 
 begin ".text_nmpli"
 

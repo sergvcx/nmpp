@@ -41,7 +41,7 @@ data ".data_nmplv_G"
 	w_nmppsConvert_G_: long[32];
 end ".data_nmplv_G";
 //-----------------------------------------------------------------------------
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 //-----------------------------------------------------------------------------
 begin ".text.nmpp"
 

@@ -1,6 +1,6 @@
 
 #include "nmpp.h"
-#include "fft_32fcr.h"
+#include "nmpp/fft_32fcr.h"
 #include <malloc.h>
 
 void nmppsFFT4096Fwd_32fcr(const nm32fcr* pSrcVec, nm32fcr* pDstVec, NmppsFFTSpec_32fcr* spec)

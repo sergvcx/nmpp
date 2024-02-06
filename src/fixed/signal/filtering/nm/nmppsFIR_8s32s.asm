@@ -17,7 +17,7 @@
 //! \endif
 //!
 //------------------------------------------------------------------------
-//import from macros.mlb;
+//import from "nmpp/macros.mlb";
 
 data ".data_nmpls_L"
 mul01,mul02,mul0N:label;

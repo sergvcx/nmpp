@@ -10,7 +10,7 @@
 //***************************************************************************/
 
 
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 
 Pos01,Pos02,Pos03,Pos04,Pos05,Pos06,Pos07,Pos08,Pos09,Pos10,Pos11,Pos12,
 Pos13,Pos14,Pos15,Pos16,Pos17,Pos18,Pos19,Pos20,Pos21,Pos22,Pos23,Pos24,

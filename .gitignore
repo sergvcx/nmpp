@@ -1,1 +1,5 @@
 build*/
+*.log
+*.csv
+*.7z
+*.zip

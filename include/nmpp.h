@@ -18,7 +18,7 @@
 /** \defgroup nmppsGroup_f Векторные функции
     \ingroup float
 */
-#include "./nmplv/nmplv.h"
+#include "./nmpp/nmplv.h"
 
 /** \defgroup MTR_Group_ Матричные функции
     \ingroup integer
@@ -31,7 +31,7 @@
 /** \defgroup mMatrixVector Векторно-матричные функции
     \ingroup integer
 */
-#include "./nmplm/nmplm.h"
+#include "./nmpp/nmplm.h"
 
 /** \defgroup SIG_Group Функции обработки сигналов
     \ingroup integer
@@ -40,17 +40,17 @@
 /** \defgroup SIG_Group_f Функции обработки сигналов
     \ingroup float
 */
-#include "./nmpls/nmpls.h"
+#include "./nmpp/nmpls.h"
 
 /** \defgroup nmppiGroup Функции обработки изображений
     \ingroup integer
 */
-#include "./nmpli/nmpli.h"
+#include "./nmpp/nmpli.h"
 
 /** \defgroup nmppcGroup Скалярные функции
     \ingroup integer
 */
-#include "./nmplc/nmplc.h"
+#include "./nmpp/nmplc.h"
 
 /** \defgroup CORE_Group Базовые регистровые функции библиотеки
     \ingroup integer
@@ -68,8 +68,8 @@
     \ingroup float
 */
 
-#include "./malloc32.h"
-#include "./metric.h"
-#include "./nmplv/vStat.h"
+#include "./nmpp/malloc32.h"
+#include "./nmpp/metric.h"
+#include "./nmpp/vStat.h"
 
 

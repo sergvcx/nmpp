@@ -21,7 +21,7 @@
 extern 	LWSum2CharBuffers: long[8*16];
 extern 	GWSum2CharBuffers: long[8*16];
 
-//import from macros.mlb;
+//import from "nmpp/macros.mlb";
 
 data ".data_nmplm_G"
 	GWScalar:long[2]=(0l,0l);

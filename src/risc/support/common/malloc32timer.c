@@ -1,5 +1,5 @@
 #include "time.h"
-#include "malloc32.h"
+#include "nmpp/malloc32.h"
 static clock_t t0,t1;
 extern struct NmppsMallocSpec nmppsMallocSpec;
 

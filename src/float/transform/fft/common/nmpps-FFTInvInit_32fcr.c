@@ -1,4 +1,4 @@
-#include "fft_32fcr.h"
+#include "nmpp/fft_32fcr.h"
 
 //int nmppsFFTInvInitAlloc_32fcr(NmppsFFTSpec_32fcr** spec, int order)
 //{

@@ -7,7 +7,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include "nmtype.h"           // The type nm32fcr was declared here (здесь объявлен тип nm32fcr)
-#include "fft_32fcr.h"
+#include "nmpp/fft_32fcr.h"
 
 
 #define SIZE 512

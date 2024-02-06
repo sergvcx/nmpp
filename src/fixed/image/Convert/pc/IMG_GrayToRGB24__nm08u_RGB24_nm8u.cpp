@@ -1,4 +1,4 @@
-#include "nmpli.h"
+#include "nmpp/nmpli.h"
 
  /*
 void nmppiRShiftConvert( nm32s* pSrcImg, int nSrcStride, nm16s* pDstImg,  int nSrcDstStride, int nShift,

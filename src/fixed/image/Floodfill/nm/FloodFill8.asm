@@ -73,8 +73,8 @@ data ".dataParam"
 
 end ".dataParam";
 
-import from macros;
-import from rtmacro;
+import from "nmpp/macros.mlb";
+import from "nmpp/rtmacro.mlb";
 
 begin ".text"
 

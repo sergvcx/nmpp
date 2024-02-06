@@ -1,6 +1,7 @@
-set(VERSION 2.21.0)
+set(VERSION 2.30.0)
 cmake_minimum_required(VERSION 3.17.0 FATAL_ERROR)
 
+project(nmpp VERSION ${VERSION} LANGUAGES CXX C ASM)
 
 #set(CMAKE_USE_RELATIVE_PATHS ON)
 #string(REGEX MATCH NM(d+). ARCH_VERSION ${ARCH})
@@ -16,6 +17,29 @@ if (CMAKE_HOST_WIN32 AND CMAKE_GENERATOR MATCHES "Ninja")
     )
     set(CMAKE_USER_MAKE_RULES_OVERRIDE "${CMAKE_BINARY_DIR}/GNUMakeRulesOverwrite.cmake" CACHE INTERNAL "")
 endif()
+
+
+if(NM)
+	set(FOLDER nmc)
+elseif(WIN32)
+	set(FOLDER win)
+else()	
+	set(FOLDER linux)
+endif()
+
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_C_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_C_EXTENSIONS OFF)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY         ${CMAKE_CURRENT_LIST_DIR}/lib/${FOLDER})
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG   ${CMAKE_CURRENT_LIST_DIR}/lib/${FOLDER})
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_LIST_DIR}/lib/${FOLDER})
+
+
+#MESSAGE (FATAL_ERROR ========= ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY})
 
 option(TESTS     "Build tests"     OFF)
 option(EXAMPLES  "Build examples"  OFF)
@@ -44,7 +68,8 @@ set(CMAKE_CONFIGURATION_TYPES "Release;Debug")
 
 #option (PACK_SUFFIX "package suffix" "---")
 
-project(nmpp VERSION ${VERSION} LANGUAGES CXX C ASM)
+
+#MESSAGE(FATAL_ERROR "--------- ${CPACK_SYSTEM_NAME} ${CMAKE_HOST_SYSTEM}")
 
 if (USE_CPACK)
 	include(cmake/CPacking.cmake)
@@ -89,15 +114,6 @@ MESSAGE("!!!!!!!!! CMAKE_CXX_COMPILER_ID= ${CMAKE_CXX_COMPILER_ID}")
 
 #set(CMAKE_BUILD_TYPE "Release")
 
-
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_C_STANDARD 99)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_C_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-set(CMAKE_C_EXTENSIONS OFF)
-
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/lib)
 
 #file(GLOB_RECURSE public_headers RELATIVE ${CMAKE_CURRENT_LIST_DIR} include/*.h)
 
@@ -400,6 +416,8 @@ if (ARCH STREQUAL "nm6406")
 	target_include_directories(${PROJECT_NAME}-${ARCH} 
 		PUBLIC 
 			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
+			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/libs/printx/include>"
+			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/libs/nmassert/include>"
 			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/nmpps>"
 			"$<INSTALL_INTERFACE:include>" 
 			"$<INSTALL_INTERFACE:include/nmpps>" 
@@ -422,6 +440,8 @@ if ( ARCH STREQUAL "nm6407i" OR ARCH STREQUAL "nm6476i" )
 	target_include_directories(${PROJECT_NAME}-${ARCH} 
 		PUBLIC 
 			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
+			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/libs/printx/include>"
+			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/libs/nmassert/include>"
 			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/nmpps>"
 			"$<INSTALL_INTERFACE:include>" 
 			"$<INSTALL_INTERFACE:include/nmpps>" 
@@ -445,9 +465,11 @@ if ( ARCH STREQUAL "nm6407f" OR ARCH STREQUAL "nm6408" OR ARCH STREQUAL "nm6476f
 	target_include_directories(${PROJECT_NAME}-${ARCH} 
 		PUBLIC 
 			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include>"
-			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/include/nmpps>"
+			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/libs/printx/include>"
+			"$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}/libs/nmassert/include>"
 			"$<INSTALL_INTERFACE:include>" 
 			"$<INSTALL_INTERFACE:include/nmpps>" 
+			"$<INSTALL_INTERFACE:printx/include>" 
 			)
 	export(TARGETS ${PROJECT_NAME}-${ARCH}
 		FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-${ARCH}-targets.cmake
@@ -530,10 +552,11 @@ if (ARCH STREQUAL "x64")
 	set_target_properties(${PROJECT_NAME}-${ARCH}  
 	PROPERTIES 
 	LINKER_LANGUAGE CXX
-	ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/lib
-	ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_LIST_DIR}/lib
-	ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_LIST_DIR}/lib
-	PUBLIC_HEADER "${public_headers}")
+	#ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/lib
+	#ARCHIVE_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_LIST_DIR}/lib
+	#ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_LIST_DIR}/lib
+	#PUBLIC_HEADER "${public_headers}"
+	)
 	
 	#set( PDB_OUTPUT_DIRECTORY ../lib)
 	export(TARGETS ${PROJECT_NAME}-${ARCH}
@@ -563,12 +586,15 @@ install(TARGETS ${PROJECT_NAME}-${ARCH}
 		DESTINATION include
 	)
 #	COMPONENT ${PROJECT_NAME}_${ARCH}
-
-
-install(DIRECTORY include    DESTINATION .)		
+install(FILES Makefile        DESTINATION .)		
+install(FILES CMakeLists.txt  DESTINATION .)		
+install(DIRECTORY src         DESTINATION .)		
+install(DIRECTORY cmake       DESTINATION .)		
+install(DIRECTORY libs        DESTINATION .)		
+install(DIRECTORY include     DESTINATION .)		
 install(DIRECTORY doc_        DESTINATION .)		
-install(FILES README.asciidoc      DESTINATION .)		
-install(FILES nmpp2env.bat   DESTINATION .)		
+install(FILES README.asciidoc DESTINATION .)		
+install(FILES nmpp2env.bat    DESTINATION .)		
 if (EXAMPLES)
 	install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples DESTINATION .) 
 	add_subdirectory(examples)

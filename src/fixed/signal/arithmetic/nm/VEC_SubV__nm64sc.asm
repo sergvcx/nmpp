@@ -1,4 +1,4 @@
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 extern core_Sub:label;
 begin ".text.nmpp"
 //------------------------------------------------------------------------------------------------

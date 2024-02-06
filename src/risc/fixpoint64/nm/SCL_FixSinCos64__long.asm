@@ -53,7 +53,7 @@ end ".data_nmplc_L";
 //*********** TEXT ****************
 //import PUSH_REGS,POP_REGS from regs.mlb;
 //import FIXSHIFTAR64,FIXADD64,FIXSUB64 from FixMacro64.mlb;
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 
 //////////////////////////////////////////////////////////////////////////////
 //                                                                          //

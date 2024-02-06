@@ -19,7 +19,7 @@
 //------------------------------------------------------------------------
 //#include "vShift.h"
 
-	import from macros.mlb;
+	import from "nmpp/macros.mlb";
 	extern core_vsum_shift_data_0:label;
 	extern core_vsum_data_0:label;
 

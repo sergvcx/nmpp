@@ -1,6 +1,6 @@
     //--------------------------------------------------------------------
 #include "rpc/rpc-host.h"
-#include "nmplv.h"
+#include "nmpp/nmplv.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 //	Performs logic activation of 64-bit elements by setting 

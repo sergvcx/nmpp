@@ -19,7 +19,7 @@
 //------------------------------------------------------------------------
 global _nmppiCompareGtC__FPSsiPSsiPSsii: label;
 global _void._.8.8nmppiCompareGtC.1short._.0.9._int.9._short._.0.9._int.9._short._.0.9._int.9._int.2 :label;
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 
 begin ".text_nmpli"
      

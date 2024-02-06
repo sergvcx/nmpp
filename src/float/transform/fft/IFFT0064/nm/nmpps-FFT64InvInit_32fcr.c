@@ -9,9 +9,9 @@
 //*                     of the W-coefficients for FFT64Inv                  */
 //***************************************************************************/
 
-#include <malloc32.h>
+#include "nmpp/malloc32.h"
 #include <math.h>
-#include "fft_32fcr.h"
+#include "nmpp/fft_32fcr.h"
 
 int nmppsFFT64InvInitAlloc_32fcr(NmppsFFTSpec_32fcr** addr)
 {

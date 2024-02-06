@@ -10,7 +10,7 @@
 //***************************************************************************/
 
 #include "nmpp.h"
-#include "fft_32fcr.h"
+#include "nmpp/fft_32fcr.h"
 
 extern "C"{
 

@@ -18,8 +18,8 @@
 //!
 //------------------------------------------------------------------------
 
-#include "nmpls.h"
-#include "nmpli.h"
+#include "nmpp/nmpls.h"
+#include "nmpp/nmpli.h"
 
 extern "C"{
 	

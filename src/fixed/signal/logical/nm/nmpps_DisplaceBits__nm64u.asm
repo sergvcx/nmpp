@@ -26,8 +26,8 @@ macro WTW_REG2(Reg1,Reg2)
 		wtw;
 	.branch;
 end WTW_REG2;
-import from rtmacro.mlb;
-import from macros.mlb;
+import from "nmpp/rtmacro.mlb";
+import from "nmpp/macros.mlb";
 
 data ".data_nmplv_G"
 	PushWoper:long[4]=(0hl,0hl,0hl,1hl);

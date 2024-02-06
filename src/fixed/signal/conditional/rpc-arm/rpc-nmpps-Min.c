@@ -18,7 +18,7 @@
 //!
 //------------------------------------------------------------------------
 #include "rpc/rpc-host.h"
-#include "nmplv.h"
+#include "nmpp/nmplv.h"
 /////////////////////////////////////////////////////////////////////////////////////////
 // Search of minimum value in 8-bit buffer
 void nmppsMin_8s7b(

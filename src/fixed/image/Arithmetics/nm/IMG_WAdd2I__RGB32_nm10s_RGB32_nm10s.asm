@@ -19,7 +19,7 @@
 //------------------------------------------------------------------------
 
 
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 extern core_Mul2D2W8_AddVr:label;
 
 data ".data_nmpli_L"

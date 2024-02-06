@@ -11,8 +11,8 @@
 
 #include "math.h"
 #include "nmpp.h"
-#include "malloc32.h"
-#include "fft_32fcr.h"
+#include "nmpp/malloc32.h"
+#include "nmpp/fft_32fcr.h"
 extern "C" {
 	
 void nmppsFFT4096FwdInit_32fcr(NmppsFFTSpec_32fcr* spec_32fcr)

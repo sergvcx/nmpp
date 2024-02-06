@@ -1,5 +1,5 @@
 //#include "fft.h"
-#include "malloc32.h"
+#include "nmpp/malloc32.h"
 #include "fft.h"
 
 void FFT_Inv512Set7bit();// Sets 7-bit accuracy of sin-cosine coefficients

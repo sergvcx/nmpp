@@ -1,6 +1,6 @@
 #include "time.h"
-#include "nmplv.h"
-#include "malloc32.h"
+#include "nmpp/nmplv.h"
+#include "nmpp/malloc32.h"
 
 int nmppsCmpLtC_8s8um (const nm8s* pSrcVec,  int8b  nCmpVal, nm8u* pDstVec,  int size, struct NmppsTmpSpec *spec)
 {

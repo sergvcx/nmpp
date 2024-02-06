@@ -27,7 +27,7 @@ begin ".text_nmvcore"
 //extern _VEC_TBL_Diagonal_FFFFh_G:long;
 //extern _VEC_TBL_Diagonal_FFFFFFFFh_G:long;
 //extern _nmppsTmpBuffer64_G_:long;
-import from minrep.mlb;
+import from "nmpp/minrep.mlb";
 DEF_MIN_REP();
 
 

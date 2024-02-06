@@ -8,7 +8,7 @@
 //*                                                                         */
 //* Date:25.01.2000     (c) RC Module, Moscow, Russia                  */
 //***************************************************************************/
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 
 data ".data_nmpls_L"
 	//----- input parameters--------

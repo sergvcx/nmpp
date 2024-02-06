@@ -3,8 +3,8 @@
 
 #ifndef RPC
 
-#include "nmtl/tmatrix.h"
-#include "nmtl/tnmmtr.h"
+#include "nmpp/tmatrix.h"
+#include "nmpp/tnmmtr.h"
 
 
 void nmppmMul_mv_8s16s_8xH(

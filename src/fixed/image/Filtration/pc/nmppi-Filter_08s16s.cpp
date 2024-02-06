@@ -18,10 +18,10 @@
 //!
 //------------------------------------------------------------------------
 
-#include "nmpli.h"
-#include "nmtl.h"
-//#include "nmpli/filter.h"
-#include "nmpli/iFilter.h"
+#include "nmpp/nmpli.h"
+#include "nmpp/nmtl.h"
+//#include "nmpp/filter.h"
+#include "nmpp/iFilter.h"
 void nmppiFilter_8s16s( nm8s * pSrcImg, nm16s* pDstImg, int nWidth, int nHeight, NmppiFilterState* pKernel)
 {
 	//int nKerWidth =((nm32s*)pKernel)[0];

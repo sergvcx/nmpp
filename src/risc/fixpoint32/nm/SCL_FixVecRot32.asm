@@ -17,7 +17,7 @@ global FixVecRot32 :label;
 global FixSinCos32 :label;
 global FixArcTan32 :label;
 //import FIXMUL32,FIXMACROMUL32 from FixMacro.mlb;
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 //import WTW_REG from Regs.mlb;
 //**********  Local ********************
 data ".data_nmplc_L"

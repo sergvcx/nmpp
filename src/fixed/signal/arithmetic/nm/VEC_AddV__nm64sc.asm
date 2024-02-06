@@ -1,5 +1,5 @@
 extern core_Add:label;
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 begin ".text.nmpp"
 //------------------------------------------------------------------------------------------------
 //! \fn void _nmppsAdd_64sc(nm64sc *pSrcVec1, nm64sc *pSrcVec2, nm64sc *pDstVec, int nSize);

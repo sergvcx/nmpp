@@ -1,6 +1,6 @@
-#include "malloc32.h"
-#include "nmplv/vSupport.h"
-#include "nmplv/vInit.h"
+#include "nmpp/malloc32.h"
+#include "nmpp/vSupport.h"
+#include "nmpp/vInit.h"
 
 
 int nmppsMallocResetRoute(){

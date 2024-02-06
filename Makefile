@@ -13,7 +13,8 @@ endif
 
 rls =Release
 dbg =Debug
-NMC_TOOLCHAIN = -DCMAKE_TOOLCHAIN_FILE="./cmake/nmc-gcc-toolchain.cmake"
+#NMC_TOOLCHAIN = -DCMAKE_TOOLCHAIN_FILE="./cmake/nmc-gcc-toolchain.cmake"
+NMC_TOOLCHAIN = --toolchain "./cmake/nmc-gcc-toolchain.cmake"
 all: nm6406 nm6407 nm6408 nm6476i nm6476f x64
 
 all_pack: nm6407pack nm6408pack nm6476ipack nm6476fpack 

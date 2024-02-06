@@ -19,9 +19,9 @@
 //------------------------------------------------------------------------
 
  #include "nmpp.h"
-#include "nmpls.h"
-#include "nmpli.h"
-#include "nmpli/iResample.h"
+#include "nmpp/nmpls.h"
+#include "nmpp/nmpli.h"
+#include "nmpp/iResample.h"
 //!
 //! \perfinclude _nmppiResampleDown2X__FPUcPUciiPl.html
 //!

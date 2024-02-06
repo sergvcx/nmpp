@@ -19,7 +19,7 @@
 //------------------------------------------------------------------------
 //#include "vArithm.h"
 
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 
 data ".data_nmpli_G"
 	Mask:	long = 0fffefffefffefffehl;

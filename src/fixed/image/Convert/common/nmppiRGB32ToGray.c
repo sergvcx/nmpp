@@ -1,7 +1,7 @@
 #include "nmtype.h"
-#include "nmpli/iDef.h"
-//#include "nmpli/iConvert.h"
-#include "nmplv/vSelect.h"
+#include "nmpp/iDef.h"
+//#include "nmpp/iConvert.h"
+#include "nmpp/vSelect.h"
 
 
 

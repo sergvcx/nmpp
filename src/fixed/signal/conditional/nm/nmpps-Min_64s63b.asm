@@ -19,7 +19,7 @@
 //------------------------------------------------------------------------
 
 //#include "vMinMin.h"
-//import from macros.mlb;
+//import from "nmpp/macros.mlb";
 extern	_nmppsTmpBuffer64_G_: long;
 extern	_nmppsTmpBuffer16_G_: long;
 extern core_MinVal:label;

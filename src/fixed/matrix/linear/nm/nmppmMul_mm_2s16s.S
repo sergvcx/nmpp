@@ -16,7 +16,7 @@
 //!
 //------------------------------------------------------------------------
 
-#include "nmc.hs"
+#include "nmpp/nmc.hs"
 
 /////////////////////////////////////////////////////////////////////////////////////////
 //! \fn void nmppmMul_mm_2s16s( nm2s* pSrcMtr1, int nHeight1, int nWidth1,  nm16s* pSrcMtr2, nm16s* pDstMtr, int nWidth2)

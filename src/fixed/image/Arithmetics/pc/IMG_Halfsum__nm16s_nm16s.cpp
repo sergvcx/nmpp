@@ -1,4 +1,4 @@
-#include "nmpli.h"
+#include "nmpp/nmpli.h"
 
 void nmppiAdd_16s(nm16s* pSrcDstImg, int nSrcDstStride, nm16s *pSrcImg,  int nSrcStride, int nWidth, int nHeight)
 {

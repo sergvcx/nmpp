@@ -20,8 +20,8 @@
 
 global _FFT_Fwd8192: label;
 
-import from rtmacro;
-import from macros;
+import from "nmpp/rtmacro.mlb";
+import from "nmpp/macros.mlb";
 
 data ".data_fft_L"
 

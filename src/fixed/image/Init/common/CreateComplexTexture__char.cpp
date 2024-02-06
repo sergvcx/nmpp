@@ -19,10 +19,10 @@
 //------------------------------------------------------------------------
 #define NOMINMAX
 
-#include "nmpli.h"
+#include "nmpp/nmpli.h"
 //#include "internal.h"
-#include "nmpli/iCellTexture.h"
-#include "nmplc.h"
+#include "nmpp/iCellTexture.h"
+ #include "nmpp/nmplc.h"
 
 
 

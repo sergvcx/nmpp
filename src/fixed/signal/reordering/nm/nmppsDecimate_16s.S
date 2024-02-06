@@ -14,7 +14,7 @@
 //! \endif
 //!
 //------------------------------------------------------------------------
-#include "nmc.hs"
+#include "nmpp/nmc.hs"
 //void core_ClipMul4D4W4_AddVr(nmreg nb1, 
 //								nmreg sb, 
 //								nmreg F1CR, 

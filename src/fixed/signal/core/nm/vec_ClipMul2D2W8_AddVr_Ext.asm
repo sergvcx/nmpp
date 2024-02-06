@@ -62,7 +62,7 @@ begin ".text_nmvcore"
 //! ar0,ar1,ar6,gr7
 //------------------------------------------------------------------------
 
-import from minrep.mlb;
+import from "nmpp/minrep.mlb";
 DEF_MIN_REP();
 
 macro MTR_MUL2D2W8_REP(N)

@@ -17,7 +17,7 @@
 //! \endif
 //!
 //------------------------------------------------------------------------
-#include "nmplc.h"
+ #include "nmpp/nmplc.h"
 ////////////////////////////////////////////////////////////////////////////
 //  Random initalization of 32-bit buffer
 unsigned nmppcRandomize=1;

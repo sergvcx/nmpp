@@ -1,4 +1,4 @@
-#include "nmpls.h"
+#include "nmpp/nmpls.h"
 #include "nmpp.h"
 
 void nmppsCreateResampleDown2_16u16u(nm64s** pKernel, int nHint)

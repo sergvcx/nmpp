@@ -1,7 +1,7 @@
 
 #include "math.h"
 #include "nmtype.h"
-#include "macros_fpu.h"
+#include "nmpp/macros_fpu.h"
 
 
 extern "C" __attribute__ ((section(".text_int")))

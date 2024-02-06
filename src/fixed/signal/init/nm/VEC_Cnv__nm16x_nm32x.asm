@@ -20,7 +20,7 @@
 
 //#include "vConvert.h"
 
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 extern core_vsum_data_0:label;
 data ".data_nmplv"
     WConvert16to32: long[8] =   ( 1l, 100000000hl, 0l dup 4, 1l, 100000000hl);

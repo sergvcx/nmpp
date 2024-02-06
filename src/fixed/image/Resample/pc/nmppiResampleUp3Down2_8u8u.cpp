@@ -1,6 +1,6 @@
-#include "nmpli.h"
-#include "nmpls.h"
-#include "nmtl.h"
+#include "nmpp/nmpli.h"
+#include "nmpp/nmpls.h"
+#include "nmpp/nmtl.h"
 
 extern "C"{
 	

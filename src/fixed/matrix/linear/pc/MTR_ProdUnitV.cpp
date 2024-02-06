@@ -23,8 +23,8 @@
 #include "nmtype.h"
 
 #ifndef RPC
-#include "nmtl/tmatrix.h"
-#include "nmtl/tnmmtr.h"
+#include "nmpp/tmatrix.h"
+#include "nmpp/tnmmtr.h"
 #endif
 
 extern "C" {

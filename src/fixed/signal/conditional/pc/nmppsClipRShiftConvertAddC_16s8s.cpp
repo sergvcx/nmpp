@@ -1,4 +1,4 @@
-#include "nmplv.h"
+#include "nmpp/nmplv.h"
 extern "C" {
 void nmppsClipRShiftConvertAddC_16s8s( nm16s* pSrcVec, int nClipFactor, int nShift, int8b nAddValue,nm8s* pDstVec, int nSize)
 {

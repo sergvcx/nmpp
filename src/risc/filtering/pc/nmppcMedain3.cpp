@@ -1,4 +1,4 @@
-#include "nmpls.h"
+#include "nmpp/nmpls.h"
 
 template<class T>  __INLINE__ void CompareSwap(T& a,T& b)
 {

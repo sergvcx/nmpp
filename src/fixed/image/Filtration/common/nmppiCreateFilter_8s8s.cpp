@@ -1,6 +1,6 @@
 #include "nmpp.h"
-#include "nmpls.h"
-#include "nmpli.h"
+#include "nmpp/nmpls.h"
+#include "nmpp/nmpli.h"
 #include <string.h>
 
 #ifdef __cplusplus

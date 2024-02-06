@@ -1,5 +1,5 @@
-#include "nmplv.h"
-#include "malloc32.h"
+#include "nmpp/nmplv.h"
+#include "nmpp/malloc32.h"
 
 
 int nmppsCmpNeC_32s8um (const nm32s* src,  int32b  nCmpVal, nm8u* dst,  int size,  struct NmppsTmpSpec* spec)

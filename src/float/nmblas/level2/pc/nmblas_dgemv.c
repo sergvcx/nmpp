@@ -62,7 +62,7 @@ void nmblas_dgemv(
         -lf2c -lm   (in that order)
 */
 
-#include "nmblas/f2c.h"
+#include "nmpp/f2c.h"
 //#include "cblasimpexp.h"
 
 // https://dsacss.sourceforge.net

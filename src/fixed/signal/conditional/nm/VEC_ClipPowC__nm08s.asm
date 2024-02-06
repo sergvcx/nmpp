@@ -19,7 +19,7 @@
 //!
 //------------------------------------------------------------------------
 //#include "vClip.h"
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 
 extern core_activate_data_add_0:label;
 extern tbl_f1cr_nm8:long[8];

@@ -26,7 +26,7 @@
 begin ".text_nmvcore"
 
    
-import from minrep.mlb;
+import from "nmpp/minrep.mlb";
 DEF_MIN_REP();
 
 macro MTR_MUL4D4W1_REP(N)

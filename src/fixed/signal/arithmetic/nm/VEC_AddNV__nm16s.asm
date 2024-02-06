@@ -30,7 +30,7 @@ data ".data_nmplv_G"
 
 end ".data_nmplv_G";
 
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 
 begin ".text.nmpp"
 

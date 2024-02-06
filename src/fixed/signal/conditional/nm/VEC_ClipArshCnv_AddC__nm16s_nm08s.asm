@@ -20,7 +20,7 @@
 //#include "vConvert.h"
 
 extern core_ClipMul2D2W8_AddVr:label;
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 extern tbl_f1cr_nm16:long;
 
 data ".data_nmplv_L"

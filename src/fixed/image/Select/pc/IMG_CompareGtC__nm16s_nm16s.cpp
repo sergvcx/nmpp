@@ -1,4 +1,4 @@
-#include "nmpli.h"
+#include "nmpp/nmpli.h"
 
 int  nmppiCompareGtC (nm16s *pSrcImg, int nSrcStride, nm16s *pDst, 
 										 int nDstStride, nm16s *pThreshold, int nWidth, int nHeight)

@@ -20,8 +20,8 @@
 extern core_Mul4D4W2_AddVr:label;
 
    
-import from macros.mlb;
-import MULT32 from rtmacro.mlb;
+import from "nmpp/macros.mlb";
+import MULT32 from "nmpp/rtmacro.mlb";
 
 data ".data_nmplv_G"
    G_Matrix: long[8] =  (1hl, 100hl,

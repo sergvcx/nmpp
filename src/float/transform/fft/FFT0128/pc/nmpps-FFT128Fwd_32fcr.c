@@ -1,4 +1,4 @@
-#include "fft_32fcr.h"
+#include "nmpp/fft_32fcr.h"
 
 void nmppsFFT128Fwd_32fcr(const nm32fcr* pSrcVec, int srcStep, nm32fcr* pDstVec, int dstStep, NmppsFFTSpec_32fcr* spec)
 {

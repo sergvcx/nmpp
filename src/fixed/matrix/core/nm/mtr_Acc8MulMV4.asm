@@ -18,7 +18,7 @@
 //!
 //------------------------------------------------------------------------
 
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 data ".data_nmplm_G"
 global	core_ar0gr0:long;
 global	core_ar1gr1:long;

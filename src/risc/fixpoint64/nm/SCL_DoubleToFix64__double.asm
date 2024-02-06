@@ -9,7 +9,7 @@
 //*                1999 (c) RC Module, Moscow, Russia                  */
 //***************************************************************************/
 
-import from rtmacro.mlb;
+import from "nmpp/rtmacro.mlb";
 
 begin ".text_nmplс"
 //! \fn	long nmppcDoubleToFix64(double arg, int fixpoint);

@@ -25,7 +25,7 @@
 begin ".text_nmvcore"
 
 
-      import from minrep.mlb;
+      import from "nmpp/minrep.mlb";
 	  DEF_MIN_REP();
 	  
 

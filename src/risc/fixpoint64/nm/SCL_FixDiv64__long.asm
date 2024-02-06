@@ -9,7 +9,7 @@
 //* Date:08.01.2000     (c) RC Module, Moscow, Russia                  */
 //***************************************************************************/
 
-//import from macros;
+//import from "nmpp/macros.mlb";
 //import from vtdef;
 //VECTYPEDEF();
 

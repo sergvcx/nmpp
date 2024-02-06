@@ -1,4 +1,4 @@
-#include "nmplv.h"
+#include "nmpp/nmplv.h"
 //#include "crtdbg.h"
 /*
 void nmppsClipArshCnv_AddC_Ext(v16nm16s* pSrcVec, v16nm32s* pnClipFactor, v16nm32s* pnShift,v16nm4s* pnAdd, v16nm4s* pDstVec,int nSize)

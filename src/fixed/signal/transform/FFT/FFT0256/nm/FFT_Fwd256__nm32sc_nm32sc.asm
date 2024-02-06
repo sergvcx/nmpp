@@ -33,8 +33,8 @@ global _FFT_Fwd256	:label;
 //import from regs;
 //import from vecmacro;
 
-import from rtmacro;
-import from macros.mlb;
+import from "nmpp/rtmacro.mlb";
+import from "nmpp/macros.mlb";
 
 
 data ".data_fft_L"

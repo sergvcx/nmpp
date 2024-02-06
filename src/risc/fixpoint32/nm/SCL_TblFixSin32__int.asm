@@ -20,7 +20,7 @@ const N=9;//804-точки - константа определяющая раз�
 const PI2 = (6487ed51h >> (30-FIXPOINT)) ;//PI2=90 град.
 const MAXINDEX=PI2 >> (FIXPOINT-N);//Размер массива значений синуса
 
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 extern FixSinDat:word;
 begin ".text_nmplс"
 //////////////////////////////////////////////////////////////////////////////

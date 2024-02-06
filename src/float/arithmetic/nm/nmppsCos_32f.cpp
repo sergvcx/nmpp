@@ -1,7 +1,7 @@
 
 #include "math.h"
 #include "nmtype.h"
-#include "macros_fpu.h"
+#include "nmpp/macros_fpu.h"
 
 static const float coeffs_cos[38]= {
 		//	vreg5

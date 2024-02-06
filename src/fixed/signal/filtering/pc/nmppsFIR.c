@@ -21,7 +21,7 @@
 //#include "tnmint.h"
 //#include "vec.h"
 #include "nmpp.h"
-#include "nmpls/sfir.h"
+#include "nmpp/sfir.h"
 /*
 int SIG_SetFilter_32s32s(int* pWeights, int nSize, nm64s* pKernel)
 {

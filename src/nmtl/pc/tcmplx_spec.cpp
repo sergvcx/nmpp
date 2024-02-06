@@ -8,7 +8,7 @@
 #ifndef _TCMPLX_CPEC_H_INCLUDED_
 #define _TCMPLX_CPEC_H_INCLUDED_
 
-#include "nmtl.h"
+#include "nmpp/nmtl.h"
 #include "nmtl/tcmplx_spec.h"
 
 

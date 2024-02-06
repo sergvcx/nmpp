@@ -912,7 +912,7 @@ void nmblas_sger(
    const int                  LDA
 );
 //! \}
-#include<nmblas/nmblas_sgemm.h>
+#include "nmblas_sgemm.h"
 
 void MullMatrix_f( 
 	void* 	A, 

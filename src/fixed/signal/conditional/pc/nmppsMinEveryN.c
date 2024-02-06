@@ -18,7 +18,7 @@
 //! \endif
 //!
 //------------------------------------------------------------------------
-#include "nmplv.h"
+#include "nmpp/nmplv.h"
 
 /*void nmppsMinNV_8s(nm8s7b**   pSrcVecs, int numVecs, nm8s7b*   pDstMinVec, int nSize);
 void nmppsMinNV_16s(nm16s15b** pSrcVecs, int numVecs, nm16s15b* pDstMinVec, int nSize);

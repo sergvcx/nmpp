@@ -23,7 +23,7 @@
 extern core_data:label;
 extern core_Mul2D2W8_AddVr:label;
 
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 data ".data_nmplv_L"
 	global LWSum2CharBuffers: long[8*16] = (
 		00000000000000001hl,

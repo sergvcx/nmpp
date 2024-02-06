@@ -11,7 +11,7 @@
 
 
 #include "nmpp.h"
-#include "fft_32fcr.h"
+#include "nmpp/fft_32fcr.h"
 
 extern "C" {
 void LastLayerFFT_32fcr(const nm32fcr* src1, const nm32fcr* src2, nm32fcr* dst, const nm32fcr* W4096, int N);

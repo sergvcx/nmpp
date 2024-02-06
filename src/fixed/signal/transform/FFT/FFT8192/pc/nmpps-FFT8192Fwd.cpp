@@ -9,7 +9,7 @@
 
 #include "fft.h"
 #include "nmpp.h"
-#include "nmtl.h"
+#include "nmpp/nmtl.h"
 #include "fftexp.h"
 extern "C"{
 

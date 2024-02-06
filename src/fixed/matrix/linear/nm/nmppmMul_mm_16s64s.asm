@@ -17,7 +17,7 @@
 //! \endif
 //!
 //------------------------------------------------------------------------
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 
 
 begin ".text_nmplm"

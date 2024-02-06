@@ -41,9 +41,14 @@ mc11102:
 	cd build_$@ && ctest
 
 mc12101:
-	cmake -B build_$@ -G "Unix Makefiles" -D MC12101_BUILD=ON -D QEMU_BUILD=ON
+	cmake -B build_$@ -D MC12101_BUILD=ON -D QEMU_BUILD=ON
 	cmake --build build_$@ 
 	cd build_$@ && ctest
+
+#mc12101:
+#	cmake -B build_$@ -G "Unix Makefiles" -D MC12101_BUILD=ON -D QEMU_BUILD=ON
+#	cmake --build build_$@ 
+#	cd build_$@ && ctest
 
 #mc12101i:
 #	cmake -B build_$@ -G "Unix Makefiles" -D MC12101_BUILD=ON -D ARCH=nm6407i

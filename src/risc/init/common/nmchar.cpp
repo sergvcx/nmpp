@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "nmchar.h"
+#include "nmpp/nmchar.h"
 
 /*
 uint8ptr nmchar::operator &(){

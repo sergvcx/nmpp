@@ -9,9 +9,9 @@
 //*                     of the W-coefficient for FFT2048Inv                 */
 //***************************************************************************/
 
-#include <malloc32.h>
+#include "nmpp/malloc32.h"
 #include <math.h>
-#include "fft_32fcr.h"
+#include "nmpp/fft_32fcr.h"
 
 int nmppsFFT2048InvInitAlloc_32fcr(NmppsFFTSpec_32fcr** addr)
 {

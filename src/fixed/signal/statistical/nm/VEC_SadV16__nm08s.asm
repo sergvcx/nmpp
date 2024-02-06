@@ -15,7 +15,7 @@
 //! \endif 
 //!
 //----------------------------------------------------------------------------
-//import from macros.mlb;
+//import from "nmpp/macros.mlb";
 
 extern	_nmppsTmpBuffer64_G_:long;
 extern _VEC_TBL_One_G:long;

@@ -15,7 +15,7 @@
 *
 ******************************************************************************/
 
-#include "nmpli.h"
+#include "nmpp/nmpli.h"
 
 /*
 Finds spots on the input band and returns the number of spots,
@@ -36,7 +36,7 @@ Return:
 
 */
 
-#include "nmpli/iFloodFill.h"
+#include "nmpp/iFloodFill.h"
 int nmppiFloodFill( unsigned int * Frame, /* input frame */
                SegmentInfo * aTetr,      /* array of struct with ( xmin, ymin ) and ( xmax, ymax ) */
                unsigned int * Image,    /* output picture */

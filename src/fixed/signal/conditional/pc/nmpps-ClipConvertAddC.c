@@ -1,4 +1,4 @@
-#include "nmplv.h"
+#include "nmpp/nmplv.h"
 void nmppsClipConvertAddC_16s8s(nm16s* pSrcVec, int nClipFactor, int8b nAddValue,nm8s* pDstVec, int nSize, NmppsWeightState* pState)
 {
 	int	ClipPos=(1<<nClipFactor)-1;	

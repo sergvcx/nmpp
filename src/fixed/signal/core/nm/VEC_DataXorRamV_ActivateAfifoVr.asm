@@ -1,5 +1,5 @@
     //--------------------------------------------------------------------
-import from minrep.mlb;
+import from "nmpp/minrep.mlb";
 DEF_MIN_REP();
 macro M(N)
 .if (NMPP_MIN_REP <= N);

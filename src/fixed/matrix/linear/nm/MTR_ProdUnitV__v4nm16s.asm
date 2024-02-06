@@ -43,7 +43,7 @@ data ".data_nmplm_G"
 
 end ".data_nmplm_G";
 
-//import from macros.mlb;
+//import from "nmpp/macros.mlb";
 
 begin ".text_nmplm"
 

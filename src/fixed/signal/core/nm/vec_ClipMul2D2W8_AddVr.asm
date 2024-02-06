@@ -20,13 +20,13 @@
 
 
 
-///import from macros.mlb;
+///import from "nmpp/macros.mlb";
 
 begin ".text_nmvcore"
 
 
 
-import from minrep.mlb;
+import from "nmpp/minrep.mlb";
 DEF_MIN_REP();
 
 macro MTR_MUL2D2W8_REP(N)

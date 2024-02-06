@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include "nmblas.h"
+#include "nmpp/nmblas.h"
 #include "nmtype.h"
 
 #define SIZE 10

@@ -1,0 +1,6 @@
+[submodule "libs/nmassert"]
+	path = libs/nmassert
+	url = git@git.module.ru:nmc/nmassert.git
+[submodule "libs/printx"]
+	path = libs/printx
+	url = git@git.module.ru:nmc/printx.git

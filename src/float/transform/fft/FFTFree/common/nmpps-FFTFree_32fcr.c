@@ -8,7 +8,7 @@
 //***************************************************************************/
 
 #include <malloc.h>
-#include "fft_32fcr.h"
+#include "nmpp/fft_32fcr.h"
 
 int nmppsFFTFree_32fcr(NmppsFFTSpec_32fcr* spec)
 {

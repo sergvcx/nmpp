@@ -15,7 +15,7 @@
 //------------------------------------------------------------------------
 
 
-#include "nmc.hs"
+#include "nmpp/nmc.hs"
 
 
 #define TAIL_REP(N) tail_rep N

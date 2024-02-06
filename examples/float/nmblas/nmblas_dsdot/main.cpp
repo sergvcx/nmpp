@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <nmblas.h>
+#include "nmpp/nmblas.h"
 #include <nmpp.h>
 
 #define SIZE 16

@@ -1,9 +1,9 @@
-//#include "nmpls.h"
+//#include "nmpp/nmpls.h"
 #include "nmpp.h"
 #include "string.h"
-#include "nmpls/sfir.h"
-#include "nmplv/vSupport.h"
-#include "malloc32.h"
+#include "nmpp/sfir.h"
+#include "nmpp/vSupport.h"
+#include "nmpp/malloc32.h"
 //	nSize=3  nDisp=1,5 
 //  nSize=5  nDisp=2,6 
 //  nSize=7  nDisp=3,7 

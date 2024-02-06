@@ -20,7 +20,7 @@ const N=10;//1025-точек - константа определяющая ра�
 const MAXINDEX=10000h >> (FIXPOINT-N);//Размер массива значений синуса
 const PI2 = (6487ed51h >> (30-FIXPOINT)) ;//PI2=90 град.
 
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 extern FixArcSinDat:word;
 
 

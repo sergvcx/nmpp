@@ -18,8 +18,8 @@
 //!
 //------------------------------------------------------------------------
 
-#include "nmpli.h"
-#include "nmtl.h"
+#include "nmpp/nmpli.h"
+#include "nmpp/nmtl.h"
 
 
 void nmppiFilter_8s32s( nm8s * pSrcImg, nm32s* pDstImg, int nWidth, int nHeight, nm64s* pKernel)

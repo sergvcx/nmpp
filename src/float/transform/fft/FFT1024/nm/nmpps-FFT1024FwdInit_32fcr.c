@@ -9,9 +9,9 @@
 //*                     of the W-coefficient for FFT1024Fwd                 */
 //***************************************************************************/
 
-#include <malloc32.h>
+#include "nmpp/malloc32.h"
 #include <math.h>
-#include "fft_32fcr.h"
+#include "nmpp/fft_32fcr.h"
 void nmppsFFT1024FwdInit_32fcr(NmppsFFTSpec_32fcr* spec_32fcr){
 	for(int i = 0; i < NUMBUFF1; i++) 
 		spec_32fcr->Buffers[i] = 0;

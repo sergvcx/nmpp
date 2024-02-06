@@ -1,5 +1,5 @@
-#include "nmplv.h"
-#include "malloc32.h"
+#include "nmpp/nmplv.h"
+#include "nmpp/malloc32.h"
 
 int nmppsCmpLtC_64s (nm64s* pSrcVec,  int64b  nCmpVal, nm64s* pDstVec,  int nSize, Tmp2BuffSpec *pspec)
 {

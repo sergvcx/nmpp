@@ -20,7 +20,7 @@
 
 begin ".text_nmvcore"
 
-import from minrep.mlb;
+import from "nmpp/minrep.mlb";
 DEF_MIN_REP();
      
 macro VEC_MUL_VN_ADD_VN_REP(N)

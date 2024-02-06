@@ -1,4 +1,4 @@
-#include "nmblas.h"
+#include "nmpp/nmblas.h"
 #define SIZE 10
 
 double src[SIZE];

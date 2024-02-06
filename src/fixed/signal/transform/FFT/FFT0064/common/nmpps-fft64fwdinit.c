@@ -1,5 +1,5 @@
 #include "fft.h"
-#include "malloc32.h"
+#include "nmpp/malloc32.h"
 #include "math.h"
 #include "nmpp.h"
 

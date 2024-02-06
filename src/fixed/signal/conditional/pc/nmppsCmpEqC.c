@@ -1,5 +1,5 @@
     //--------------------------------------------------------------------
-#include "nmplv.h"
+#include "nmpp/nmplv.h"
     //--------------------------------------------------------------------
 void nmppsCmpEqC_16u15b(nm16u15b* pSrcVec, uint15b shCmpVal, nm16s* pDstVec, int nSize, int16b shTrueFlag)
 {

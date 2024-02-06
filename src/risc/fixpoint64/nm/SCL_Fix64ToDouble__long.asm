@@ -9,7 +9,7 @@
 //*                1999 (c) RC Module, Moscow, Russia                  */
 //***************************************************************************/
 
-import from rtmacro.mlb;
+import from "nmpp/rtmacro.mlb";
 
 
 

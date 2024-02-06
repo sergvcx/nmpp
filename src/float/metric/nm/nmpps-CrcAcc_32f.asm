@@ -18,7 +18,7 @@
 //!
 //------------------------------------------------------------------------
 
-import from rtmacro.mlb;
+import from "nmpp/rtmacro.mlb";
 
 extern _CRC32_Table: word ;
 begin ".text.nmpp"

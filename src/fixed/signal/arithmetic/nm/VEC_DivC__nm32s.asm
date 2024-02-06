@@ -21,7 +21,7 @@
 extern DivS4095byU145:long;
 extern core_vsum_data_0:label;
 extern core_IncNeg:label;
-import from macros.mlb;
+import from "nmpp/macros.mlb";
 
 
 begin ".text.nmpp"

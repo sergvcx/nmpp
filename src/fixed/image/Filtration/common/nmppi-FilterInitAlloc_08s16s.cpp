@@ -1,15 +1,15 @@
 
 //#include <string.h>
 //#include "nmpp.h"
-//#include "nmpls.h"
-//#include "nmpls/sFiltration.h"
+//#include "nmpp/nmpls.h"
+//#include "nmpp/sFiltration.h"
 
 
-//#include "nmpli.h"
-#include "nmpli/iFilter.h"
-#include "nmplv/vSupport.h"
-#include "nmplv/vInit.h"
-#include "malloc32.h"
+//#include "nmpp/nmpli.h"
+#include "nmpp/iFilter.h"
+#include "nmpp/vSupport.h"
+#include "nmpp/vInit.h"
+#include "nmpp/malloc32.h"
 #include <string.h>
 
 

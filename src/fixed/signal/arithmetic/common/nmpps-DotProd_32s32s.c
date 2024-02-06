@@ -17,8 +17,8 @@
 //! \endif
 //!
 //------------------------------------------------------------------------
-#include "nmplv.h"
-#include "malloc32.h"
+#include "nmpp/nmplv.h"
+#include "nmpp/malloc32.h"
 
 int nmppsDotProd_32s32sm(
 	const nm32s*		srcVec0,	//Input0 buffer		:long Local [Size].
