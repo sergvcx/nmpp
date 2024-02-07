@@ -587,10 +587,10 @@ install(TARGETS ${PROJECT_NAME}-${ARCH}
 	
 	)
 #	COMPONENT ${PROJECT_NAME}_${ARCH}
-install(FILES Makefile        DESTINATION . COMPONENT nmpp_src)		
-install(FILES CMakeLists.txt  DESTINATION . COMPONENT nmpp_src)		
-install(DIRECTORY src         DESTINATION . COMPONENT nmpp_src)		
-install(DIRECTORY cmake       DESTINATION . COMPONENT nmpp_src)		
+install(FILES Makefile        DESTINATION src/nmpp COMPONENT nmpp_src)		
+install(FILES CMakeLists.txt  DESTINATION src/nmpp COMPONENT nmpp_src)		
+install(DIRECTORY src/        DESTINATION src/nmpp COMPONENT nmpp_src)		
+install(DIRECTORY cmake       DESTINATION src/nmpp COMPONENT nmpp_src)		
 
 install(DIRECTORY libs        DESTINATION . COMPONENT nmpp_libs)		
 install(DIRECTORY include     DESTINATION . COMPONENT nmpp_dev)		
