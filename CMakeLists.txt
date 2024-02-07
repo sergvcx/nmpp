@@ -589,14 +589,14 @@ install(TARGETS ${PROJECT_NAME}-${ARCH}
 #	COMPONENT ${PROJECT_NAME}_${ARCH}
 install(FILES Makefile        DESTINATION src/nmpp COMPONENT nmpp_src)		
 install(FILES CMakeLists.txt  DESTINATION src/nmpp COMPONENT nmpp_src)		
-install(DIRECTORY src/        DESTINATION src/nmpp COMPONENT nmpp_src)		
+install(DIRECTORY src         DESTINATION src/nmpp COMPONENT nmpp_src)		
 install(DIRECTORY cmake       DESTINATION src/nmpp COMPONENT nmpp_src)		
 
 install(DIRECTORY libs        DESTINATION . COMPONENT nmpp_libs)		
 install(DIRECTORY include     DESTINATION . COMPONENT nmpp_dev)		
 install(FILES nmpp2env.bat    DESTINATION . COMPONENT nmpp_dev)		
-install(DIRECTORY doc_        DESTINATION . COMPONENT nmpp_doc)		
-install(FILES README.asciidoc DESTINATION . COMPONENT nmpp_doc)		
+install(DIRECTORY doc_/       DESTINATION doc/nmpp COMPONENT nmpp_doc)		
+install(FILES README.asciidoc DESTINATION doc/nmpp COMPONENT nmpp_doc)		
 if (EXAMPLES)
 	install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples DESTINATION . COMPONENT nmpp_examples) 
 	add_subdirectory(examples)
