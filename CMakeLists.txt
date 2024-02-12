@@ -20,11 +20,11 @@ endif()
 
 
 if(NM)
-	set(FOLDER nmc)
+	set(FOLDER arch-nmc)
 elseif(WIN32)
-	set(FOLDER win)
+	set(FOLDER arch-win)
 else()	
-	set(FOLDER linux)
+	set(FOLDER arch-linux)
 endif()
 
 
@@ -34,9 +34,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_C_EXTENSIONS OFF)
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY         ${CMAKE_CURRENT_LIST_DIR}/lib/${FOLDER})
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG   ${CMAKE_CURRENT_LIST_DIR}/lib/${FOLDER})
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_LIST_DIR}/lib/${FOLDER})
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY         ${CMAKE_CURRENT_LIST_DIR}/${FOLDER}/lib)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG   ${CMAKE_CURRENT_LIST_DIR}/${FOLDER}/lib)
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_LIST_DIR}/${FOLDER}/lib)
 
 
 #MESSAGE (FATAL_ERROR ========= ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY})
@@ -587,15 +587,17 @@ install(TARGETS ${PROJECT_NAME}-${ARCH}
 	
 	)
 #	COMPONENT ${PROJECT_NAME}_${ARCH}
+
+
 install(FILES Makefile        DESTINATION src/nmpp COMPONENT nmpp_src)		
 install(FILES CMakeLists.txt  DESTINATION src/nmpp COMPONENT nmpp_src)		
-install(DIRECTORY src         DESTINATION src/nmpp COMPONENT nmpp_src)		
+install(DIRECTORY src         DESTINATION src/nmpp COMPONENT nmpp_src)	# copy files src/*.* to src/nmpp/src/*.*
 install(DIRECTORY cmake       DESTINATION src/nmpp COMPONENT nmpp_src)		
 
 install(DIRECTORY libs        DESTINATION . COMPONENT nmpp_libs)		
 install(DIRECTORY include     DESTINATION . COMPONENT nmpp_dev)		
 install(FILES nmpp2env.bat    DESTINATION . COMPONENT nmpp_dev)		
-install(DIRECTORY doc_/       DESTINATION doc/nmpp COMPONENT nmpp_doc)		
+install(DIRECTORY doc_/       DESTINATION doc/nmpp COMPONENT nmpp_doc)	# copy files doc_/*.* to doc/nmpp/*.*
 install(FILES README.asciidoc DESTINATION doc/nmpp COMPONENT nmpp_doc)		
 if (EXAMPLES)
 	install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples DESTINATION . COMPONENT nmpp_examples) 
