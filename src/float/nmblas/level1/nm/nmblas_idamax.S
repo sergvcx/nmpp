@@ -32,8 +32,8 @@
 //
 // ---------------------------------------------------------------------
 //
-#define DEBUG 1
-#include "printx.hs"
+//#define DEBUG 1
+//#include "printx.hs"
 //#include "uassert.hs"
 .global _nmblas_idamax
 .text
