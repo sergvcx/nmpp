@@ -99,10 +99,16 @@ function(CONFIGURE_EXAMPLE IN_TEST_DIR BOARD CORE )
 	
 	file(COPY ${IN_TEST_DIR} DESTINATION ${OUT_TEST_DIR}/..) # copy main.cpp & co
 	
-	MESSAGE("### CONFIGURE_EXAMPLE :${OUT_TEST_DIR} ")
+        MESSAGE("### CONFIGURE_EXAMPLE :${OUT_TEST_DIR} ")
 	
 	configure_file ("./templates/.vscode/launch.json"  "${OUT_TEST_DIR}/.vscode/launch.json" @ONLY )
 	configure_file ("./templates/.vscode/tasks.json"   "${OUT_TEST_DIR}/.vscode/tasks.json" @ONLY )
+
+
+        set(example_sources
+            ${OUT_TEST_DIR}/.vscode/launch.json
+            ${OUT_TEST_DIR}/.vscode/tasks.json)
+
 		
 	if (NOT BOARD STREQUAL "x64")
 		#string(TOUPPER ${BOARD} BSP) 	# BSP is @ argument for .in
@@ -118,14 +124,21 @@ function(CONFIGURE_EXAMPLE IN_TEST_DIR BOARD CORE )
 		#	configure_file ("./templates/build.sh.in"  			"${OUT_TEST_DIR}/build.sh" )
 		#	configure_file ("./templates/run.sh.in"   			"${OUT_TEST_DIR}/run.sh" )
 		#endif()
+                list(APPEND example_sources ${OUT_TEST_DIR}/${BOARD}/Makefile ${OUT_TEST_DIR}/${BOARD}/${LDS})
 	else()
 		configure_file ("./templates/x64-gcc/Makefile.in"  		"${OUT_TEST_DIR}/x64-gcc/Makefile" )
-		configure_file ("./templates/x64-cl/Makefile.in"  		"${OUT_TEST_DIR}/x64-cl/Makefile" )
-	endif()
+                configure_file ("./templates/x64-cl/Makefile.in"  		"${OUT_TEST_DIR}/x64-cl/Makefile" )
+                list(APPEND example_sources x64-gcc/Makefile x64-cl/Makefile)
+        endif()
+
+        cmake_path(GET OUT_TEST_DIR FILENAME EXAMPLE_NAME)
+        add_custom_target(${BOARD}-${EXAMPLE_NAME}
+            COMMAND make
+            SOURCES ${example_sources}
+            )
 	
 endfunction()
-
-function(CONFIGURE_TEST_NMC IN_TEST_DIR BOARD CORE )	
+function(CONFIGURE_TEST_NMC IN_TEST_DIR BOARD CORE )
 	if (NMC_TOOLCHAIN)
 
 		get_filename_component(STEP_NAME ${IN_TEST_DIR} NAME)
@@ -162,6 +175,7 @@ function(CONFIGURE_TEST_NMC IN_TEST_DIR BOARD CORE )
 		target_link_options   (${TEST_NAME} PUBLIC -T${CMAKE_CURRENT_SOURCE_DIR}/templates/${LDS}  ) # -v 
 		target_compile_options(${TEST_NAME} PUBLIC $<$<COMPILE_LANGUAGE:C,CXX>:-m${NMC_ARCH};-O2>)	
 		target_compile_options(${TEST_NAME} PUBLIC $<$<COMPILE_LANGUAGE:ASM>:-m${NMC_ARCH};-Werror>)	
+
 	
 		#MESSAGE("RUNOPT=" ${RUNOPT})
 		#string(REPLACE "-v" "" CRUNOPT ${RUNOPT})
@@ -176,6 +190,7 @@ function(CONFIGURE_TEST_NMC IN_TEST_DIR BOARD CORE )
 		add_test(NAME ${TEST_NAME} COMMAND ${RUNNER_EXE} $<TARGET_FILE:${TEST_NAME}> ${OPTS} )
 	else()
 		MESSAGE("WARNING: CONFIGURE_TEST_NMC SKIPPED DUE NMC_TOOLCHAIN IS ${NMC_TOOLCHAIN}")
+                message(FATAL_ERROR aaaaaaaa)
 	endif()
 endfunction()
 
@@ -201,7 +216,7 @@ function(CONFIGURE_TEST_X64 IN_TEST_DIR BOARD CORE )
 		endif()	
 		
 		string(TOUPPER ${BOARD} BSP)
-		
+
 		add_executable(${TEST_NAME}  ${SRC_LIST})
 		#add_dependencies(${TEST_NAME} ${test_lib})
 		string(REPLACE " " ";" LIBS_LIST ${LIBS})
@@ -313,8 +328,9 @@ if (ARCH STREQUAL nm6407f)
 		set(RUND 	"rund: $(TARGETD)\n\tmc12101run -p -R -a0 -v $(TARGETD)" )
 		set(MONITOR "monitor:\n\tmc12101_gdb_monitor 0 0 5555")
 		set(GDB		"gdb:\n\tnmc-gdb -ex \"target remote :5555\" $(TARGETD)")
+                message(STATUS ${dir_list})
 		foreach(dir ${dir_list})
-			#CONFIGURE_TEST_NMC(${dir} ${BOARD}f "-nmpu0" )
+                        #CONFIGURE_TEST_NMC(${dir} ${BOARD}f "-nmpu0" )
 			CONFIGURE_EXAMPLE (${dir} ${BOARD}f "")
 		endforeach()
 	endif()
