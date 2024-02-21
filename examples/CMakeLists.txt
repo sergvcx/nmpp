@@ -11,8 +11,6 @@ option(NM_CARD_BUILD "Build examples for nm_card" OFF)
 option(QEMU_BUILD    "Build examples for qemu" OFF)
 option(X64_BUILD     "Build examples for x64" OFF)
 
-option(NMC_TOOLCHAIN "Used NMC Toolchin" OFF)
-
 set (NMC_ARCH "nmcxxx")
 macro (SET_NMC_ARCH ARCH)
 	if (ARCH STREQUAL nm6406)	
@@ -30,19 +28,9 @@ macro (SET_NMC_ARCH ARCH)
 	endif()
 endmacro()	
 
-if (X64_BUILD)
-	MESSAGE("########## X64 BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
-	set(NMC_TOOLCHAIN OFF)
-	project(nmpp-examples VERSION 0.1.0 LANGUAGES CXX C)
-else ()
-	set(CMAKE_TOOLCHAIN_FILE "../cmake/nmc-gcc-compile.cmake")
-	set(NMC_TOOLCHAIN ON)
-	project(nmpp-examples VERSION 0.1.0 LANGUAGES CXX C ASM)
-	MESSAGE("########## NMC BUILD ########### with ${CMAKE_TOOLCHAIN_FILE}")
-endif()
+project(nmpp-examples VERSION 0.1.0 LANGUAGES CXX C ASM)
 
-
-
+#MESSAGE( FATAL_ERROR PROJ=${PROJECT_NAME})
 enable_testing()
 
 
@@ -88,7 +76,7 @@ function(CONFIGURE_EXAMPLE IN_TEST_DIR BOARD CORE )
 	
 	list(JOIN SRC_LIST " " SRC_FILES) # SRC_FILES is @ argument for .in
 	
-	set(OUT_TEST_DIR examples/${IN_TEST_DIR})
+	set(OUT_TEST_DIR ../conf-examples/${IN_TEST_DIR})
 	
 	# getting abs path of example and then relative path from example to root
 	get_filename_component(ABS_IN_TEST_DIR ${IN_TEST_DIR}  REALPATH BASE_DIR "${CMAKE_CURRENT_LIST_DIR}")
@@ -125,112 +113,103 @@ function(CONFIGURE_EXAMPLE IN_TEST_DIR BOARD CORE )
 		#	configure_file ("./templates/run.sh.in"   			"${OUT_TEST_DIR}/run.sh" )
 		#endif()
                 list(APPEND example_sources ${OUT_TEST_DIR}/${BOARD}/Makefile ${OUT_TEST_DIR}/${BOARD}/${LDS})
+		cmake_path(GET OUT_TEST_DIR FILENAME EXAMPLE_NAME)
+		add_custom_target(${BOARD}-${EXAMPLE_NAME}
+			COMMAND make
+			SOURCES ${example_sources}
+			)
 	else()
 		configure_file ("./templates/x64-gcc/Makefile.in"  		"${OUT_TEST_DIR}/x64-gcc/Makefile" )
-                configure_file ("./templates/x64-cl/Makefile.in"  		"${OUT_TEST_DIR}/x64-cl/Makefile" )
-                list(APPEND example_sources x64-gcc/Makefile x64-cl/Makefile)
-        endif()
+		configure_file ("./templates/x64-cl/Makefile.in"  		"${OUT_TEST_DIR}/x64-cl/Makefile" )
+		list(APPEND example_sources x64-gcc/Makefile x64-cl/Makefile)
+	endif()
 
-        cmake_path(GET OUT_TEST_DIR FILENAME EXAMPLE_NAME)
-        add_custom_target(${BOARD}-${EXAMPLE_NAME}
-            COMMAND make
-            SOURCES ${example_sources}
-            )
+
 	
 endfunction()
 function(CONFIGURE_TEST_NMC IN_TEST_DIR BOARD CORE )
-	if (NMC_TOOLCHAIN)
-
-		get_filename_component(STEP_NAME ${IN_TEST_DIR} NAME)
-		
-		set(TEST_NAME cexamples-${BOARD}${CORE}-${STEP_NAME})
-		file(GLOB 	s_files   RELATIVE ${CMAKE_CURRENT_LIST_DIR} ${IN_TEST_DIR}/*.S)
-		file(GLOB 	cpp_files RELATIVE ${CMAKE_CURRENT_LIST_DIR} ${IN_TEST_DIR}/*.cpp)
-		file(GLOB 	c_files   RELATIVE ${CMAKE_CURRENT_LIST_DIR} ${IN_TEST_DIR}/*.c)
-		
-		list(APPEND SRC_LIST ${s_files})
-		list(APPEND SRC_LIST ${cpp_files})
-		list(APPEND SRC_LIST ${c_files})
-		list(LENGTH SRC_LIST SRC_COUNT)
-		
-		MESSAGE("### CONFIGURE_TEST_NMC:${TEST_NAME}  ")
-
-		### BOARD:${BOARD} core:${CORE} dir:${IN_TEST_DIR} name:${STEP_NAME}") # src: ${SRC_FILES}")	
-
-		if (NOT SRC_COUNT  )
-			return()
-		endif()	
-		
-		#string(TOUPPER ${BOARD} BSP)
-		
-		add_executable(${TEST_NAME}  ${SRC_LIST})
-		add_dependencies(${TEST_NAME} ${PROJECT}-${ARCH})
-		string(REPLACE " " ";" LIBS_LIST ${LIBS})
-		target_link_directories   (${TEST_NAME} PUBLIC	$ENV{${BSP}}/lib ../lib)
-		target_link_libraries     (${TEST_NAME} ${LIBS_LIST})
-		target_include_directories(${TEST_NAME} PUBLIC $ENV{BSP}/include ../include)
-		
-		set_target_properties(${TEST_NAME} PROPERTIES LINKER_LANGUAGE CXX)
-
-		target_link_options   (${TEST_NAME} PUBLIC -T${CMAKE_CURRENT_SOURCE_DIR}/templates/${LDS}  ) # -v 
-		target_compile_options(${TEST_NAME} PUBLIC $<$<COMPILE_LANGUAGE:C,CXX>:-m${NMC_ARCH};-O2>)	
-		target_compile_options(${TEST_NAME} PUBLIC $<$<COMPILE_LANGUAGE:ASM>:-m${NMC_ARCH};-Werror>)	
-
+	get_filename_component(TEST_DIR_NAME ${IN_TEST_DIR} NAME)
 	
-		#MESSAGE("RUNOPT=" ${RUNOPT})
-		#string(REPLACE "-v" "" CRUNOPT ${RUNOPT})
-		#string(REPLACE " " ";" OPTS ${CRUNOPT})
-		#SPLIT_CMD_ARGS(${RUNNER} RUNNER_EXE RUNNER_ARGS)
-		# split RUNNER into EXE ans ARGS
-		#string(REPLACE " " ";" RUNNER_ARGS ${RUNNER})
-		#list(POP_FRONT RUNNER_ARGS RUNNER_EXE)
-		#list(APPEND OPTS ${RUNNER_ARGS})
-		#MESSAGE ("========== ${RUNNER} => ${RUNNER_EXE}  = ${OPTS}")
-		#exit()
-		add_test(NAME ${TEST_NAME} COMMAND ${RUNNER_EXE} $<TARGET_FILE:${TEST_NAME}> ${OPTS} )
-	else()
-		MESSAGE("WARNING: CONFIGURE_TEST_NMC SKIPPED DUE NMC_TOOLCHAIN IS ${NMC_TOOLCHAIN}")
-                message(FATAL_ERROR aaaaaaaa)
-	endif()
+	set(TEST_NAME test-example-${BOARD}${CORE}-${TEST_DIR_NAME})
+	file(GLOB 	s_files   RELATIVE ${CMAKE_CURRENT_LIST_DIR} ${IN_TEST_DIR}/*.S)
+	file(GLOB 	cpp_files RELATIVE ${CMAKE_CURRENT_LIST_DIR} ${IN_TEST_DIR}/*.cpp)
+	file(GLOB 	c_files   RELATIVE ${CMAKE_CURRENT_LIST_DIR} ${IN_TEST_DIR}/*.c)
+	
+	list(APPEND SRC_LIST ${s_files})
+	list(APPEND SRC_LIST ${cpp_files})
+	list(APPEND SRC_LIST ${c_files})
+	list(LENGTH SRC_LIST SRC_COUNT)
+	
+	MESSAGE("### CONFIGURE_TEST_NMC:${TEST_NAME}  ")
+
+	### BOARD:${BOARD} core:${CORE} dir:${IN_TEST_DIR} name:${TEST_DIR_NAME}") # src: ${SRC_FILES}")	
+
+	if (NOT SRC_COUNT  )
+		return()
+	endif()	
+	
+	#string(TOUPPER ${BOARD} BSP)
+	
+	add_executable(${TEST_NAME}  ${SRC_LIST})
+	#add_dependencies(${TEST_NAME} ${PROJECT_NAME}-${ARCH})
+	string(REPLACE " " ";" LIBS_LIST ${LIBS})
+	target_link_directories   (${TEST_NAME} PUBLIC	$ENV{${BSP}}/lib ../arch-nmc/lib)
+	target_link_libraries     (${TEST_NAME} ${LIBS_LIST})
+	#target_link_libraries     (${TEST_NAME} nmpp-${ARCH})
+	target_include_directories(${TEST_NAME} PUBLIC $ENV{BSP}/include ../include)
+	
+	set_target_properties(${TEST_NAME} PROPERTIES LINKER_LANGUAGE CXX)
+
+	target_link_options   (${TEST_NAME} PUBLIC -T${CMAKE_CURRENT_SOURCE_DIR}/templates/${LDS}  ) # -v 
+	target_compile_options(${TEST_NAME} PUBLIC $<$<COMPILE_LANGUAGE:C,CXX>:-m${NMC_ARCH};-O2>)	
+	target_compile_options(${TEST_NAME} PUBLIC $<$<COMPILE_LANGUAGE:ASM>:-m${NMC_ARCH};-Werror>)	
+
+
+	#MESSAGE("RUNOPT=" ${RUNOPT})
+	#string(REPLACE "-v" "" CRUNOPT ${RUNOPT})
+	#string(REPLACE " " ";" OPTS ${CRUNOPT})
+	#SPLIT_CMD_ARGS(${RUNNER} RUNNER_EXE RUNNER_ARGS)
+	# split RUNNER into EXE ans ARGS
+	#string(REPLACE " " ";" RUNNER_ARGS ${RUNNER})
+	#list(POP_FRONT RUNNER_ARGS RUNNER_EXE)
+	#list(APPEND OPTS ${RUNNER_ARGS})
+	#MESSAGE ("========== ${RUNNER} => ${RUNNER_EXE}  = ${OPTS}")
+	#exit()
+	add_test(NAME ${TEST_NAME} COMMAND ${RUNNER_EXE} $<TARGET_FILE:${TEST_NAME}> ${OPTS} )
+
 endfunction()
 
 function(CONFIGURE_TEST_X64 IN_TEST_DIR BOARD CORE )	
 	#set(ARCH NM6407)
-	if (NOT NMC_TOOLCHAIN)
-		get_filename_component(STEP_NAME ${IN_TEST_DIR} NAME)
-		
-		set(TEST_NAME example-${BOARD}${CORE}-${STEP_NAME})
-		file(GLOB 	s_files   RELATIVE ${CMAKE_CURRENT_LIST_DIR} ${IN_TEST_DIR}/*.S)
-		file(GLOB 	cpp_files RELATIVE ${CMAKE_CURRENT_LIST_DIR} ${IN_TEST_DIR}/*.cpp)
-		file(GLOB 	c_files   RELATIVE ${CMAKE_CURRENT_LIST_DIR} ${IN_TEST_DIR}/*.c)
-		
-		list(APPEND SRC_LIST ${s_files})
-		list(APPEND SRC_LIST ${cpp_files})
-		list(APPEND SRC_LIST ${c_files})
-		list(LENGTH SRC_LIST SRC_COUNT)
-		
-		#MESSAGE("### BOARD:${BOARD} core:${CORE} dir:${TEST_DIR} name:${STEP_NAME}") # src: ${SRC_FILES}")	
+	get_filename_component(TEST_DIR_NAME ${IN_TEST_DIR} NAME)
+	
+	set(TEST_NAME test-example-${BOARD}${CORE}-${TEST_DIR_NAME})
+	file(GLOB 	s_files   RELATIVE ${CMAKE_CURRENT_LIST_DIR} ${IN_TEST_DIR}/*.S)
+	file(GLOB 	cpp_files RELATIVE ${CMAKE_CURRENT_LIST_DIR} ${IN_TEST_DIR}/*.cpp)
+	file(GLOB 	c_files   RELATIVE ${CMAKE_CURRENT_LIST_DIR} ${IN_TEST_DIR}/*.c)
+	
+	list(APPEND SRC_LIST ${s_files})
+	list(APPEND SRC_LIST ${cpp_files})
+	list(APPEND SRC_LIST ${c_files})
+	list(LENGTH SRC_LIST SRC_COUNT)
+	
+	#MESSAGE("### BOARD:${BOARD} core:${CORE} dir:${TEST_DIR} name:${STEP_NAME}") # src: ${SRC_FILES}")	
 
-		if (NOT SRC_COUNT  )
-			return()
-		endif()	
-		
-		string(TOUPPER ${BOARD} BSP)
+	if (NOT SRC_COUNT  )
+		return()
+	endif()	
+	
+	string(TOUPPER ${BOARD} BSP)
 
-		add_executable(${TEST_NAME}  ${SRC_LIST})
-		#add_dependencies(${TEST_NAME} ${test_lib})
-		string(REPLACE " " ";" LIBS_LIST ${LIBS})
-		target_link_directories   (${TEST_NAME} PUBLIC	$ENV{${BSP}}/lib ../lib)
-		target_link_libraries     (${TEST_NAME} ${LIBS_LIST})
-		target_include_directories(${TEST_NAME} PUBLIC $ENV{BSP}/include ../include)
-		#target_link_options(${TEST_NAME} PUBLIC	-T${CMAKE_CURRENT_SOURCE_DIR}/templates/${LDS}  ) # -v 
-		
-		
-		add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME} $<TARGET_FILE:${TEST_NAME}> ${OPTS})
-	else()
-		MESSAGE("WARNING: CONFIGURE_TEST_X64 SKIPPED DUE NMC_TOOLCHAIN IS ${NMC_TOOLCHAIN}")
-		exit()
-	endif()
+	add_executable(${TEST_NAME}  ${SRC_LIST})
+	#add_dependencies(${TEST_NAME} ${test_lib})
+	string(REPLACE " " ";" LIBS_LIST ${LIBS})
+	target_link_directories   (${TEST_NAME} PUBLIC	$ENV{${BSP}}/lib ../lib)
+	target_link_libraries     (${TEST_NAME} ${LIBS_LIST})
+	target_include_directories(${TEST_NAME} PUBLIC $ENV{BSP}/include ../include)
+	#target_link_options(${TEST_NAME} PUBLIC	-T${CMAKE_CURRENT_SOURCE_DIR}/templates/${LDS}  ) # -v 
+
+	add_test(NAME ${TEST_NAME} COMMAND ${TEST_NAME} $<TARGET_FILE:${TEST_NAME}> ${OPTS})
 endfunction()
 
 
@@ -319,10 +298,10 @@ if (ARCH STREQUAL nm6407f)
 		set(BOARD mc12101)
 		set(CXXFLAGS  " -O2 -Wall -mnmc4-float -g")
 		set(CXXFLAGSD " -O0 -Wall -mnmc4-float -g")
-		set(LIBS  	" -lnmpp-nm6407f -lnm6407int -Wl,--whole-archive -lnm6407_io_nmc -lmc12101load_nm -Wl,--no-whole-archive")
-		set(LIBSD 	" -lnmpp-nm6407fd 			 -Wl,--whole-archive -lnm6407_io_nmc -lmc12101_stub_nmc4_float -lmc12101load_nm -Wl,--no-whole-archive")
+		set(LIBS  	" -lnmpp-${ARCH} -lnm6407int -Wl,--whole-archive -lnm6407_io_nmc -lmc12101load_nm -Wl,--no-whole-archive")
+		set(LIBSD 	" -lnmpp-${ARCH}d 			 -Wl,--whole-archive -lnm6407_io_nmc -lmc12101_stub_nmc4_float -lmc12101load_nm -Wl,--no-whole-archive")
 		set(INC_DIRS " -I$(${BSP})/include -I$(NMPP)/include -I$(NMPP)/libs/printx/include")
-		set(LIB_DIRS " -L$(${BSP})/lib -L$(NMPP)/lib")
+		set(LIB_DIRS " -L$(${BSP})/lib -L$(NMPP)/arch-nmc/lib")
 		set(LDS 	"${BOARD}f.lds")
 		set(RUN		"run:  $(TARGET) \n\tmc12101run -p -R -a0 -v $(TARGET)" )
 		set(RUND 	"rund: $(TARGETD)\n\tmc12101run -p -R -a0 -v $(TARGETD)" )
@@ -330,7 +309,7 @@ if (ARCH STREQUAL nm6407f)
 		set(GDB		"gdb:\n\tnmc-gdb -ex \"target remote :5555\" $(TARGETD)")
                 message(STATUS ${dir_list})
 		foreach(dir ${dir_list})
-                        #CONFIGURE_TEST_NMC(${dir} ${BOARD}f "-nmpu0" )
+            CONFIGURE_TEST_NMC(${dir} ${BOARD}f "-nmpu0" )
 			CONFIGURE_EXAMPLE (${dir} ${BOARD}f "")
 		endforeach()
 	endif()
@@ -341,7 +320,7 @@ if (ARCH STREQUAL nm6407f)
 		set(LIBS  	"-lnmpp-${ARCH}  -lc")
 		set(LIBSD 	"-lnmpp-${ARCH}d -lc")
 		set(INC_DIRS " -I$(${BSP})/include -I$(NMPP)/include")
-		set(LIB_DIRS " -L$(${BSP})/lib -L$(NMPP)/lib")
+		set(LIB_DIRS " -L$(${BSP})/lib -L$(NMPP)/arch-nmc/lib")
 		set(LDS 	"${BOARD}-${ARCH}.lds")
 		set(RUNNER 	"nmc-qemu")
 		set(RUN		"run:  $(TARGET) \n\tnmc-qemu -tick $(TARGET)" )
@@ -349,7 +328,7 @@ if (ARCH STREQUAL nm6407f)
 		set(MONITOR "")
 		set(GDB		"gdb:\n\tnmc-gdb -iex \"set tcp connect-timeout 30\"  -ex \"target remote :10000\" $(TARGETD)")
 		foreach(dir ${dir_list})
-			#CONFIGURE_TEST_NMC(${dir} ${BOARD}-${ARCH} "")
+			CONFIGURE_TEST_NMC(${dir} ${BOARD}-${ARCH} "")
 			CONFIGURE_EXAMPLE (${dir} ${BOARD}-${ARCH} "")
 		endforeach()
 	endif()
@@ -416,7 +395,7 @@ if (ARCH STREQUAL nm6476f)
 		set(RUND 	"rund: $(TARGETD)\n\tmc11101run -p -R -v $(TARGETD)" )
 		foreach(dir ${dir_list})
 			CONFIGURE_TEST_NMC(${dir} ${BOARD} "" )
-			CONFIGURE_EXAMPLE (${dir} ${BOARD} "")
+			#CONFIGURE_EXAMPLE (${dir} ${BOARD} "")
 		endforeach()	
 	endif()
 	if ( QEMU_BUILD )
@@ -431,8 +410,8 @@ if (ARCH STREQUAL nm6476f)
 		set(RUND 	"rund: $(TARGETD)\n\tnmc-qemu -g 10000 $(TARGETD)" )
 		set(MONITOR "")
 		foreach(dir ${dir_list})
-			#CONFIGURE_TEST_NMC(${dir} ${BOARD}-${ARCH} "")
-			CONFIGURE_EXAMPLE (${dir} ${BOARD}-${ARCH} "")
+			CONFIGURE_TEST_NMC(${dir} ${BOARD}-${ARCH} "")
+			#CONFIGURE_EXAMPLE (${dir} ${BOARD}-${ARCH} "")
 		endforeach()
 	endif()
 endif()	
@@ -569,9 +548,9 @@ if ( X64_BUILD )
 	
 	#file(COPY ./templates/CMakeLists.txt DESTINATION examples-x64) # copy main.cpp & co
 	set (ROOT "\$ENV\{NMPP\}")
-	configure_file ("./templates/CMakeLists.txt.in"  "examples/CMakeLists.txt" @ONLY )
-	configure_file ("./templates/configure_vs17.bat" "examples/configure_vs17.bat" @ONLY )
-	configure_file ("./templates/configure_vs19.bat" "examples/configure_vs19.bat" @ONLY )
+	configure_file ("./templates/CMakeLists.txt.in"  "../conf-examples/CMakeLists.txt" @ONLY )
+	configure_file ("./templates/configure_vs17.bat" "../conf-examples/configure_vs17.bat" @ONLY )
+	configure_file ("./templates/configure_vs19.bat" "../conf-examples/configure_vs19.bat" @ONLY )
 	
 endif()	
 	

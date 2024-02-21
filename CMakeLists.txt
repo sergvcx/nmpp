@@ -37,6 +37,7 @@ set(CMAKE_C_EXTENSIONS OFF)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY         ${CMAKE_CURRENT_LIST_DIR}/${FOLDER}/lib)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_DEBUG   ${CMAKE_CURRENT_LIST_DIR}/${FOLDER}/lib)
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_LIST_DIR}/${FOLDER}/lib)
+set(ARCH nm6407f CACHE STRING "arch description")
 
 
 #MESSAGE (FATAL_ERROR ========= ${CMAKE_ARCHIVE_OUTPUT_DIRECTORY})
@@ -456,7 +457,7 @@ if ( ARCH STREQUAL "nm6407f" OR ARCH STREQUAL "nm6408" OR ARCH STREQUAL "nm6476f
 	MESSAGE("######## ARCH ${ARCH} ############")
 	add_library(${PROJECT_NAME}-${ARCH} STATIC ${nmc4f_cpp_files} ${nmc4f_c_files} ${nmc4f_asm_files} ${nmc4f_s_files}
 										  ${nmc4r_cpp_files} ${nmc4r_c_files} ${nmc4r_asm_files} ${nmc4r_s_files}
-										)
+										CMakeLists.txt)
 	
 	target_compile_options(${PROJECT_NAME}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C,CXX>:-mnmc4-float;-O2>)	
 	target_compile_options(${PROJECT_NAME}-${ARCH} PUBLIC $<$<COMPILE_LANGUAGE:C>:-std=c99>)	
@@ -600,8 +601,8 @@ install(FILES nmpp2env.bat    DESTINATION . COMPONENT nmpp_dev)
 install(DIRECTORY doc_/       DESTINATION doc/nmpp COMPONENT nmpp_doc)	# copy files doc_/*.* to doc/nmpp/*.*
 install(FILES README.asciidoc DESTINATION doc/nmpp COMPONENT nmpp_doc)		
 if (EXAMPLES)
-	install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/examples/examples DESTINATION . COMPONENT nmpp_examples) 
-	add_subdirectory(examples)
+	install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/conf-examples/ DESTINATION ./examples COMPONENT nmpp_examples) 
+	add_subdirectory(examples test-examples)
 endif()
 	
 #	if (ALL_BUILD)
