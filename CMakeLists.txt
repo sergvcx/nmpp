@@ -22,9 +22,9 @@ project(nmpp VERSION ${VERSION} LANGUAGES CXX C ASM)
 if(NM)
 	set(FOLDER arch-nmc)
 elseif(WIN32)
-	set(FOLDER arch-win)
+	set(FOLDER arch-x64)
 else()	
-	set(FOLDER arch-linux)
+	set(FOLDER arch-x64)
 endif()
 
 
