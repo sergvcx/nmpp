@@ -9,14 +9,14 @@ project(nmpp VERSION ${VERSION} LANGUAGES CXX C ASM)
 #MESSAGE("######## ${ARCH} ARCH_VERSION ${ARCH_VERSION} ############")
 #return()
 
-if (CMAKE_HOST_WIN32 AND CMAKE_GENERATOR MATCHES "Ninja")
-    file(
-        WRITE "${CMAKE_BINARY_DIR}/GNUMakeRulesOverwrite.cmake" 
-            "STRING(REPLACE \"-MD\" \"-MMD\" CMAKE_DEPFILE_FLAGS_C \"\${CMAKE_DEPFILE_FLAGS_C}\")\n"
-            "STRING(REPLACE \"-MD\" \"-MMD\" CMAKE_DEPFILE_FLAGS_CXX \"\${CMAKE_DEPFILE_FLAGS_CXX}\")\n"
-    )
-    set(CMAKE_USER_MAKE_RULES_OVERRIDE "${CMAKE_BINARY_DIR}/GNUMakeRulesOverwrite.cmake" CACHE INTERNAL "")
-endif()
+#if (CMAKE_HOST_WIN32 AND CMAKE_GENERATOR MATCHES "Ninja")
+#    file(
+#        WRITE "${CMAKE_BINARY_DIR}/GNUMakeRulesOverwrite.cmake" 
+#            "STRING(REPLACE \"-MD\" \"-MMD\" CMAKE_DEPFILE_FLAGS_C \"\${CMAKE_DEPFILE_FLAGS_C}\")\n"
+#            "STRING(REPLACE \"-MD\" \"-MMD\" CMAKE_DEPFILE_FLAGS_CXX \"\${CMAKE_DEPFILE_FLAGS_CXX}\")\n"
+#    )
+#    set(CMAKE_USER_MAKE_RULES_OVERRIDE "${CMAKE_BINARY_DIR}/GNUMakeRulesOverwrite.cmake" CACHE INTERNAL "")
+#endif()
 
 
 if(NM)
@@ -600,6 +600,16 @@ install(DIRECTORY include     DESTINATION . COMPONENT nmpp_dev)
 install(FILES nmpp2env.bat    DESTINATION . COMPONENT nmpp_dev)		
 install(DIRECTORY doc_/       DESTINATION doc/nmpp COMPONENT nmpp_doc)	# copy files doc_/*.* to doc/nmpp/*.*
 install(FILES README.asciidoc DESTINATION doc/nmpp COMPONENT nmpp_doc)		
+if(MSVC)
+	set(pdb_file "$<TARGET_FILE_DIR:nmpp-${ARCH}>/$<TARGET_FILE_PREFIX:nmpp-${ARCH}>$<TARGET_FILE_BASE_NAME:nmpp-${ARCH}>.pdb")
+	set(pdb_file_destination ${FOLDER}/lib)
+
+	install(FILES "${pdb_file}"
+		COMPONENT nmpp_dev
+		DESTINATION "${pdb_file_destination}"
+		OPTIONAL)
+endif()	
+	
 if (EXAMPLES)
 	install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/conf-examples/ DESTINATION ./examples COMPONENT nmpp_examples) 
 	add_subdirectory(examples test-examples)
