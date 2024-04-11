@@ -38,12 +38,12 @@ all: $(TARGET) $(TARGETD)
 $(TARGET): $(SOURCES) Makefile @LDS@ 
 	@echo -------- Release build --------------
 	$(CC)  -o$(TARGET) $(SOURCES) $(CXXFLAGS) $(LDFLAGS)  $(INC_DIRS) $(LIB_DIRS) $(LIBS) $(ERRECHO)
-	nmc-objdump -D $(TARGET) > dasm.txt
+	nmc-objdump -d -z $(TARGET) > dasm.txt
 
 $(TARGETD): $(SOURCES) Makefile @LDS@
 	@echo -------- Debug build --------------
 	$(CC)  -o$(TARGETD) $(SOURCES) $(CXXFLAGSD) $(LDFLAGSD) $(INC_DIRS) $(LIB_DIRS)  $(LIBSD) $(ERRECHO)
-	nmc-objdump -D $(TARGETD) > dasmd.txt
+	nmc-objdump -d -z $(TARGETD) > dasmd.txt
 
 
 @RUN@ 

@@ -598,8 +598,8 @@ install(DIRECTORY cmake       DESTINATION src/nmpp COMPONENT nmpp_src)
 install(DIRECTORY libs        DESTINATION . COMPONENT nmpp_libs)		
 install(DIRECTORY include     DESTINATION . COMPONENT nmpp_dev)		
 install(FILES nmpp2env.bat    DESTINATION . COMPONENT nmpp_dev)		
-install(DIRECTORY doc_/       DESTINATION doc/nmpp COMPONENT nmpp_doc)	# copy files doc_/*.* to doc/nmpp/*.*
-install(FILES README.asciidoc DESTINATION doc/nmpp COMPONENT nmpp_doc)		
+install(DIRECTORY doc_/       DESTINATION doc/nmpp COMPONENT nmpp_doc OPTIONAL)	# copy files doc_/*.* to doc/nmpp/*.*
+install(FILES README.asciidoc DESTINATION doc/nmpp COMPONENT nmpp_doc OPTIONAL)		
 if(MSVC)
 	set(pdb_file "$<TARGET_FILE_DIR:nmpp-${ARCH}>/$<TARGET_FILE_PREFIX:nmpp-${ARCH}>$<TARGET_FILE_BASE_NAME:nmpp-${ARCH}>.pdb")
 	set(pdb_file_destination ${FOLDER}/lib)
