@@ -1,0 +1,102 @@
+#include "nmpp/nmpli.h"
+
+extern "C"{
+int wgh1[]={ 0x1d2f,0x9646,0x4c8b,0 };
+int wgh2[]={ 0x1d2f,0x9646,0x4c8b,0 };
+void nmppiRGB32ToY_8u32u(nm8u * pRGB, nm32u* pDstY, int nSize)
+{  int i,j, k;
+   unsigned int * p;
+   unsigned char * rgb; 
+   p=(unsigned int*)pDstY;
+   rgb=(unsigned char *)pRGB;
+  j=0;
+  for (i=0; i<nSize; i++)
+  {
+     k= wgh1[0]*rgb[j];
+     k+=wgh1[1]*rgb[j+1];
+     k+=wgh1[2]*rgb[j+2];
+     j+=4;
+     p[i]=k;
+     i++;
+     k= wgh2[0]*rgb[j];
+     k+=wgh2[1]*rgb[j+1];
+     k+=wgh2[2]*rgb[j+2];
+     j+=4;
+     p[i]=k;
+  }
+}
+
+void nmppiRGB32ToY_8s32u(nm8s * pRGB, nm32u* pDstY, int nSize)
+{  int i,j, k;
+   unsigned int * p;
+   unsigned char * rgb; 
+   p=(unsigned int*)pDstY;
+   rgb=(unsigned char *)pRGB;
+  j=0;
+  for (i=0; i<nSize; i++)
+  {
+     k= wgh1[0]*rgb[j];
+     k+=wgh1[1]*rgb[j+1];
+     k+=wgh1[2]*rgb[j+2];
+     j+=4;
+     p[i]=k;
+     i++;
+     k= wgh2[0]*rgb[j];
+     k+=wgh2[1]*rgb[j+1];
+     k+=wgh2[2]*rgb[j+2];
+     j+=4;
+     p[i]=k;
+  }
+}
+
+void nmppiRGB32ToY_8u32s(nm8u * pRGB, nm32s* pDstY, int nSize)
+{  int i,j, k;
+   int * p; 
+   unsigned char * rgb; 
+   p=(int*)pDstY;
+   rgb=(unsigned char*)pRGB;
+
+  j=0;
+  for (i=0; i<nSize; i++)
+  { 
+     k= wgh1[0]*rgb[j];
+     k+=wgh1[1]*rgb[j+1];
+     k+=wgh1[2]*rgb[j+2];
+     j+=4;
+     p[i]=k-0x800000;
+     i++;
+     k= wgh2[0]*rgb[j];
+     k+=wgh2[1]*rgb[j+1];
+     k+=wgh2[2]*rgb[j+2];
+     j+=4;
+     p[i]=k-0x800000;
+
+  }
+}
+
+void nmppiRGB32ToY_8s32s(nm8s * pRGB, nm32s* pDstY, int nSize)
+{  int i,j, k;
+   int * p; 
+   char * rgb; 
+   p=(int*)pDstY;
+   rgb=(char*)pRGB;
+
+  j=0;
+  for (i=0; i<nSize; i++)
+  { 
+     k= wgh1[0]*rgb[j];
+     k+=wgh1[1]*rgb[j+1];
+     k+=wgh1[2]*rgb[j+2];
+     j+=4;
+     p[i]=k;
+     i++;
+     k= wgh2[0]*rgb[j];
+     k+=wgh2[1]*rgb[j+1];
+     k+=wgh2[2]*rgb[j+2];
+     j+=4;
+     p[i]=k;
+
+  }
+}
+
+};

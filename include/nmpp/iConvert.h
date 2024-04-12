@@ -1,14 +1,14 @@
-//#ifndef __ICONVERT_H
-//#define __ICONVERT_H
-//
-////#include "iCellTexture.h"
-//#include "nmtype.h"
-//#include "iDef.h"
-//
-//
-//#ifdef __cplusplus
-// 		extern "C" {
-//#endif
+#ifndef __ICONVERT_H
+#define __ICONVERT_H
+
+// #include "iCellTexture.h"
+#include "nmtype.h"
+#include "iDef.h"
+
+
+#ifdef __cplusplus
+		extern "C" {
+#endif
 //
 ////*****************************************************************************
 //
@@ -250,7 +250,16 @@
 //
 //	*/
 //   //!  \{
-//void nmppiRGB32ToGray_8u32u(RGB32_nm8u* pRGB, nm32u* pDstGray, int nSize);
+void nmppiRGB32ToY_8u32u(nm8u* pRGB, nm32u* pDstY, int nSize);
+void nmppiRGB32ToY_8s32u(nm8s* pRGB, nm32u* pDstY, int nSize);
+
+void nmppiRGB32ToY_8u32s(nm8u* pRGB, nm32s* pDstY, int nSize);
+void nmppiRGB32ToCb_8u32s(nm8u* pRGB, nm32s* pDstCb, int nSize);
+void nmppiRGB32ToCr_8u32s(nm8u* pRGB, nm32s* pDstCr, int nSize);
+
+void nmppiRGB32ToY_8s32s(nm8s* pRGB, nm32s* pDstY, int nSize);
+void nmppiRGB32ToCb_8s32s(nm8s* pRGB, nm32s* pDstCb, int nSize);
+void nmppiRGB32ToCr_8s32s(nm8s* pRGB, nm32s* pDstCr, int nSize);
 //void nmppiRGB32ToGray_8u32s(RGB32_nm8u* pRGB, nm32s* pDstGray, int nSize);
 //void nmppiRGB32ToGray_8u8s(RGB32_nm8u*  pRGB, nm8s* pDstGray, int nSize, void *pTmpBuf);
 //
@@ -290,8 +299,8 @@
 //void nmppiGrayToRGB242424242424242424(nm8u* pSrcImg, RGB24_nm8u* pDstImg, int nSize);
 //void nmppiRGB24ToGray(RGB24_nm8u* pRGB, nm8u* pDstGray, int nSize);
 //	//! \}
-// #ifdef __cplusplus
-// 	};
-// #endif
-//#endif
+#ifdef __cplusplus
+	};
+#endif
+#endif
 //

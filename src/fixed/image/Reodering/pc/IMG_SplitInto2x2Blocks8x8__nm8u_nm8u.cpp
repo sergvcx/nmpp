@@ -15,7 +15,7 @@ void nmppiSplitInto2x2Blocks8x8(
 	for(int row=0;row<nHeight;row+=16){
 		for(int col=0;col<nWidth;col+=16){
 			mtr<unsigned char> m0(src+row*nWidth+col,8,8,nWidth);
-			mtr<unsigned char> m1(src+row*nWidth+col+16,8,8,nWidth);
+			mtr<unsigned char> m1(src+row*nWidth+col+8,8,8,nWidth);
 			mtr<unsigned char> m2(src+(row+8)*nWidth+col,8,8,nWidth);
 			mtr<unsigned char> m3(src+(row+8)*nWidth+col+8,8,8,nWidth);
 
